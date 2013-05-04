@@ -12,7 +12,8 @@ RSYNC="rsync    --recursive \
                 --exclude=include/*.inc \
                 --exclude=rulez/*.log \
                 --exclude=include/auth.php \
-                --exclude=bin/sync"
+                --exclude=bin/sync \
+                --exclude=.git"
 
 if $DEBUG
 then
