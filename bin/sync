@@ -1,0 +1,12 @@
+#!/bin/sh
+
+function usage()
+{
+    echo "Usage: $0 <push|pull> <test|live>"
+    echo "  - $0 push test : Push local version to test.pouet.net"
+    echo "  - $0 push live : Push local version to pouet.net"
+    echo "  - $0 pull test : Pull test.pouet.net locally"
+    echo "  - $0 pull live : Pull pouet.net locally"
+}
+
+usage
