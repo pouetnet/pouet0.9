@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DEBUG=false
+SCRIPT_NAME=`basename $0`
 LIVE_PATH="/home/hosted/pouet/sites/www.pouet.net"
 TEST_PATH="/home/hosted/pouet/sites/test.pouet.net"
 RSYNC="rsync    --recursive \
@@ -20,11 +21,11 @@ fi
 
 function usage()
 {
-    echo "Usage: $0 <push|pull> <test|live>"
-    echo "  - $0 push test : Push local version to test.pouet.net"
-    echo "  - $0 push live : Push local version to pouet.net"
-    echo "  - $0 pull test : Pull test.pouet.net locally"
-    echo "  - $0 pull live : Pull pouet.net locally"
+    echo "Usage: $SCRIPT_NAME <push|pull> <test|live>"
+    echo "  - $SCRIPT_NAME push test : Push local version to test.pouet.net"
+    echo "  - $SCRIPT_NAME push live : Push local version to pouet.net"
+    echo "  - $SCRIPT_NAME pull test : Pull test.pouet.net locally"
+    echo "  - $SCRIPT_NAME pull live : Pull pouet.net locally"
     exit 1
 }
 
@@ -55,9 +56,9 @@ function pull_live()
     $RSYNC pouet:$LIVE_PATH/ .
 }
 
-if [ -f .git/index ]
+if [ ! -f .git/index ]
 then
-    echo "Error: launch $ at the root of the source folder pls oh pls"
+    echo "Error: launch $SCRIPT_NAME at the root of the source folder pls oh pls"
     exit 1
 fi
 
