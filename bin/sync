@@ -1,5 +1,23 @@
 #!/bin/sh
 
+DEBUG=false
+LIVE_PATH="/home/hosted/pouet/sites/www.pouet.net"
+TEST_PATH="/home/hosted/pouet/sites/test.pouet.net"
+RSYNC="rsync    --recursive \
+                --delete \
+                --progress \
+                --checksum \
+                --links\
+                --exclude=include/*.inc \
+                --exclude=rulez/*.log \
+                --exclude=include/auth.php \
+                --exclude=bin/sync"
+
+if $DEBUG
+then
+    RSYNC="$RSYNC --dry-run"
+fi
+
 function usage()
 {
     echo "Usage: $0 <push|pull> <test|live>"
@@ -7,6 +25,56 @@ function usage()
     echo "  - $0 push live : Push local version to pouet.net"
     echo "  - $0 pull test : Pull test.pouet.net locally"
     echo "  - $0 pull live : Pull pouet.net locally"
+    exit 1
 }
 
-usage
+copy_cache_from_live_to_test()
+{
+    ssh pouet cp $LIVE_PATH/include/*.inc $TEST_PATH/include/
+    ssh pouet cp $LIVE_PATH/include/auth.php $TEST_PATH/include/auth.php
+}
+
+function push_test()
+{
+    $RSYNC ./ pouet:$TEST_PATH
+    copy_cache_from_live_to_test
+}
+
+function push_live()
+{
+    $RSYNC ./ pouet:$LIVE_PATH
+}
+
+function pull_test()
+{
+    $RSYNC pouet:$TEST_PATH/ .
+}
+
+function pull_live()
+{
+    $RSYNC pouet:$LIVE_PATH/ .
+}
+
+if [ -f .git/index ]
+then
+    echo "Error: launch $ at the root of the source folder pls oh pls"
+    exit 1
+fi
+
+case "$1" in
+    push)
+        case "$2" in
+            test) push_test ;;
+            live) push_live ;;
+            *) usage ;;
+        esac
+        ;;
+    pull)
+        case "$2" in
+            test) pull_test ;;
+            live) pull_live ;;
+            *) usage ;;
+        esac
+        ;;
+    *) usage;;
+esac
