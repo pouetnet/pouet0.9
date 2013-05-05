@@ -1,0 +1,16 @@
+#!/bin/sh
+
+BACKUP_FOLDER=/home/hosted/pouet/backup
+CONTENT_FOLDER=/home/hosted/pouet/sites/content.pouet.net
+DATE=`date +"%Y-%m-%d"`
+SQL_DUMP_FILE=$BACKUP_FOLDER/pouet-$DATE.sql
+
+# Backup the database
+mysqldump pouet > $SQL_DUMP_FILE
+gzip $SQL_DUMP_FILE
+
+# Backup the user submitted files
+tar zcf $BACKUP_FOLDER/pouet-content-$DATE.tgz $CONTENT_FOLDER
+
+# Cleanup old files
+find $BACKUP_FOLDER -mtime 15 -delete
