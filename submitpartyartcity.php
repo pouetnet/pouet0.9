@@ -42,12 +42,12 @@ if($submitok){
   $thisid = mysql_result($result,0);
   if($thisid)
   {
-  	$query ="UPDATE partylinks SET artcity='".$_POST["artcitytags"]."' where id=".$thisid;
+  	$query ="UPDATE partylinks SET artcity='".mysql_real_escape_string($_POST["artcitytags"])."' where id=".$thisid;
   	mysql_query($query);
   }
   else
   {
-	$query ="INSERT INTO partylinks SET party=".$which.", year=".$when.", artcity='".$_POST["artcitytags"]."'";
+	$query ="INSERT INTO partylinks SET party=".$which.", year=".$when.", artcity='".mysql_real_escape_string($_POST["artcitytags"])."'";
   	mysql_query($query);
   }
 }
