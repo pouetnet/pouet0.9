@@ -4,8 +4,9 @@ $query="SELECT version FROM changelog ORDER BY quand DESC, id DESC LIMIT 1";
 $result=mysql_query($query);
 $lastversion=mysql_result($result,0);
 ?>
-<a href="http://www.pouet.net">pouët.net</a> <a href="changelog.php"><? print($lastversion); ?></a> &copy; 2000-<?=date("Y")?> <a href="http://www.pouet.net/groups.php?which=5">mandarine</a> - hosted on <a href="http://www.scene.org/">scene.org</a><br />
-send comments and bug reports to <a href="mailto:webmaster@pouet.net">webmaster@pouet.net</a><br />
+<a href="http://www.pouet.net">pou?t.net</a> <a href="changelog.php"><? print($lastversion); ?></a> &copy; 2000-<?=date("Y")?> <a href="http://www.pouet.net/groups.php?which=5">mandarine</a> - hosted on <a href="http://www.scene.org/">scene.org</a><br />
+send comments and bug reports to <a href="mailto:webmaster@pouet.net">webmaster@pouet.net</a>
+- contribute on <a href="https://github.com/lra/pouet.net">GitHub</a><br />
 <?
 $endtime = microtime_float();
 $totaltime = ($endtime - $starttime);
