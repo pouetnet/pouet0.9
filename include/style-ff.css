@@ -1,0 +1,7 @@
+.bbimage {
+  max-width: 800px;
+}
+
+.largeavatar {
+  image-rendering: -moz-crisp-edges;
+}
