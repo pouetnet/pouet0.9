@@ -9,7 +9,7 @@ if(!$dbl) {
 }
 mysql_select_db($db['database'],$dbl);
 
-$query ="SELECT * FROM prods WHERE id=".$_GET["id"];
+$query ="SELECT * FROM prods WHERE id=".(int)$_GET["id"];
 $result = mysql_query($query);
 $prod = mysql_fetch_array($result);
 
