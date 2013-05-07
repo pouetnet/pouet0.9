@@ -53,7 +53,7 @@ header("Content-type: application/xml");
 
 echo "<"."?xml version=\"1.0\" encoding=\"UTF-8\"?".">";
 
-$days = )int)$_GET["days"];
+$days = (int)$_GET["days"];
 $days = min($days,3*365);
 
 $platforms = implode(",",$_GET["platforms"]);
