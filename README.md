@@ -4,6 +4,29 @@ Let's try to have a working dev env back
 
 Would be awesome to be able to accept collaborative pull requests too !
 
+## Roadmap
+
+- Fix bugs and annoyances
+- Welcome pull requests (propositions) and merge the ones that make sense, if
+  any
+- Work on a REST API
+- Gargaj and anybody else are as welcome as before
+
+Nothing revolutionnary here, I don't see any breaking change happening soon,
+data included.
+
+At the same time:
+- Gargaj and his collaborators can take their time working on 2.0 the way he
+  intended to do it, openly or not
+- If any change happens to the data on 1.0, he'll be able to track the changes
+  on github, again if it happens, it will surely be minor stuff
+- Once he feels is code his ready, he can open a pull request on github
+- We review/test his code together and merge it
+- We all contribute to Gargaj's 2.0, with his opinion obviously weigthing more
+  than anyone else's, as he built it
+- When Gargaj or any other contributor wants to quit, nothing will change and
+  other people will still work on the site
+
 ## License
 
 Copyright (C) 2000-2013  Laurent Raufaste
