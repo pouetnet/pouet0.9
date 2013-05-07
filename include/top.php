@@ -23,6 +23,7 @@ error_reporting(0);
 // keep the number of comments displayed for a prod in a cookie for a year
 session_start();
 
+$SESSION_LEVEL = $_SESSION["SESSION_LEVEL"];
 if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator' || $_GET["debugmode"]))
   error_reporting(E_ALL & ~E_NOTICE);
 
