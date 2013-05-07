@@ -53,13 +53,13 @@ header("Content-type: application/xml");
 
 echo "<"."?xml version=\"1.0\" encoding=\"UTF-8\"?".">";
 
-$days = $_GET["days"];
+$days = )int)$_GET["days"];
 $days = min($days,3*365);
 
 $platforms = implode(",",$_GET["platforms"]);
 
 $t = array();
-foreach($_GET["types"] as $t2) $t[] = "'".$t2."'";
+foreach($_GET["types"] as $t2) $t[] = "'".mysql_real_escape_string($t2)."'";
 $types = implode(",",$t);
 
 //$sql = "select * from platforms";
@@ -71,7 +71,7 @@ $sql = "select prods.id,prods.name,g1.name as g1,g2.name as g2,g3.name as g3 fro
 " LEFT JOIN groups AS g3 ON prods.group3 = g3.id".
 " JOIN prods_platforms ON prods.id = prods_platforms.prod ".
 " WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(prods.date))<=".$days."*60*60*24 ".
-" AND prods_platforms.platform IN (".$platforms.") ".
+" AND prods_platforms.platform IN (".mysql_real_escape_string($platforms).") ".
 " AND FIND_IN_SET(".$types.",prods.type) ".
 " GROUP BY prods.id ORDER BY prods.name";
 
