@@ -11,6 +11,7 @@ RSYNC="rsync    --recursive \
                 --links\
                 --exclude=include/*.inc \
                 --exclude=rulez/*.log \
+                --exclude=cache/*
                 --exclude=include/auth.php \
                 --exclude=LAST_SCENEORG_CHECK \
                 --exclude=.git"
