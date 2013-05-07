@@ -4,7 +4,7 @@ require("include/top.php");
 <table bgcolor="#000000" cellspacing="1" cellpadding="3" border="0">
 <?
 if ($_GET["avatar"]) {
-$sql = "SELECT avatar, id, nickname FROM users WHERE BINARY avatar = '".$_GET["avatar"]."'";
+$sql = "SELECT avatar, id, nickname FROM users WHERE BINARY avatar = '".mysql_real_escape_string($_GET["avatar"])."'";
 $r = mysql_query($sql);
 while ($o = mysql_fetch_object($r)) {
 ?>
