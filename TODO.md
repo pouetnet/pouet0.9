@@ -30,3 +30,4 @@
    (display them on groups.php?which=..)
  - integrate demozoo style user and group credits
  - allow gfx and music entries?!
+ - Validate input forms (with filter_var() ?)
