@@ -282,22 +282,6 @@ CREATE TABLE `cdc` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `changelog`
---
-
-DROP TABLE IF EXISTS `changelog`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `changelog` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `version` varchar(255) NOT NULL DEFAULT '',
-  `comment` varchar(255) NOT NULL DEFAULT '',
-  `quand` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `comments`
 --
 

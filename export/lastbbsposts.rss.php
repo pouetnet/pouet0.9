@@ -37,11 +37,7 @@ $query = 'SELECT lastpost FROM bbs_topics ORDER BY lastpost DESC LIMIT 1';
 $result = mysql_query($query);
 $lastBuildDate = date('D, d M Y H:i:s',strtotime(mysql_result($result, 0)));
 $output.= $t.$t.'<lastBuildDate>'.$lastBuildDate.' CST</lastBuildDate>'.$nl;
-// generator
-$query = 'SELECT version FROM changelog ORDER BY quand DESC LIMIT 1';
-$result = mysql_query($query);
-$version = mysql_result($result, 0);
-$output.= $t.$t.'<generator>pouet.net version '.$version.'</generator>'.$nl;
+$output.= $t.$t.'<generator>pouet.net</generator>'.$nl;
 $output.= $t.$t.'<docs>http://backend.userland.com/rss</docs>'.$nl;
 $output.= $t.$t.'<ttl>60</ttl>'.$nl;
 // logo
