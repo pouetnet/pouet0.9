@@ -445,16 +445,19 @@ if($which) {
       		#}
      		#}
 
-                # Try this instead, using the homework we did above (jeffry)
-                foreach ($prodsbygroup[$groups[$i]["id"]] as $prod) {
-                  $typess=explode(",", $prod["type"]);
-                  print("<tr><td><a href=\"prod.php?which=".$prod["id"]."\">");
-                  for($kk=0;$kk<count($typess);$kk++) {
-                    print("<img src=\"gfx/types/".$types[$typess[$kk]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$kk]."\">");
-                  }
-		  print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td><a href=\"prod.php?which=".$prod["id"]."\">".strtolower(stripslashes($prod["name"]))."</a><br /></td></tr>\n");
-                  $k++;
-                } 
+        # Try this instead, using the homework we did above (jeffry)
+        if ($prodsbygroup[$groups[$i]["id"]])
+        {
+          foreach ($prodsbygroup[$groups[$i]["id"]] as $prod) {
+            $typess=explode(",", $prod["type"]);
+            print("<tr><td><a href=\"prod.php?which=".$prod["id"]."\">");
+            for($kk=0;$kk<count($typess);$kk++) {
+              print("<img src=\"gfx/types/".$types[$typess[$kk]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$kk]."\">");
+            }
+            print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td><a href=\"prod.php?which=".$prod["id"]."\">".strtolower(stripslashes($prod["name"]))."</a><br /></td></tr>\n");
+            $k++;
+          }
+        }
 
      		if(!$k){
        		print("<tr><td><br /></td></tr>\n");
