@@ -430,21 +430,6 @@ if($which) {
      		print("<td>\n<table cellspacing=\"1\" cellpadding=\"0\">\n");
      		$k=0;
 
-		# UGLY UGLY UGLY OLD CODE! (jeffry)
-     		#for($j=0;$j<count($prods);$j++) {
-      		#if(($prods[$j]["group1"]==$groups[$i]["id"])||($prods[$j]["group2"]==$groups[$i]["id"])||($prods[$j]["group3"]==$groups[$i]["id"]))
-      		#{
-             	#		
-	       	#	$typess = explode(",", $prods[$j]["type"]);
-      		#	print("<tr><td><a href=\"prod.php?which=".$prods[$j]["id"]."\">");
-      		#	for($kk=0;$kk<count($typess);$kk++) {
-      		#		print("<img src=\"gfx/types/".$types[$typess[$kk]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$kk]."\">");
-      		#	}
-	       	#	print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td><a href=\"prod.php?which=".$prods[$j]["id"]."\">".strtolower(stripslashes($prods[$j]["name"]))."</a><br /></td></tr>\n");
-	      	# 	$k++;
-      		#}
-     		#}
-
         # Try this instead, using the homework we did above (jeffry)
         if ($prodsbygroup[$groups[$i]["id"]])
         {
