@@ -651,18 +651,18 @@ for($i=0;$i<$user["indexojnews"];$i++): ?>
   <td bgcolor="#446688" align="center">
    <table cellspacing="0" cellpadding="0">
     <tr>
-     <td><input type="radio" name="type" value="prod" checked></td>
-     <td>prod</td>
-     <td><input type="radio" name="type" value="group"></td>
-     <td>group</td>
-     <td><input type="radio" name="type" value="party"></td>
-     <td>party</td>
-     <td><input type="radio" name="type" value="board"></td>
-     <td>board</td>
-     <td><input type="radio" name="type" value="user"></td>
-     <td>user</td>
-     <td><input type="radio" name="type" value="bbs"></td>
-     <td>bbs</td>
+     <td><input id="search_prod" type="radio" name="type" value="prod" checked></td>
+     <td><label for="search_prod">prod</label></td>
+     <td><input id="search_group" type="radio" name="type" value="group"></td>
+     <td><label for="search_group">group</label></td>
+     <td><input id="search_party" type="radio" name="type" value="party"></td>
+     <td><label for="search_party">party</label></td>
+     <td><input id="search_board" type="radio" name="type" value="board"></td>
+     <td><label for="search_board">board</label></td>
+     <td><input id="search_user" type="radio" name="type" value="user"></td>
+     <td><label for="search_user">user</label></td>
+     <td><input id="search_bbs" type="radio" name="type" value="bbs"></td>
+     <td><label for="search_bbs">bbs</label></td>
     </tr>
    </table>
   </td>
