@@ -32,8 +32,6 @@ At the same time:
 - [Gargaj](http://www.pouet.net/user.php?who=1007)
 - [Gasman](http://www.pouet.net/user.php?who=2260)
 - knos
-- [Santa](http://www.pouet.net/user.php?who=2254)
-- NiR
 - [Redhound](http://www.pouet.net/user.php?who=784)
 - [stil](http://www.pouet.net/user.php?who=351)
 - [rez](http://www.pouet.net/user.php?who=10)
