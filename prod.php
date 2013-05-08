@@ -52,9 +52,12 @@ if ($which == 55991 || $which == 55471) {
 
 $query="SELECT nickname,avatar FROM users WHERE id=".$prod["added"];
 $result=mysql_query($query);
-$tmp=mysql_fetch_array($result);
-$prod["nickname"]=$tmp["nickname"];
-$prod["avatar"]=$tmp["avatar"];
+if ($result)
+{
+  $tmp=mysql_fetch_array($result);
+  $prod["nickname"]=$tmp["nickname"];
+  $prod["avatar"]=$tmp["avatar"];
+}
 
 if($prod["party"])
 {
@@ -113,9 +116,12 @@ if($prod["group3"])
 
  $query="SELECT prodotherparty.party, prodotherparty.party_place, prodotherparty.party_year, prodotherparty.partycompo, parties.name FROM prodotherparty LEFT JOIN parties ON parties.id=prodotherparty.party WHERE prod=".$prod["id"];
  $result = mysql_query($query);
- while($tmp = mysql_fetch_array($result)) {
-  $prodotherparties[]=$tmp;
- }
+ if ($result)
+ {
+   while($tmp = mysql_fetch_array($result)) {
+    $prodotherparties[]=$tmp;
+   }
+}
 
 $query="select platforms.name, platforms.icon from prods_platforms, platforms where prods_platforms.prod='".$which."' and platforms.id=prods_platforms.platform";
 	  $result = mysql_query($query);
@@ -174,9 +180,12 @@ if ($comments_per_page != 0){
 		$query .= " LIMIT $comments_offset, $comments_per_page";
 	// print ($query);
 	$result=mysql_query($query);
-	while($tmp=mysql_fetch_array($result)) {
-	  $comments[]=$tmp;
-	}
+  if ($result)
+  {
+    while($tmp=mysql_fetch_array($result)) {
+      $comments[]=$tmp;
+    }
+  }
 }
 
 $query  = "SELECT * from users_cdcs where users_cdcs.cdc='".$prod["id"]."'";
