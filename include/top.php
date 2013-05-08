@@ -247,7 +247,10 @@ switch (basename($SCRIPT_FILENAME)) {
 		$settingfields="logos, topbar, bottombar";
 		$query="SELECT name FROM lists WHERE id=".$which;
 		$result=mysql_query($query);
-		$listname=mysql_result($result,0);
+        if ($result)
+        {
+            $listname = mysql_result($result, 0);
+        }
 		print("<title>".($listname?$listname:"pouet.net :: your online demoscene resource")."</title>\n");
 		break;	
 	//case 'submitprod_js.php' :
