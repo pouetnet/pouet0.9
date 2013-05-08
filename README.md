@@ -29,13 +29,13 @@ At the same time:
 
 ## Contributors
 
-- [Gargaj](http://www.pouet.net/user.php?who=1007)
-- [Gasman](http://www.pouet.net/user.php?who=2260)
-- knos
-- [Redhound](http://www.pouet.net/user.php?who=784)
+- [gargaj](http://www.pouet.net/user.php?who=1007)
+- [gasman](http://www.pouet.net/user.php?who=2260)
+- [knos](http://www.pouet.net/user.php?who=36)
+- [redhound](http://www.pouet.net/user.php?who=784)
 - [stil](http://www.pouet.net/user.php?who=351)
 - [rez](http://www.pouet.net/user.php?who=10)
-- Melwyn
+- [melwyn](http://www.pouet.net/user.php?who=38)
 - [psenough](http://www.pouet.net/user.php?who=177)
 - [analogue](http://www.pouet.net/user.php?who=1)
 
