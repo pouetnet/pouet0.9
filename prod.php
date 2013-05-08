@@ -5,12 +5,12 @@ require("include/top.php");
 require("include/libbb.php");
 require("include/awardscategories.inc.php");
 
-if ($_COOKIES) foreach( $_COOKIES as $key => $val ) 
-{ 
+if ($_COOKIES) foreach( $_COOKIES as $key => $val )
+{
      $trimmedKey = trim( key );
      if( $trimmedKey != $key )
           $_COOKIES[ $trimmedKey ] = $val;
-          
+
 }
 
 $query="SELECT MAX(id) FROM prods";
@@ -130,7 +130,7 @@ $query="select platforms.name, platforms.icon from prods_platforms, platforms wh
 	  }
 
 for ($i=0; $i<count($platforms); $i++)
-{	  
+{
 	if ($platforms[$i]=="Commodore 64") $check64=1;
 	if ($platforms[$i]=="C64 DTV") $check64=1;
 	if ($platforms[$i]=="ZX Spectrum") $checkzx=1;
@@ -140,7 +140,7 @@ for ($i=0; $i<count($platforms); $i++)
 function CheckReferrer($ref) {
   global $which;
   //if ($which == 55991 || $which == 55471) return false;
-  
+
   $myurl=parse_url($ref);
   if(strstr($myurl["host"],"farb-rausch.de")) return false;
   if(strstr($myurl["host"],"flipcode.com")) return false;
@@ -156,7 +156,7 @@ function CheckReferrer($ref) {
 $currentip=getenv("REMOTE_ADDR");
 if($prod["latestip"]!=$currentip && CheckReferrer($HTTP_REFERER) ) {
   //print("im about to add another view because my ref is ".$HTTP_REFERER." have a nice day!!");
-  mysql_query("UPDATE prods SET views=views+1,latestip='".$currentip."' WHERE id=".$prod["id"]); 
+  mysql_query("UPDATE prods SET views=views+1,latestip='".$currentip."' WHERE id=".$prod["id"]);
 }
 $result=mysql_query("SELECT MAX(views) FROM prods");
 $max_views=mysql_result($result,0);
@@ -217,10 +217,10 @@ if($prod["id"])
 	//cdc count
 	$result=mysql_query("SELECT count(0) from users_cdcs where cdc=".$prod["id"]);
 	$prod["cdc"]=mysql_result($result,0);
-	
+
 	$result=mysql_query("SELECT count(0) from cdc where which=".$prod["id"]);
 	$prod["cdc"]=$prod["cdc"]+mysql_result($result,0);
-	
+
 	//sceneorgrecommended check
 	$result=mysql_query("SELECT * from sceneorgrecommended where prodid=".$prod["id"]." ORDER BY type");
 	while($tmp=mysql_fetch_array($result)) {
@@ -314,7 +314,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
           <? endif; ?>
          </b>
         </td>
-        
+
         <td align="right" valign="bottom" nowrap>
          <b>
          <? if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator'): ?>
@@ -344,12 +344,12 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
     <tr bgcolor="#446688">
      <td rowspan="3" align="center" valign="center" nowrap>
       <? if($shotpath): ?>
-       <? $mysize=GetImageSize($shotpath); 
-  
+       <? $mysize=GetImageSize($shotpath);
+
       	$query="SELECT screenshots.added as dt,users.nickname as nick FROM screenshots,users WHERE prod=".$prod["id"]." and users.id=screenshots.user";
       	$result = mysql_query($query);
     	  $ssuser=mysql_fetch_object($result);
-       
+
        if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator') {
        ?>
        <a href="submitsshot.php?which=<?=$prod["id"]?>"><img src="<? print($shotpath); ?>" <? print($mysize[3]); ?> border="0" title="screenshot added on the <?=substr($ssuser->dt,0,10)?> by <?=htmlentities($ssuser->nick)?>"></a><br />
@@ -478,10 +478,10 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
         <td nowrap>
          <? if($prod["partycompo"]):
              print($prod["partycompo"]."<br />");
-          else: 
+          else:
             if($_SESSION["SCENEID_ID"]): ?>
            <font color="#9999AA">n/a</font> [<a href="submitpartyinfo.php?which=<?=$prod["id"]?>">+</a>]<br />
-	   <? else: ?> <font color="#9999AA">n/a</font> 
+	   <? else: ?> <font color="#9999AA">n/a</font>
            <? endif; ?>
          <? endif; ?>
         </td>
@@ -499,7 +499,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
      		case 61:
      		case 71:
      		case 81:
-     		case 91: $placeadj="st"; 
+     		case 91: $placeadj="st";
              		print($prod["party_place"]."<font color=\"#CCCCCC\">".$placeadj."</font><br />");
 	             	break;
              	case 2:
@@ -510,7 +510,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
      		case 62:
      		case 72:
      		case 82:
-     		case 92: $placeadj="nd"; 
+     		case 92: $placeadj="nd";
              		print($prod["party_place"]."<font color=\"#CCCCCC\">".$placeadj."</font><br />");
              		break;
 		case 3:
@@ -521,7 +521,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
      		case 63:
      		case 73:
      		case 83:
-     		case 93: $placeadj="rd"; 
+     		case 93: $placeadj="rd";
              		print($prod["party_place"]."<font color=\"#CCCCCC\">".$placeadj."</font><br />");
              		break;
 		case 97: print("disqualified<br />");
@@ -538,19 +538,19 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
          <? else: ?>
            <? if($_SESSION["SCENEID_ID"]): ?>
            <font color="#9999AA">n/a</font> [<a href="submitpartyinfo.php?which=<?=$prod["id"]?>">+</a>]<br />
-	   <? else: ?> <font color="#9999AA">n/a</font> 
+	   <? else: ?> <font color="#9999AA">n/a</font>
            <? endif; ?>
          <? endif; ?>
         </td>
        </tr>
        <? endif; ?>
        <? endif; ?>
-       
-    
-       
+
+
+
        <? //otherparty
         for($i=0;$i<count($prodotherparties);$i++):
-       	
+
        	if(isset($prodotherparties[$i]["party_year"])) {
             $pyear = $prodotherparties[$i]["party_year"];
         }
@@ -574,7 +574,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
           else: ?>
           <? if($_SESSION["SCENEID_ID"]): ?>
            <font color="#9999AA">n/a</font> [<a href="submitotherpartyinfo.php?which=<?=$prod["id"]?>&what=<?=$prodotherparties[$i]["party"]?>">+</a>]<br />
-	   <? else: ?> <font color="#9999AA">n/a</font> 
+	   <? else: ?> <font color="#9999AA">n/a</font>
            <? endif; ?>
          <? endif; ?>
         </td>
@@ -592,7 +592,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
      		case 61:
      		case 71:
      		case 81:
-     		case 91: $placeadj="st"; 
+     		case 91: $placeadj="st";
              		print($prodotherparties[$i]["party_place"]."<font color=\"#CCCCCC\">".$placeadj."</font><br />");
 	             	break;
              	case 2:
@@ -603,7 +603,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
      		case 62:
      		case 72:
      		case 82:
-     		case 92: $placeadj="nd"; 
+     		case 92: $placeadj="nd";
              		print($prodotherparties[$i]["party_place"]."<font color=\"#CCCCCC\">".$placeadj."</font><br />");
              		break;
 		case 3:
@@ -614,7 +614,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
      		case 63:
      		case 73:
      		case 83:
-     		case 93: $placeadj="rd"; 
+     		case 93: $placeadj="rd";
              		print($prodotherparties[$i]["party_place"]."<font color=\"#CCCCCC\">".$placeadj."</font><br />");
              		break;
 		case 97: print("disqualified<br />");
@@ -630,7 +630,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
            else:
            if($_SESSION["SCENEID_ID"]): ?>
            <font color="#9999AA">n/a</font> [<a href="submitotherpartyinfo.php?which=<?=$prod["id"]?>&what=<?=$prodotherparties[$i]["party"]?>">+</a>]<br />
-	   <? else: ?> <font color="#9999AA">n/a</font> 
+	   <? else: ?> <font color="#9999AA">n/a</font>
            <? endif; ?>
          <? endif; ?>
         </td>
@@ -638,9 +638,9 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
        <? endif; ?>
 
        <? endfor; ?>
-     
-       
-       
+
+
+
        <? if(count($affils)): ?>
        <tr>
         <td nowrap valign="top">related :</td>
@@ -668,21 +668,21 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
 	         <td>
 	         <? if(!$prod["voteup"]) {print("0");} else {print($prod["voteup"]);} ?>
 	         </td>
-	     </tr>   
+	     </tr>
 	     <tr>
 	         <td><img src="gfx/isok.gif" width="16" height="16" border="0" title="piggie">
 	      	 </td>
 	         <td>
 	         <? if(!$prod["votepig"]) {print("0");} else {print($prod["votepig"]);} ?>
 	         </td>
-			 </tr>      
+			 </tr>
 	     <tr>
 	         <td><img src="gfx/sucks.gif" width="16" height="16" border="0" title="sucks">
 	      	 </td>
 	         <td>
 	         <? if(!$prod["votedown"]) {print("0");} else {print($prod["votedown"]);} ?>
 	         </td>
-			 </tr>      
+			 </tr>
 	     </table>
      </td>
      <td bgcolor="#446688" align="center" valign="center">
@@ -700,7 +700,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
          <? DoBar($pourcent,true); ?>
         </td>
        </tr>
-       <? 
+       <?
        	if(count($sceneorgrecommends)):
         	print("<tr><td nowrap align=\"left\">");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -718,17 +718,17 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
     </tr>
     <tr>
          <td bgcolor="#557799">
-     
+
 <?     if($prod["voteavg"]>0)
 		$thumbgfx="gfx/rulez.gif";
 	elseif($prod["voteavg"]==0)
 		$thumbgfx="gfx/isok.gif";
 	else
 		$thumbgfx="gfx/sucks.gif";
-		
+
        if($prod["cdc"]>0) $cdcprint="<td>&nbsp;</td><td><img src=\"gfx/titles/coupdecoeur.gif\" width=\"16\" height=\"16\" border=\"0\" alt=\"cdc\"></td><td>&nbsp;</td><td>".$prod["cdc"]."</td>";
 	else $cdcprint="";
-	
+
 	printf(
 	  "<table cellspacing=\"0\" cellpadding=\"0\">".
 	  "<tr>".
@@ -858,7 +858,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
         <? if($comments[$i]["cdc"]==$prod["id"] && !$cdcdone[$comments[$i]["who"]]): ?>
          <img src="gfx/titles/coupdecoeur.gif" width="16" height="16" border="0" title="cdc">
         <? $cdcdone[$comments[$i]["who"]]=1; endif; ?>
-        &nbsp;</td>        
+        &nbsp;</td>
         <td nowrap>added on the <a href="prod.php?which=<?=$prod["id"]?>#c<?=$comments[$i]["id"]?>"><? print($comments[$i]["quand"]); ?></a> by <a href="user.php?who=<? print($comments[$i]["who"]); ?>"><? print($comments[$i]["nickname"]); ?></a></td>
         <td nowrap>&nbsp;</td>
         <td nowrap><a href="user.php?who=<? print($comments[$i]["who"]); ?>"><img src="avatars/<? print($comments[$i]["avatar"]); ?>" width="16" height="16" border="0" title="<? print($comments[$i]["nickname"]); ?>"></a></td>
@@ -946,9 +946,9 @@ foreach($othercdc as $v) {
   printf("<tr><td class='bg1'><a href='user.php?who=%d'><img src='avatars/%s' border='0'></a> <a href='user.php?who=%d'>%s</a></td></tr>",
     $o->id, $o->avatar, $o->id, $o->nickname);
 }
-?>  
+?>
 </table>
-<?  
+<?
 }
 ?>
 <? endif; ?>
@@ -1052,7 +1052,7 @@ function checkWarning(cmt)
   }
 }
 //-->
-</script>	  
+</script>
       <textarea name="comment" cols="50" rows="5" onkeyup="checkWarning(this.value)"></textarea><br />
       <a href="faq.php#BB Code"><b>BB Code</b></a> is allowed here<br />
      </td>
@@ -1064,7 +1064,7 @@ function checkWarning(cmt)
   document.write('<div id="commentwarning" style="float:left;padding-top:2px;padding-left:2px"></div>');
   document.write('<input type="image" src="gfx/preview.gif" onclick=\'return preview(this.form,"prod")\' border="0">');
 //-->
-</script>      
+</script>
       <input type="image" src="gfx/submit.gif" border="0"><br />
      </td>
     </tr>
@@ -1094,7 +1094,7 @@ function checkWarning(cmt)
 <br />
 <? endif; ?>
 <br />
-<? 
+<?
 //if ($SESSION_LEVEL=='administrator'):
 
 $yearcheck = substr($prod["date"], 0, -6);
@@ -1166,4 +1166,4 @@ if ( $prod["id"]==$awardscand["cat1"]
 	                 "<br /> probably with a very good reason too! <br /> <br />*clack clack* (\/) o o (\/) *clack clack*"); ?></center>
 <? endif; ?>
 <br />
-<? require("include/bottom.php"); ?>        
+<? require("include/bottom.php"); ?>
