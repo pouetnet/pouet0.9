@@ -4,7 +4,7 @@ require("include/misc.php");
 require("include/top.php");
 require("include/libbb.php");
 
-function cmp_avg($a, $b) 
+function cmp_avg($a, $b)
 {
      if ($a["avg_rating"] == $b["avg_rating"])
      {
@@ -13,7 +13,7 @@ function cmp_avg($a, $b)
      return ($a["avg_rating"] > $b["avg_rating"]) ? -1 : 1;
 }
 
-function cmp_avg_rev($a, $b) 
+function cmp_avg_rev($a, $b)
 {
      if ($a["avg_rating"] == $b["avg_rating"])
      {
@@ -22,7 +22,7 @@ function cmp_avg_rev($a, $b)
      return ($a["avg_rating"] < $b["avg_rating"]) ? -1 : 1;
 }
 
-function cmp_tot($a, $b) 
+function cmp_tot($a, $b)
 {
      if ($a["total"] == $b["total"])
      {
@@ -41,14 +41,14 @@ $what=trim($what);
 
 if($what) {
   conn_db();
-  
+
   $mywhat=strtr($what," ","%");
   $subquery="%".$mywhat."%";
   if($type=="prod") {
     $query="SELECT count(0) FROM prods WHERE prods.name LIKE '".$subquery."'";
     $result=mysql_query($query);
     $nb_posts=mysql_result($result,0);
-  
+
   	if(($page<=0)||(!$page)) {
      $page=1; //ceil($nb_posts/$posts_per_page);
   	}
@@ -110,7 +110,7 @@ if($what) {
     }
     $results[]=$tmp;
   }
-  
+
   if ($nbresults==1 && !$_GET["page"] && !$_GET["dontredirect"]) {
     switch($type) {
       case "prod":  header("Location: prod.php?which=".$results[0][0]); exit(); break;
@@ -131,7 +131,7 @@ if($what) {
    <table bgcolor="#000000" cellspacing="1" cellpadding="2" border="0" width="100%">
     <tr>
      <td bgcolor="#224488">
-      <b>search on pouët.net</b><br />
+      <b>search on pou&euml;t.net</b><br />
      </td>
     </tr>
     <tr>
@@ -210,11 +210,11 @@ if($type=="prod") {
     if ($total)
   		$results[$i]["avg_rating"] = (float)(($rulez*1+$sucks*-1)/$total);
 		$results[$i]["total"] = $total;
-			
+
 		//cdc count
 		$result=mysql_query("SELECT count(0) from users_cdcs where cdc=".$results[$i]["id"]);
 		$results[$i]["cdc"]=mysql_result($result,0);
-		
+
 		$result=mysql_query("SELECT count(0) from cdc where which=".$results[$i]["id"]);
 		$results[$i]["cdc"]=$results[$i]["cdc"]+mysql_result($result,0);
 
@@ -243,7 +243,7 @@ if($type=="prod") {
 			  $results[$i]["groupacron3"]=$tmp["acronym"];
 			 }
 		endif;
-		
+
 		if (strlen($results[$i]["groupn1"].$results[$i]["groupn2"].$results[$i]["groupn3"])>27):
 		if (strlen($results[$i]["groupn1"])>10 && $results[$i]["groupacron1"]) $results[$i]["groupn1"]=$results[$i]["groupacron1"];
 		if (strlen($results[$i]["groupn2"])>10 && $results[$i]["groupacron2"]) $results[$i]["groupn2"]=$results[$i]["groupacron2"];
@@ -260,7 +260,7 @@ if($type=="prod") {
 		  $check++;
 		  $results[$i]["platform"].=$tmp["name"];
 		 }
-			
+
 		//get array of sceneorgrecommendations for these results
 		$result=mysql_query("SELECT * from sceneorgrecommended where prodid=".$results[$i]["id"]." ORDER BY type");
 		while($tmp=mysql_fetch_array($result)) {
@@ -321,14 +321,14 @@ if($type=="prod") {
      } else {
        print("<tr bgcolor=\"#557799\">");
      }
-     
+
      		$typess = explode(",", $results[$i]["type"]);
 		print("<td nowrap><table cellspacing=\"0\" cellpadding=\"0\"><tr><td nowrap><a href=\"prod.php?which=".$results[$i]["id"]."\">");
 		for($k=0;$k<count($typess);$k++) {
 		print("<img src=\"gfx/types/".$types[$typess[$k]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$k]."\">");
 		}
 		print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td nowrap><a href=\"prod.php?which=".$results[$i]["id"]."\">".strtolower(stripslashes($results[$i]["name"]))."</a><br /></td><td>&nbsp;</td>");
-		
+
 		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -344,17 +344,17 @@ if($type=="prod") {
 //		 endfor;
 		 print("<br /></td>");
 		endif;
-		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $results[$i]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
-       		
+
        		print("</tr></table></td>\n");
-     
-     
+
+
      ?>
 
       <td><a href="groups.php?which=<? print($results[$i]["group1"]); ?>"><? print(strtolower($results[$i]["groupn1"])); ?></a>
@@ -362,8 +362,8 @@ if($type=="prod") {
       <? if ($results[$i]["groupn3"]) {print(" :: ");} ?><a href="groups.php?which=<? print($results[$i]["group3"]); ?>"><? print(strtolower($results[$i]["groupn3"])); ?></a>
       </td>
 
-      
-<?      
+
+<?
       if(($results[$i]["partyname"])&&!($results[$i]["party"]==1024))
 	{
 		if($results[$i]["party_place"])
@@ -372,7 +372,7 @@ if($type=="prod") {
 			if ($results[$i]["partycompo"]=="") $compophrase="";
 		 	 else $compophrase=" ".$results[$i]["partycompo"];
 			if (($results[$i]["partycompo"]=="none")||($results[$i]["partycompo"]=="invit")) $results[$i]["party_place"]=98;
-			
+
            		switch($results[$i]["party_place"]) {
            		case 1:
              		case 21:
@@ -382,7 +382,7 @@ if($type=="prod") {
              		case 61:
              		case 71:
              		case 81:
-             		case 91:  $placeadj="st"; 
+             		case 91:  $placeadj="st";
              			print("<td>".$results[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
 			case 2:
@@ -393,7 +393,7 @@ if($type=="prod") {
              		case 62:
              		case 72:
              		case 82:
-             		case 92:  $placeadj="nd"; 
+             		case 92:  $placeadj="nd";
              			print("<td>".$results[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
              		case 3:
@@ -404,7 +404,7 @@ if($type=="prod") {
              		case 63:
              		case 73:
              		case 83:
-             		case 93:  $placeadj="rd"; 
+             		case 93:  $placeadj="rd";
              			print("<td>".$results[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
                 	case 97: print("<td>disqualified at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
@@ -462,7 +462,7 @@ if($type=="prod") {
 	else
 	{print("<td>\n0</td>\n");
 	}
-	
+
 	//popularity bar
 	print("<td>\n");
 	$pourcent = floor($results[$i]["views"]*100/$max_views);
@@ -470,13 +470,13 @@ if($type=="prod") {
 	DoBar($pourcent);
 	print("</td>\n");
 
-?>      
-      
-      
+?>
+
+
      </tr>
      <!--rowend-->
     <? endfor; ?>
-    
+
        <? if((($nb_posts-1)/$posts_per_page)>0): ?>
 		<tr bgcolor="#224488">
          <td colspan="9">
@@ -1088,7 +1088,7 @@ if($type=="prod") {
    for($i=0;$i<count($results);$i++):
 
    $a = explode(" ",$what);
-    
+
     ?>
    <tr bgcolor="#446688">
    <td valign="top">
@@ -1104,7 +1104,7 @@ if($type=="prod") {
     $s = htmlspecialchars(mb_strcut($s,max(0,stripos($s,$a[0])-50),100,"utf-8"));
     foreach ($a as $v2) {
       $s = preg_replace("/(".$v2.")/i","<span class='searchhighlight'>$1</span>",$s);
-    }    
+    }
     echo $s;
     ?></a>
    </td>
@@ -1122,12 +1122,12 @@ if($type=="prod") {
    $s = htmlspecialchars(mb_strcut($s,max(0,stripos($s,$a[0])-50),100,"utf-8"));
    foreach ($a as $v2) {
      $s = preg_replace("/(".$v2.")/i","<span class='searchhighlight'>$1</span>",$s);
-   }    
+   }
 //   foreach($a as $v)
 //      $p = preg_replace("/(".addcslashes($v,"/*").")/i","<span style='background:yellow;color:black;'>\$1</span>",$p);
 //     $p = str_replace($v,"<span style='background:yellow;color:black;'>".$v."</span>",$p);
-   echo "... ".$s." ...";   
-   ?>   
+   echo "... ".$s." ...";
+   ?>
    </td>
    </tr>
    <? endfor; ?>
@@ -1192,7 +1192,7 @@ if($type=="prod") {
 </table>
 <? endif; ?>
 <br />
-<? else: print("no results again! life sux! :¨(<br /><br />"); endif; ?>
+<? else: print("no results again! life sux! :?(<br /><br />"); endif; ?>
 <?
 }
 require("include/bottom.php"); ?>
