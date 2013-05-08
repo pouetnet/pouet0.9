@@ -9,44 +9,6 @@ if ($user["indexoneliner"]>0)
 	$onelines = array_slice($onelines, 0, $user["indexoneliner"]);
 }
 
-/*if ($user["indexojnews"]>0)
-{
-$query="SELECT * FROM ojnews ORDER BY quand DESC LIMIT ".$user["indexojnews"];
-$result=mysql_query($query);
-while($tmp=mysql_fetch_assoc($result)) {
-  $tmp["newstype"]="ojnews";
-	$ojnews[]=$tmp;
-}
-
-$query="SELECT * FROM news ORDER BY quand DESC LIMIT ".$user["indexojnews"];
-$result=mysql_query($query);
-while($tmp=mysql_fetch_assoc($result)) {
-  $tmp["newstype"]="pouetnews";
-  $mynews[]=$tmp;
-}
-
-$oj=0;
-$po=0;
-for($i=0;$i<count($ojnews);$i++) {
-  if($ojnews[$oj]["quand"]>$mynews[$po]["quand"]) {
-    $ojnews[$oj]["content"]=stripslashes(urldecode($ojnews[$oj]["content"]));
-    $ojnews[$oj]["title"]=stripslashes(urldecode($ojnews[$oj]["title"]));
-    $ojnews[$oj]["authornick"]=stripslashes(urldecode($ojnews[$oj]["authornick"]));
-    $ojnews[$oj]["authorgroup"]=stripslashes(urldecode($ojnews[$oj]["authorgroup"]));
-    $news[]=$ojnews[$oj];
-    $oj++;
-  } else {
-	$query="SELECT nickname,avatar FROM users WHERE id=".$mynews[$po]["who"];
-	$result=mysql_query($query);
-	$tmp=mysql_fetch_assoc($result);
-	$mynews[$po]["nickname"]=$tmp["nickname"];
-	$mynews[$po]["avatar"]=$tmp["avatar"];
-    $news[]=$mynews[$po];
-    $po++;
-  }
-}
-}*/
-
 include './lastRSS.php';
 
 // create lastRSS object
