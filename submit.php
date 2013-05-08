@@ -6,7 +6,7 @@
  <tr>
   <th bgcolor="#224488">what do you want to do ?</th>
  </tr>
- <? if(session_is_registered("SESSION")): ?>
+ <?php if(isset($_SESSION['SESSION'])): ?>
  <tr>
   <td bgcolor="#557799">
    <b>&nbsp;- <a href="submitprod.php">add a prod</a></b><br />
@@ -146,7 +146,7 @@
   </td>
  </tr>
  <? endif; ?>
- <? if(!session_is_registered("SESSION")): ?>
+ <?php if(isset($_SESSION['SESSION'])): ?>
 <form action="login.php" method="post">
  <tr><th>login to add more stuff</th></tr>
  <tr bgcolor="#446688">
