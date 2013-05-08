@@ -27,6 +27,20 @@ At the same time:
 - When Gargaj or any other contributor wants to quit, nothing will change and
   other people will still work on the site
 
+## Contributors
+
+- [Gargaj](http://www.pouet.net/user.php?who=1007)
+- [Gasman](http://www.pouet.net/user.php?who=2260)
+- knos
+- [Santa](http://www.pouet.net/user.php?who=2254)
+- NiR
+- [Redhound](http://www.pouet.net/user.php?who=784)
+- [stil](http://www.pouet.net/user.php?who=351)
+- [rez](http://www.pouet.net/user.php?who=10)
+- Melwyn
+- [psenough](http://www.pouet.net/user.php?who=177)
+- [analogue](http://www.pouet.net/user.php?who=1)
+
 ## License
 
 Copyright (C) 2000-2013 Laurent Raufaste and contributors
