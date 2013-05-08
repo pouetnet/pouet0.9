@@ -610,11 +610,15 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
          	<tr>
 		 <td><?=$user["im_type"]?>:<br></td>
 		 <td nowrap>
-		 <?
-		 if ($user["im_type"]=="MSN")
-	     echo recaptcha_mailhide_html(RECAPTCHA_PUB_KEY, RECAPTCHA_PRIV_KEY, $user["im_id"]);
-	   else
-		   echo $user["im_id"];
+		 <?php
+			if ($user["im_type"] == "MSN")
+			{
+		    	echo recaptcha_mailhide_html(RECAPTCHA_MAILHIDE_PUB_KEY, RECAPTCHA_MAILHIDE_PRIV_KEY, $user["im_id"]);
+			}
+			else
+			{
+				echo $user["im_id"];
+			}
 		 ?>
             	 </td>
 		</tr>
