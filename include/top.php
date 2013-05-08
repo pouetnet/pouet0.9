@@ -205,10 +205,10 @@ switch (basename($SCRIPT_FILENAME)) {
 	case 'user_light.php' :
 	case 'user.php' :
 		$customquery.="level from users where id='";
-    $settingfields="logos, topbar, bottombar, userlogos, userprods, usergroups, userparties, userscreenshots, usernfos, usercomments, userrulez, usersucks ";
+        $settingfields="logos, topbar, bottombar, userlogos, userprods, usergroups, userparties, userscreenshots, usernfos, usercomments, userrulez, usersucks ";
 		$query="SELECT level,nickname FROM users WHERE id=".$who;
 		$result=mysql_query($query);
-        if ($o)
+        if ($result)
         {
             $o=mysql_fetch_object($result);
             print("<title>".$o->nickname."</title>\n");
