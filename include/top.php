@@ -448,8 +448,8 @@ and
 $random_quotes = Array (
   'send your logos to <a href="/submit-logo.php">us</a> and be a popstar !',
   '<a href="logos.php">vote</a> for the logos you like and be a lamah !',
-  'pou?t.net is brought to you by <a href="http://www.pouet.net/groups.php?which=5">mandarine</a>',
-  'pou?t.net is hosted on the huge <a href="http://www.scene.org/">scene.org</a> servers',
+  'pou&euml;t.net is brought to you by <a href="http://www.pouet.net/groups.php?which=5">mandarine</a>',
+  'pou&euml;t.net is hosted on the huge <a href="http://www.scene.org/">scene.org</a> servers',
 /*
   'pout != scene && scene != pout',
   'help make KOOL DEMO-SHOCK to japanese brain',
