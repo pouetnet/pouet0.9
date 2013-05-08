@@ -11,7 +11,7 @@ if($prod1)
   if(!$type) {
     $errormessage[] = "you must select a type";
   }
-  
+
   if(!$errormessage)
     $submitok=true;
 }
@@ -95,7 +95,7 @@ $types = explode("'",$row[1]);
 	BE CAREFUL NOT TO ASSOCIATE INVERSE RELATIONS.<br />
 	m is remix of n, not the other way around.<br />
 	type=packed is an exception, it gets added oth ways<br />
--->	
+-->
    </table>
   </td>
  </tr>
@@ -108,7 +108,7 @@ $types = explode("'",$row[1]);
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

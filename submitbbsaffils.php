@@ -10,7 +10,7 @@ if(($bbs)&&($group))
   if(!$type) {
     $errormessage[] = "you must select a type";
   }
-  
+
   if(!$errormessage)
     $submitok=true;
 }
@@ -97,7 +97,7 @@ $types = explode("'",$row[1]);
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

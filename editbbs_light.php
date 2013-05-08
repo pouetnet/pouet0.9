@@ -8,7 +8,7 @@ unset($submitok);
 if($name)
 {
   // check user account
-  if(!session_is_registered("SESSION"))
+  if(!isset($_SESSION['SESSION']))
 	$errormessage[]="you need to be logged in first.";
   if(($SESSION_LEVEL!='administrator')&&($SESSION_LEVEL!='moderator')&&($SESSION_LEVEL!='gloperator'))
 	  $errormessage[]="you need to be a lobster god to edit a bbs.";
@@ -60,7 +60,7 @@ if($submitok){
   $query.= "WHERE id=$which LIMIT 1";
  //print($query);
   mysql_query($query);
-  
+
   $query = "delete from bbses_platforms where bbses_platforms.bbs=".$which;
   mysql_query($query);
   //print(count($platform)."-".count($platforms));
@@ -69,7 +69,7 @@ if($submitok){
   		//print("\n".$platform[$i]."-".$platforms[$j]["name"]);
   		if ($platform[$i]==$platforms[$j]["name"]):
   			$query="insert into bbses_platforms set bbses_platforms.bbs='".$which."', bbses_platforms.platform='".$platforms[$j]["id"]."'";
-  			mysql_query($query);			
+  			mysql_query($query);
   			//print($query);
   		endif;
   	}
@@ -241,7 +241,7 @@ id:<input type="text" name="which" value="<?=$which?>" /><br />
 <br />
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

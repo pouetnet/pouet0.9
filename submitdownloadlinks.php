@@ -22,7 +22,7 @@ if($prod && $type && $link)
     if(strstr($myurl["path"],"incoming"))
       $errormessage[] = "the file you submitted is in an incoming path, try to find a real path";
   }
-	
+
   if(!$errormessage)
     $submitok=true;
 }
@@ -99,7 +99,7 @@ if($submitok){
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

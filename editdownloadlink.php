@@ -8,7 +8,7 @@ unset($submitok);
 if($type && $link)
 {
   // check user account
-  if(!session_is_registered("SESSION"))
+  if(!isset($_SESSION['SESSION']))
 	$errormessage[]="you need to be logged in first.";
   if(($SESSION_LEVEL!='administrator')&&($SESSION_LEVEL!='moderator')&&($SESSION_LEVEL!='gloperator'))
 	  $errormessage[]="you need to be a lobster god to edit a bbs.";
@@ -16,7 +16,7 @@ if($type && $link)
   $result=mysql_query("SELECT count(0) FROM downloadlinks WHERE id=$which");
   if(mysql_result($result,0)!=1)
     $errormessage[]="I can't find the downloadlink you are trying to modify";
-  
+
   // if everything is ok
   if(!$errormessage)
     $submitok=true;
@@ -92,7 +92,7 @@ id:<input type="text" name="which" value="<?=$which?>" /><br />
 	 <td>url:</td>
 	 <td><input type="text" name="link" value="<? print($dl['link']); ?>" size="110"><br ></td>
 	</tr>
-	
+
    </table>
   </td>
  </tr>
@@ -105,7 +105,7 @@ id:<input type="text" name="which" value="<?=$which?>" /><br />
 <br />
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

@@ -8,7 +8,7 @@ unset($submitok);
 if($name)
 {
   // check user account
-  if(!session_is_registered("SESSION"))
+  if(!isset($_SESSION['SESSION']))
 	$errormessage[]="you need to be logged in first.";
   if(($SESSION_LEVEL!='administrator')&&($SESSION_LEVEL!='moderator')&&($SESSION_LEVEL!='gloperator'))
 	  $errormessage[]="you need to be a lobster god to edit a prod.";
@@ -112,11 +112,11 @@ if($submitok){
     $query.= "party_year=".$party_year.", ";
   } else if($party==1024) {
     $query.= "party=1024, ";
-  } 
+  }
   if(!$party && !$pyear) {
     $query.= "party=0, ";
     $query.= "party_year=0, ";
-  } 
+  }
   if($invit) {
     $query.= "invitation=".$invit.", ";
   }
@@ -136,18 +136,18 @@ if($submitok){
   $query.= "zxdemo=".((int)$zxdemo)." ";
   $query.= "WHERE id=$which LIMIT 1";
   mysql_query($query);
-  
+
   $query = "delete from prods_platforms where prods_platforms.prod=".$which;
   mysql_query($query);
   for($i=0;$i<count($platform);$i++) {
   	for($j=0;$j<count($platforms);$j++) {
   		if ($platform[$i]==$platforms[$j]["name"]):
   			$query="insert into prods_platforms set prods_platforms.prod='".$which."', prods_platforms.platform='".$platforms[$j]["id"]."'";
-  			mysql_query($query);			
+  			mysql_query($query);
   		endif;
   	}
   }
-  
+
   logGloperatorAction("prod_edit",$which);
 }
 
@@ -342,7 +342,7 @@ id:<input type="text" name="which" value="<?=$which?>" /><br />
 	  </select>
 	 </td>
 	</tr>
-	
+
 	<tr>
 	 <td>ad for BBS:</td>
 	 <td><input type="text" name="boardID" value="<? print($prod['boardID']); ?>">
@@ -369,7 +369,7 @@ id:<input type="text" name="which" value="<?=$which?>" /><br />
 	  <br />
 	 </td>
 	</tr>
-	
+
 	<tr>
 	 <td>party:</td>
 	 <td><input type="text" name="party" value="<? print($prod['party']); ?>">
@@ -500,7 +500,7 @@ id:<input type="text" name="which" value="<?=$which?>" /><br />
 <br />
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

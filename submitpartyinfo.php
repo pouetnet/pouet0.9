@@ -11,7 +11,7 @@ if($party || $pyear || $prank || ($ryear))
 {
 
   // check user account
-  if(!session_is_registered("SESSION"))
+  if(!isset($_SESSION['SESSION']))
 	$errormessage[]="you need to be logged in first.";
   // check if this prod exists
   $query = "SELECT count(0) FROM prods WHERE id=".$which;
@@ -117,11 +117,11 @@ $compos = explode("'",$row[1]);
      </td>
     </tr>
 	<? // endif; ?>
-<? 
+<?
 $result = mysql_query("SELECT * FROM parties ORDER BY name");
 while($tmp=mysql_fetch_array($result)){
   $parties[]=$tmp;
-} 
+}
 ?>
 	<tr>
 	<td>release date:</td>
@@ -195,7 +195,7 @@ while($tmp=mysql_fetch_array($result)){
 	  <? endif; ?>
 	 </td>
 	</tr>
-	
+
 	<tr>
 	 <td>party year:</td>
 	 <td>
@@ -241,7 +241,7 @@ while($tmp=mysql_fetch_array($result)){
 	  <? endif; ?>
 	 </td>
 	</tr>
-	
+
 	<tr>
 	 <td>party compo:</td>
 	 <td>

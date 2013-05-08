@@ -120,7 +120,7 @@ $types = explode("'",$row[1]);
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "SOD OFF PUNK!"</p>
 <p></p>
 <p>you need special priveligies to access this page.</p>

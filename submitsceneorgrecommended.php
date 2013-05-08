@@ -14,7 +14,7 @@ if($prodid)
   if(($type!="viewingtip") && (!$category)) {
     $errormessage[] = "you must select a category";
   }
-  
+
   if(!$errormessage)
     $submitok=true;
 }
@@ -118,7 +118,7 @@ $categorys = explode("'",$row[1]);
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

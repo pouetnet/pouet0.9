@@ -15,11 +15,11 @@ if($itemid)
   if($_SESSION["SCENEID_ID"]!=$upkeeper && !($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator')) {
     $errormessage[] = "you're not the upkeeper of this list sonnyboy";
   }
-	
+
   if(!$type) {
     $errormessage[] = "you must select a type";
   }
-  
+
   if(!$errormessage)
     $submitok=true;
 }
@@ -107,7 +107,7 @@ $types = explode("'",$row[1]);
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "SOD OFF PUNK!"</p>
 <p></p>
 <p>you need special priveligies to access this page.</p>

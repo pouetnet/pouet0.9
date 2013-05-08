@@ -13,7 +13,7 @@ if ($name)
 
   if(!($upkeeper>0))
 	$errormessage[]="upkeeper must be a valid number";
-  
+
   // if everything is ok
   if(!$errormessage)
     $submitok=true;
@@ -94,7 +94,7 @@ if($submitok){
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "FUCK OFF!"</p>
 <p></p>
 <p>you need special priveligies to access this page.</p>

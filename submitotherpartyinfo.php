@@ -11,7 +11,7 @@ if($party || $pyear || $prank || ($ryear))
 {
 
   // check user account
-  if(!session_is_registered("SESSION"))
+  if(!isset($_SESSION['SESSION']))
 	$errormessage[]="you need to be logged in first.";
   // check if this prod exists
   $query = "SELECT count(0) FROM prods WHERE id=".$which;
@@ -105,7 +105,7 @@ $compos = explode("'",$row[1]);
      <td valign="bottom">
 	  <input type="hidden" name="which" value="<?=$which?>">
 	  <input type="hidden" name="what" value="<?=$what?>">
-	  <a href="prod.php?which=<?=$which?>"><b><?=$which?></b></a> from 
+	  <a href="prod.php?which=<?=$which?>"><b><?=$which?></b></a> from
 	  <a href="party.php?which=<?=$what?>"><b><?=$what?></b></a>
      </td>
     </tr>
@@ -155,7 +155,7 @@ $compos = explode("'",$row[1]);
 	  <? endif; ?>
 	 </td>
 	</tr>
-	
+
 	<tr>
 	 <td>party compo:</td>
 	 <td>

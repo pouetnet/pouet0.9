@@ -11,7 +11,7 @@ if($prod && $party)
   if($party==1024) {
     $errormessage[] = "you cant choose __no_party__ for prod other party association";
   }
-  
+
   if(!$errormessage)
     $submitok=true;
 }
@@ -34,7 +34,7 @@ if($submitok){
 	    $query.= "partycompo=\"".$compo."\", ";
 	  }
 	  $query.= "prod=".$prod;
-	  
+
 	  mysql_query($query);
 }
 
@@ -169,7 +169,7 @@ while($tmp=mysql_fetch_array($result)){
 	  leave it for the experts, you won't loose a glop!<br />
 	 </td>
 	</tr>
-	
+
    </table>
   </td>
  </tr>
@@ -182,7 +182,7 @@ while($tmp=mysql_fetch_array($result)){
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

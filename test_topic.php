@@ -167,7 +167,7 @@ function displayPageLinks()
 
 <br />
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <form action="add.php" method="post">
 <input type="hidden" name="which" value="<?=$which?>">
 <input type="hidden" name="type" value="post">

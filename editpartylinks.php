@@ -16,7 +16,7 @@ unset($submitok);
 if($which&&$when&&$id)
 {
   // check user account
-  if(!session_is_registered("SESSION"))
+  if(!isset($_SESSION['SESSION']))
 	$errormessage[]="you need to be logged in first.";
   if(($SESSION_LEVEL!='administrator')&&($SESSION_LEVEL!='moderator')&&($SESSION_LEVEL!='gloperator'))
 	  $errormessage[]="you need to be a lobster god to edit a prod.";
@@ -147,7 +147,7 @@ when: (party year) <input type="text" name="when" value="<?=$when?>" /><br />
 
 <? else : ?>
 
-<? if(session_is_registered("SESSION")): ?>
+<? if(isset($_SESSION['SESSION'])): ?>
 <p>the lobster says "NO ENTRANCE!"</p>
 <p></p>
 <p>you need god priveligies to access this place.</p>

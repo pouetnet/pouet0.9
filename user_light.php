@@ -60,7 +60,7 @@ while($tmp=mysql_fetch_array($result)) {
 	else if($tmp["rating"]==-1) $total_downs=-1*$tmp["total"];
 }
 
-// glöps count
+// glops count
 $result=mysql_query_debug("SELECT count(0) FROM prods WHERE added=".$user["id"]);
 $nbprods = mysql_result($result,0);
 $result=mysql_query_debug("SELECT count(0) FROM groups WHERE added=".$user["id"]);
@@ -131,7 +131,7 @@ debuglog(var_export($time,true));
          <? endif; ?>
         </td>
         <td width="100%" align="right">
-         <b><? print($glops); ?></b> <font color="#9999AA">glöps</font><br>
+         <b><? print($glops); ?></b> <font color="#9999AA">gl&ouml;ps</font><br>
         </td>
        </tr>
       </table>
@@ -181,7 +181,7 @@ debuglog(var_export($time,true));
 		email:<br>
 		</td>
 		 <td>
-		<? if(session_is_registered("SESSION")&&strcasecmp($xml->hidden, "yes")): ?>
+		<? if(isset($_SESSION['SESSION'])&&strcasecmp($xml->hidden, "yes")): ?>
 			<a href="mailto:<? print($user["email"]); ?>"><? print($user["email"]); ?></a><br>
 		<? else: ?>
 			<font color="#9999AA">hidden</font><br>
@@ -239,7 +239,7 @@ debuglog(var_export($time,true));
 		 </td>
 		</tr>
          <? endif; ?>
-       
+
          <? for($i=0;$i<count($cdc);$i++): ?>
          	<tr>
 		 <td>
@@ -286,7 +286,7 @@ if($_GET["show"]) {
 ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added prods <font color="#9999AA"><? print($nbprods." x 2 = ".($nbprods*2)) ?> glöps</font>
+      latest added prods <font color="#9999AA"><? print($nbprods." x 2 = ".($nbprods*2)) ?> gl&ouml;ps</font>
      </td>
     </tr>
 <?
@@ -307,7 +307,7 @@ $result=mysql_query_debug($query);
       <table cellspacing="0" cellpadding="0" border="0">
        <tr>
         <td valign="top" nowrap>
-        <? 
+        <?
          $typess = explode(",", $prods["type"]);
          for($kkk=0;$kkk<count($typess);$kkk++) {
          ?><a href="prodlist.php?type[]=<?=$typess[$kkk]?>"><img src="gfx/types/<?=$types[$typess[$kkk]]?>" border="0" title="<?=$typess[$kkk]?>" alt="<?=$typess[$kkk]?>"></a><?
@@ -332,7 +332,7 @@ $result=mysql_query_debug($query);
       </table>
      </td>
     </tr>
-<?   
+<?
     }
     }
   }
@@ -342,7 +342,7 @@ $result=mysql_query_debug($query);
     <? if($nblogos): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      added <?=$nblogos?> logos <font color="#9999AA"><? print($nb_good_logos." x 20 = ".($nb_good_logos*20)) ?> glöps</font><br>
+      added <?=$nblogos?> logos <font color="#9999AA"><? print($nb_good_logos." x 20 = ".($nb_good_logos*20)) ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? endif; ?>
@@ -350,16 +350,16 @@ $result=mysql_query_debug($query);
     <? if($nbprods>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added prods <font color="#9999AA"><? print($nbprods." x 2 = ".($nbprods*2)) ?> glöps</font>
+      latest added prods <font color="#9999AA"><? print($nbprods." x 2 = ".($nbprods*2)) ?> gl&ouml;ps</font>
       [<a href="user_light.php?who=<?=(int)$_GET["who"]?>&amp;show=prods">show</a>]<br>
      </td>
     </tr>
     <? endif; ?>
-    
+
     <? if($nbgroups>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added groups <font color="#9999AA"><? print($nbgroups); ?> glöps</font><br>
+      latest added groups <font color="#9999AA"><? print($nbgroups); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? endif; ?>
@@ -367,7 +367,7 @@ $result=mysql_query_debug($query);
     <? if($nbscreenshots>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added screenshots <font color="#9999AA"><? print($nbscreenshots); ?> glöps</font><br>
+      latest added screenshots <font color="#9999AA"><? print($nbscreenshots); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? endif; ?>
@@ -375,7 +375,7 @@ $result=mysql_query_debug($query);
     <? if($nbnfos>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added nfos <font color="#9999AA"><? print($nbnfos); ?> glöps</font><br>
+      latest added nfos <font color="#9999AA"><? print($nbnfos); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? endif; ?>
@@ -383,20 +383,20 @@ $result=mysql_query_debug($query);
     <? if($nbcomments>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest 1st comments <font color="#9999AA"><? print($nbcomments); ?> glöps</font><br>
+      latest 1st comments <font color="#9999AA"><? print($nbcomments); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? endif; ?>
 
-    <? if ($total_ups): ?>    
+    <? if ($total_ups): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
       top thumb up agreers (total <img src="gfx/rulez.gif"> <?=$total_ups?>)<br>
      </td>
     </tr>
     <? endif; ?>
-    
-    <? if ($total_downs): ?>    
+
+    <? if ($total_downs): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
       top thumb down agreers (total <img src="gfx/sucks.gif"> <?=$total_downs?>)<br/>
