@@ -518,37 +518,8 @@ if($_SESSION["SESSION"]): ?>
 </form>
 <br />
 
-<? endif; 
+<? endif;
 
-/*
-
-  <table cellspacing="1" cellpadding="2" class="box">
-   <tr><th colspan="<?=$row?>"><img class="icon" src='http://www.pouet.net/gfx/titles/trompetted.gif'/>&nbsp;pou&euml;t service announcement: nordlicht remote entries!</th></tr>
-   <tr>
-    <td class="bg2" style='padding: 5px;'>
-    <p>Hey guys, I am writing to let you know that my computer's system hard drive died in bright flames today, along with it ALL the remote entries I had stored on it since the party was first announced.</p>
-    <p>This is very embarassing and saddening at the same time since we had received a lot of quality remote submissions from a lot of sceners. Please, if you sent something in previously and you read this, resend your remote entries to compos@sunspire-records.com ASAP .. so that we can feature them in tomorrows competitions!</p>
-    <p>I am extremely sorry about this .. scared the hell out of me when my hard drive literally took fire today, luckily nobody got harmed except for the drive itself. </p>
-    <p style='text-align:right'>--<a href='http://www.pouet.net/topic.php?which=8796&page=6&x=29&y=6#c415755'>sunspire</a></p>
-    </td>
-   </tr>
-  </table>
-  <br/>
-
-?>
-  <table cellspacing="1" cellpadding="2" class="box">
-   <tr><th colspan="<?=$row?>"><img class="icon" src='http://www.pouet.net/gfx/sceneorg/awardwinner.gif'/>&nbsp;scene.org awards 2011 public choice voting</th></tr>
-   <tr>
-    <td class="bg2" style='padding: 5px;'>
-    if you have not done it already, please go and vote for your favorite demoscene production of 2011 in the <b>scene.org awards public choice</b>. you can access the
-voting at <a href='http://awards.scene.org/voting.php'>http://awards.scene.org/voting.php</a> using your sceneid login (same as on pouet). the deadline for voting for the public choice
-nominees is <b>march 31st, 2012</b>.
-    </td>
-   </tr>
-  </table>
-  <br/>
-<?
-*/
 if ($sceneorgyear && $_SESSION["SCENEID_ID"])
 {
   $result=mysql_query("select * from awardscand_".$sceneorgyear." where user=".(int)$_SESSION["SCENEID_ID"]);
