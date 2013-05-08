@@ -19,7 +19,7 @@ function lettermenu($pattern) {
   print(" ]<br />\n");
 }
 
-function cmpcomments($a, $b) 
+function cmpcomments($a, $b)
 {
      if ($a["lcom_quand"] == $b["lcom_quand"])
      {
@@ -112,7 +112,7 @@ if($which) {
   #for($i=0;$i<count($groups);$i++) {
   #  $query.=" OR group1=".$groups[$i]["id"]." OR group2=".$groups[$i]["id"]." OR group3=".$groups[$i]["id"];
   #}
-  
+
   # Maybe IN clauses are more efficient than hundreds of equality checks (jeffry)
   foreach ($groups as $group) {
     $groupin.=','.$group["id"];
@@ -129,14 +129,14 @@ if($which) {
 	$csdbflag=0;
 	$zxdemoflag=0;
 	for($i=0;$i<count($prods);$i++) {
-			
+
 		//cdc count
 		$result=mysql_query("SELECT count(0) from users_cdcs where cdc=".$prods[$i]["id"]);
 		$prods[$i]["cdc"]=mysql_result($result,0);
-		
+
 		$result=mysql_query("SELECT count(0) from cdc where which=".$prods[$i]["id"]);
 		$prods[$i]["cdc"]=$prods[$i]["cdc"]+mysql_result($result,0);
-		
+
 		//get latestcomment
 		$result=mysql_query("SELECT users.nickname,users.avatar,comments.quand,comments.rating,comments.who from comments LEFT JOIN users ON users.id=comments.who where comments.which=".$prods[$i]["id"]." order by quand desc limit 1");
 		$lcom=mysql_fetch_array($result);
@@ -156,7 +156,7 @@ if($which) {
 		  $check++;
 		  $prods[$i]["platform"].=$tmp["name"];
 		 }
-		
+
 		if ($prods[$i]["platform"]=="Commodore 64") $csdbflag=1;
 		if ($prods[$i]["platform"]=="ZX Spectrum") $zxdemoflag=1;
 
@@ -165,20 +165,20 @@ if($which) {
 		while($tmp=mysql_fetch_array($result)) {
   			$sceneorgrecommends[]=$tmp;
 		}
-		
-		
+
+
  	}
 
-	
+
 	//get max_views for popularity
 	$result=mysql_query("SELECT MAX(views) FROM prods");
 	$max_views=mysql_result($result,0);
-  
+
   	//get user who added this group
   	$query="SELECT id,nickname,avatar FROM users WHERE id=".$groups[0]["added"];
   	$result=mysql_query($query);
   	$myuser=mysql_fetch_array($result);
-  	
+
   	if ($order=="latestcomment") usort($prods, "cmpcomments");
 
 	if (!$groupiesort) $groupiesort=1;
@@ -194,7 +194,7 @@ if($which) {
 		default: $fftype="1";
 		break;
 	}
-  	
+
 	if ($groupiesort!=0)
 	{
   	//get groupies
@@ -207,7 +207,7 @@ if($which) {
 		}
 		//print(count($groupies)." ".$result);
 	}
-	
+
 	//get bbsaffils
   	$result=mysql_query("SELECT bbses.id, bbses.name, affiliatedbbses.type from bbses,affiliatedbbses where affiliatedbbses.group=".$groups[0]['id']." and affiliatedbbses.bbs=bbses.id ORDER BY affiliatedbbses.type, bbses.name");
 	while($tmp=mysql_fetch_array($result)) {
@@ -227,7 +227,7 @@ if($which) {
     <tr bgcolor="#224488">
      <th colspan="9">
      <center>
-     <? 
+     <?
      	$i=0;
 	print("<b><a href=\"groups.php?which=".$groups[$i]["id"]."\">".$groups[$i]["name"]);
 	if($groups[$i]["acronym"]) print(" [".$groups[$i]["acronym"]."]");
@@ -249,7 +249,7 @@ if($which) {
 	else
 		{
 		if(($zxdemoflag>0)&&($_SESSION["SCENEID_ID"])) print(" <b>[<a href=\"submitgroupzxdemo.php?which=".$groups[$i]["id"]."\">+zxdemo</a>]</b>\n");
-		}	
+		}
 	if (count($groupaka))
 	{
 	     	print("<b> aka <a href=\"groups.php?which=".$groups[$i+1]["id"]."\">".$groups[$i+1]["name"]);
@@ -272,10 +272,10 @@ if($which) {
 	else
 		{
 		if(($zxdemoflag>0)&&($_SESSION["SCENEID_ID"])) print(" <b>[<a href=\"submitgroupzxdemo.php?which=".$groups[$i+1]["id"]."\">+zxdemo</a>]</b>\n");
-		}	
+		}
 	}
 	else { print("<br />\n"); }
-	     		
+
      ?></center>
      </th>
      </tr>
@@ -450,7 +450,7 @@ if($which) {
      		print("</table>\n</td>\n</tr>\n");
      	}
    } else {
-			
+
      	$i=0;
      	if (count($prods)==0)
      	{ print("<tr bgcolor=\"#446688\">\n <td valign=\"top\" colspan=\"9\">no prods on pouet for this group yet!<br /></td>\n</tr>\n");
@@ -471,7 +471,7 @@ if($which) {
     $s = stripslashes($s);
     $s = htmlspecialchars($s);
     $s = str_replace("&amp;#","&#",$s);
-		
+
 		print("</a></td><td nowrap><a href=\"prod.php?which=".$prods[$j]["id"]."\">".strtolower($s)."</a><br /></td><td>&nbsp;</td>");
 		$a = array();
 		if ($prods[$j]["g1id"] && $prods[$j]["g1id"]!=$which)
@@ -480,9 +480,9 @@ if($which) {
 		  $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$prods[$j]["g2id"],htmlentities($prods[$j]["g2name"]));
 		if ($prods[$j]["g3id"] && $prods[$j]["g3id"]!=$which)
 		  $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$prods[$j]["g3id"],htmlentities($prods[$j]["g3name"]));
-		if (count($a)) 
+		if (count($a))
 		  echo "<td nowrap>(with ".implode(", ",$a).")</td>";
-		  
+
 		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -498,23 +498,23 @@ if($which) {
 		 cdcstack($prods[$j]["cdc"]);
 		 print("<br /></td>");
 		endif;
-		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $prods[$j]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
-       		
+
        		print("</tr></table></td>\n");
-       		
+
 	if(($prods[$j]["partyname"])&&!($prods[$j]["party"]==1024))
 	{
 		$placeadj="";
 		if ($prods[$j]["partycompo"]=="") $compophrase="";
 		 else $compophrase=" ".$prods[$j]["partycompo"];
 		if (($prods[$j]["partycompo"]=="none")||($prods[$j]["partycompo"]=="invit")) $prods[$j]["party_place"]=98;
-		
+
 		if($prods[$j]["party_place"])
 		{
            		switch($prods[$j]["party_place"]) {
@@ -526,7 +526,7 @@ if($which) {
              		case 61:
              		case 71:
              		case 81:
-             		case 91:  $placeadj="st"; 
+             		case 91:  $placeadj="st";
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
              		case 2:
@@ -537,7 +537,7 @@ if($which) {
              		case 62:
              		case 72:
              		case 82:
-             		case 92:  $placeadj="nd"; 
+             		case 92:  $placeadj="nd";
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
              		case 3:
@@ -548,7 +548,7 @@ if($which) {
              		case 63:
              		case 73:
              		case 83:
-             		case 93:  $placeadj="rd"; 
+             		case 93:  $placeadj="rd";
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
                 	case 97: print("<td>disqualified at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
@@ -561,15 +561,15 @@ if($which) {
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
            		}
-         	} else 
+         	} else
          	{
-         		 $placeadj = "??"; 
+         		 $placeadj = "??";
          		 print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
 		}
         } else {
-       	  if ($prods[$j]["party"]==1024) print("<td>no party<br /></td>\n"); 
+       	  if ($prods[$j]["party"]==1024) print("<td>no party<br /></td>\n");
        	   else print("<td>??<br /></td>\n");
-        } 
+        }
 
 	if(($prods[$j]["date"]!="0000-00-00")&&(strlen($prods[$j]["date"])>0))
        	{
@@ -591,9 +591,9 @@ if($which) {
            }
            print("<td>".$rmonth." ".$rdate[0]."<br /></td>\n");
 	} else {
-		print("<td>&nbsp;<br /></td>\n");  
+		print("<td>&nbsp;<br /></td>\n");
 	}
-	
+
 	if ($prods[$j]["voteup"])
 	{ print("<td>\n".$prods[$j]["voteup"]."</td>\n");
 	}
@@ -612,7 +612,7 @@ if($which) {
 	else
 	{print("<td>\n0</td>\n");
 	}
-	
+
 	if($prods[$j]["voteavg"]>0)
 		$thumbgfx="gfx/rulez.gif";
 	elseif($prods[$j]["voteavg"]==0)
@@ -620,14 +620,14 @@ if($which) {
 	else
 		$thumbgfx="gfx/sucks.gif";
 	printf("<td>\n<table cellspacing=\"0\" cellpadding=\"0\"><tr><td>&nbsp;</td><td>%.2f</td><td>&nbsp;</td><td><img src=\"".$thumbgfx."\" width=\"16\" height=\"16\" border=\"0\" alt=\"average rating\" align=\"left\"></td></tr></table></td>\n",$prods[$j]["voteavg"]);
-	
+
 	//popularity bar
 	print("<td>\n");
 	$pourcent = floor($prods[$j]["views"]*100/$max_views);
 	DoBar($pourcent);
 	print("</td>\n");
-       	
-       	
+
+
 	if ($prods[$j]["lcom_quand"]){ ?>
        <td>
        <table cellspacing="0" cellpadding="0">
@@ -671,12 +671,12 @@ if($which) {
         </tr>
        </table>
       </td>
-      
+
        	<?
        	} else {
-		print("<td>&nbsp;<br /></td>\n");  
+		print("<td>&nbsp;<br /></td>\n");
 	} }}} ?>
-   
+
     <tr bgcolor="#224488">
      <? if($which): ?>
       <? if(count($groups)!=0): ?>
@@ -689,11 +689,11 @@ if($which) {
          </tr>
         </table>
        </td>
-       
-       
-       
+
+
+
        <? if(count($bbsaffils)>0): //board affils list ?>
-       
+
         </tr>
    </table>
   </td>
@@ -719,13 +719,13 @@ if($which) {
         <td nowrap><a href="bbses.php?which=<? print($bbsaffils[$j]["id"]); ?>"><? print($bbsaffils[$j]["name"]); ?></a><br /></td>
         <td align="right"><? print($bbsaffils[$j]["type"]); ?><br /></td>
         </tr>
-        
+
         <? endfor; ?>
-       
+
        <? endif; ?>
-       
+
        <? if(count($groupies)>0): ?>
-       
+
         </tr>
    </table>
   </td>
@@ -775,13 +775,13 @@ if($which) {
         </td>
         <td align="right"><? print($groupies[$j]["c"]); ?><br /></td>
         </tr>
-        
-        <? endfor; 
+
+        <? endfor;
            endif;?>
-        
+
         <? endif; ?>
-       
-       
+
+
       <? endif; ?>
      <? else: ?>
       <th colspan="3">
