@@ -144,7 +144,10 @@ while($tmp=mysql_fetch_assoc($result)) {
   $partyaka[]=$tmp["party1"];
   $partyaka[]=$tmp["party2"];
 }
-$partyaka = array_unique($partyaka);
+if ($partyaka)
+{
+  $partyaka = array_unique($partyaka);
+}
 
 if (count($partyaka)) 
 {
@@ -265,7 +268,13 @@ for($i=0;$i<count($prods);$i++) {
 //get list of years this party occured on and sort them
 
 $query="SELECT distinct party_year as py, party FROM prods where prods.party=".$which;
-foreach($partyaka as $v) { $query.=" OR party=".$v; }
+if ($partyaka)
+{
+  foreach($partyaka as $v)
+  {
+    $query.=" OR party=".$v;
+  }
+}
 $result=mysql_query($query);
 while($tmp=mysql_fetch_array($result)) {
   if ($tmp["py"]) {
@@ -276,7 +285,13 @@ while($tmp=mysql_fetch_array($result)) {
 
 $query="SELECT distinct invitationyear as py, invitation as party, prods.id FROM prods where invitationyear > 0 and (prods.invitation=".$which;
 //for($i=0;$i<count($partyaka);$i++) { $query.=" OR invitation=".$partyaka[$i]; }
-foreach($partyaka as $v) { $query.=" OR invitation=".$v; }
+if ($partyaka)
+{
+  foreach($partyaka as $v)
+  {
+    $query.=" OR invitation=".$v;
+  }
+}
 $query.=")";
 
 $result=mysql_query($query);
