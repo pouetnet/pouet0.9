@@ -14,7 +14,7 @@ function goodfleche($wanted,$current) {
   return $fleche;
 }
 
-function cmpyears($a, $b) 
+function cmpyears($a, $b)
 {
      if ($a["py"] == $b["py"])
      {
@@ -23,20 +23,20 @@ function cmpyears($a, $b)
      return ($a["py"] < $b["py"]) ? -1 : 1;
 }
 
-function pushinvit($a, $b) 
+function pushinvit($a, $b)
 {
 	if ($a["partycompo"]=="invit") return -1;
 	 else if ($b["partycompo"]=="invit") return 1;
 	  if ($a["partycompo"]=="none") return 1;
 	   else if ($b["partycompo"]=="none") return -1;
-	  else if ($a["partycompo"]==$b["partycompo"]) 
+	  else if ($a["partycompo"]==$b["partycompo"])
 	  {
 	  	return ($a["party_place"] < $b["party_place"]) ? -1 : 1;
 	}
 	   else return ($a["partycompo"] < $b["partycompo"]) ? -1 : 1;
 }
 
-function reorder_type($a, $b) 
+function reorder_type($a, $b)
 {
      if ($a["type"] == $b["type"])
      {
@@ -45,7 +45,7 @@ function reorder_type($a, $b)
      return ($a["type"] < $b["type"]) ? -1 : 1;
 }
 
-function reorder_partycompo($a, $b) 
+function reorder_partycompo($a, $b)
 {
      if ($a["partycompo"] == $b["partycompo"])
      {
@@ -54,7 +54,7 @@ function reorder_partycompo($a, $b)
      return ($a["partycompo"] < $b["partycompo"]) ? -1 : 1;
 }
 
-function reorder_name($a, $b) 
+function reorder_name($a, $b)
 {
      if (strtolower($a["name"]) == strtolower($b["name"]))
      {
@@ -63,7 +63,7 @@ function reorder_name($a, $b)
      return (strtolower($a["name"]) < strtolower($b["name"])) ? -1 : 1;
 }
 
-function reorder_platform($a, $b) 
+function reorder_platform($a, $b)
 {
      if ($a["platform"] == $b["platform"])
      {
@@ -72,7 +72,7 @@ function reorder_platform($a, $b)
      return ($a["platform"] < $b["platform"]) ? -1 : 1;
 }
 
-function reorder_views($a, $b) 
+function reorder_views($a, $b)
 {
      if ($a["views"] == $b["views"])
      {
@@ -81,7 +81,7 @@ function reorder_views($a, $b)
      return ($a["views"] > $b["views"]) ? -1 : 1;
 }
 
-function reorder_thumbup($a, $b) 
+function reorder_thumbup($a, $b)
 {
      if ($a["voteup"] == $b["voteup"])
      {
@@ -90,7 +90,7 @@ function reorder_thumbup($a, $b)
      return ($a["voteup"] > $b["voteup"]) ? -1 : 1;
 }
 
-function reorder_thumbpig($a, $b) 
+function reorder_thumbpig($a, $b)
 {
      if ($a["votepig"] == $b["votepig"])
      {
@@ -100,7 +100,7 @@ function reorder_thumbpig($a, $b)
 }
 
 
-function reorder_thumbdown($a, $b) 
+function reorder_thumbdown($a, $b)
 {
      if ($a["votedown"] == $b["votedown"])
      {
@@ -109,7 +109,7 @@ function reorder_thumbdown($a, $b)
      return ($a["votedown"] > $b["votedown"]) ? -1 : 1;
 }
 
-function reorder_avg($a, $b) 
+function reorder_avg($a, $b)
 {
      if ($a["voteavg"] == $b["voteavg"])
      {
@@ -149,7 +149,7 @@ if ($partyaka)
   $partyaka = array_unique($partyaka);
 }
 
-if (count($partyaka)) 
+if (count($partyaka))
 {
   $s = implode(",",$partyaka);
   $query = sprintf("SELECT * from partiesaka WHERE party1 IN (%s) OR party2 IN (%s)",$s,$s);
@@ -198,11 +198,11 @@ $zxdemoflag=0;
 for($i=0;$i<count($prods);$i++) {
 
 		$prods[$i]["total"] = $prods[$i]["voteup"]+$prods[$i]["votedown"]+$prods[$i]["votepig"];
-	
+
 		//cdc count
 		$result=mysql_query("SELECT count(0) from users_cdcs where cdc=".$prods[$i]["id"]);
 		$prods[$i]["cdc"]=mysql_result($result,0);
-		
+
 		$result=mysql_query("SELECT count(0) from cdc where which=".$prods[$i]["id"]);
 		$prods[$i]["cdc"]=$prods[$i]["cdc"]+mysql_result($result,0);
 
@@ -231,7 +231,7 @@ for($i=0;$i<count($prods);$i++) {
 			  $prods[$i]["groupacron3"]=$tmp["acronym"];
 			 }
 		endif;
-		
+
 		if (strlen($prods[$i]["groupn1"].$prods[$i]["groupn2"].$prods[$i]["groupn3"])>27):
 		if (strlen($prods[$i]["groupn1"])>10 && $prods[$i]["groupacron1"]) $prods[$i]["groupn1"]=$prods[$i]["groupacron1"];
 		if (strlen($prods[$i]["groupn2"])>10 && $prods[$i]["groupacron2"]) $prods[$i]["groupn2"]=$prods[$i]["groupacron2"];
@@ -258,7 +258,7 @@ for($i=0;$i<count($prods);$i++) {
 			$prods[$i]["party_place"]="98";
 			//$pushinvitflag=1;
 		}
-		
+
 		$result=mysql_query("SELECT * from sceneorgrecommended where prodid=".$prods[$i]["id"]." ORDER BY type");
 		  while($tmp=mysql_fetch_array($result)) {
 		  	$sceneorgrecommends[]=$tmp;
@@ -284,7 +284,6 @@ while($tmp=mysql_fetch_array($result)) {
 }
 
 $query="SELECT distinct invitationyear as py, invitation as party, prods.id FROM prods where invitationyear > 0 and (prods.invitation=".$which;
-//for($i=0;$i<count($partyaka);$i++) { $query.=" OR invitation=".$partyaka[$i]; }
 if ($partyaka)
 {
   foreach($partyaka as $v)
@@ -341,7 +340,7 @@ while($tmp=mysql_fetch_array($result)) {
 	if (strlen($tmp["groupn2"])>10 && $tmp["groupacron2"]) $tmp["groupn2"]=$tmp["groupacron2"];
 	if (strlen($tmp["groupn3"])>10 && $tmp["groupacron3"]) $tmp["groupn3"]=$tmp["groupacron3"];
   endif;
-  
+
   $tquery="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$tmp["id"]."' and platforms.id=prods_platforms.platform";
   $tresult=mysql_query($tquery);
   $check=0;
@@ -352,7 +351,7 @@ while($tmp=mysql_fetch_array($result)) {
     $tmp["platform"].=$ttmp["name"];
   }
  // print($tquery."<-".$tmp["platform"]);
-  
+
   $prods[]=$tmp;
   $extracount++;
 }
@@ -362,7 +361,7 @@ if ($extracount)
 {
 	switch($order) {
 	  case "type": usort($prods, "reorder_type"); break;
-	  case "compo": usort($prods, "reorder_partycompo"); 
+	  case "compo": usort($prods, "reorder_partycompo");
 	  		usort($prods, "pushinvit"); break;
 	  case "name": usort($prods, "reorder_name"); break;
 	  //case "platform": usort($prods, "reorder_platform"); break;
@@ -434,7 +433,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
       [<small><a href="submitpartylinks.php?which=<?=$which?>&when=<?=$when?>">+download</a></small>]
       <? endif; ?>
       <? endif; ?>
-      
+
       <? if($party[0]["slengpung"]): ?>
 	      <? if($party[0]["slengpung"]!=12): ?>
 	      [<a href="http://www.slengpung.com/?eventid=<?=$party[0]["slengpung"]?>">slengpung</a>]
@@ -444,7 +443,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
       [<small><a href="submitpartyslengpung.php?which=<?=$which?>&when=<?=$when?>">+slengpung</a></small>]
       <? endif; ?>
       <? endif; ?>
-      
+
       <? if($party[0]["csdb"]): ?>
       [<a href="http://noname.c64.org/csdb/event/?id=<?=$party[0]["csdb"]?>">csdb</a>]
       <? else: ?>
@@ -452,7 +451,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
       [<small><a href="submitpartycsdb.php?which=<?=$which;?>&when=<?=$when?>">+csdb</a></small>]
       <? endif; ?>
       <? endif; ?>
-      
+
       <? if($party[0]["zxdemo"]): ?>
       [<a href="http://zxdemo.org/party.php?id=<?=$party[0]["zxdemo"]?>">zxdemo</a>]
       <? else: ?>
@@ -460,7 +459,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
       [<small><a href="submitpartyzxdemo.php?which=<?=$which;?>&when=<?=$when?>">+zxdemo</a></small>]
       <? endif; ?>
       <? endif; ?>
-      
+
       <? if($party[0]["artcity"]): ?>
       [<a href="http://artcity.bitfellas.org/index.php?a=search&type=tag&text=<?=rawurlencode($party[0]["artcity"])?>">artcity</a>]
       <? else: ?>
@@ -468,7 +467,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
       [<small><a href="submitpartyartcity.php?which=<?=$which;?>&when=<?=$when?>">+artcity</a></small>]
       <? endif; ?>
       <? endif; ?>
-      
+
       </b>
       <br /></center>
      </td>
@@ -504,7 +503,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
     <? $pourcent=floor($prods[$i]["views"]*100/$max_views); ?>
      <? if((($order=="compo")&&($prods[$i]["partycompo"]!=$prods[$i-1]["partycompo"])) || (($order=="type")&&($prods[$i]["type"]!=$prods[$i-1]["type"])) || ($i==0) ): ?>
       <tr>
-      
+
 	<td bgcolor="#224488" nowrap>
         <? if($order=="compo"): ?>
             <b><?=$prods[$i]["partycompo"]?></b></td>
@@ -550,7 +549,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
 	  </tr></table>
 	<? endif; ?>
 	</td>
-	
+
 	<td bgcolor="#224488" nowrap>
 	      <table><tr>
 	       <td>
@@ -576,7 +575,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
           <a href="<? print($sortlink); ?>avg"><img src="gfx/<? print(goodfleche("avg",$order)); ?>.gif" width="13" height="12" border="0"></a><br />
          </td>
          <td>
-          <a href="<? print($sortlink); ?>avg"><b>µ</b></a>
+          <a href="<? print($sortlink); ?>avg"><b>?</b></a>
          </td>
         </tr></table>
        </td>
@@ -613,7 +612,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
              		case 61:
              		case 71:
              		case 81:
-             		case 91: $placeadj="st"; 
+             		case 91: $placeadj="st";
              			print($prods[$i]["party_place"].$placeadj." ".$partycompoinfo);
              			break;
              		case 2:
@@ -624,7 +623,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
              		case 62:
              		case 72:
              		case 82:
-             		case 92:  $placeadj="nd"; 
+             		case 92:  $placeadj="nd";
              			print($prods[$i]["party_place"].$placeadj." ".$partycompoinfo);
              			break;
              		case 3:
@@ -635,7 +634,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
              		case 63:
              		case 73:
              		case 83:
-             		case 93:  $placeadj="rd"; 
+             		case 93:  $placeadj="rd";
              			print($prods[$i]["party_place"].$placeadj." ".$partycompoinfo);
              			break;
                 	case 97: print("disqualified ".$partycompoinfo);
@@ -670,7 +669,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
 	<? if ($prods[$i]["groupn3"]) {print(" &amp; ");} ?><a href="groups.php?which=<?=$prods[$i]["group3"]?>"><?=$prods[$i]["groupn3"]?></a></td>
 	<td><img src="gfx/z.gif" width="2" height="1" border="0"><br /></td><td>
 	<?
-      		
+
       		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -687,10 +686,10 @@ for($i=1;$i<count($tmptypes);$i+=2) {
 		 print("<br /></td>");
 		endif;
 
-	
-	 //if($prods[$i]["cdc"]) print("<img src=\"gfx/titles/coupdecoeur.gif\" width=\"16\" height=\"16\" border=\"0\" alt=\"cdc\">".$prods[$i]["cdc"]); 
-	 
-	 
+
+	 //if($prods[$i]["cdc"]) print("<img src=\"gfx/titles/coupdecoeur.gif\" width=\"16\" height=\"16\" border=\"0\" alt=\"cdc\">".$prods[$i]["cdc"]);
+
+
 	 ?></td>
 	</tr></table>
       </td>
@@ -754,7 +753,7 @@ for($i=1;$i<count($tmptypes);$i+=2) {
 
 <? else: ?>
 	<? if ($party["name"]!=""): ?>
-	<center><? print("no results for ".$party[0]["name"]." ".$when."<br /><br />you sure it took place that year?<br /><br />*clack* (\/) O ô (\/) *clack*"); ?></center>
+	<center><? print("no results for ".$party[0]["name"]." ".$when."<br /><br />you sure it took place that year?<br /><br />*clack* (\/) O ? (\/) *clack*"); ?></center>
 	<? else: ?>
 	<center><? print("party clones have been lobsterxiced! feel very afraid!<br /><br /> *clack clack clack* (\/) o O (\/) *clack clack clack*"); ?></center>
 	<? endif; ?>
