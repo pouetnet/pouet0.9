@@ -83,7 +83,7 @@ if ($_GET["charset"]) $charset = htmlentities($_GET["charset"]);
   <link rel="alternate" href="/export/lastbbsposts.rss.php" type="application/rss+xml" title="pouet - last bbs posts" />
   <link rel="alternate" href="/export/last-prod-comments.rss.php" type="application/rss+xml" title="pouet - last comments" />
   <?
- 
+
  $customquery="SELECT ";
 
  $settingfields="";
@@ -93,7 +93,7 @@ if (isset($which))
 	$which = intval($which);
 }
 switch (basename($SCRIPT_FILENAME)) {
-	case 'index.php' : 
+	case 'index.php' :
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar, indextopglops, indextopprods, indextopkeops, indexoneliner, indexlatestadded, indexlatestreleased, indexojnews, indexlatestcomments, indexbbstopics, indexcdc, indexsearch, indexlinks, indexstats, indextype, indexplatform, indexwhoaddedprods, indexwhocommentedprods, indexlatestparties, indexbbsnoresidue";
 		print("<title>pouet.net :: your online demoscene resource</title>\n");
@@ -176,12 +176,12 @@ switch (basename($SCRIPT_FILENAME)) {
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar";
 		print("<title>coup de coeur</title>\n");
-		break;	
+		break;
 	case 'oneliner.php' :
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar";
 		print("<title>oneliner</title>\n");
-		break;	
+		break;
 	case 'prodlist.php' :
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar, prodlistprods";
@@ -196,7 +196,7 @@ switch (basename($SCRIPT_FILENAME)) {
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar";
 		print("<title>top of the pops</title>\n");
-		break;		
+		break;
 	case 'faq.php' :
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar";
@@ -229,7 +229,7 @@ switch (basename($SCRIPT_FILENAME)) {
 	case 'account2.php' :
 		$customquery.="level from users where id='";
 		$settingfields="logos, topbar, bottombar";
-		print("<title>customöolobstormaziabletic 7004+ super</title>\n");
+		print("<title>custom?olobstormaziabletic 7004+ super</title>\n");
 		break;
 	case 'bbses.php' :
 		$customquery.="level from users where id='";
@@ -241,7 +241,7 @@ switch (basename($SCRIPT_FILENAME)) {
   		$bbsname=mysql_result($result,0);
   		print("<title>".$bbsname."</title>\n");
 		}
-		break;	
+		break;
 	case 'lists.php' :
 		$customquery.="level from users where id='";
 		$settingfields="logos, topbar, bottombar";
@@ -252,7 +252,7 @@ switch (basename($SCRIPT_FILENAME)) {
             $listname = mysql_result($result, 0);
         }
 		print("<title>".($listname?$listname:"pouet.net :: your online demoscene resource")."</title>\n");
-		break;	
+		break;
 	//case 'submitprod_js.php' :
 	//<SCRIPT LANGUAGE="JavaScript" SRC="groups.js"></SCRIPT>
 	//	break;
@@ -324,8 +324,8 @@ if (isset($_GET["OSSOM"])) {
 
 ?>
  <link rel="search" type="application/opensearchdescription+xml" href="opensearch_prod.xml" title="pout.net - prod search" />
- <meta name="description" content="pouët.net - your online demoscene resource">
- <meta name="keywords" content="pouët.net,256b,1k,4k,40k,64k,cracktro,demo,dentro,diskmag,intro,invitation,lobster sex,musicdisk,Amiga AGA,Amiga ECS,Amiga PPC,Amstrad CPC,Atari ST,BeOS,Commodore 64,Falcon,MS-Dos,Linux,MacOS,Windows">
+ <meta name="description" content="pou?t.net - your online demoscene resource">
+ <meta name="keywords" content="pou?t.net,256b,1k,4k,40k,64k,cracktro,demo,dentro,diskmag,intro,invitation,lobster sex,musicdisk,Amiga AGA,Amiga ECS,Amiga PPC,Amstrad CPC,Atari ST,BeOS,Commodore 64,Falcon,MS-Dos,Linux,MacOS,Windows">
  <script language="JavaScript" type="text/javascript" src="/include/script.js"></script>
 </head>
 <body background="gfx/trumpet.gif" bgcolor="#3A6EA5">
@@ -448,8 +448,8 @@ and
 $random_quotes = Array (
   'send your logos to <a href="/submit-logo.php">us</a> and be a popstar !',
   '<a href="logos.php">vote</a> for the logos you like and be a lamah !',
-  'pouët.net is brought to you by <a href="http://www.pouet.net/groups.php?which=5">mandarine</a>',
-  'pouët.net is hosted on the huge <a href="http://www.scene.org/">scene.org</a> servers',
+  'pou?t.net is brought to you by <a href="http://www.pouet.net/groups.php?which=5">mandarine</a>',
+  'pou?t.net is hosted on the huge <a href="http://www.scene.org/">scene.org</a> servers',
 /*
   'pout != scene && scene != pout',
   'help make KOOL DEMO-SHOCK to japanese brain',
