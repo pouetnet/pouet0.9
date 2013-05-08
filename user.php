@@ -453,7 +453,7 @@ while($tmp=mysql_fetch_array($result)) {
 	else if($tmp["rating"]==-1) $total_downs=-1*$tmp["total"];
 }
 
-// glöps count
+// glops count
 $result=mysql_query_debug("SELECT count(0) FROM prods WHERE added=".$user["id"]);
 $nbprods = mysql_result($result,0);
 $result=mysql_query_debug("SELECT count(0) FROM groups WHERE added=".$user["id"]);
@@ -524,7 +524,7 @@ $time["update"] = microtime_float() - $timetest;
          <? endif; ?>
         </td>
         <td width="100%" align="right">
-         <b><? print($glops); ?></b> <font color="#9999AA">glöps</font><br>
+         <b><? print($glops); ?></b> <font color="#9999AA">gl&ouml;ps</font><br>
         </td>
        </tr>
       </table>
@@ -695,7 +695,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($logos)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      added logos <font color="#9999AA"><? print($nb_good_logos." x 20 = ".($nb_good_logos*20)) ?> glöps (downvoted logos are shown but are not rewarded)</font><br>
+      added logos <font color="#9999AA"><? print($nb_good_logos." x 20 = ".($nb_good_logos*20)) ?> gl&ouml;ps (downvoted logos are shown but are not rewarded)</font><br>
      </td>
     </tr>
     <? if ($usercustom["userlogos"]>0): ?>
@@ -713,7 +713,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($prods)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added prods <font color="#9999AA"><? print($nbprods." x 2 = ".($nbprods*2)) ?> glöps</font><br>
+      latest added prods <font color="#9999AA"><? print($nbprods." x 2 = ".($nbprods*2)) ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? if ($usercustom["userprods"]>0): ?>
@@ -753,7 +753,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($groups)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added groups <font color="#9999AA"><? print($nbgroups); ?> glöps</font><br>
+      latest added groups <font color="#9999AA"><? print($nbgroups); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? if ($usercustom["usergroups"]>0): ?>
@@ -770,7 +770,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($partys)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added parties <font color="#9999AA"><? print($nbparties); ?> glöps</font><br>
+      latest added parties <font color="#9999AA"><? print($nbparties); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? if ($usercustom["userparties"]>0): ?>
@@ -787,7 +787,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($screenshots)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added screenshots <font color="#9999AA"><? print($nbscreenshots); ?> glöps</font><br>
+      latest added screenshots <font color="#9999AA"><? print($nbscreenshots); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? if ($usercustom["userscreenshots"]>0): ?>
@@ -826,7 +826,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($nfos)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest added nfos <font color="#9999AA"><? print($nbnfos); ?> glöps</font><br>
+      latest added nfos <font color="#9999AA"><? print($nbnfos); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? if ($usercustom["usernfos"]>0): ?>
@@ -865,7 +865,7 @@ if (($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_
     <? if(count($comments)>0): ?>
     <tr bgcolor="#224488">
      <td colspan="2">
-      latest 1st comments <font color="#9999AA"><? print($nbcomments); ?> glöps</font><br>
+      latest 1st comments <font color="#9999AA"><? print($nbcomments); ?> gl&ouml;ps</font><br>
      </td>
     </tr>
     <? if ($usercustom["usercomments"]>0): ?>
