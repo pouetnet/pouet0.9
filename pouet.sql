@@ -1,8 +1,5 @@
--- MySQL dump 10.13  Distrib 5.5.24, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: pouet
 -- ------------------------------------------------------
--- Server version	5.5.24-2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -174,7 +171,7 @@ CREATE TABLE `bbs_posts` (
   KEY `topic` (`topic`),
   KEY `idx_author` (`author`),
   KEY `idx_added` (`added`)
-) ENGINE=InnoDB AUTO_INCREMENT=442675 DEFAULT CHARSET=latin1 COMMENT='the bbs posts';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='the bbs posts';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +193,7 @@ CREATE TABLE `bbs_topics` (
   `closed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `idx_lastpost` (`lastpost`)
-) ENGINE=InnoDB AUTO_INCREMENT=9390 DEFAULT CHARSET=latin1 COMMENT='the bbs topics';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='the bbs topics';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +214,7 @@ CREATE TABLE `bbses` (
   `added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `adder` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=909 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +261,7 @@ CREATE TABLE `buttons` (
   `alt` varchar(255) NOT NULL DEFAULT '',
   `dead` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1 COMMENT='les boutons sur pouët.net';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='les boutons sur pouët.net';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +278,7 @@ CREATE TABLE `cdc` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`,`which`),
   KEY `id_2` (`id`,`which`,`quand`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1 COMMENT='coups de coeur';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='coups de coeur';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -297,7 +294,7 @@ CREATE TABLE `changelog` (
   `comment` varchar(255) NOT NULL DEFAULT '',
   `quand` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=520 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +317,7 @@ CREATE TABLE `comments` (
   KEY `rating` (`rating`),
   KEY `quand` (`quand`),
   KEY `whichwho` (`who`,`which`)
-) ENGINE=InnoDB AUTO_INCREMENT=647378 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +334,7 @@ CREATE TABLE `credits` (
   `name` varchar(32) DEFAULT NULL,
   `role` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +353,7 @@ CREATE TABLE `downloadlinks` (
   KEY `dl_prod` (`prod`),
   KEY `dl_type` (`type`),
   KEY `dl_prodtype` (`prod`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=12389 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +374,7 @@ CREATE TABLE `editrequests` (
   `datetime` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `prodid` (`prodid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -393,7 +390,7 @@ CREATE TABLE `faq` (
   `answer` text NOT NULL,
   `category` enum('general','syndication','BB Code') NOT NULL DEFAULT 'general',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 COMMENT='the pouët.net faq';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='the pouët.net faq';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -410,7 +407,7 @@ CREATE TABLE `gloperator_log` (
   `itemid` int(11) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10534 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -431,7 +428,7 @@ CREATE TABLE `groups` (
   `zxdemo` int(10) unsigned NOT NULL DEFAULT '0',
   `acronym` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12039 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -460,7 +457,7 @@ CREATE TABLE `links` (
   `comment` varchar(255) NOT NULL DEFAULT '',
   `quand` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -492,7 +489,7 @@ CREATE TABLE `lists` (
   `adder` int(10) unsigned NOT NULL DEFAULT '0',
   `upkeeper` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -510,7 +507,7 @@ CREATE TABLE `logos` (
   `vote_count` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `file` (`file`)
-) ENGINE=InnoDB AUTO_INCREMENT=921 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -528,7 +525,7 @@ CREATE TABLE `logos_votes` (
   PRIMARY KEY (`id`),
   KEY `user` (`user`,`vote`),
   KEY `user_2` (`user`,`vote`,`logo`)
-) ENGINE=InnoDB AUTO_INCREMENT=430061 DEFAULT CHARSET=latin1 COMMENT='logos ratings given by users';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='logos ratings given by users';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,7 +543,7 @@ CREATE TABLE `news` (
   `title` varchar(255) NOT NULL DEFAULT '',
   `url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -563,7 +560,7 @@ CREATE TABLE `nfos` (
   `added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `prod` (`prod`)
-) ENGINE=InnoDB AUTO_INCREMENT=34662 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -598,7 +595,7 @@ CREATE TABLE `oldnicks` (
   `user` int(11) NOT NULL,
   `nick` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=804 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -614,7 +611,7 @@ CREATE TABLE `oneliner` (
   `who` int(10) unsigned NOT NULL DEFAULT '0',
   `quand` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=178480 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -631,7 +628,7 @@ CREATE TABLE `othernfos` (
   `added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `adder` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1090 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -648,7 +645,7 @@ CREATE TABLE `parties` (
   `added` int(10) unsigned NOT NULL DEFAULT '0',
   `quand` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1650 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -685,7 +682,7 @@ CREATE TABLE `partylinks` (
   `artcity` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `party` (`party`)
-) ENGINE=InnoDB AUTO_INCREMENT=1006 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -701,7 +698,7 @@ CREATE TABLE `platforms` (
   `icon` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -769,7 +766,7 @@ CREATE TABLE `prods` (
   KEY `date` (`date`),
   KEY `quand` (`quand`),
   KEY `datequand` (`date`,`quand`)
-) ENGINE=InnoDB AUTO_INCREMENT=61337 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -801,7 +798,7 @@ CREATE TABLE `prods_refs` (
   `referrer` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `pri` (`prod`)
-) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -820,7 +817,7 @@ CREATE TABLE `sceneorgrecommended` (
   KEY `prodid` (`prodid`),
   KEY `type` (`type`),
   KEY `category` (`category`)
-) ENGINE=InnoDB AUTO_INCREMENT=800 DEFAULT CHARSET=latin1 PACK_KEYS=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 PACK_KEYS=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -837,7 +834,7 @@ CREATE TABLE `screenshots` (
   `added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `prod_2` (`prod`)
-) ENGINE=InnoDB AUTO_INCREMENT=57610 DEFAULT CHARSET=latin1 COMMENT='paternite des screenshots';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='paternite des screenshots';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -856,7 +853,7 @@ CREATE TABLE `ud` (
   `cputime` varchar(14) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `login` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=315 DEFAULT CHARSET=latin1 COMMENT='United Devices';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='United Devices';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -958,7 +955,7 @@ CREATE TABLE `usersettings` (
   `displayimages` int(1) NOT NULL DEFAULT '1',
   `indexbbsnoresidue` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94372 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -969,5 +966,3 @@ CREATE TABLE `usersettings` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2013-05-05 22:48:10
