@@ -49,8 +49,7 @@ if($name)
       "mirrorcreator",
       "multiupload",
       "speedyshare",
-      "wetransfer",
-      "dropbox"
+      "wetransfer"
     );
     foreach ($shithosts as $v)
       if(strstr($myurl["host"],$v))
