@@ -1,6 +1,8 @@
+<p>Script used to detect any logo without an entry in the DB.</p>
+<p>Should be integrated in the admin with the ability to deleted the orphaned logos.</p>
 <?php
-
 require_once("../include/auth.php");
+
 $dbl = mysql_connect($db['host'], $db['user'], $db['password']);
 mysql_select_db($db['database'],$dbl);
 
