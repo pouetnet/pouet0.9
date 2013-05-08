@@ -219,7 +219,7 @@ $avg_rating=mysql_result($result,0);
 		if(($returnvalue["user"]["emailhidden"]!="no") && !($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator')):
 			echo '<font color="#9999AA">hidden</font><br>';
 		else:
-      echo recaptcha_mailhide_html(RECAPTCHA_PUB_KEY, RECAPTCHA_PRIV_KEY, $user["email"]);
+      echo recaptcha_mailhide_html(RECAPTCHA_MAILHIDE_PUB_KEY, RECAPTCHA_MAILHIDE_PRIV_KEY, $user["email"]);
 		endif;
 		?>
 		 </td>
