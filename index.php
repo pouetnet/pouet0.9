@@ -12,13 +12,13 @@ if ($user["indexoneliner"]>0)
 include './lastRSS.php';
 
 // create lastRSS object
-$rss = new lastRSS; 
+$rss = new lastRSS;
 
 // setup transparent cache
-$rss->cache_dir = './cache'; 
+$rss->cache_dir = './cache';
 $rss->cache_time = 5*60; // in seconds
-$rss->CDATA = 'strip'; 
-$rss->date_format = 'Y-m-d'; 
+$rss->CDATA = 'strip';
+$rss->date_format = 'Y-m-d';
 
 // load some RSS file
 $rs = $rss->GetCached('http://bitfellas.org/e107_plugins/rss_menu/rss.php?1.2');
@@ -225,7 +225,7 @@ endif;
  <tr bgcolor="#446688">
   <td width="100%" nowrap>
   <table cellspacing="0" cellpadding="0"><tr><td align="left" width="100%" valign="top" nowrap>
-<?        
+<?
         if ($user["indextype"]>0):
    	$typess = explode(",", $cdc["type"]);
          for($kkk=0;$kkk<count($typess);$kkk++) {
@@ -268,7 +268,7 @@ for($i=0;$i<count($latest_demos);$i++) {
   ?>
   <td width="100%" nowrap>
     <table cellspacing="0" cellpadding="0"><tr><td align="left" width="100%" valign="top" nowrap>
-<?        
+<?
         if ($user["indextype"]>0):
    	$typess = explode(",", $latest_demos[$i]["type"]);
          for($kkk=0;$kkk<count($typess);$kkk++) {
@@ -316,7 +316,7 @@ for($i=0;$i<count($latest_released_prods);$i++) {
   ?>
     <td width="100%" nowrap>
     <table cellspacing="0" cellpadding="0"><tr><td align="left" width="100%" valign="top" nowrap>
-<?        
+<?
         if ($user["indextype"]>0):
    	$typess = explode(",", $latest_released_prods[$i]["type"]);
          for($kkk=0;$kkk<count($typess);$kkk++) {
@@ -360,7 +360,7 @@ for($i=0;$i<count($top_demos);$i++) {
   ?>
     <td width="100%" nowrap>
     <table cellspacing="0" cellpadding="0"><tr><td align="left" width="100%" valign="top" nowrap>
-<?        
+<?
         if ($user["indextype"]>0):
    	$typess = explode(",", $top_demos[$i]["type"]);
          for($kkk=0;$kkk<count($typess);$kkk++) {
@@ -404,7 +404,7 @@ for($i=0;$i<count($top_keops);$i++) {
   ?>
     <td width="100%" nowrap>
     <table cellspacing="0" cellpadding="0"><tr><td align="left" width="100%" valign="top" nowrap>
-<?        
+<?
         if ($user["indextype"]>0):
    	$typess = explode(",", $top_keops[$i]["type"]);
          for($kkk=0;$kkk<count($typess);$kkk++) {
@@ -459,7 +459,7 @@ function validateOneliner(s) {
 <form action="add.php" method="post" onsubmit="return validateOneliner(this.message.value);">
 <input type="hidden" name="type" value="oneliner">
 <table cellspacing="1" cellpadding="2" class="box">
- <tr><th colspan="2"><img class="icon" src="gfx/titles/talk.gif" title="talk" alt="talk">the so famous pouët.net oneliner</th></tr>
+ <tr><th colspan="2"><img class="icon" src="gfx/titles/talk.gif" title="talk" alt="talk">the so famous pou&euml;t.net oneliner</th></tr>
  <? for($i=count($onelines)-1;$i>=0;$i--): ?>
  <tr class="cite-<?=$onelines[$i]["who"]?>">
  <?
@@ -544,7 +544,7 @@ if ($sceneorgyear && $_SESSION["SCENEID_ID"])
   }
 }
 
- if ($user["indexbbstopics"]>0): 
+ if ($user["indexbbstopics"]>0):
 
 echo "<!--";
 var_dump($user);
@@ -560,7 +560,7 @@ if ($user["indexbbsnoresidue"])
 
 $query .= " ORDER BY bbs_topics.lastpost desc ";
 $query .= " LIMIT ".$user["indexbbstopics"];
-  
+
 $result=mysql_query($query);
 while($tmp=mysql_fetch_assoc($result)) {
   $topics[]=$tmp;
@@ -571,7 +571,7 @@ if (canSeeBBSCategories()) {
 }
 ?>
 <table cellspacing="1" cellpadding="2" class="box">
- <tr><th colspan="<?=$row?>">the oldskool pouët.net bbs</th></tr>
+ <tr><th colspan="<?=$row?>">the oldskool pou&euml;t.net bbs</th></tr>
  <? for($i=0;$i<count($topics);$i++): ?>
  <?
   if($i%2) {
@@ -586,7 +586,7 @@ if (canSeeBBSCategories()) {
 if (canSeeBBSCategories()) {
   printf("<td class='bg%d threadcat'>%s</td>\n",$bgcolor,$thread_categories[$topics[$i]["category"]]);
 }
-?>  
+?>
   <td class="bg<?=$bgcolor?>" width="100%"><a href="topic.php?which=<?=$topics[$i]["id"]?>"><b><?=htmlcleanonerow($topics[$i]["topic"])?></b></a></td>
   <td class="bg<?=$bgcolor?>" align="right" nowrap>&nbsp;<?=$topics[$i]["count"]?>&nbsp;</td>
   <td class="bg<?=$bgcolor?>"><a href="user.php?who=<?=$topics[$i]["userlastpost"]?>" title="<?=$topics[$i]["nickname_1"]?>"><img src="avatars/<?=$topics[$i]["avatar_1"]?>" width="16" height="16" border="0" title="<?=$topics[$i]["nickname_1"]?>" alt="<?=$topics[$i]["nickname_1"]?>"></a></td>
@@ -606,7 +606,7 @@ remember: <a href='awardscandidates.php' style='color:#f88;'>suggestions for the
 
 
 <? include_once("include/customnews.php"); ?>
-<? if ($user["indexojnews"]>0): 
+<? if ($user["indexojnews"]>0):
 if ($user["indexojnews"] > $rs['items_count']) $user["indexojnews"] = $rs['items_count'];
 for($i=0;$i<$user["indexojnews"];$i++): ?>
 <table cellspacing="1" cellpadding="2" class="box">
@@ -766,7 +766,7 @@ for($i=0;$i<count($latest_comments);$i++) {
   ?>
     <td width="100%" nowrap>
     <table cellspacing="0" cellpadding="0"><tr><td align="left" width="100%" valign="top" nowrap>
-<?        
+<?
         if ($user["indextype"]>0):
         $typess = explode(",", $latest_comments[$i]["type"]);
         for($kkk=0;$kkk<count($typess);$kkk++) {
@@ -857,11 +857,11 @@ for($i=0;$i<5;$i++) {
 	$dist = (int)ceil( ($st - time()) / 60 / 60 / 24 );
   ?>
   <td align="left" valign="top" nowrap>
-    <a href="<?=$rs['items'][$i]['link']?>"><?=strtolower($rs['items'][$i]['demopartynet:title'])?></a> 
+    <a href="<?=$rs['items'][$i]['link']?>"><?=strtolower($rs['items'][$i]['demopartynet:title'])?></a>
   </td>
   <td align="right"><?
   echo $form;
-  if ($dist == 0) echo " (today!)"; 
+  if ($dist == 0) echo " (today!)";
   else if ($dist == 1) echo " (tomorrow)";
   else echo " (".$dist." days)";
   ?></td>
@@ -872,7 +872,7 @@ for($i=0;$i<5;$i++) {
 
 <? if ($user["indextopglops"]>0): ?>
 <table cellspacing="1" cellpadding="2" class="box">
- <tr><th>top of the glöps</th></tr>
+ <tr><th>top of the gl&ouml;ps</th></tr>
 <?
 for($i=0;$i<count($submitters);$i++) {
     if($i%2) {
@@ -885,7 +885,7 @@ for($i=0;$i<count($submitters);$i++) {
      <a href="user.php?who=<?=$submitters[$i]["id"]?>" title="<?=$submitters[$i]["nickname"]?>"><img src="avatars/<?=$submitters[$i]["avatar"]?>" width="16" height="16" border="0" title="<?=$submitters[$i]["nickname"]?>" alt="<?=$submitters[$i]["nickname"]?>"></a>
      <a href="user.php?who=<?=$submitters[$i]["id"]?>"><b><?=$submitters[$i]["nickname"]?></b></a>
      <br />
-     :: <?=$submitters[$i]["glops"]?> glöps
+     :: <?=$submitters[$i]["glops"]?> gl&ouml;ps
     </td>
     </tr>
     <?
