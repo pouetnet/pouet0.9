@@ -208,8 +208,11 @@ switch (basename($SCRIPT_FILENAME)) {
     $settingfields="logos, topbar, bottombar, userlogos, userprods, usergroups, userparties, userscreenshots, usernfos, usercomments, userrulez, usersucks ";
 		$query="SELECT level,nickname FROM users WHERE id=".$who;
 		$result=mysql_query($query);
-		$o=mysql_fetch_object($result);
-		print("<title>".$o->nickname."</title>\n");
+        if ($o)
+        {
+            $o=mysql_fetch_object($result);
+            print("<title>".$o->nickname."</title>\n");
+        }
 		break;
 	case 'userlist.php' :
 		$customquery.="level from users where id='";
