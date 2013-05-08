@@ -32,6 +32,7 @@ At the same time:
 - [gargaj](http://www.pouet.net/user.php?who=1007)
 - [gasman](http://www.pouet.net/user.php?who=2260)
 - [knos](http://www.pouet.net/user.php?who=36)
+- [p01](http://www.pouet.net/user.php?who=59)
 - [redhound](http://www.pouet.net/user.php?who=784)
 - [stil](http://www.pouet.net/user.php?who=351)
 - [rez](http://www.pouet.net/user.php?who=10)
