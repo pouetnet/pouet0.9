@@ -91,8 +91,11 @@ unset($logos);
 
 $timetest = microtime_float();
 $result=mysql_query_debug("SELECT id,file,vote_count FROM logos WHERE author1=".$user["id"]." || author2=".$user["id"]);
-while($tmp=mysql_fetch_array($result)) {
-  $logos[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $logos[]=$tmp;
+	}
 }
 
 $result = mysql_query_debug("SELECT points FROM ud WHERE login='".$user["udlogin"]."'");
@@ -111,11 +114,14 @@ $query="SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.gr
 " LEFT JOIN groups AS g2 ON prods.group2 = g2.id".
 " LEFT JOIN groups AS g3 ON prods.group3 = g3.id".
 " WHERE prods.added=".$user["id"]." ORDER BY prods.quand DESC LIMIT ".$usercustom["userprods"];
-//$result=mysql_query_debug("SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM prods WHERE prods.added=".$user["id"]." ORDER BY prods.quand DESC LIMIT ".$usercustom["userprods"]);
 $result=mysql_query_debug($query);
-while($tmp=mysql_fetch_array($result)) {
-  $prods[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $prods[]=$tmp;
+	}
 }
+
 for ($i=0; $i<count($prods); $i++):
 	$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$prods[$i]["id"]."' and platforms.id=prods_platforms.platform";
 	$result=mysql_query_debug($query);
@@ -131,13 +137,19 @@ $time["prods"] = microtime_float() - $timetest;
 
 $timetest = microtime_float();
 $result=mysql_query_debug("SELECT id,name FROM groups WHERE added=".$user["id"]." ORDER BY quand DESC LIMIT ".$usercustom["usergroups"]);
-while($tmp=mysql_fetch_array($result)) {
-  $groups[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $groups[]=$tmp;
+	}
 }
 
 $result=mysql_query_debug("SELECT id,name FROM parties WHERE added=".$user["id"]." ORDER BY quand DESC LIMIT ".$usercustom["userparties"]);
-while($tmp=mysql_fetch_array($result)) {
-  $partys[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $partys[]=$tmp;
+	}
 }
 $time["groupsparties"] = microtime_float() - $timetest;
 
@@ -154,9 +166,13 @@ $query="SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.gr
 
 //$result=mysql_query_debug("SELECT DISTINCT which FROM comments WHERE who=".$user["id"]." ORDER BY quand DESC LIMIT ".$usercustom["usercomments"]);
 $result=mysql_query_debug($query);
-while($tmp=mysql_fetch_array($result)) {
-  $comments[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $comments[]=$tmp;
+	}
 }
+
 for($i=0;$i<count($comments);$i++) {
 
 	if (strlen($comments[$i]["groupname1"].$comments[$i]["groupname2"].$comments[$i]["groupname3"])>27):
@@ -174,10 +190,6 @@ for($i=0;$i<count($comments);$i++) {
 	  $check++;
 	  $comments[$i]["platform"].=$tmp["name"];
 	 }
-
-//  $result=mysql_query_debug("SELECT rating FROM comments WHERE which=".$tempwhich." and rating!=0 and who=".$user["id"]." LIMIT 1");
-//  debuglog(mysql_error());
-//  if(mysql_num_rows($result)) $comments[$i]["rating"]=mysql_result($result,0);
 }
 $time["comments"] = microtime_float() - $timetest;
 
@@ -192,8 +204,12 @@ $query="SELECT screenshots.prod,prods.id,prods.name,prods.type,prods.group1,prod
 " LEFT JOIN groups AS g3 ON prods.group3 = g3.id".
 " WHERE screenshots.user=".$user["id"]." AND screenshots.prod=prods.id ORDER BY screenshots.added DESC LIMIT ".$usercustom["userscreenshots"];
 $result=mysql_query_debug($query);
-while($tmp=mysql_fetch_array($result)) {
-  $screenshots[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result))
+	{
+		$screenshots[]=$tmp;
+	}
 }
 
 for ($i=0; $i<count($screenshots); $i++):
@@ -228,8 +244,11 @@ $query="SELECT nfos.prod,prods.id,prods.name,prods.type,prods.group1,prods.group
 " WHERE nfos.user=".$user["id"]." AND nfos.prod=prods.id ORDER BY nfos.added DESC LIMIT ".$usercustom["usernfos"];
 //"SELECT nfos.prod,prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM nfos,prods WHERE nfos.user=".$user["id"]." AND nfos.prod=prods.id ORDER BY nfos.added DESC LIMIT ".$usercustom["usernfos"]
 $result=mysql_query_debug($query);
-while($tmp=mysql_fetch_array($result)) {
-  $nfos[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+		$nfos[]=$tmp;
+	}
 }
 for ($i=0; $i<count($nfos); $i++) {
 	if (strlen($nfos[$i]["groupname1"].$nfos[$i]["groupname2"].$nfos[$i]["groupname3"])>27):
@@ -251,41 +270,56 @@ for ($i=0; $i<count($nfos); $i++) {
 
 $time["nfos"] = microtime_float() - $timetest;
 
+$topics=array();
 $query="SELECT * from bbs_topics WHERE userfirstpost=".$user["id"]." order by firstpost desc LIMIT 10";
 $result=mysql_query_debug($query);
-$topics=array();
-while($tmp=mysql_fetch_array($result)) {
-  $topics[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $topics[]=$tmp;
+	}
 }
 
+$topicposts=array();
 $query="SELECT bbs_topics.id,bbs_topics.topic,bbs_topics.category FROM bbs_posts JOIN users ON users.id = bbs_posts.author JOIN bbs_topics ON bbs_posts.topic=bbs_topics.id WHERE users.id = ".$user["id"]." GROUP BY bbs_posts.topic ORDER BY bbs_posts.added DESC LIMIT 10";
 $result=mysql_query_debug($query);
-$topicposts=array();
-while($tmp=mysql_fetch_array($result)) {
-  $topicposts[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $topicposts[]=$tmp;
+	}
 }
 
+$lists=array();
 $query="SELECT * from lists WHERE upkeeper=".$user["id"]." order by added desc LIMIT 10";
 $result=mysql_query_debug($query);
-$lists=array();
-while($tmp=mysql_fetch_array($result)) {
-  $lists[]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  $lists[]=$tmp;
+	}
 }
 
 $timetest = microtime_float();
 
 //$result=mysql_query_debug("select c2.who AS who,count(0) as c,users.nickname,users.avatar from comments c1, comments c2 left join users on users.id=c2.who where c1.rating = c2.rating and c1.rating=1 and c1.which=c2.which and c1.who=".$user["id"]." and c2.who!=".$user["id"]." group by c2.who order by c DESC LIMIT ".($usercustom["userrulez"]*4));
 $result=mysql_query_debug("select c2.who AS who,count(0) as c,users.nickname,users.avatar from comments c1, comments c2 left join users on users.id=c2.who where c1.rating = c2.rating and c1.rating=1 and c1.which=c2.which and c1.who=".$user["id"]." group by c2.who order by c DESC LIMIT ".($usercustom["userrulez"]*4));
-while($tmp=mysql_fetch_array($result)) {
-  if ($tmp["who"]!=$user["id"])
-    $rulez[$tmp["who"]]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  if ($tmp["who"]!=$user["id"])
+	    $rulez[$tmp["who"]]=$tmp;
+	}
 }
 
 //$result=mysql_query_debug("select c2.who AS who,count(0) as c,users.nickname,users.avatar from comments c1, comments c2 left join users on users.id=c2.who where c1.rating = c2.rating and c1.rating=-1 and c1.which=c2.which and c1.who=".$user["id"]." and c2.who!=".$user["id"]." group by c2.who order by c DESC LIMIT ".($usercustom["usersucks"]*2));
 $result=mysql_query_debug("select c2.who AS who,count(0) as c,users.nickname,users.avatar from comments c1, comments c2 left join users on users.id=c2.who where c1.rating = c2.rating and c1.rating=-1 and c1.which=c2.which and c1.who=".$user["id"]." group by c2.who order by c DESC LIMIT ".($usercustom["usersucks"]*2));
-while($tmp=mysql_fetch_array($result)) {
-  if ($tmp["who"]!=$user["id"])
-    $sucks[$tmp["who"]]=$tmp;
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+	  if ($tmp["who"]!=$user["id"])
+	    $sucks[$tmp["who"]]=$tmp;
+	}
 }
 
 $time["rulezsucks"] = microtime_float() - $timetest;
@@ -294,35 +328,104 @@ $timetest = microtime_float();
 
 // total thumb ups / down
 $result=mysql_query_debug("SELECT rating, SUM(rating) AS total FROM comments WHERE who=".$user["id"]." GROUP BY rating");
-while($tmp=mysql_fetch_array($result)) {
-	if($tmp["rating"]==1) $total_ups=$tmp["total"];
-	else if($tmp["rating"]==-1) $total_downs=-1*$tmp["total"];
+if ($result)
+{
+	while($tmp=mysql_fetch_array($result)) {
+		if($tmp["rating"]==1) $total_ups=$tmp["total"];
+		else if($tmp["rating"]==-1) $total_downs=-1*$tmp["total"];
+	}
 }
 
 // glops count
 $result=mysql_query_debug("SELECT count(0) FROM prods WHERE added=".$user["id"]);
-$nbprods = mysql_result($result,0);
+if ($result)
+{
+	$nbprods = mysql_result($result,0);
+}
+else
+{
+	$nbprods = 0;
+}
 $result=mysql_query_debug("SELECT count(0) FROM groups WHERE added=".$user["id"]);
-$nbgroups = mysql_result($result,0);
+if ($result)
+{
+	$nbgroups = mysql_result($result,0);
+}
+else
+{
+	$nbgroups = 0;
+}
 $result=mysql_query_debug("SELECT count(0) FROM parties WHERE added=".$user["id"]);
-$nbparties = mysql_result($result,0);
+if ($result)
+{
+	$nbparties = mysql_result($result,0);
+}
+else
+{
+	$nbparties = 0;
+}
 $result=mysql_query_debug("SELECT count(0) FROM screenshots WHERE user=".$user["id"]);
-$nbscreenshots = mysql_result($result,0);
+if ($result)
+{
+	$nbscreenshots = mysql_result($result,0);
+}
+else
+{
+	$nbscreenshots = 0;
+}
 $result=mysql_query_debug("SELECT count(0) FROM nfos WHERE user=".$user["id"]);
-$nbnfos = mysql_result($result,0);
+if ($result)
+{
+	$nbnfos = mysql_result($result,0);
+}
+else
+{
+	$nbnfos = 0;
+}
 $result=mysql_query_debug("SELECT COUNT(DISTINCT which) FROM comments WHERE who=".$user["id"]);
-$nbcomments = mysql_result($result,0);
+if ($result)
+{
+	$nbcomments = mysql_result($result,0);
+}
+else
+{
+	$nbcomments = 0;
+}
 $result=mysql_query_debug("SELECT COUNT(*) FROM bbs_topics WHERE userfirstpost=".$user["id"]);
-$nbtopics = mysql_result($result,0);
+if ($result)
+{
+	$nbtopics = mysql_result($result,0);
+}
+else
+{
+	$nbtopics = 0;
+}
 $result=mysql_query_debug("SELECT COUNT(*) FROM bbs_posts WHERE author=".$user["id"]);
-$nbtopicposts = mysql_result($result,0);
+if ($result)
+{
+	$nbtopicposts = mysql_result($result,0);
+}
+else
+{
+	$nbtopicposts = 0;
+}
 $result=mysql_query_debug("SELECT COUNT(*) FROM lists WHERE upkeeper=".$user["id"]);
-$nblists = mysql_result($result,0);
+if ($result)
+{
+	$nblists = mysql_result($result,0);
+}
+else
+{
+	$nblists = 0;
+}
 
 // average rating
 $query="SELECT SUM(rating)/count(0) FROM comments WHERE who=".$user["id"];
 $result=mysql_query_debug($query);
-$avg_rating=mysql_result($result,0);
+if ($result)
+{
+	$avg_rating=mysql_result($result,0);
+}
 
 $time["averages"] = microtime_float() - $timetest;
 
