@@ -65,6 +65,8 @@ if (!empty($logos))
 </table>
 </form>
 
+<br />
+
 <?
 	}
 }
