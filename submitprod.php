@@ -40,7 +40,6 @@ if($name)
     $shithosts = array(
       "rapidshare",
       "depositfiles",
-      "megaupload",
       "filefactory",
       "sendspace",
       "netload",
@@ -50,6 +49,8 @@ if($name)
       "mirrorcreator",
       "multiupload",
       "speedyshare",
+      "wetransfer",
+      "dropbox"
     );
     foreach ($shithosts as $v)
       if(strstr($myurl["host"],$v))
@@ -57,9 +58,6 @@ if($name)
       
     if(strstr($myurl["host"],"youtube") || strstr($myurl["host"],"youtu.be"))
       $errormessage[] = "FUCK YOUTUBE - BINARY OR GTFO";
-      
-    if(strstr($myurl["path"],".php") && !strstr($myurl["host"],"scene.org"))
-      $errormessage[] = "please link to the file directly";
 
     if(strstr($myurl["path"],".txt"))
       $errormessage[] = "NO TEXTFILES.";
@@ -127,20 +125,6 @@ if($name)
       $errormessage[]="the size of the infofile must not be greater than 32Kb";
     }
   }
-  if ((int)($_SESSION["SCENEID_ID"])==3254) // solo2
-    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
-  if ((int)($_SESSION["SCENEID_ID"])==27338) // solo2
-    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
-  if ((int)($_SESSION["SCENEID_ID"])==25511) // Roy[SAC]
-    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
-  if ((int)($_SESSION["SCENEID_ID"])==4627) // magic
-    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
-  if ((int)($_SESSION["SCENEID_ID"])==24880) // bittin
-    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
-  if ((int)($_SESSION["SCENEID_ID"])==58309) // fritske
-    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
-    
-    
   
   // if everything is ok
   if(!$errormessage)
