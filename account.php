@@ -149,11 +149,6 @@ if ($_POST["email"] && $_POST["nickname"]) {
     ///////////////////////////////////////////////////////
     // USER NOT REGISTERED, INSERT
 
-    $resp = recaptcha_check_answer (RECAPTCHA_PRIV_KEY,
-                                    $_SERVER["REMOTE_ADDR"],
-                                    $_POST["recaptcha_challenge_field"],
-                                    $_POST["recaptcha_response_field"]);
-
     if (!preg_match("/".$REGEXP_EMAIL."/",$_POST["email"]))
       $errormessage[] = "invalid email address";
 
@@ -163,7 +158,16 @@ if ($_POST["email"] && $_POST["nickname"]) {
     if ($_POST["login"] == $_POST["firstname"] && ($_POST["firstname"] == $_POST["lastname"] || $_POST["firstname"] == substr($_POST["lastname"],0,-2)))
       $errormessage[] = "yeah right.";
 
-    if ($resp->is_valid && !count($errormessage)) {
+    if (RECAPTCHA_PRIV_KEY !== "pouet") {
+      $resp = recaptcha_check_answer (RECAPTCHA_PRIV_KEY,
+                                      $_SERVER["REMOTE_ADDR"],
+                                      $_POST["recaptcha_challenge_field"],
+                                      $_POST["recaptcha_response_field"]);
+      if (!$resp->is_valid)
+        $errormessage[]="wrong funny letters, sorry!";
+    }
+
+    if (!count($errormessage)) {
       // user is not registered
       if ($_SERVER["REMOTE_ADDR"])
       {
@@ -218,9 +222,8 @@ if ($_POST["email"] && $_POST["nickname"]) {
         }
       }
 
-    } else {
-      $errormessage[]="wrong funny letters, sorry!";
     }
+
     if(!$errormessage)
     {
       $query= "INSERT users SET ";
