@@ -86,57 +86,6 @@ for ($i=0; $i<count($cdc); $i++):
 endfor;
 
 $time["cdc"] = microtime_float() - $timetest;
-/*
-//get cdc
-$query="SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM users_cdcs, prods WHERE users_cdcs.cdc=prods.id and users_cdcs.user=".$who;
-$result=mysql_query_debug($query);
-while($tmp=mysql_fetch_array($result)) {
-  $cdc[]=$tmp;
-}
-for ($i=0; $i<count($cdc); $i++):
-	if ($cdc[$i]["group1"]):
-		$query="select name,acronym from groups where id='".$cdc[$i]["group1"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $cdc[$i]["groupname1"]=$tmp["name"];
-		  $cdc[$i]["groupacron1"]=$tmp["acronym"];
-		// print("->".$cdc[$i]["groupname1"]);
-		 }
-	endif;
-	if ($cdc[$i]["group2"]):
-		$query="select name,acronym from groups where id='".$cdc[$i]["group2"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $cdc[$i]["groupname2"]=$tmp["name"];
-		  $cdc[$i]["groupacron2"]=$tmp["acronym"];
-		 }
-	endif;
-	if ($cdc[$i]["group3"]):
-		$query="select name,acronym from groups where id='".$cdc[$i]["group3"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $cdc[$i]["groupname3"]=$tmp["name"];
-		  $cdc[$i]["groupacron3"]=$tmp["acronym"];
-		 }
-	endif;
-
-	if (strlen($cdc[$i]["groupname1"].$cdc[$i]["groupname2"].$cdc[$i]["groupname3"])>27):
-		if (strlen($cdc[$i]["groupname1"])>10) $cdc[$i]["groupname1"]=$cdc[$i]["groupacron1"];
-		if (strlen($cdc[$i]["groupname2"])>10) $cdc[$i]["groupname2"]=$cdc[$i]["groupacron2"];
-		if (strlen($cdc[$i]["groupname3"])>10) $cdc[$i]["groupname3"]=$cdc[$i]["groupacron3"];
-	endif;
-
-	/*$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$cdc[$i]["id"]."' and platforms.id=prods_platforms.platform";
-	$result=mysql_query_debug($query);
-	$check=0;
-	$cdc[$i]["platform"]="";
-	while($tmp = mysql_fetch_array($result)) {
-	  if ($check>0) $cdc[$i]["platform"].=", ";
-	  $check++;
-	  $cdc[$i]["platform"].=$tmp["name"];
-	 }/
-endfor;
-*/
 
 unset($logos);
 
@@ -179,51 +128,6 @@ for ($i=0; $i<count($prods); $i++):
 	 }
 endfor;
 $time["prods"] = microtime_float() - $timetest;
-/*
-for ($i=0; $i<count($prods); $i++):
-	if ($prods[$i]["group1"]):
-		$query="select name,acronym from groups where id='".$prods[$i]["group1"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $prods[$i]["groupname1"]=$tmp["name"];
-		  $prods[$i]["groupacron1"]=$tmp["acronym"];
-		// print("->".$prods[$i]["groupname1"]);
-		 }
-	endif;
-	if ($prods[$i]["group2"]):
-		$query="select name,acronym from groups where id='".$prods[$i]["group2"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $prods[$i]["groupname2"]=$tmp["name"];
-		  $prods[$i]["groupacron2"]=$tmp["acronym"];
-		 }
-	endif;
-	if ($prods[$i]["group3"]):
-		$query="select name,acronym from groups where id='".$prods[$i]["group3"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $prods[$i]["groupname3"]=$tmp["name"];
-		  $prods[$i]["groupacron3"]=$tmp["acronym"];
-		 }
-	endif;
-
-	if (strlen($prods[$i]["groupname1"].$prods[$i]["groupname2"].$prods[$i]["groupname3"])>27):
-		if (strlen($prods[$i]["groupname1"])>10 && $prods[$i]["groupacron1"]) $prods[$i]["groupname1"]=$prods[$i]["groupacron1"];
-		if (strlen($prods[$i]["groupname2"])>10 && $prods[$i]["groupacron2"]) $prods[$i]["groupname2"]=$prods[$i]["groupacron2"];
-		if (strlen($prods[$i]["groupname3"])>10 && $prods[$i]["groupacron3"]) $prods[$i]["groupname3"]=$prods[$i]["groupacron3"];
-	endif;
-
-	$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$prods[$i]["id"]."' and platforms.id=prods_platforms.platform";
-	$result=mysql_query_debug($query);
-	$check=0;
-	$prods[$i]["platform"]="";
-	while($tmp = mysql_fetch_array($result)) {
-	  if ($check>0) $prods[$i]["platform"].=",";
-	  $check++;
-	  $prods[$i]["platform"].=$tmp["name"];
-	 }
-endfor;
-*/
 
 $timetest = microtime_float();
 $result=mysql_query_debug("SELECT id,name FROM groups WHERE added=".$user["id"]." ORDER BY quand DESC LIMIT ".$usercustom["usergroups"]);
@@ -254,37 +158,6 @@ while($tmp=mysql_fetch_array($result)) {
   $comments[]=$tmp;
 }
 for($i=0;$i<count($comments);$i++) {
-//  $tempwhich=$comments[$i]["which"];
-
-  //$result=mysql_query_debug("SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM prods WHERE prods.id=".$comments[$i]["which"]." LIMIT 1");
-  //$comments[$i]=mysql_fetch_array($result);
-/*
-	if ($comments[$i]["group1"]):
-		$query="select name,acronym from groups where id='".$comments[$i]["group1"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $comments[$i]["groupname1"]=$tmp["name"];
-		  $comments[$i]["groupacron1"]=$tmp["acronym"];
-		// print("->".$comments[$i]["groupname1"]);
-		 }
-	endif;
-	if ($comments[$i]["group2"]):
-		$query="select name,acronym from groups where id='".$comments[$i]["group2"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $comments[$i]["groupname2"]=$tmp["name"];
-		  $comments[$i]["groupacron2"]=$tmp["acronym"];
-		 }
-	endif;
-	if ($comments[$i]["group3"]):
-		$query="select name,acronym from groups where id='".$comments[$i]["group3"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $comments[$i]["groupname3"]=$tmp["name"];
-		  $comments[$i]["groupacron3"]=$tmp["acronym"];
-		 }
-	endif;
-*/
 
 	if (strlen($comments[$i]["groupname1"].$comments[$i]["groupname2"].$comments[$i]["groupname3"])>27):
 		if (strlen($comments[$i]["groupname1"])>10 && $comments[$i]["groupacron1"]) $comments[$i]["groupname1"]=$comments[$i]["groupacron1"];
@@ -324,33 +197,6 @@ while($tmp=mysql_fetch_array($result)) {
 }
 
 for ($i=0; $i<count($screenshots); $i++):
-/*
-	if ($screenshots[$i]["group1"]):
-		$query="select name,acronym from groups where id='".$screenshots[$i]["group1"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $screenshots[$i]["groupname1"]=$tmp["name"];
-		  $screenshots[$i]["groupacron1"]=$tmp["acronym"];
-		// print("->".$screenshots[$i]["groupname1"]);
-		 }
-	endif;
-	if ($screenshots[$i]["group2"]):
-		$query="select name,acronym from groups where id='".$screenshots[$i]["group2"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $screenshots[$i]["groupname2"]=$tmp["name"];
-		  $screenshots[$i]["groupacron2"]=$tmp["acronym"];
-		 }
-	endif;
-	if ($screenshots[$i]["group3"]):
-		$query="select name,acronym from groups where id='".$screenshots[$i]["group3"]."'";
-		$result=mysql_query_debug($query);
-		while($tmp = mysql_fetch_array($result)) {
-		  $screenshots[$i]["groupname3"]=$tmp["name"];
-		  $screenshots[$i]["groupacron3"]=$tmp["acronym"];
-		 }
-	endif;
-*/
 	if (strlen($screenshots[$i]["groupname1"].$screenshots[$i]["groupname2"].$screenshots[$i]["groupname3"])>27):
 		if (strlen($screenshots[$i]["groupname1"])>10 && $screenshots[$i]["groupacron1"]) $screenshots[$i]["groupname1"]=$screenshots[$i]["groupacron1"];
 		if (strlen($screenshots[$i]["groupname2"])>10 && $screenshots[$i]["groupacron2"]) $screenshots[$i]["groupname2"]=$screenshots[$i]["groupacron2"];
