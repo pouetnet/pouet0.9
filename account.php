@@ -215,7 +215,12 @@ if ($_POST["email"] && $_POST["nickname"]) {
 
         if($returnvalue["returnvalue"]!=20)
         {
-          $errormessage[] = $returnvalue["message"];
+	  if (!empty($returnvalue["message"]))
+            $errormessage[] = $returnvalue["message"];
+	  else if (!empty($returnvalue["returnvalue"]))
+            $errormessage[] = "SceneID error: ".$returnvalue["returnvalue"];
+	  else
+            $errormessage[] = "Unknown SceneID error";
         }
         else if (!$returnvalue["user"]) {
           $errormessage[] = "WTF ERROR!";
