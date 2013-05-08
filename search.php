@@ -149,18 +149,18 @@ if($what) {
         ($type=="user") ? $checked3=" checked" : $checked3="";
         ($type=="bbs") ? $checked4=" checked" : $checked4="";
         ?>
-        <td><input type="radio" name="type" value="prod"<? print($checked1); ?>></td>
-        <td nowrap>prod&nbsp;|</td>
-        <td><input type="radio" name="type" value="group"<? print($checked2); ?>></td>
-        <td nowrap>group&nbsp;|</td>
-        <td><input type="radio" name="type" value="party"<? print($checked5); ?>></td>
-        <td nowrap>party&nbsp;|</td>
-        <td><input type="radio" name="type" value="board"<? print($checked6); ?>></td>
-        <td nowrap>board&nbsp;|</td>
-        <td><input type="radio" name="type" value="user"<? print($checked3); ?>></td>
-        <td nowrap>user&nbsp;|</td>
-        <td><input type="radio" name="type" value="bbs"<? print($checked4); ?>></td>
-        <td nowrap>bbs&nbsp;]&nbsp;</td>
+        <td><input id="prod" type="radio" name="type" value="prod"<? print($checked1); ?>></td>
+        <td nowrap><label for="prod">prod</label>&nbsp;|</td>
+        <td><input id="group" type="radio" name="type" value="group"<? print($checked2); ?>></td>
+        <td nowrap><label for="group">group</label>&nbsp;|</td>
+        <td><input id="party" type="radio" name="type" value="party"<? print($checked5); ?>></td>
+        <td nowrap><label for="party">party</label>&nbsp;|</td>
+        <td><input id="board" type="radio" name="type" value="board"<? print($checked6); ?>></td>
+        <td nowrap><label for="board">board</label>&nbsp;|</td>
+        <td><input id="user" type="radio" name="type" value="user"<? print($checked3); ?>></td>
+        <td nowrap><label for="user">user</label>&nbsp;|</td>
+        <td><input id="bbs" type="radio" name="type" value="bbs"<? print($checked4); ?>></td>
+        <td nowrap><label for="bbs">bbs</label>&nbsp;]&nbsp;</td>
        </tr>
       </table>
      </td>
