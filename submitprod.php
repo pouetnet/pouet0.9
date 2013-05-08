@@ -125,7 +125,21 @@ if($name)
       $errormessage[]="the size of the infofile must not be greater than 32Kb";
     }
   }
-  
+
+  // Hardcoded for now, should be handled dynamically by the moderators
+  if ((int)($_SESSION["SCENEID_ID"])==3254) // solo2
+    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
+  if ((int)($_SESSION["SCENEID_ID"])==27338) // solo2
+    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
+  if ((int)($_SESSION["SCENEID_ID"])==25511) // Roy[SAC]
+    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
+  if ((int)($_SESSION["SCENEID_ID"])==4627) // magic
+    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
+  if ((int)($_SESSION["SCENEID_ID"])==24880) // bittin
+    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
+  if ((int)($_SESSION["SCENEID_ID"])==58309) // fritske
+    $errormessage[]="you're not allowed to submit prods right now. sorry. come back later.";
+
   // if everything is ok
   if(!$errormessage)
     $submitok=true;
