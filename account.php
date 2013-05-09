@@ -4,6 +4,7 @@ require_once('recaptchalib.php');
 
 // TODO remove this
 // Forgot to to add the hook url in github =/
+// WTF works @home not live =(((
 
 // Get IM types
 $result = mysql_query("DESC users im_type");
