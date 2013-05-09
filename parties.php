@@ -96,20 +96,20 @@ function lettermenu($pattern) {
      <th>
       <table><tr>
        <td>
-        <a href="parties.php?order=name"><img src="gfx/<? print(goodfleche("name",$order)); ?>.gif" width="13" height="12" border="0"></a><br>
+        <a href="parties.php?order=name&amp;pattern=<?php print($pattern); ?>"><img src="gfx/<? print(goodfleche("name",$order)); ?>.gif" width="13" height="12" border="0"></a><br>
        </td>
        <td>
-        <a href="parties.php?order=name"><b>partyname</b></a><br>
+        <a href="parties.php?order=name&amp;pattern=<?php print($pattern); ?>"><b>partyname</b></a><br>
        </td>
       </tr></table>
      </th>
      <th>
       <table><tr>
        <td>
-        <a href="parties.php?order=year"><img src="gfx/<? print(goodfleche("year",$order)); ?>.gif" width="13" height="12" border="0"></a><br>
+        <a href="parties.php?order=year&amp;pattern=<?php print($pattern); ?>"><img src="gfx/<? print(goodfleche("year",$order)); ?>.gif" width="13" height="12" border="0"></a><br>
        </td>
        <td>
-        <a href="parties.php?order=year"><b>year</b></a><br>
+        <a href="parties.php?order=year&amp;pattern=<?php print($pattern); ?>"><b>year</b></a><br>
        </td>
       </tr></table>
      </th>
