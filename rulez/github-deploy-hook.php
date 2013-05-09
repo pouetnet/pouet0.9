@@ -1,4 +1,6 @@
 <?php
+// Script called by github to write the lastest commit on master into the file
+// named REMOTE_COMMIT at the root of pouet.net
 
 function cidr_match($ip, $cidr)
 {

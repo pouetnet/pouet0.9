@@ -29,12 +29,20 @@ function get_short_git_commit()
 	return $commit;
 }
 
+function is_upgrading()
+{
+	return file_exists('REMOTE_COMMIT');
+}
+
 ?>
 <a href="http://www.pouet.net">pou&euml;t.net</a>
 <?php if (strlen(get_long_git_commit()) > 0): ?>
 <a href="https://github.com/lra/pouet.net/commits/<?=get_long_git_commit()?>">0.9-<?=get_short_git_commit()?></a>
 <?php else: ?>
 0.9
+<?php endif; ?>
+<?php if (is_upgrading()): ?>
+<abbr title="Deployment In Progress">DIP</abbr>
 <?php endif; ?>
 &copy; 2000-<?=date("Y")?> <a href="http://www.pouet.net/groups.php?which=5">mandarine</a> - hosted on <a href="http://www.scene.org/">scene.org</a><br />
 send comments and bug reports to <a href="mailto:webmaster@pouet.net">webmaster@pouet.net</a>
