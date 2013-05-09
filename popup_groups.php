@@ -24,7 +24,7 @@ function lettermenu($pattern) {
   print(" ]<br />\n");
 }
 
-function cmpcomments($a, $b) 
+function cmpcomments($a, $b)
 {
      if ($a["lcom_quand"] == $b["lcom_quand"])
      {
@@ -81,7 +81,7 @@ while($tmp = mysql_fetch_array($result)) {
 function pickGroup(s) {
   window.opener.document.forms["<?=$_GET["form"]?>"].<?=$_GET["field"]?>.value=s;
   window.close();
-} 
+}
 //-->
 </script>
 
@@ -159,7 +159,7 @@ function pickGroup(s) {
 */
       }
 ?>
-   
+
     <tr bgcolor="#224488">
       <th colspan="3">
        <center><? lettermenu($pattern); ?></center>

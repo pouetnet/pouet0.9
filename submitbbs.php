@@ -65,7 +65,7 @@ if($submitok){
 	  $query.= "added=NOW()";
 	  mysql_query($query);
 	  $lastid=mysql_insert_id();
-	  
+	
 	  for($i=0;$i<count($platform);$i++) {
 	  	for($j=0;$j<count($platforms);$j++) {
 	  		if ($platform[$i]==$platforms[$j]["name"]):

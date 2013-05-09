@@ -2,7 +2,7 @@
 require("include/misc.php");
 conn_db();
 
-function cmp_year($a, $b) 
+function cmp_year($a, $b)
 {
      if ($a["year"] == $b["year"])
      {
@@ -11,7 +11,7 @@ function cmp_year($a, $b)
      return ($a["year"] > $b["year"]) ? -1 : 1;
 }
 
-function cmp_name($a, $b) 
+function cmp_name($a, $b)
 {
      if (strtolower($a["name"]) == strtolower($b["name"]))
      {
@@ -64,7 +64,7 @@ if($pattern=="#") {
 } else {
   $sqlwhere="name LIKE '".$pattern."%'";
 }
-  
+
 $query = "SELECT * FROM parties ";
 $query .= " WHERE ".$sqlwhere;
 $query .= " ORDER BY parties.name ASC";
@@ -91,7 +91,7 @@ while($row = mysql_fetch_assoc($result)) {
 function pickParty(s) {
   window.opener.document.forms["<?=$_GET["form"]?>"].<?=$_GET["field"]?>.value=s;
   window.close();
-} 
+}
 //-->
 </script>
 
@@ -130,7 +130,7 @@ function pickParty(s) {
    </tr>
 <?
     } ?>
-   
+
     <tr bgcolor="#224488">
       <th colspan="3">
        <center><? lettermenu($pattern); ?></center>

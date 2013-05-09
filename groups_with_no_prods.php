@@ -10,7 +10,7 @@ $sql = "select groups.id,groups.name from groups "
     . "left join groupsaka as g1 on g1.group1 = groups.id "
     . "left join groupsaka as g2 on g2.group2 = groups.id "
     . "where (p1.id is null and p2.id is null and p3.id is null and g1.group1 is null and g2.group1 is null)";
-    
+
 $r = mysql_query($sql) or die(mysql_error());
 
 printf("<table class='pouettbl'>\n");

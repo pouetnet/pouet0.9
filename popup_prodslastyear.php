@@ -68,7 +68,7 @@ while($tmp = mysql_fetch_array($result)) {
 function pickProd(s) {
   window.opener.document.forms["<?=$_GET["form"]?>"].<?=$_GET["field"]?>.value=s;
   window.close();
-} 
+}
 //-->
 </script>
 
@@ -148,9 +148,9 @@ function pickProd(s) {
        		
        		print("</tr></table></td>\n");
        	}
-  
+
      ?>
-  
+
     <tr bgcolor="#224488">
       <th colspan="3">
        <center><? lettermenu($pattern); ?></center>

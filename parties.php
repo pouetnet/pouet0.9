@@ -5,7 +5,7 @@ $order=$_REQUEST['order'];
 
 require("include/top.php");
 
-function cmp_year($a, $b) 
+function cmp_year($a, $b)
 {
      if ($a["year"] == $b["year"])
      {
@@ -14,7 +14,7 @@ function cmp_year($a, $b)
      return ($a["year"] > $b["year"]) ? -1 : 1;
 }
 
-function cmp_name($a, $b) 
+function cmp_name($a, $b)
 {
      if (strtolower($a["name"]) == strtolower($b["name"]))
      {
@@ -122,16 +122,16 @@ function lettermenu($pattern) {
     </tr>
 
    <?
-    for($i=0,$j=0;$i<count($parties);$i++): 
-  
+    for($i=0,$j=0;$i<count($parties);$i++):
+
        if($parties[$i]['id']!=1024):
-       
+
      	if($parties[$i]['id']!=$parties[$i-1]['id']):
      		
      		if (($order=="year") && ($parties[$i]['year']!=$parties[$i-1]['year']))
      		 print("<tr bgcolor=\"#224488\"><td></td><td><b>".$parties[$i]["year"]."</b><br /></td><td></td><td></td></tr>");
      	 	
-     	 	$j++; 
+     	 	$j++;
      	 	if($j%2) {
 		       print("<tr bgcolor=\"#446688\"><td>");
 		     } else {
@@ -150,16 +150,16 @@ function lettermenu($pattern) {
 		     } else {
 		       print("<tr bgcolor=\"#557799\"><td><br /></td>");
 		     }
-		     
+		
 	endif; ?>
 	
 	      <td>
 	      <? print("<a href=\"party.php?which=".$parties[$i]['id']."&when=".$parties[$i]['year']."\">".$parties[$i]['year']."</a>\n"); ?>
 	      <? if($parties[$i]["slengpung"]): ?>
-	       [<a href="http://www.slengpung.com/?eventid=<?=$parties[$i]["slengpung"]?>">slengpung</a>] 
+	       [<a href="http://www.slengpung.com/?eventid=<?=$parties[$i]["slengpung"]?>">slengpung</a>]
 	      <? endif; ?>
 	      <? if($parties[$i]["csdb"]): ?>
-	       [<a href="http://noname.c64.org/csdb/event/?id=<?=$parties[$i]["csdb"]?>">csdb</a>] 
+	       [<a href="http://noname.c64.org/csdb/event/?id=<?=$parties[$i]["csdb"]?>">csdb</a>]
 	      <? endif; ?>
 	      <? if($parties[$i]["zxdemo"]): ?>
 	       [<a href="http://zxdemo.org/party.php?id=<?=$parties[$i]["zxdemo"]?>">zxdemo</a>]
@@ -170,17 +170,17 @@ function lettermenu($pattern) {
 	      <td>
 	      <? print($parties[$i]['cprods']); ?><br />
 	      </td>
-	      
+	
 	      <td>
               <? if($parties[$i]["download"]): ?>
       		[<a href="<?=$parties[$i]["download"]?>">prods</a>]
               <? endif; ?>
               <? if(file_exists("results/".$parties[$i]["id"]."_".substr($parties[$i]["year"],-2).".txt")): ?>
-           	[<a href="results.php?which=<?=$parties[$i]["id"]?>&when=<?=substr($parties[$i]["year"],-2)?>">results</a>] 
+           	[<a href="results.php?which=<?=$parties[$i]["id"]?>&when=<?=substr($parties[$i]["year"],-2)?>">results</a>]
               <? endif; ?>
 	      </td>
-	      
-	      	      
+	
+	      	
 	     </tr>
 	<? endif; ?>
     <? endfor; ?>

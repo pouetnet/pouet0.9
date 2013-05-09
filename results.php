@@ -35,16 +35,16 @@ if(!$f) $f=1;
      <td bgcolor="#6688AA" align="center">
      <? $txt=array("dos 80*25","dos 80*50","rez's ascii","amiga medres","amiga hires");
      print("<b>[ "); ?>
-     <a href="results.php?which=<?=$which?>&amp;when=<?=$when?>&amp;f=none">html</a> 
+     <a href="results.php?which=<?=$which?>&amp;when=<?=$when?>&amp;f=none">html</a>
      <? for($i=0;$i<=count($txt)-1;$i++): ?>
        | <a href="results.php?which=<?=$which?>&amp;when=<?=$when?>&amp;f=<?=$i+1?>"><?=$txt[$i]?></a>
-       <? endfor; 
+       <? endfor;
       print(" ]</b>"); ?>
      </td>
     </tr>
     <tr>
      <td bgcolor="#224488" align="right">
-<?    
+<?
 if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator') {
 ?>
 <b>[ <a href="submitpartyresults.php?which=<?=$which?>&amp;when=<?=$when?>">admin: upload new res</a> ]</b>

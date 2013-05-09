@@ -73,7 +73,7 @@ $xnfo_categories = Array (
   'votedisk'    => Array('votedisk',        'Vote Disk'),
   'wild'        => Array('wild',            'Wild')
   );
-  
+
 $output.= $t.$t.'<category type="'.$xnfo_categories[$prod['type']][0].'">';
 $output.= xmlentities(utf8_encode($xnfo_categories[$prod['type']][1]));
 $output.= '</category>'.$nl;

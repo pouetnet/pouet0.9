@@ -27,7 +27,7 @@ switch ($_POST["type"]) {
     if($_SESSION["SCENEID_ID"]==78655)
       $errormessage[]="nope.";
 		
-		if($_REQUEST["message"]&&!$errormessage) 
+		if($_REQUEST["message"]&&!$errormessage)
 		{
 	    $who=$_SESSION["SCENEID_ID"];
 	    $query="SELECT who FROM oneliner ORDER BY quand DESC LIMIT 1";
@@ -37,14 +37,14 @@ switch ($_POST["type"]) {
 	    $result=mysql_query($query);
 	    $lastmine=mysql_fetch_assoc($result);
 
-	    if($lastone["who"]!=$who && trim($lastmine["message"])!=trim($message)) 
+	    if($lastone["who"]!=$who && trim($lastmine["message"])!=trim($message))
 	    {
 	      $title="You've successfully added the following oneline:";
         $query="INSERT INTO oneliner SET who=".$who.", quand=NOW(), message='".addslashes($message)."'";
         mysql_query($query);
         //$title="HOLD ON A SEC (i'm fixing shit.) --garg";
       }
-	    else 
+	    else
 	    {
 	      $title="ERROR! DOUBLEPOST == ROB IS JARIG!";
 	    }
@@ -54,12 +54,12 @@ switch ($_POST["type"]) {
 //	endif;
 	break;
 	
-	case "topic": 
+	case "topic":
 		$url="bbs.php";
 		//if (stristr($topic,"random")!==FALSE)
 		if (date("Y-m-d")=="2008-11-19")
   		$errormessage[] = "bbs is closed today. go use the other 5000 threads for a change.";
-		  
+		
 		if($topic&&$message&&!$errormessage)
 		{
 		    $query="SELECT topic FROM bbs_topics ORDER BY lastpost DESC LIMIT 1";
@@ -90,7 +90,7 @@ switch ($_POST["type"]) {
 		    die("FU!");
 		  if (strstr($message,"netetrader.com")!==false)
 		    die("FU!");
-		    
+		
 	    $query="SELECT author,topic,post FROM bbs_posts ORDER BY added DESC LIMIT 1";
 	    $result=mysql_query($query);
 	    $lastone=mysql_fetch_assoc($result);
@@ -124,7 +124,7 @@ switch ($_POST["type"]) {
 		$message=$comment;
 		if (strstr($comment,"freecliptv.samsonshome.de")!==false)
 		  $errormessage[] = "please post video links to <a href='http://www.pouet.net/topic.php?which=1024'>this thread</a>";
-		  
+		
 		if (strstr($comment,"EmwW_6kUdHw")!==false)
 		  $errormessage[] = "please post video links to <a href='http://www.pouet.net/topic.php?which=1024'>this thread</a> - also, your link has been removed from youtube.";
 
@@ -156,7 +156,7 @@ switch ($_POST["type"]) {
 			    $timestart = microtime_float();
 			    mysql_query($query);
 		    	$time["query3"] = microtime_float() - $timestart;
-			    
+			
 			    //update vote info
 			    	unset($commentss);
 				//unset($checktable);
@@ -193,7 +193,7 @@ switch ($_POST["type"]) {
 		    $timestart = microtime_float();
 				mysql_query($query);
 	    	$time["query5"] = microtime_float() - $timestart;
-			    
+			
 			}
 	    $timestart = microtime_float();
 			//create_cache_module("latest_comments", "SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3,comments.who,users.nickname,users.avatar FROM prods JOIN comments LEFT JOIN users ON users.id=comments.who WHERE comments.which=prods.id ORDER BY comments.quand DESC LIMIT 20",1);

@@ -11,7 +11,7 @@ if ($_SESSION["SESSION_LEVEL"]=='administrator' && $_POST["ban_id"]) {
   $sql = sprintf("update users set level='banned' where id=%d",$_POST["ban_id"]);
   echo $sql;
   mysql_query($sql);
-  
+
 }
 ?>
 <table bgcolor="#000000" cellspacing="1" cellpadding="3" border="0">
@@ -53,7 +53,7 @@ if ($SESSION_LEVEL=='administrator') {
   </td>
 <?
 }
-?>  
+?>
  </tr>
 <?
 }

@@ -4,7 +4,7 @@
 // Version: 1.0
 // Copyright (c) Maros Fric, qualityunit.com 2004
 // All rights reserved
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
@@ -14,11 +14,11 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-// 
+//
 // Copy of GNU Lesser General Public License at: http://www.gnu.org/copyleft/lesser.txt
 //
 // For support contact support@qualityunit.com
@@ -27,27 +27,27 @@
 class PostGraph
 {
     var $img;
-    
+
     var $graphWidth; // Graph Image Width
     var $graphHeight; // Graph Image Height
     var $textPadding; // Graph Text Padding
-    
+
     var $graphTitle; // Graph main Title at the top center
     var $graphXTitle; // Graph Title at x axe
     var $graphYTitle; // Graph Title at y axe
-    
+
     var $yTicks;  // Number of Ticks on y axe
     var $yNumberFormat; // Format numbers at y axe
     var $yValueMode; // Mode that defines place of y numbers. 3 for outside of bar, 2 inside, 1 inside if bar height is bigger then 13
-    
+
     var $textXOrientation; // Text orientation at x axe. Usually normal.
-    
+
     var $data = null; // Graph data
     var $countData; // Count of data
     var $dataSum; // Summary of data
     var $maxData; // Maximum value of data
     var $maxTextLength; // Lenght of maximum value
-    
+
     var $colorWhiteArray; // White color in RGB format
     var $colorLinesArray; // Line color in RGB format
     var $colorBarsArray; // Bar color in RGB format
@@ -56,10 +56,10 @@ class PostGraph
     var $colorTextArray; // Text color in RGB format
     var $colorAboveBarArray; // Number color above the bar in RGB format
     var $colorInsideBarArray; // Number color inside the bar in RGB format
-    
+
     //------------------------------------------------------------------------
 
-   /** 
+   /**
     * constructor Create an PostGraph object.
     *
     * @param width Width of graph image. If it is not defined, width is set to 400.
@@ -69,7 +69,7 @@ class PostGraph
     function PostGraph($width = 400, $height = 300)
     {
          register_shutdown_function(array(&$this, '_PostGraph'));
-         
+
          $this->graphWidth = $width;
          $this->graphHeight = $height;
          $this->textPadding = 3;
@@ -77,7 +77,7 @@ class PostGraph
          $this->yNumberFormat = '';
          $this->yValueMode = 3;
          $this->textXOrientation = 'horizontal';
-         
+
          $this->colorWhiteArray = array(255, 255, 255);
          $this->colorLinesArray = array(72, 107, 143);
          $this->colorBarsArray = array(72, 107, 143);
@@ -88,10 +88,10 @@ class PostGraph
          $this->colorInsideBarArray = array(255, 255, 255);
 
     }
-    
+
     //------------------------------------------------------------------------
 
-   /** 
+   /**
     * create graph image with functions. Create the image, initialise Colors and
     * area, draw axis, bars and titles.
     *
@@ -102,23 +102,23 @@ class PostGraph
     {
         /* Create initial image */
         $this->img = ImageCreate($this->graphWidth, $this->graphHeight);
-        
+
         $this->initColors();
-        
+
         $this->initArea();
-        
+
         $this->drawYAxe();
-        
+
         $this->drawXAxe();
-        
+
         $this->drawBars();
-        
+
         $this->drawTitles();
     }
-    
+
     //------------------------------------------------------------------------
 
-   /** 
+   /**
     * initialise all graph colors
     *
     * @param null
@@ -135,7 +135,7 @@ class PostGraph
         $this->colorAboveBar = ImageColorAllocate($this->img, $this->colorAboveBarArray[0], $this->colorAboveBarArray[1], $this->colorAboveBarArray[2]);
         $this->colorInsideBar = ImageColorAllocate($this->img, $this->colorInsideBarArray[0], $this->colorInsideBarArray[1], $this->colorInsideBarArray[2]);
     }
-    
+
     //------------------------------------------------------------------------
 
    /**
@@ -150,7 +150,7 @@ class PostGraph
         $this->posXEnd = $this->graphWidth - 5;
         $this->posYStart = 35;
         $this->posYEnd = $this->graphHeight - 15 - ($this->maxTextLength*6+15);
-        
+
         ImageFilledRectangle($this->img, $this->posXStart, $this->posYStart, $this->posXEnd , $this->posYEnd, $this->colorBackground);
         ImageRectangle($this->img, $this->posXStart, $this->posYStart, $this->posXEnd , $this->posYEnd, $this->colorLines);
     }
@@ -168,13 +168,13 @@ class PostGraph
         // draw lines
         $startPos = $this->posXStart;
         $step = round(( ($this->posXEnd - $this->posXStart) / $this->countData), 2);
-        for($i=0; $i<=$this->countData; $i++) 
+        for($i=0; $i<=$this->countData; $i++)
         {
             ImageLine($this->img, $startPos, $this->posYEnd-5, $startPos, $this->posYEnd+5, $this->colorLines);
-            
+
             $startPos += $step;
         }
-        
+
         // draw numbers
         $startPos = $this->posXStart;
         foreach($this->data as $key => $value)
@@ -187,7 +187,7 @@ class PostGraph
             $startPos += $step;
         }
     }
-    
+
     //------------------------------------------------------------------------
 
    /**
@@ -205,27 +205,27 @@ class PostGraph
         {
             $style = array($this->colorStyle, $this->colorStyle, $this->colorStyle, $this->colorStyle, IMG_COLOR_TRANSPARENT, IMG_COLOR_TRANSPARENT, IMG_COLOR_TRANSPARENT);
             ImageSetStyle($this->img, $style);
-            
+
             ImageLine($this->img, $this->posXStart-5, $top, $this->posXStart+5, $top, $this->colorLines);
-            
+
             $top += $step;
         }
-        
+
         // draw numbers
         $xAxeValue = $this->maxData;
         $top = $this->posYStart;
-        for($i=0; $i<=$this->yTicks; $i++) 
+        for($i=0; $i<=$this->yTicks; $i++)
         {
             ImageString($this->img, 2, $this->posXStart-12-strlen($xAxeValue)*4, $top-6, $xAxeValue, $this->colorText);
-            
+
             $xAxeValue -= ($this->maxData/$this->yTicks);
             if($xAxeValue < 0.01)
                 $xAxeValue = 0;
-                
+
             $top += $step;
         }
     }
-    
+
     //------------------------------------------------------------------------
 
    /**
@@ -238,34 +238,34 @@ class PostGraph
     {
         $startPos = $this->posXStart;
         $step = (($this->posXEnd - $this->posXStart)/$this->countData)/2;
-        foreach($this->data as $key => $value) 
+        foreach($this->data as $key => $value)
         {
             $barWidth = (0.75*($this->posXEnd-$this->posXStart)/$this->countData)/2;
             $barHeight = (($this->posYEnd-$this->posYStart)*$value)/$this->maxData;
 
             ImageFilledRectangle($this->img, $startPos + $step- $barWidth, $this->posYEnd - $barHeight, $startPos + $step + $barWidth, $this->posYEnd, $this->colorBars);
-            
+
             $startX = $startPos + $step - (strlen($value)*3);
-            
-            if(($barHeight>13 && $this->yValueMode == 1) || $this->yValueMode == 2) 
+
+            if(($barHeight>13 && $this->yValueMode == 1) || $this->yValueMode == 2)
             {
                 $startY = $this->posYEnd - $barHeight;
                 ImageString($this->img, 1, $startX, $startY, $value, $this->colorInsideBar);
-            } 
-            else 
+            }
+            else
             {
                 $startY = $this->posYEnd - $barHeight - 13;
                 ImageString($this->img, 1, $startX, $startY, $value, $this->colorAboveBar);
             }
-            
-            $startPos = round((($this->posXEnd-$this->posXStart)/$this->countData),2) + $startPos;            
+
+            $startPos = round((($this->posXEnd-$this->posXStart)/$this->countData),2) + $startPos;
         }
     }
-    
+
     //------------------------------------------------------------------------
 
    /**
-    * draw titles of graph. Main title on the top center, verticaly on the left 
+    * draw titles of graph. Main title on the top center, verticaly on the left
     * side and horizontaly on the botton
     *
     * @param null
@@ -277,7 +277,7 @@ class PostGraph
         ImageStringUp($this->img, 3, $this->textPadding, $this->graphHeight/2+strlen($this->graphYTitle)*3, $this->graphYTitle, $this->colorText);
         ImageString($this->img, 3, $this->graphWidth/2-strlen($this->graphXTitle)*3, $this->posYEnd+$this->textPadding+($this->maxTextLength*6+15)-10, $this->graphXTitle, $this->colorText);
     }
-    
+
     //------------------------------------------------------------------------
 
    /**
@@ -305,10 +305,10 @@ class PostGraph
     function setGraphTitles($mainTitle, $xTitle, $yTitle)
     {
         $this->graphTitle = $mainTitle;
-        $this->graphXTitle = $xTitle;    
+        $this->graphXTitle = $xTitle;
         $this->graphYTitle = $yTitle;
     }
-    
+
     //------------------------------------------------------------------------
 
     /**
@@ -456,13 +456,13 @@ class PostGraph
     function setYTicks($ticks)
     {
         $this->yTicks = $ticks;
-        
+
         if($this->data != null && $this->yNumberFormat == 'integer')
         {
             if($this->yTicks > $this->maxData)
                 $this->yTicks = $this->maxData;
         }
-            
+
         if($this->yTicks == 0)
             $this->yTicks = 1;
     }
@@ -493,11 +493,11 @@ class PostGraph
     {
         if(count($data) == 0)
             $data = array('' => 0);
-            
+
         $this->data = $data;
         $this->computeDataSum();
         $this->findMaxValues();
-        
+
         $this->countData = count($data);
 
         if($this->yTicks > $this->maxData && $this->yNumberFormat == 'integer')
@@ -506,7 +506,7 @@ class PostGraph
         if($this->yTicks == 0)
             $this->yTicks = 1;
     }
-    
+
     //------------------------------------------------------------------------
 
     /**
@@ -519,7 +519,7 @@ class PostGraph
     {
         $this->textXOrientation = $orientation;
     }
-    
+
     //------------------------------------------------------------------------
 
     /**
@@ -532,10 +532,10 @@ class PostGraph
     {
         if(!is_array($this->data))
             return;
-            
+
         $this->dataSum = 0;
-        
-        foreach($this->data as $key => $value) 
+
+        foreach($this->data as $key => $value)
             $this->dataSum += $value;
     }
 
@@ -551,14 +551,14 @@ class PostGraph
     {
         if(!is_array($this->data))
             return;
-            
+
         $this->maxData = 0;
         $this->maxTextLength = 0;
         foreach($this->data as $key => $value)
         {
             if($this->maxData < $value)
                 $this->maxData = $value;
-                
+
             $length = strlen($key);
             if($this->maxTextLength < $length)
                 $this->maxTextLength = $length;
@@ -569,19 +569,19 @@ class PostGraph
         if($this->maxData == 0)
             $this->maxData = 1;
     }
-    
+
     //------------------------------------------------------------------------
 
     /**
     * do special round on max value of data. Round at first digit for 2 digit
-    * int number. Round at second digit for bigger int number. 
+    * int number. Round at second digit for bigger int number.
     *
     * @param number Float or int number
     * @returns number Special round number
     */
-    function specialRound($number) 
+    function specialRound($number)
     {
-        if(strlen(ceil($number)) < 2) // check if number is smaller then 10 
+        if(strlen(ceil($number)) < 2) // check if number is smaller then 10
         {
             if( (strpos($number, ".")) !== false ) // float number ?
             {
@@ -621,7 +621,7 @@ class PostGraph
                 if($dot_place == 0)
                   $number = "0.";
                 else $number = substr($undot_number,0,$dot_place);
-                
+
                 if( $length > 4 )
                 {
                   if(strlen($undot_number) == 2)
@@ -635,7 +635,7 @@ class PostGraph
               }
             }
             return $number;
-        } 
+        }
         else // big number
         {
             $number = ceil($number);
@@ -643,7 +643,7 @@ class PostGraph
 
             if(substr($number, 1) == 0)
               return $number;
-            
+
             if($length < 3) // if number is smaller then 3 digit increment it 1 digit, other digits set to 0
             {
               $firstDigit = substr($number, 0, 1) + 1;
@@ -660,7 +660,7 @@ class PostGraph
             return $number; // finally set the y axe maximum
         }
     }
-    
+
     //------------------------------------------------------------------------
 
     /**
@@ -669,7 +669,7 @@ class PostGraph
     * @param null
     * @returns nothing
     */
-    function _PostGraph () 
+    function _PostGraph ()
     {
         //ImageDestroy($this->img);
         return;

@@ -13,13 +13,13 @@ $command = "logoutUser";
 session_unset();
 session_destroy();
 
-if($_COOKIE["SCENEID_COOKIE"]) 
+if($_COOKIE["SCENEID_COOKIE"])
 {
 //  setcookie("SCENEID_COOKIE","", time() - 3600, "/", "scene.org");
   setcookie("SCENEID_COOKIE","", time() - 3600, "/", "pouet.net");
   unset($_COOKIE["SCENEID_COOKIE"]);
 }
-if($_COOKIE["SCENEID_SESSION"]) 
+if($_COOKIE["SCENEID_SESSION"])
 {
 //  setcookie("SCENEID_SESSION","", time() - 3600, "/", "scene.org");
   setcookie("SCENEID_SESSION","", time() - 3600, "/", "pouet.net");

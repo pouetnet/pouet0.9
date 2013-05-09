@@ -16,7 +16,7 @@ $r = mysql_query($sql);
 <tr><td>
 <table cellspacing="1" cellpadding="2" class="box">
  <tr><th colspan="3"><center>platform icon check</center></th></tr>
- 
+
 <?
 $n = 1;
 while ($o = mysql_fetch_object($r)) {

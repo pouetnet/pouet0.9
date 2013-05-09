@@ -3,17 +3,17 @@
  * bbdecode/bbencode functions:
  * Rewritten - Nathan Codding - Aug 24, 2000
  * quote, code, and list rewritten again in Jan. 2001.
- * All BBCode tags now implemented. Nesting and multiple occurances should be 
+ * All BBCode tags now implemented. Nesting and multiple occurances should be
  * handled fine for all of them. Using str_replace() instead of regexps often
- * for efficiency. quote, list, and code are not regular, so they are 
- * implemented as PDAs - probably not all that efficient, but that's the way it is. 
+ * for efficiency. quote, list, and code are not regular, so they are
+ * implemented as PDAs - probably not all that efficient, but that's the way it is.
  *
  * Note: all BBCode tags are case-insensitive.
  */
 
 function bbencode($message, $is_html_disabled) {
   global $user;
-  
+
 	// pad it with a space so we can distinguish between FALSE and matching the 1st char (index 0).
 	// This is important; bbencode_quote(), bbencode_list(), and bbencode_code() all depend on it.
 	$message = " " . $message;
@@ -72,7 +72,7 @@ function bbencode($message, $is_html_disabled) {
 	$patterns[1] = "#\[url\](.*?)\[/url\]#si";
 	$replacements[1] = '<!-- BBCode u1 Start --><A HREF="http://\1">\1</A><!-- BBCode u1 End -->';
 	
-	// [url=xxxx://www.phpbb.com]phpBB[/url] code.. 
+	// [url=xxxx://www.phpbb.com]phpBB[/url] code..
 	$patterns[2] = "#\[url=([a-z]+?://){1}(.*?)\](.*?)\[/url\]#si";
 	$replacements[2] = '<!-- BBCode u2 Start --><A HREF="\1\2">\3</A><!-- BBCode u2 End -->';
 	
@@ -148,7 +148,7 @@ function bbdecode($message) {
 /**
  * James Atkinson - Feb 5, 2001
  * This function does exactly what the PHP4 function array_push() does
- * however, to keep phpBB compatable with PHP 3 we had to come up with out own 
+ * however, to keep phpBB compatable with PHP 3 we had to come up with out own
  * method of doing it.
  */
 function bbcode_array_push(&$stack, $value) {
@@ -181,11 +181,11 @@ function bbcode_array_pop(&$stack) {
 /**
  * Nathan Codding - Jan. 12, 2001.
  * Performs [quote][/quote] bbencoding on the given string, and returns the results.
- * Any unmatched "[quote]" or "[/quote]" token will just be left alone. 
+ * Any unmatched "[quote]" or "[/quote]" token will just be left alone.
  * This works fine with both having more than one quote in a message, and with nested quotes.
  * Since that is not a regular language, this is actually a PDA and uses a stack. Great fun.
  *
- * Note: This function assumes the first character of $message is a space, which is added by 
+ * Note: This function assumes the first character of $message is a space, which is added by
  * bbencode().
  */
 function bbencode_quote($message)
@@ -224,7 +224,7 @@ function bbencode_quote($message)
 				// Check if we've already found a matching starting tag.
 				if (sizeof($stack) > 0)
 				{
-					// There exists a starting tag. 
+					// There exists a starting tag.
 					// We need to do 2 replacements now.
 					$start_index = bbcode_array_pop($stack);
 
@@ -241,7 +241,7 @@ function bbencode_quote($message)
 					$message .= $between_tags . "</div></div><!-- BBCode Quote End -->";
 					$message .= $after_end_tag;
 					
-					// Now.. we've screwed up the indices by changing the length of the string. 
+					// Now.. we've screwed up the indices by changing the length of the string.
 					// So, if there's anything in the stack, we want to resume searching just after it.
 					// otherwise, we go back to the start.
 					if (sizeof($stack) > 0)
@@ -277,11 +277,11 @@ function bbencode_quote($message)
 /**
  * Nathan Codding - Jan. 12, 2001.
  * Performs [code][/code] bbencoding on the given string, and returns the results.
- * Any unmatched "[code]" or "[/code]" token will just be left alone. 
+ * Any unmatched "[code]" or "[/code]" token will just be left alone.
  * This works fine with both having more than one code block in a message, and with nested code blocks.
  * Since that is not a regular language, this is actually a PDA and uses a stack. Great fun.
  *
- * Note: This function assumes the first character of $message is a space, which is added by 
+ * Note: This function assumes the first character of $message is a space, which is added by
  * bbencode().
  */
 function bbencode_code($message, $is_html_disabled)
@@ -297,7 +297,7 @@ function bbencode_code($message, $is_html_disabled)
 
 //	$message = preg_replace("/$str_to_match/si", "<!-- BBCode Start --><div class=\"bbs_code\"><b>Code:</b><pre>$after_replace</pre></div><!-- BBCode End -->", $message);
 	
-	// Second things second: we have to watch out for stuff like [1code] or [/code1] in the 
+	// Second things second: we have to watch out for stuff like [1code] or [/code1] in the
 	// input.. So escape them to [#1code] or [/code#1] for now:
 	$message = preg_replace("/\[([0-9]+?)code\]/si", "[#\\1code]", $message);
 	$message = preg_replace("/\[\/code([0-9]+?)\]/si", "[/code#\\1]", $message);
@@ -329,7 +329,7 @@ function bbencode_code($message, $is_html_disabled)
 				// Check if we've already found a matching starting tag.
 				if (sizeof($stack) > 0)
 				{
-					// There exists a starting tag. 
+					// There exists a starting tag.
 					$curr_nesting_depth = sizeof($stack);
 					$max_nesting_depth = ($curr_nesting_depth > $max_nesting_depth) ? $curr_nesting_depth : $max_nesting_depth;
 					
@@ -349,7 +349,7 @@ function bbencode_code($message, $is_html_disabled)
 					$message .= $between_tags . "[/code" . $curr_nesting_depth . "]";
 					$message .= $after_end_tag;
 					
-					// Now.. we've screwed up the indices by changing the length of the string. 
+					// Now.. we've screwed up the indices by changing the length of the string.
 					// So, if there's anything in the stack, we want to resume searching just after it.
 					// otherwise, we go back to the start.
 					if (sizeof($stack) > 0)
@@ -422,11 +422,11 @@ function bbencode_code($message, $is_html_disabled)
 /**
  * Nathan Codding - Jan. 12, 2001.
  * Performs [list][/list] and [list=?][/list] bbencoding on the given string, and returns the results.
- * Any unmatched "[list]" or "[/list]" token will just be left alone. 
+ * Any unmatched "[list]" or "[/list]" token will just be left alone.
  * This works fine with both having more than one list in a message, and with nested lists.
  * Since that is not a regular language, this is actually a PDA and uses a stack. Great fun.
  *
- * Note: This function assumes the first character of $message is a space, which is added by 
+ * Note: This function assumes the first character of $message is a space, which is added by
  * bbencode().
  */
 function bbencode_list($message)
@@ -478,7 +478,7 @@ function bbencode_list($message)
 				// Check if we've already found a matching starting tag.
 				if (sizeof($stack) > 0)
 				{
-					// There exists a starting tag. 
+					// There exists a starting tag.
 					// We need to do 2 replacements now.
 					$start = bbcode_array_pop($stack);
 					$start_index = $start[0];
@@ -510,7 +510,7 @@ function bbencode_list($message)
 					
 					$message .= $after_end_tag;
 					
-					// Now.. we've screwed up the indices by changing the length of the string. 
+					// Now.. we've screwed up the indices by changing the length of the string.
 					// So, if there's anything in the stack, we want to resume searching just after it.
 					// otherwise, we go back to the start.
 					if (sizeof($stack) > 0)
@@ -549,7 +549,7 @@ function bbencode_list($message)
  * Nathan Codding - Oct. 30, 2000
  *
  * Escapes the "/" character with "\/". This is useful when you need
- * to stick a runtime string into a PREG regexp that is being delimited 
+ * to stick a runtime string into a PREG regexp that is being delimited
  * with slashes.
  */
 function escape_slashes($input)
@@ -564,7 +564,7 @@ function escape_slashes($input)
  * - Goes through the given string, and replaces xxxx://yyyy with an HTML <a> tag linking
  * 	to that URL
  * - Goes through the given string, and replaces www.xxxx.yyyy[zzzz] with an HTML <a> tag linking
- * 	to http://www.xxxx.yyyy[/zzzz] 
+ * 	to http://www.xxxx.yyyy[/zzzz]
  * - Goes through the given string, and replaces xxxx@yyyy with an HTML mailto: tag linking
  *		to that email address
  * - Only matches these 2 patterns either after a space, or at the beginning of a line
@@ -609,7 +609,7 @@ function make_clickable($text) {
  * - Does not distinguish between "www.xxxx.yyyy" and "http://aaaa.bbbb" type URLs.
  *
  */
- 
+
 function undo_make_clickable($text) {
 	
 	$text = preg_replace("#<!-- BBCode auto-link start --><a href=\"(.*?)\">.*?</a><!-- BBCode auto-link end -->#i", "\\1", $text);
@@ -653,7 +653,7 @@ function normalize_whitespace($str)
 	}
 	
 	$output .= $tok[$tok_count - 1];
-      
+
 	return $output;
 }
 

@@ -13,7 +13,7 @@ if(is_uploaded_file($nfofile))
   if(file_exists("nfo/".$which.".nfo"))
   {
     if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator')
-    { 
+    {
     	unlink("nfo/".$which.".nfo");
     	copy($nfofile,"nfo/".$which.".nfo");
   	unlink($nfofile);

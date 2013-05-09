@@ -10,7 +10,7 @@ if ($_GET["derivative"] && $_GET["original"])
   if ($o->type) {	
   	$query = "DELETE FROM affiliatedprods WHERE derivative=".$_GET["derivative"]." and original=".$_GET["original"];
   	mysql_query($query);
-  
+
     $query = "INSERT INTO affiliatedprods SET ";
     $query.= "derivative='".$_GET["original"]."', ";
     $query.= "original='".$_GET["derivative"]."', ";

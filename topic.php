@@ -23,7 +23,7 @@ if ($which == 6618)
 if ($which == 7465) {
   header("Location: http://www.scene.org/demoscene.php");
   exit();
-}  
+}
 */
 $query='SELECT count(0) FROM bbs_posts WHERE topic='.(int)$which;
 $result=mysql_query($query);
@@ -65,7 +65,7 @@ if (canEditBBSCategories()) {
       [<a href="edit_topic_category.php?which=<?=$which?>">edit</a>]
 <?
 }
-?>     
+?>
     </td>
     </tr>
     <tr bgcolor="#224488"><td>
@@ -125,7 +125,7 @@ if (canEditBBSCategories()) {
     <? for($i=0;$i<count($replies);$i++): ?>
     <tr class="cite-<?=$replies[$i]["author"]?>"><td bgcolor="#446688" id="c<?=$replies[$i]["id"]?>">
     <? if ($i == count($replies) - 1) printf("<a name='lastpost'></a>"); ?>
-    <? 
+    <?
     if (
          ( ($replies[$i]["level"]=='fakeuser') && $user["topichidefakeuser"] ) ||
          ( ($replies[$i]["level"]=='pr0nstahr') && $user["topichidepornstar"] ) ||
@@ -218,9 +218,9 @@ if (canEditBBSCategories()) {
 if($_SESSION["SCENEID_ID"])
 {
 
-if ($which==1024) 
+if ($which==1024)
   $message = "please always use [url=http://en.wikipedia.org/wiki/BBCode]bbcode[/url] in this thread when refering to broken things.";
-  
+
 if ($topic->closed)
 {
 ?>
@@ -306,7 +306,7 @@ else
  </tr>
 </table>
 </form>
-<? 
+<?
 }
 ?><br />
 

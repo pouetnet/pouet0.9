@@ -12,8 +12,8 @@ print("<br />");
 $year = $sceneorgyear;
 if (!$year)
   die("all done for now, see you next year!");
-  
-if ($_SESSION["SCENEID_ID"]) 
+
+if ($_SESSION["SCENEID_ID"])
 {
   if ($action=='alter')
   {
@@ -29,7 +29,7 @@ if ($_SESSION["SCENEID_ID"])
   	
   	$sqlc = array();
     $prod = (int)$prod;
-  
+
   	if ($_POST["cat"]) {
   	  foreach ($_POST["cat"] as $v)
   		  $sqlc[(int)$v] = (int)$prod;
@@ -39,18 +39,18 @@ if ($_SESSION["SCENEID_ID"])
   		if (isset($_POST["cat".$x]))
   		  $sqlc[$x] = (int)$_POST["cat".$x];
     }	
-    
+
     foreach ($sqlc as $k=>$v) {
       $v = (int)$v;
     	if ($v >= 0)
     	{
     	  $r = mysql_fetch_object(mysql_query(sprintf("select date from prods where id=%d",$v)));
     	  if (substr($r->date,0,4)!=$year) continue;
-    	  
+    	
         $query = "update awardscand_".$year." set cat".$k."='".(int)$v."' where user='".$_SESSION["SCENEID_ID"]."'";
       	mysql_query($query);
     	}
-    }	  
+    }	
   }
 
 	$query = "SELECT * FROM awardscand_".$year." WHERE user='".$_SESSION["SCENEID_ID"]."'";
@@ -132,7 +132,7 @@ foreach($awardscat[$year] as $x=>$name) {
   most outstanding 4k intro from <?=$year?>.
   </td>
  </tr>
-<!-- 
+<!--
  <tr>
   <td bgcolor="#557799" >best animation</td>
   <td bgcolor="#557799">
@@ -143,8 +143,8 @@ foreach($awardscat[$year] as $x=>$name) {
  <tr>
   <td bgcolor="#557799" >best oldschool</td>
   <td bgcolor="#557799">
-  most outstanding demo on an oldschool platform from <?=$year?>. the platform 
-  of the demo is limited to non-modern computers and alternative platforms 
+  most outstanding demo on an oldschool platform from <?=$year?>. the platform
+  of the demo is limited to non-modern computers and alternative platforms
   that can be considered "low-end".
   </td>
  </tr>
@@ -194,8 +194,8 @@ foreach($awardscat[$year] as $x=>$name) {
   <td bgcolor="#557799">
   a group (or artist) that raised their personal bar significantly
   during <?=$year?>. promising talents that might be tomorrows best demo makers.
-  this doesn't need to be necessarily a newcomer group, rather than 
-  someone receiving deserved attention after rising above mediocrity. 
+  this doesn't need to be necessarily a newcomer group, rather than
+  someone receiving deserved attention after rising above mediocrity.
   </td>
  </tr>
  <tr>
@@ -218,7 +218,7 @@ foreach($awardscat[$year] as $x=>$name) {
 <br />
 <?
 }
-else 
+else
 {
 ?>
 <style type="text/css">
@@ -246,7 +246,7 @@ else
 }
 #container {
   width: 750px;
-  margin: 0px auto;  
+  margin: 0px auto;
 }
 </style>
 
@@ -257,7 +257,7 @@ else
 </tr>
 <tr>
   <td class='bg1'>
-  
+
     <form action="login.php" method="post">
        <input type="text" name="login" value="SceneID" size="15" maxlength="16" onfocus="this.value=''"><br />
        <input type="password" name="password" value="password" size="15" onfocus="javascript:if(this.value=='password') this.value='';"><br />
@@ -265,7 +265,7 @@ else
        <a href="account.php">register here</a><br />
        <input type="image" src="gfx/submit.gif">
     </form>
-  
+
   </td>
 </tr>
 </table>

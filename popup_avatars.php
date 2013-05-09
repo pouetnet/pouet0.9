@@ -18,7 +18,7 @@ function pickAvatar(s) {
   window.opener.document.forms["<?=$_GET["form"]?>"].<?=$_GET["field"]?>.value=s;
   window.opener.document.avatr.src='avatars/'+s;
   window.close();
-} 
+}
 //-->
 </script>
 

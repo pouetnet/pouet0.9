@@ -19,7 +19,7 @@ function lettermenu($pattern) {
   print(" ]<br />\n");
 }
 
-function cmpcomments($a, $b) 
+function cmpcomments($a, $b)
 {
      if ($a["lcom_quand"] == $b["lcom_quand"])
      {
@@ -119,7 +119,7 @@ if($which) {
     <tr bgcolor="#224488">
      <th colspan="9">
      <center>
-     <? 
+     <?
      	$i=0;
 	print("<b><a href=\"bbses.php?which=".$bbses[$i]["id"]."\">".$bbses[$i]["name"]);
 	print("</a></b>");
@@ -230,7 +230,7 @@ if($which) {
 		<? } ?>
 		</table>
 		</td>
-		</tr>  	   
+		</tr>  	
 		
 		<? if($bbsnfos): ?>
 		<tr>
@@ -246,7 +246,7 @@ if($which) {
 		<? } ?>
 		</table>
 		</td>
-		</tr>  	   
+		</tr>  	
 		<? endif; ?>
      	  </table>
      	 </td>
@@ -295,7 +295,7 @@ if($which) {
      	</tr>
      	<? endif; ?>
      <? } ?>
-   
+
     <tr bgcolor="#224488">
      <? if($which): ?>
       <? if(count($bbses)!=0): ?>

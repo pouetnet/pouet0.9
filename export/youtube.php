@@ -10,7 +10,7 @@ mysql_select_db($db['database'],$dbl);
 header("Content-type: text/xml");
 echo "<"."?xml version='1.0' encoding='UTF-8'?".">\n";
 
-$query = 
+$query =
   "SELECT prods.id as id, prods.name, parties.name as partyname, downloadlinks.link, prods.partycompo, prods.party_place, g1.name as g1name, g2.name as g2name, g3.name as g3name ".
   " FROM downloadlinks ".
   " LEFT JOIN prods on prods.id = downloadlinks.prod ".
@@ -44,4 +44,4 @@ while ($o = mysql_fetch_object($r)) {
   flush();
 }
 printf("</feed>\n");
-?>  
+?>

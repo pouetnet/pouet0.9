@@ -129,7 +129,7 @@ echo "\t<date>".$prod["date"]."</date>\n".
 
 // other parties?
 // for($i=0;$i<count($prodotherparties);$i++):
-       
+
 // affils?
 // if(count($affils)):
 // print($affils[$i]["prod2"]);

@@ -37,7 +37,7 @@ if ($_GET["pixturhack"]) {
   $query =  "select name,id,prodz.* from groups ";
   $query .= "left join (select sum(voteup) as t_up,sum(votedown) as t_down,group1,count(*) as nprods from prods group by group1) as prodz on prodz.group1 = groups.id ";
   $query .= "order by t_up desc limit 1000";
-  
+
 }
 $r = mysql_query($query) or die(mysql_error());
 
@@ -66,8 +66,8 @@ while ($o = mysql_fetch_object($r)) {
     $party = $r["partyname"]." ".$year;
     $platform = $r["platform"];
     $pouetID = $r["id"];
-*/  
+*/
   printf(" </prod>\n");
 }
 printf(" </feed>\n");
-?>  
+?>

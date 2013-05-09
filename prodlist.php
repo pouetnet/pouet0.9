@@ -112,7 +112,7 @@ for($i=0;$i<count($_GET["platform"]);$i++) {
   		if ($_GET["platform"][$i]==$platforms[$j]["name"]):
  			$platfquery.="platforms.name='".$_GET["platform"][$i]."' OR ";
  			$platfcheck++;
-  		endif; 
+  		endif;
   	}
   }
 unset($typecheck);
@@ -152,7 +152,7 @@ if ($_GET["reverse"])
   if (substr($orderClause,-5)==" DESC")
     $orderClause = str_replace(" DESC"," ASC",$orderClause);
   else
-    $orderClause = str_replace(","," DESC,",$orderClause) . " DESC"; 
+    $orderClause = str_replace(","," DESC,",$orderClause) . " DESC";
 }
 
 $query .= $orderClause;
@@ -209,7 +209,7 @@ for($i=0;$i<count($prods);$i++) {
 		if (strlen($prods[$i]["groupn3"])>10 && $prods[$i]["groupacron3"]) $prods[$i]["groupn3"]=$prods[$i]["groupacron3"];
 	endif;
 	
-  
+
   $result=mysql_query("SELECT * from sceneorgrecommended where prodid=".$prods[$i]["id"]." ORDER BY type");
   while($tmp=mysql_fetch_array($result)) {
   	$sceneorgrecommends[]=$tmp;
@@ -245,7 +245,7 @@ if($platfcheck) {
    <table bgcolor="#000000" cellspacing="1" cellpadding="2" border="0">
     <tr bgcolor="#224488">
      <th>
-     <? 
+     <?
      	$pagelink="prodlist.php?";
      	if($_GET["platform"]) foreach($_GET["platform"] as $p)
      	  $pagelink.="platform[]=".rawurlencode($p)."&amp;";
@@ -259,7 +259,7 @@ if($platfcheck) {
         //unset($_SESSION['ourorder']);
         $_SESSION['ourorder']=$order;
         //print("->".$sortlink."<-");
-        
+
       function printSortlink($ord)
       {
         global $sortlink;
@@ -274,7 +274,7 @@ if($platfcheck) {
       if ($_GET["order"])
         $pagelink.="order=".rawurlencode($_GET["order"])."&amp;";
      ?>
-     
+
       <table><tr>
        <td>
          <a href="<? printSortlink("type"); ?>"><img src="gfx/<? print(goodfleche("type",$order)); ?>.gif" width="13" height="12" border="0"></a><br />
@@ -374,7 +374,7 @@ if($platfcheck) {
        print("<tr bgcolor=\"#557799\">");
      }
      ?>
-      
+
       <? $typess = explode(",", $prods[$i]["type"]);
 		print("<td nowrap><table cellspacing=\"0\" cellpadding=\"0\"><tr><td nowrap><a href=\"prod.php?which=".$prods[$i]["id"]."\">");
 		for($k=0;$k<count($typess);$k++) {
@@ -384,8 +384,8 @@ if($platfcheck) {
       ?>
       <a href="prod.php?which=<? print($prods[$i]["id"]); ?>"><b><? print(strtolower(stripslashes($prods[$i]["name"]))); ?></b></a>
       <?
-      
-      		print("<td>&nbsp;</td>");   
+
+      		print("<td>&nbsp;</td>");
       		
       		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
@@ -403,7 +403,7 @@ if($platfcheck) {
 		 print("<br /></td>");
 		endif;
 
-		print("<td width=\"100%\">&nbsp;</td>");      
+		print("<td width=\"100%\">&nbsp;</td>");
 		
       		$platforms = explode(",", $prods[$i]["allplatforms"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
@@ -447,7 +447,7 @@ if($platfcheck) {
              		case 61:
              		case 71:
              		case 81:
-             		case 91: $placeadj="st"; 
+             		case 91: $placeadj="st";
              			print("<td nowrap>".$prods[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$i]["party"]."&when=".sprintf("%02d",$prods[$i]["party_year"])."\">".$prods[$i]["partyname"]."</a><br /></td>\n");
              			break;
              		case 2:
@@ -458,7 +458,7 @@ if($platfcheck) {
              		case 62:
              		case 72:
              		case 82:
-             		case 92: $placeadj="nd"; 
+             		case 92: $placeadj="nd";
              			print("<td nowrap>".$prods[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$i]["party"]."&when=".sprintf("%02d",$prods[$i]["party_year"])."\">".$prods[$i]["partyname"]."</a><br /></td>\n");
              			break;
              		case 3:
@@ -469,7 +469,7 @@ if($platfcheck) {
              		case 63:
              		case 73:
              		case 83:
-             		case 93: $placeadj="rd"; 
+             		case 93: $placeadj="rd";
              			print("<td nowrap>".$prods[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$i]["party"]."&when=".sprintf("%02d",$prods[$i]["party_year"])."\">".$prods[$i]["partyname"]."</a><br /></td>\n");
              			break;
                 case 97: print("<td nowrap>disqualified at <a href=\"party.php?which=".$prods[$i]["party"]."&when=".sprintf("%02d",$prods[$i]["party_year"])."\">".$prods[$i]["partyname"]."</a><br /></td>\n");
@@ -482,9 +482,9 @@ if($platfcheck) {
              			print("<td nowrap>".$prods[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$i]["party"]."&when=".sprintf("%02d",$prods[$i]["party_year"])."\">".$prods[$i]["partyname"]."</a><br /></td>\n");
              			break;
            		}
-         	} else 
+         	} else
          	{
-         		 $placeadj = "??"; 
+         		 $placeadj = "??";
          		 print("<td nowrap>".$prods[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$i]["party"]."&when=".sprintf("%02d",$prods[$i]["party_year"])."\">".$prods[$i]["partyname"]."</a><br /></td>\n");
 		}
         } else {
@@ -506,7 +506,7 @@ if($platfcheck) {
 		?>
        <? print($month." ".$year); ?><br />
       </td>
-      
+
 <?
 	if ($prods[$i]["voteup"])
 	{ print("<td>\n".$prods[$i]["voteup"]."</td>\n");
@@ -560,7 +560,7 @@ if($platfcheck) {
          </a>
         </td>
        <? endif; ?>
-  
+
         <td width="50%" align="right">
         <select name="page">
         <? for($i=1;($i-1)<=($nbprods/$prods_per_page);$i++): ?>

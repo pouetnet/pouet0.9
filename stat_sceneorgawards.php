@@ -23,7 +23,7 @@ $sqlz["scene.org nominations by party"] =
 foreach ($sqlz as $desc=>$sql) {
   $r = mysql_query($sql) or die(mysql_error());
   ?>
-  
+
   <br />
   <table width="30%">
   <tr><td>

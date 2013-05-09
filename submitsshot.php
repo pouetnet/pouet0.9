@@ -37,7 +37,7 @@ if(is_uploaded_file($sshotfile))
   if(file_exists("screenshots/".$which.".gif")||file_exists("screenshots/".$which.".jpg")||file_exists("screenshots/".$which.".png"))
   {
     if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator')
-    { 
+    {
     	unlink("screenshots/".$which.".jpg");
     	unlink("screenshots/".$which.".gif");
     	unlink("screenshots/".$which.".png");

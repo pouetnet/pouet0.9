@@ -50,7 +50,7 @@ switch($order) {
 	  	$query="SELECT id,nickname,quand,level,avatar,glops FROM users WHERE (".$sqlwhere.") ORDER BY nickname";
 	  	$cquery="SELECT count(0) FROM users WHERE (".$sqlwhere.") ORDER BY nickname";
 	        break;
-	  case "age": 
+	  case "age":
 	  	$query="SELECT id,nickname,quand,level,avatar,glops FROM users ORDER BY quand";
 	  	if(($page<=0)||(!$page)) {
 		  $page=1;
@@ -58,7 +58,7 @@ switch($order) {
 		$query.=" LIMIT ".(($page-1)*$users_per_page).",$users_per_page";
 	  	$cquery="SELECT count(0) FROM users ORDER BY quand";
 	  	break;
-	  case "glops": 
+	  case "glops":
 	  	$query="SELECT id,nickname,quand,level,avatar,glops FROM users ORDER BY glops DESC";
 	  	if(($page<=0)||(!$page)) {
 		  $page=1;
@@ -66,7 +66,7 @@ switch($order) {
 		$query.=" LIMIT ".(($page-1)*$users_per_page).",$users_per_page";
 	  	$cquery="SELECT count(0) FROM users ORDER BY glops DESC";
 	  	break;
-	  case "level": 
+	  case "level":
 	  	$query="SELECT id,nickname,quand,level,avatar,glops FROM users ORDER BY level ASC, quand";
 	  	if(($page<=0)||(!$page)) {
 		  $page=1;
@@ -74,7 +74,7 @@ switch($order) {
 		$query.=" LIMIT ".(($page-1)*$users_per_page).",$users_per_page";
 	  	$cquery="SELECT count(0) FROM users ORDER BY quand";
 	  	break;
-	  default: 
+	  default:
 	  	$query="SELECT id,nickname,quand,level,avatar,glops FROM users WHERE (".$sqlwhere.") ORDER BY nickname";
 	  	$cquery="SELECT count(0) FROM users WHERE (".$sqlwhere.") ORDER BY nickname";
 	        break;
@@ -263,7 +263,7 @@ if(!$maxglops)$maxglops=1;
      </th>
     </tr>
     <? else:
-    
+
     $nextlink="userlist.php?order=".$order."&page=";
    ?>
     <tr bgcolor="#224488">
@@ -320,9 +320,9 @@ if(!$maxglops)$maxglops=1;
       </table>
      </td>
     </tr>
-   
-    
-    
+
+
+
     <? endif; ?>
    </table>
   </td>

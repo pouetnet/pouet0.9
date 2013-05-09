@@ -21,7 +21,7 @@ $platforms = array();
 
 // latest commented prods
 /*
-$query="SELECT 
+$query="SELECT
 prods.id,prods.name,prods.group1,prods.group2,prods.group3,prods.type,comments.who,";
 if ($com) $query.="comments.comment,";
 $query.="comments.rating,users.nickname,users.avatar,UNIX_TIMESTAMP()-UNIX_TIMESTAMP(comments.quand) as difftime, ".
@@ -41,7 +41,7 @@ $query.="comments.rating,users.nickname,users.avatar,UNIX_TIMESTAMP()-UNIX_TIMES
 " GROUP BY comments.id".
 " ORDER BY comments.quand DESC";
 */
-$query = "SELECT 
+$query = "SELECT
 prods.id,prods.name,prods.group1,prods.group2,prods.group3,prods.type,c.who,";
 if ($com) $query.=" c.comment,";
 $query.=" c.rating, users.nickname, users.avatar, UNIX_TIMESTAMP()-UNIX_TIMESTAMP(c.quand) as difftime, ".
@@ -184,7 +184,7 @@ for($i=0;$i<count($comments);$i++) {
       <td bgcolor="<?=$tdcolor?>" align="left">
        <?
      	switch((int)($comments[$i]["rating"]))
-             { 
+             {
              	case 1: print("<img src=\"gfx/rulez.gif\" alt=\"rulez!\">");
              		break;
              	case -1: print("<img src=\"gfx/sucks.gif\" alt=\"sucks!\">");
@@ -224,7 +224,7 @@ for($i=0;$i<count($comments);$i++) {
        </table>
       </td>
      </tr>
-    <? 
+    <?
     flush();
     endfor; ?>
    </table>

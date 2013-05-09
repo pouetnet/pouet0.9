@@ -191,13 +191,13 @@ endfor;
       </tr></table>
 	 </td>
     </tr>
-    <? for($i=0;$i<count($cdc);$i++): 
+    <? for($i=0;$i<count($cdc);$i++):
       if($i%2) {
        print("<tr bgcolor=\"#446688\">");
      } else {
        print("<tr bgcolor=\"#557799\">");
-     } 
-     
+     }
+
 	     	$typess = explode(",", $cdc[$i]["type"]);
 		print("<td nowrap><table cellspacing=\"0\" cellpadding=\"0\"><tr><td nowrap><a href=\"prod.php?which=".$cdc[$i]["which"]."\">");
 		for($k=0;$k<count($typess);$k++) {
@@ -213,7 +213,7 @@ endfor;
        		}
        		print("</tr></table></td>\n");
      ?>
-     
+
      <td nowrap>
      <? if(strlen($cdc[$i]["groupname1"])): ?>
        <a href="groups.php?which=<? print($cdc[$i]["group1"]); ?>">
@@ -266,7 +266,7 @@ endfor;
        print("<tr bgcolor=\"#446688\">");
      } else {
        print("<tr bgcolor=\"#557799\">");
-     } 
+     }
      		$typess = explode(",", $pcdc[$i]["type"]);
 		print("<td nowrap><table cellspacing=\"0\" cellpadding=\"0\"><tr><td nowrap><a href=\"prod.php?which=".$pcdc[$i]["which"]."\">");
 		for($k=0;$k<count($typess);$k++) {
@@ -281,7 +281,7 @@ endfor;
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
        		print("</tr></table></td>\n");
-     
+
      ?>
      <td nowrap>
      <? if(strlen($pcdc[$i]["groupname1"])): ?>

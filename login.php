@@ -22,12 +22,12 @@ $refer = $HTTP_REFERER ? $HTTP_REFERER : "index.php";
 switch($returnvalue["returnvalue"])
 {
 	case 30: { // login successful
-    
+
 		if(authenticate($returnvalue["userID"]) != 1) // user found from pouet.net db
 		{
 		// no user found from pouet.net database, create a new one.
       $userparams = array("userID" => $returnvalue["userID"]);
-        
+
       $returnvalue = $xml->parseSceneIdData("getUserInfo", $userparams);
       //if($returnvalue["returnvalue"]==10)
       $u = $returnvalue["user"];
@@ -35,24 +35,24 @@ switch($returnvalue["returnvalue"])
       $query= "INSERT users SET ";
       $query.="id=".(int)$returnvalue["userID"].", ";
       $query.="nickname='".mysql_real_escape_string($u["nickname"] ? $u["nickname"] : $_REQUEST["login"])."', ";
-    
+
       $entry = glob("./avatars/*.gif");
       $r = $entry[array_rand($entry)];
       $a = str_replace("./avatars/","",$r);
-    
+
       $query.="avatar='".$a."', "; // todo
       $query.="lastip='".$_SERVER["REMOTE_ADDR"]."', ";
       $query.="lasthost='".gethostbyaddr($_SERVER["REMOTE_ADDR"])."', ";
       $query.="quand=NOW()";
       mysql_query($query);
-      
+
       authenticate($returnvalue["userID"]);
 		}
 		
 		
 	  setcookie($returnvalue["cookie"]["name"],
 	            $returnvalue["cookie"]["value"],
-	            $returnvalue["cookie"]["expires"], 
+	            $returnvalue["cookie"]["expires"],
               $returnvalue["cookie"]["path"], ".pouet.net");
 //		                  $cookie["path"], $cookie["domain"]);
 //		                  $returnvalue["cookie["path"], "localhost");

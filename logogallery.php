@@ -8,7 +8,7 @@ while ($tmp = mysql_fetch_assoc($result))
 ?>
 
 <?
-foreach ($logos as $logo) { // we display each logo 
+foreach ($logos as $logo) { // we display each logo
 ?>
 
 <input type="hidden" name="id" value="<?=$logo['id']?>">

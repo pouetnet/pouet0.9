@@ -67,7 +67,7 @@ $typ = explode(",", $o->type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>"></a><?
 }	
-?>  
+?>
   <a href="prod.php?which=<?=$o->id?>"><?=$o->name?></a>
 </td>
 <td>
@@ -77,7 +77,7 @@ if ($o->group1) $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$o->group1
 if ($o->group2) $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$o->group2,$o->groupn2);
 if ($o->group3) $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$o->group3,$o->groupn3);
 echo implode(" :: ",$a);
-?>  
+?>
 </td>
 <td>
 <?
@@ -154,7 +154,7 @@ $typ = explode(",", $o->type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>"></a><?
 }	
-?>  
+?>
 <a href="prod.php?which=<?=$o->id?>"><?=$o->name?></a></td>
 <td>
 <?
@@ -163,7 +163,7 @@ if ($o->group1) $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$o->group1
 if ($o->group2) $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$o->group2,$o->groupn2);
 if ($o->group3) $a[] = sprintf("<a href='groups.php?which=%d'>%s</a>",$o->group3,$o->groupn3);
 echo implode(" :: ",$a);
-?>  
+?>
 </td>
 <td>
 <?

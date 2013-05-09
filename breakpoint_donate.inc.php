@@ -28,7 +28,7 @@ if (!$_SESSION["nodonate"]) {
     <td><img src="http://www.pouet.net/gfx/titles/coupdecoeur.gif"/></td>
     </tr>
     </table>
-    
+
 <?
 $fn = "cache/bpbudget.inc";
 if (!file_exists($fn) || time() - filemtime($fn) < 3600) {
@@ -38,15 +38,15 @@ if (!file_exists($fn) || time() - filemtime($fn) < 3600) {
 		$content .= fgets($f, 4096);
 	}
   fclose($f);
-  
+
   $content = str_replace("<table","<table id='bpbudget'",$content);
-  
+
   $f = fopen($fn,"w");
   fwrite($f,$content);
   fclose($f);
 }
 echo file_get_contents($fn);
-?>    
+?>
 
   </td>
  </tr>

@@ -12,7 +12,7 @@ $fields = array(
   "party" => "release party",
   "party_year" => "release party year",
   "party_place" => "release party ranking",
-);  
+);
 
 if ($_POST["requestid"]) {
   if ($_POST["approve"]) {
@@ -23,7 +23,7 @@ if ($_POST["requestid"]) {
     $sql = sprintf("update prods set %s = '%s' where id=%d",
       $o->field,addslashes($o->newvalue),$o->prodid);
     $r = mysql_query($sql);
-    
+
     $sql = sprintf("update editrequests set approved = 1, gloperatorid = %d where id=%d",
       $_SESSION["SCENEID_ID"],$_POST["requestid"]);
     mysql_query($sql);

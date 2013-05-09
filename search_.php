@@ -2,7 +2,7 @@
 require("include/top.php");
 require("include/libbb.php");
 
-function cmp_avg($a, $b) 
+function cmp_avg($a, $b)
 {
      if ($a["avg_rating"] == $b["avg_rating"])
      {
@@ -11,7 +11,7 @@ function cmp_avg($a, $b)
      return ($a["avg_rating"] > $b["avg_rating"]) ? -1 : 1;
 }
 
-function cmp_avg_rev($a, $b) 
+function cmp_avg_rev($a, $b)
 {
      if ($a["avg_rating"] == $b["avg_rating"])
      {
@@ -20,7 +20,7 @@ function cmp_avg_rev($a, $b)
      return ($a["avg_rating"] < $b["avg_rating"]) ? -1 : 1;
 }
 
-function cmp_tot($a, $b) 
+function cmp_tot($a, $b)
 {
      if ($a["total"] == $b["total"])
      {
@@ -303,7 +303,7 @@ if($type=="prod") {
      } else {
        print("<tr bgcolor=\"#557799\">");
      }
-     
+
      		$typess = explode(",", $results[$i]["type"]);
 		print("<td nowrap><table cellspacing=\"0\" cellpadding=\"0\"><tr><td nowrap><a href=\"prod.php?which=".$results[$i]["id"]."\">");
 		for($k=0;$k<count($typess);$k++) {
@@ -334,8 +334,8 @@ if($type=="prod") {
        		}
        		
        		print("</tr></table></td>\n");
-     
-     
+
+
      ?>
 
       <td><a href="groups.php?which=<? print($results[$i]["group1"]); ?>"><? print(strtolower($results[$i]["groupn1"])); ?></a>
@@ -343,8 +343,8 @@ if($type=="prod") {
       <? if ($results[$i]["groupn3"]) {print(" :: ");} ?><a href="groups.php?which=<? print($results[$i]["group3"]); ?>"><? print(strtolower($results[$i]["groupn3"])); ?></a>
       </td>
 
-      
-<?      
+
+<?
       if(($results[$i]["partyname"])&&!($results[$i]["party"]==1024))
 	{
 		if($results[$i]["party_place"])
@@ -363,7 +363,7 @@ if($type=="prod") {
              		case 61:
              		case 71:
              		case 81:
-             		case 91:  $placeadj="st"; 
+             		case 91:  $placeadj="st";
              			print("<td>".$results[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
 			case 2:
@@ -374,7 +374,7 @@ if($type=="prod") {
              		case 62:
              		case 72:
              		case 82:
-             		case 92:  $placeadj="nd"; 
+             		case 92:  $placeadj="nd";
              			print("<td>".$results[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
              		case 3:
@@ -385,7 +385,7 @@ if($type=="prod") {
              		case 63:
              		case 73:
              		case 83:
-             		case 93:  $placeadj="rd"; 
+             		case 93:  $placeadj="rd";
              			print("<td>".$results[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
                 	case 97: print("<td>disqualified at <a href=\"party.php?which=".$results[$i]["party"]."&when=".sprintf("%02d",$results[$i]["party_year"])."\">".$results[$i]["partyname"]." ".sprintf("%02d",$results[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
@@ -451,12 +451,12 @@ if($type=="prod") {
 	DoBar($pourcent);
 	print("</td>\n");
 
-?>      
-      
-      
+?>
+
+
      </tr>
     <? endfor; ?>
-    
+
        <? if((($nb_posts-1)/$posts_per_page)>0): ?>
 		<tr bgcolor="#224488">
          <td colspan="9">

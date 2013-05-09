@@ -28,7 +28,7 @@ function goodfleche($wanted,$current) {
   return $fleche;
 }
 
-function reorder_prodtype($a, $b) 
+function reorder_prodtype($a, $b)
 {
 	if (($a["type"] == "prod") && ($b["type"] == "prod")) {
      if ($a["prodtype"] == $b["prodtype"])
@@ -58,7 +58,7 @@ function reorder_prodtype($a, $b)
 	}
 }
 
-/*function reorder_date($a, $b) 
+/*function reorder_date($a, $b)
 {
      if ($a["date"] == $b["date"])
      {
@@ -67,7 +67,7 @@ function reorder_prodtype($a, $b)
      return ($a["date"] > $b["date"]) ? -1 : 1;
 }
 
-function reorder_id($a, $b) 
+function reorder_id($a, $b)
 {
      if ($a["id"] == $b["id"])
      {
@@ -76,7 +76,7 @@ function reorder_id($a, $b)
      return ($a["id"] > $b["id"]) ? -1 : 1;
 }*/
 
-function reorder_id_and_date($a, $b) 
+function reorder_id_and_date($a, $b)
 {
 	if (($a["type"] == "prod") && ($b["type"] == "prod")) {
 	     if ($a["date"] == $b["date"])
@@ -107,7 +107,7 @@ function reorder_id_and_date($a, $b)
 }
 
 
-function reorder_partycompo($a, $b) 
+function reorder_partycompo($a, $b)
 {
 	if (($a["type"] == "prod") && ($b["type"] == "prod")) {
      if ($a["partycompo"] == $b["partycompo"])
@@ -137,7 +137,7 @@ function reorder_partycompo($a, $b)
 	}
 }
 
-function reorder_name($a, $b) 
+function reorder_name($a, $b)
 {
 	if (($a["type"] == "prod") && ($b["type"] == "prod")) {
      if (strtolower($a["name"]) == strtolower($b["name"]))
@@ -167,7 +167,7 @@ function reorder_name($a, $b)
 	}
 }
 
-function reorder_platform($a, $b) 
+function reorder_platform($a, $b)
 {
 	if (($a["type"] == "prod") && ($b["type"] == "prod")) {
      if ($a["platform"] == $b["platform"])
@@ -197,7 +197,7 @@ function reorder_platform($a, $b)
 	}
 }
 
-/*function reorder_views($a, $b) 
+/*function reorder_views($a, $b)
 {
      if ($a["views"] == $b["views"])
      {
@@ -206,7 +206,7 @@ function reorder_platform($a, $b)
      return ($a["views"] > $b["views"]) ? -1 : 1;
 }
 
-function reorder_thumbup($a, $b) 
+function reorder_thumbup($a, $b)
 {
      if ($a["voteup"] == $b["voteup"])
      {
@@ -215,7 +215,7 @@ function reorder_thumbup($a, $b)
      return ($a["voteup"] > $b["voteup"]) ? -1 : 1;
 }
 
-function reorder_thumbpig($a, $b) 
+function reorder_thumbpig($a, $b)
 {
      if ($a["votepig"] == $b["votepig"])
      {
@@ -225,7 +225,7 @@ function reorder_thumbpig($a, $b)
 }
 
 
-function reorder_thumbdown($a, $b) 
+function reorder_thumbdown($a, $b)
 {
      if ($a["votedown"] == $b["votedown"])
      {
@@ -234,7 +234,7 @@ function reorder_thumbdown($a, $b)
      return ($a["votedown"] > $b["votedown"]) ? -1 : 1;
 }
 
-function reorder_avg($a, $b) 
+function reorder_avg($a, $b)
 {
      if ($a["voteavg"] == $b["voteavg"])
      {
@@ -381,11 +381,11 @@ if($which) {
 	}
 	
 	switch($prodorder) {
-	  case "type": usort($listitems, "reorder_id_and_date"); 
+	  case "type": usort($listitems, "reorder_id_and_date");
 	  	       usort($listitems, "reorder_prodtype"); break;
 	  case "name": usort($listitems, "reorder_name"); break;
 	  case "release": usort($listitems, "reorder_id_and_date"); break;
-	  case "platform": usort($listitems, "reorder_id_and_date"); 
+	  case "platform": usort($listitems, "reorder_id_and_date");
 	  		   usort($listitems, "reorder_platform"); break;
 /*	  case "views": usort($listitems, "reorder_views"); break;
 	  case "thumbup": usort($listitems, "reorder_thumbup"); break;
@@ -411,7 +411,7 @@ if($which) {
     <tr bgcolor="#224488">
      <th colspan="9">
      <center>
-     <? 
+     <?
      	$i=0;
 	//print("<b><a href=\"lists.php?which=".$lists[$i]["id"]."\">".$lists[$i]["name"]."</a></b> - ".$lists[$i]["desc"]);
 	print("<b><a href=\"lists.php?which=".$lists[$i]["id"]."\">".$lists[$i]["name"]."</a></b>");
@@ -593,7 +593,7 @@ if($which) {
        			print("<tr bgcolor=\"#557799\">\n");
      		 }
 			//print("pokaman");		
-		 if ($listitems[$i]["type"]=="prod"): 
+		 if ($listitems[$i]["type"]=="prod"):
 
 			$typess = explode(",", $listitems[$i]["prodtype"]);
 			print("<td nowrap><table cellspacing=\"0\" cellpadding=\"0\"><tr><td nowrap><a href=\"prod.php?which=".$listitems[$i]["id"]."\">");
@@ -624,7 +624,7 @@ if($which) {
 			print("<td width=\"100%\">&nbsp;</td>");
 	       	
 	       		$platforms = explode(",", $listitems[$i]["platform"]);
-	       		for($kkk=0; $kkk<count($platforms); $kkk++){ 
+	       		for($kkk=0; $kkk<count($platforms); $kkk++){
 	       		 print("<td align=\"right\"><a href=\"prodlist.php?platform=".$platforms[$kkk]."\"><img src=\"gfx/os/".$os[$platforms[$kkk]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$platforms[$kkk]."\"></a><br /></td>");
 	       		}
 	       		
@@ -648,7 +648,7 @@ if($which) {
 		             		case 61:
 		             		case 71:
 		             		case 81:
-		             		case 91:  $placeadj="st"; 
+		             		case 91:  $placeadj="st";
 		             			print("<td>".$listitems[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$listitems[$i]["party"]."&when=".sprintf("%02d",$listitems[$i]["party_year"])."\">".$listitems[$i]["partyname"]." ".sprintf("%02d",$listitems[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
 		             			break;
 		             		case 2:
@@ -659,7 +659,7 @@ if($which) {
 		             		case 62:
 		             		case 72:
 		             		case 82:
-		             		case 92:  $placeadj="nd"; 
+		             		case 92:  $placeadj="nd";
 		             			print("<td>".$listitems[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$listitems[$i]["party"]."&when=".sprintf("%02d",$listitems[$i]["party_year"])."\">".$listitems[$i]["partyname"]." ".sprintf("%02d",$listitems[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
 		             			break;
 		             		case 3:
@@ -670,7 +670,7 @@ if($which) {
 		             		case 63:
 		             		case 73:
 		             		case 83:
-		             		case 93:  $placeadj="rd"; 
+		             		case 93:  $placeadj="rd";
 		             			print("<td>".$listitems[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$listitems[$i]["party"]."&when=".sprintf("%02d",$listitems[$i]["party_year"])."\">".$listitems[$i]["partyname"]." ".sprintf("%02d",$listitems[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
 		             			break;
 		                	case 97: print("<td>disqualified at <a href=\"party.php?which=".$listitems[$i]["party"]."&when=".sprintf("%02d",$listitems[$i]["party_year"])."\">".$listitems[$i]["partyname"]." ".sprintf("%02d",$listitems[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
@@ -683,15 +683,15 @@ if($which) {
 		             			print("<td>".$listitems[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$listitems[$i]["party"]."&when=".sprintf("%02d",$listitems[$i]["party_year"])."\">".$listitems[$i]["partyname"]." ".sprintf("%02d",$listitems[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
 		             			break;
 		           		}
-		         	} else 
+		         	} else
 		         	{
-		         		 $placeadj = "??"; 
+		         		 $placeadj = "??";
 		         		 print("<td>".$listitems[$i]["party_place"].$placeadj." at <a href=\"party.php?which=".$listitems[$i]["party"]."&when=".sprintf("%02d",$listitems[$i]["party_year"])."\">".$listitems[$i]["partyname"]." ".sprintf("%02d",$listitems[$i]["party_year"])."</a>".$compophrase."<br /></td>\n");
 				}
 		        } else {
-		       	  if ($listitems[$i]["party"]==1024) print("<td>no party<br /></td>\n"); 
+		       	  if ($listitems[$i]["party"]==1024) print("<td>no party<br /></td>\n");
 		       	   else print("<td>??<br /></td>\n");
-		        } 
+		        }
 		
 			if(($listitems[$i]["date"]!="0000-00-00")&&(strlen($listitems[$i]["date"])>0))
 		       	{
@@ -713,7 +713,7 @@ if($which) {
 		           }
 		           print("<td>".$rmonth." ".$rdate[0]."<br /></td>\n");
 			} else {
-				print("<td>&nbsp;<br /></td>\n");  
+				print("<td>&nbsp;<br /></td>\n");
 			}
 			
 	/*		if ($listitems[$i]["voteup"])
@@ -756,7 +756,7 @@ if($which) {
 			<a href="groups.php?which=<?=$listitems[$i]["group1"]?>"><?=$listitems[$i]["groupname1"]?></a>
 			<? if ($listitems[$i]["groupname2"]) {print(" &amp; ");} ?><a href="groups.php?which=<?=$listitems[$i]["group2"]?>"><?=$listitems[$i]["groupname2"]?></a>
 			<? if ($listitems[$i]["groupname3"]) {print(" &amp; ");} ?><a href="groups.php?which=<?=$listitems[$i]["group3"]?>"><?=$listitems[$i]["groupname3"]?></a>
-			<br /></td> */ 
+			<br /></td> */
 		 elseif ($listitems[$i]["type"]=="user"):  ?>
 		  <td colspan="9">
 		   <table cellspacing="0" cellpadding="0">
@@ -771,7 +771,7 @@ if($which) {
 		<td colspan="9"><a href="party.php?which=<? print($listitems[$i]["itemid"]); ?>"><? print($listitems[$i]["partyname"]); ?></a>
 		 <? if($listitems[$i]["partyweb"]) print(" [<a href=\"".$listitems[$i]["partyweb"]."\">web</a>]\n"); ?><br /></td>
 		<? elseif ($listitems[$i]["type"]=="group"):  ?>
-		<td colspan="9"><a href="groups.php?which=<? print($listitems[$i]["itemid"]); ?>"><? print($listitems[$i]["groupname"]); 
+		<td colspan="9"><a href="groups.php?which=<? print($listitems[$i]["itemid"]); ?>"><? print($listitems[$i]["groupname"]);
 		 if($listitems[$i]["groupacronym"]) print(" [".$listitems[$i]["groupacronym"]."]"); ?></a>
 		 <? if($listitems[$i]["groupweb"]) print(" [<a href=\"".$listitems[$i]["groupweb"]."\">web</a>]\n");
 		 if($listitems[$i]["groupcsdb"]) print(" [<a href=\"http://noname.c64.org/csdb/group/?id=".$listitems[$i]["groupcsdb"]."\">csdb</a>]\n");
@@ -785,9 +785,9 @@ if($which) {
      	</tr>
      	<?
      	endfor;
-     } 
+     }
      print("<tr bgcolor=\"#224488\">");
-     if($which): 
+     if($which):
        if(count($lists)!=0): ?>
        <td colspan="3" align="right">
         <table cellspacing="0" cellpadding="0">

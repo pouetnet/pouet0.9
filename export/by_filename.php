@@ -15,7 +15,7 @@ while($o = mysql_fetch_object($r))
     $name .= " by ".$o->g1name;
   if ($o->g2name)
     $name .= " and ".$o->g2name;
-  
+
   printf("<a href='http://www.pouet.net/prod.php?which=%d'>%s</a>\n",$o->id,$name);
 }
 ?>

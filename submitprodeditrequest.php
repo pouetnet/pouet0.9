@@ -12,7 +12,7 @@ $fields = array(
   "party" => "release party",
   "party_year" => "release party year",
   "party_place" => "release party ranking",
-);  
+);
 
 $pid = $_GET["which"] ? $_GET["which"] : $_POST["prodid"];
 if ($pid) {
@@ -42,7 +42,7 @@ please enter the prod id you wish to have edited:
 ?>
 <input type="hidden" name="prodid" value="<?=((int)$pid)?>"/>
 please select the field/parameter you wish to have edited for <b><?=$o->name?></b>:
-  
+
 <select name="field">
 <? foreach($fields as $k=>$v) {?>
   <option value="<?=$k?>"><?=$v?></option>
@@ -61,7 +61,7 @@ please enter the correct value for <b><?=$fields[$_POST["field"]]?></b> for <b><
   $sql = sprintf("insert into editrequests set prodid='%d', field='%s', newvalue='%s', userid='%d', datetime='%s'",
     $pid,$_POST["field"],$_POST["newvalue"],$_SESSION["SCENEID_ID"],date("Y-m-d H:i:s"));
   $r = mysql_query($sql);
-  
+
   echo "thanks for your correction. it will soon be reviewed by someone worthy enough to fuck up the site.";
 }
 ?>

@@ -19,7 +19,7 @@ function lettermenu($pattern) {
   print(" ]<br />\n");
 }
 
-function cmpcomments($a, $b) 
+function cmpcomments($a, $b)
 {
      if ($a["lcom_quand"] == $b["lcom_quand"])
      {
@@ -109,7 +109,7 @@ while($tmp = mysql_fetch_array($result)) {
 	//get max_views for popularity
 	$result=mysql_query("SELECT MAX(views) FROM prods");
 	$max_views=mysql_result($result,0);
-  
+
   	if ($order=="latestcomment") usort($prods, "cmpcomments");
 
 ?>
@@ -267,7 +267,7 @@ while($tmp = mysql_fetch_array($result)) {
              		case 61:
              		case 71:
              		case 81:
-             		case 91:  $placeadj="st"; 
+             		case 91:  $placeadj="st";
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
              		case 2:
@@ -278,7 +278,7 @@ while($tmp = mysql_fetch_array($result)) {
              		case 62:
              		case 72:
              		case 82:
-             		case 92:  $placeadj="nd"; 
+             		case 92:  $placeadj="nd";
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
              		case 3:
@@ -289,7 +289,7 @@ while($tmp = mysql_fetch_array($result)) {
              		case 63:
              		case 73:
              		case 83:
-             		case 93:  $placeadj="rd"; 
+             		case 93:  $placeadj="rd";
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
                 	case 97: print("<td>disqualified at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
@@ -302,15 +302,15 @@ while($tmp = mysql_fetch_array($result)) {
              			print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
              			break;
            		}
-         	} else 
+         	} else
          	{
-         		 $placeadj = "??"; 
+         		 $placeadj = "??";
          		 print("<td>".$prods[$j]["party_place"].$placeadj." at <a href=\"party.php?which=".$prods[$j]["party"]."&when=".sprintf("%02d",$prods[$j]["party_year"])."\">".$prods[$j]["partyname"]." ".sprintf("%02d",$prods[$j]["party_year"])."</a>".$compophrase."<br /></td>\n");
 		}
         } else {
-       	  if ($prods[$j]["party"]==1024) print("<td>no party<br /></td>\n"); 
+       	  if ($prods[$j]["party"]==1024) print("<td>no party<br /></td>\n");
        	   else print("<td>??<br /></td>\n");
-        } 
+        }
 
 	if(($prods[$j]["date"]!="0000-00-00")&&(strlen($prods[$j]["date"])>0))
        	{
@@ -332,7 +332,7 @@ while($tmp = mysql_fetch_array($result)) {
            }
            print("<td>".$rmonth." ".$rdate[0]."<br /></td>\n");
 	} else {
-		print("<td>&nbsp;<br /></td>\n");  
+		print("<td>&nbsp;<br /></td>\n");
 	}
 	
 	if ($prods[$j]["voteup"])
@@ -401,10 +401,10 @@ while($tmp = mysql_fetch_array($result)) {
         </tr>
        </table>
       </td>
-      
+
        	<?
        	} else {
-		print("<td>&nbsp;<br /></td>\n");  
+		print("<td>&nbsp;<br /></td>\n");
 	} } ?>
    </table>
   </td>

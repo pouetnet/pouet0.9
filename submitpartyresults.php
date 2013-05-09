@@ -26,7 +26,7 @@ if(is_uploaded_file($resultsfile))
   if(file_exists("results/".$which."_".$when2d.".txt"))
   {
     if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator')
-    { 
+    {
     	unlink("results/".$which."_".$when2d.".txt");
     	copy($resultsfile, "results/".$which."_".$when2d.".txt");
   	unlink($resultsfile);

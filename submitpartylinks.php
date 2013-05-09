@@ -21,7 +21,7 @@ if($dir)
   // check user account
   if(!$_SESSION["SESSION"]||!$_SESSION["SCENEID"])
 	$errormessage[]="you need to be logged in first.";
-  
+
   // check if there already exists a download directory
   $query = "SELECT download FROM partylinks WHERE party=".$which." and year=".$when;
   $result = mysql_query($query);

@@ -396,7 +396,7 @@ if ($voteavg||$all)
 					$query="UPDATE prods SET voteup=".$rulez.", votepig=".$piggie.", votedown=".$sucks.", voteavg='".$avg."' where id=".$prods[$j]["id"];
 					print($query."<br />");
 					mysql_query($query);
-	}    
+	}
 	print("voteavg!<br />");
 }
 
@@ -442,7 +442,7 @@ if ($bbstopics||$all)
 				$query="UPDATE bbs_topics SET lastpost='".$topics[$i]["lastpost"]."', firstpost='".$topics[$i]["firstpost"]."', userlastpost='".$topics[$i]["latest"]."', userfirstpost='".$topics[$i]["starter"]."', count='".$topics[$i]["replies"]."' where id=".$topics[$i]["id"];
 				print($query."<br />");
 				mysql_query($query);
-	}    
+	}
 	print("bbstopics!<br />");
 }
 
@@ -528,7 +528,7 @@ if ($webtv||$all)
 					$query ="insert into downloadlinks set type = 'demoscene.tv', link = 'http://www.demoscene.tv/prod.php?id_prod=".$dtvid."', prod =". $pouetid;
 					$result = mysql_query($query);
 					echo "inserted, pouetid: " . $pouetid . " dtvid: " . $dtvid . "<br />";
-				} else { 
+				} else {
 					echo "already existed, pouetid: " . $pouetid . " dtvid: " . $dtvid . "<br />";
 				}
 				unset($prods);
@@ -572,7 +572,7 @@ if ($webtv||$all)
 				$query ="insert into downloadlinks set type = 'capped.tv', link = 'http://capped.tv/playeralt.php?vid=".$capped."', prod =". $pouetid;
 				$result = mysql_query($query);
 				echo "inserted, pouetid: " . $pouetid . " capped: " . $capped . "<br />";
-			} else { 
+			} else {
 				echo "already existed, pouetid: " . $pouetid . " capped: " . $capped . "<br />";
 			}
 			unset($prods);

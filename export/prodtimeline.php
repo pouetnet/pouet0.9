@@ -33,9 +33,9 @@ while ($o = mysql_fetch_object($r)) {
     $party = $r["partyname"]." ".$year;
     $platform = $r["platform"];
     $pouetID = $r["id"];
-*/  
+*/
   printf(" </prod>\n");
   flush();
 }
 printf(" </feed>\n");
-?>  
+?>

@@ -167,7 +167,7 @@ for($i=0;$i<count($comments);$i++) {
       <td bgcolor="<?=$tdcolor?>" align="left">
        <?
      	switch((int)($comments[$i]["rating"]))
-             { 
+             {
              	case 1: print("<img src=\"gfx/rulez.gif\" alt=\"rulez!\">");
              		break;
              	case -1: print("<img src=\"gfx/sucks.gif\" alt=\"sucks!\">");
@@ -207,7 +207,7 @@ for($i=0;$i<count($comments);$i++) {
        </table>
       </td>
      </tr>
-    <? 
+    <?
     flush();
     endfor; ?>
    </table>

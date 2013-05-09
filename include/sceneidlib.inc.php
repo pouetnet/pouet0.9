@@ -11,7 +11,7 @@
 *
 * 200701 Nicolas Leveille <knos@scene.org>
 *   Updated to run over SSL, optionaly using certificates (to enable
-*   registration capabilities, for portal class 1-2) 
+*   registration capabilities, for portal class 1-2)
 */
 
 @include_once("sceneidlib.config.php");
@@ -57,7 +57,7 @@ class FopenStream extends Stream
 class CurlStream extends Stream
 {
         /**
-   * options can be: 
+   * options can be:
    *   CURLOPT_CAINFO  : path for the CA certificate to use
    *     => implies peer verification
    *   CURLOPT_SSLCERT : path for the certificate to use
@@ -142,17 +142,17 @@ class SceneID
       $out  = "GET ".$url["path"]."?".$url["query"]." HTTP/1.1\r\n";
       $out .= "Host: ".$url["host"]."\r\n";
       $out .= "Connection: Close\r\n\r\n";
-  
+
       fwrite($f, $out);
       $data = NULL;
       while (!feof($f)) $data .= fgets($f, 4096);
       fclose($f);
       list($header,$data) = explode("\r\n\r\n",$data,2);
 
-      return $data;  
+      return $data;
     }
   }
-  
+
   //private
    static function parseSceneIdData($command, $param=NULL)
   {
@@ -171,7 +171,7 @@ class SceneID
     SceneID::$portals = NULL;
     SceneID::$cookie = NULL;
                 SceneID::$file = NULL;
-    
+
     if(is_array($param))
     {
       while(list($k,$v)=each($param))
@@ -222,7 +222,7 @@ class SceneID
       $returnvalue = -1;
       $curdata = "";
       $curlevel = 0;
-  
+
       if(!strcasecmp($vals[0]["tag"], "sceneid"))
       {
         while(list($k,$v)=each($vals))
@@ -233,11 +233,11 @@ class SceneID
             if(strtolower($v["tag"])=="email"&&$v["attributes"]["HIDDEN"]) {
               SceneID::$hidden = $v["attributes"]["HIDDEN"];
               SceneID::$user["hidden"] = $v["attributes"]["HIDDEN"];
-            } 
+            }
             else if(strtolower($v["tag"])=="emailhidden") {
               SceneID::$hidden = $v["value"];
               SceneID::$user["hidden"] = $v["value"];
-            } 
+            }
             else if(strtolower($v["tag"])=="country"&&$v["attributes"]["ID"])
             {
               SceneID::$country = $v["attributes"]["ID"];
@@ -329,10 +329,10 @@ class SceneID
           }
         }
       }
-  
+
       SceneID::$userID = SceneID::$user["id"];
       SceneID::$fileID = SceneID::$file["id"];
-      
+
       $tmpArray = array("returnvalue" => $returnvalue, "message" => SceneID::$message);
       if(isset(SceneID::$userID))
         $tmpArray = array_merge($tmpArray, array("userID" => SceneID::$userID));
@@ -347,9 +347,9 @@ class SceneID
       return $tmpArray;
     }
   }
-  
+
   /* Functions for all the SceneID enabled sites (minor website / portal class 4 or less). */
-  
+
   public static function loginUser($login, $password, $ip, $permanent=NULL, $externalid=NULL)
   {
     return SceneID::parseSceneIdData("loginUserMD5", array("login" => $login, "password" => md5($password),
@@ -365,7 +365,7 @@ class SceneID
   {
     return SceneID::logoutUser(NULL, $login);
   }
-  
+
   public static function logoutUser_Cookie($cookie)
   {
     return SceneID::logoutUser(NULL, NULL, $cookie);
@@ -375,7 +375,7 @@ class SceneID
   {
     return SceneID::parseSceneIdData("logoutUser", array("userID" => $userID, "login" => $login, "cookie" => $cookie));
   }
-  
+
   public static function getUserInfo_UserID($userID)
   {
     return SceneID::getUserInfo($userID);
@@ -395,16 +395,16 @@ class SceneID
   {
     return SceneID::parseSceneIdData("getUserInfo", array("userID" => $userID, "login" => $login, "cookie" => $cookie));
   }
-  
+
   public static function getPortalList()
   {
     return SceneID::parseSceneIdData("getPortalList");
   }
-  
+
   /* Functions for websites (portal class 3 or less) */
 
-  public static function setUserInfo($userID, $email=NULL, $password=NULL, $password2=NULL, 
-                              $nickname=NULL, $firstname=NULL, $lastname=NULL, 
+  public static function setUserInfo($userID, $email=NULL, $password=NULL, $password2=NULL,
+                              $nickname=NULL, $firstname=NULL, $lastname=NULL,
                               $url=NULL, $showinfo=NULL, $birthdate=NULL, $country=NULL)
   {
     $params["userID"]     = $userID;
@@ -448,7 +448,7 @@ class SceneID
   {
     return SceneID::parseSceneIdData("requestNewUserPassword", array("userID" => $userID, "login" => $login));
   }
-  
+
   /* Functions for portals (portal class 2 or less) */
 
   public static function renewUserPassword($key)
@@ -456,7 +456,7 @@ class SceneID
     return SceneID::parseSceneIdData("renewUserPassword", array("key" => $key));
   }
 
-  public static function registerUser($login, $email, $password, $password2, $nickname=NULL, $firstname=NULL, $lastname=NULL, 
+  public static function registerUser($login, $email, $password, $password2, $nickname=NULL, $firstname=NULL, $lastname=NULL,
                                $url=NULL, $showinfo=NULL, $birthdate=NULL, $country=NULL)
   {
     $params["login"]      = $login;

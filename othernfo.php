@@ -42,10 +42,10 @@ if(!$f) $f=1;
      <td bgcolor="#6688AA" align="center">
      <? $txt=array("dos 80*25","dos 80*50","rez's ascii","amiga medres","amiga hires");
      print("<b>[ "); ?>
-     <a href="othernfo.php?which=<?=$which?>&amp;f=none">html</a> 
+     <a href="othernfo.php?which=<?=$which?>&amp;f=none">html</a>
      <? for($i=0;$i<=count($txt)-1;$i++): ?>
        | <a href="othernfo.php?which=<?=$which?>&amp;f=<?=$i+1?>"><?=$txt[$i]?></a>
-       <? endfor; 
+       <? endfor;
       print(" ]</b>"); ?>
      </td>
     </tr>

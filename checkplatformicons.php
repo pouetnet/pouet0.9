@@ -19,7 +19,7 @@ while($tmp = mysql_fetch_array($result)) {
 <tr><td>
 <table cellspacing="1" cellpadding="2" class="box">
  <tr><th colspan="2"><center>platform icon check</center></th></tr>
- 
+
 <? $k=0;
 	for($i=0;$i<count($platforms);$i++):
 	$k++;

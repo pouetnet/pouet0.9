@@ -18,7 +18,7 @@ $result = mysql_query($query) or die(mysql_error());
   		<description>Pouet.net Piclens feed</description>
   		<language>en-us</language>
   		<docs>http://feedvalidator.org/docs/rss2.html</docs>
-  
+
       <atom:icon>http://www.pouet.net/favicon.ico</atom:icon>
   		<atom:link href="http://www.pouet.net/piclens/piclens.rss.php" rel="self" type="application/rss+xml" />
 

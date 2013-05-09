@@ -43,7 +43,7 @@ switch($order) {
   case "category": $query.=" ORDER BY bbs_topics.category"; break;
   default: $query.=" ORDER BY bbs_topics.lastpost DESC"; break;
 }
-  
+
 $query.=" LIMIT ".(($page-1)*$topics_per_page).",".$topics_per_page;
 $result=mysql_query($query);
 while($tmp=mysql_fetch_assoc($result)) {
@@ -53,7 +53,7 @@ while($tmp=mysql_fetch_assoc($result)) {
 $sortlink ="bbs.php?";
 if ($_GET["categoryfilter"])
   $sortlink ="categoryfilter=".$_GET["categoryfilter"]."&amp;";
-$sortlink.="order="; 
+$sortlink.="order=";
 
 $pagelink = "bbs.php?order=".$order;
 if ($_GET["categoryfilter"])
@@ -111,7 +111,7 @@ if (canSeeBBSCategories()) {
      </th>
 <?
 }
-?>     
+?>
      <th bgcolor="#224488">
       <table><tr>
        <td>
@@ -189,11 +189,11 @@ if (canEditBBSCategories()) {
       [<a href="edit_topic_category.php?which=<?=$topics[$i]["id"]?>">edit</a>]
 <?
 }
-?>     
+?>
      </td>
 <?
 }
-?>     
+?>
 
      <td bgcolor="<?=$tdcolor?>">
       <a href="topic.php?which=<?=$topics[$i]["id"]?>"><b>
@@ -224,10 +224,10 @@ if (canEditBBSCategories()) {
        </tr>
       </table>
      </td>
-     
+
     </tr>
     <? endfor; ?>
-    
+
     </tr>
 	<tr bgcolor="#224488">
  	 <td colspan="<?=$row?>">
@@ -343,11 +343,11 @@ if (canSeeBBSCategories()) {
         foreach ($thread_categories as $k=>$v)
           printf("<option value='%d'%s>%s</option>\n",$k,0==$k?' selected="selected"':"",htmlspecialchars($v));
         ?>
-        </select> 
-        <br />        
+        </select>
+        <br />
 <?
 }
-?>            
+?>
          message:<br />
          <textarea cols="80" rows="10" name="message"><?=$message?></textarea><br />
          <div align="right"><a href="faq.php#BB Code"><b>BB Code</b></a> is allowed here</div>

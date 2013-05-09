@@ -54,7 +54,7 @@ if($name)
     foreach ($shithosts as $v)
       if(strstr($myurl["host"],$v))
         $errormessage[] = "seriously, get better hosting";
-      
+
     if(strstr($myurl["host"],"youtube") || strstr($myurl["host"],"youtu.be"))
       $errormessage[] = "FUCK YOUTUBE - BINARY OR GTFO";
 
@@ -79,7 +79,7 @@ if($name)
       $errormessage[] = "no private FTP please";
     if(!basename($myurl["path"]))
       $errormessage[] = "no file? no prod!";
-      
+
   }
   // check the release date
   if((($rmonth)&&($ryear))&&(($rmonth>date('m'))&&($ryear>=date('Y')))) {
@@ -97,7 +97,7 @@ if($name)
     $errormessage[] = "please select a party";
   if(($party&&!$pyear)&&$party!=1024)
     $errormessage[] = "please select a party year";
-  
+
   // check the screenshot
   if(is_uploaded_file($sshotfile)) {
     $fileinfo = GetImageSize($sshotfile);
@@ -334,7 +334,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 <!--
 	 document.write("(<a href=\"javascript:popupGroupSelector('submitprod','group1');\">select</a>)");
 //-->
-</script>	 
+</script>	
 	 </td>
 	</tr>
 	<tr>
@@ -344,7 +344,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 <!--
 	 document.write("(<a href=\"javascript:popupGroupSelector('submitprod','group2');\">select</a>)");
 //-->
-</script>	 
+</script>	
 	 </td>
 	</tr>
 	<tr>
@@ -354,7 +354,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 <!--
 	 document.write("(<a href=\"javascript:popupGroupSelector('submitprod','group3');\">select</a>)");
 //-->
-</script>	 
+</script>	
 	 </td>
 	</tr>
 

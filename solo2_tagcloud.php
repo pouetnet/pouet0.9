@@ -11,7 +11,7 @@ if (!$_GET["tag"]) {
     $sql = "select * from users where id=".$poor_fucker."";
     $r = mysql_query($sql) or die(mysql_error());
     $usr = mysql_fetch_object($r);
-    
+
     $r = mysql_query( sprintf("select comment from comments where who=%d",$poor_fucker) ) or die(mysql_error());
     while ($o = mysql_fetch_object($r)) $posts[] = $o->comment;
 
@@ -24,56 +24,56 @@ if (!$_GET["tag"]) {
       while ($o = mysql_fetch_object($r)) $posts[] = $o->post;
     }
   }
-  else 
+  else
   {
     $threshold = 2000;
     $sql = "select * from comments";
     $r = mysql_query($sql) or die(mysql_error());
-  
+
     $usr->avatar = "r.gif";
     $usr->nickname = "ALL USERS";
   }
 
   $tags = array();
-  
+
   foreach ($posts as $post)
   {
     $a = preg_split("/[^a-zA-Z0-9]/",$post);
     foreach($a as $v) if (strlen(trim($v))>1)
       $tags[strtolower($v)] += 1;
   }
-  
+
   // remove common words
   $common = unserialize(@file_get_contents("common_words.txt"));
   if (!$common) {
-    $f = file_get_contents("http://en.wikipedia.org/w/index.php?title=Most_common_words_in_English&action=raw");  
+    $f = file_get_contents("http://en.wikipedia.org/w/index.php?title=Most_common_words_in_English&action=raw");
     echo preg_match_all("/^\| [0-9]+ \|\| ([a-zA-Z]+)$/m",$f,$matches);
-    
+
     foreach ($matches[1] as $v)
       $common[] = strtolower($v);
-    
+
     $common[] = "is";
     $common[] = "are";
-    
+
     file_put_contents("common_words.txt",serialize($common));
   }
-  
+
   foreach ($common as $v) unset($tags[$v]);
-  
+
   $max = 0;
   $avg = 0;
   $avgn = 0;
   foreach ($tags as $v) { $max = max($max, $v); $avg += $v; $avgn++; }
-  
+
   $avg = (int)($avg / $avgn);
-  
+
   ksort($tags);
   //var_dump($tags);
-  
+
   ?>
   <table bgcolor="#000000" cellspacing="1" cellpadding="0" border="0" width="75%" style="margin:5px">
    <tr>
-  
+
     <td>
      <table bgcolor="#000000" cellspacing="1" cellpadding="2" border="0" width="100%">
       <tr bgcolor="#224488">
@@ -94,7 +94,7 @@ if (!$_GET["tag"]) {
      </tr>
     </table>
     </td>
-  
+
     </tr>
   </table>
   <?

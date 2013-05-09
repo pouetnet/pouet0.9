@@ -45,7 +45,7 @@ $typ = explode(",", $o->p1type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>"></a><?
 }	
-?>  
+?>
   <a href="prod.php?which=<?=$o->p1id?>"><?=$o->p1name?></a>
 </td>
 <td>
@@ -57,7 +57,7 @@ $typ = explode(",", $o->p2type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>"></a><?
 }	
-?>  
+?>
   <a href="prod.php?which=<?=$o->p2id?>"><?=$o->p2name?></a>
 </td>
 </tr>
