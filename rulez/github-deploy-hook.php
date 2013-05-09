@@ -60,6 +60,11 @@ catch(Exception $e)
 	exit(0);
 }
 
+if ($payload->ref != 'refs/heads/master')
+{
+	exit(0);
+}
+
 if ($payload->after)
 {
 	// Put the latest commit a text file to trigger the next deploy
