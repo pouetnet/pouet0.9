@@ -2,6 +2,8 @@
 require("include/top.php");
 require_once('recaptchalib.php');
 
+// TODO remove this
+
 // Get IM types
 $result = mysql_query("DESC users im_type");
 $row = mysql_fetch_row($result);
