@@ -4,8 +4,39 @@ if ($user["bottombar"] == 1)
     menu();
     print("<br />");
 }
+
+function get_long_git_commit()
+{
+	/** Returns the long hash of the commit of the current version */
+	if (file_exists('LOCAL_COMMIT'))
+	{
+		$commit = file_get_contents('LOCAL_COMMIT');
+	}
+	else
+	{
+		$commit = '';
+	}
+
+	return $commit;
+}
+
+function get_short_git_commit()
+{
+	/** Returns the short hash of the commit of the current version */
+	$commit = get_long_git_commit();
+	$commit = substr($commit, 0, 7);
+
+	return $commit;
+}
+
 ?>
-<a href="http://www.pouet.net">pou&euml;t.net</a> <a href="https://github.com/lra/pouet.net/commits/master">0.9.904</a> &copy; 2000-<?=date("Y")?> <a href="http://www.pouet.net/groups.php?which=5">mandarine</a> - hosted on <a href="http://www.scene.org/">scene.org</a><br />
+<a href="http://www.pouet.net">pou&euml;t.net</a>
+<?php if (strlen(get_long_git_commit()) > 0): ?>
+<a href="https://github.com/lra/pouet.net/commits/<?=get_long_git_commit()?>">0.9-<?=get_short_git_commit()?></a>
+<?php else: ?>
+0.9
+<?php endif; ?>
+&copy; 2000-<?=date("Y")?> <a href="http://www.pouet.net/groups.php?which=5">mandarine</a> - hosted on <a href="http://www.scene.org/">scene.org</a><br />
 send comments and bug reports to <a href="mailto:webmaster@pouet.net">webmaster@pouet.net</a>
 - contribute on <a href="https://github.com/lra/pouet.net">GitHub</a><br />
 <?
