@@ -3,6 +3,7 @@ require("include/top.php");
 require_once('recaptchalib.php');
 
 // TODO remove this
+// Forgot to to add the hook url in github =/
 
 // Get IM types
 $result = mysql_query("DESC users im_type");
