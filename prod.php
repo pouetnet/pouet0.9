@@ -31,24 +31,6 @@ if((!$which)||($which>$maxid)) {
 	$which=$prod["id"];
 }
 $which = (int)$which;
-/*
-if ($which == 55991 || $which == 55471) {
-  $f = fopen($which.".log","at");
-  fwrite($f,date("Y-m-d H:i:s"). "  -  ".$_SERVER["REMOTE_ADDR"]."  -  ".$_SERVER["HTTP_REFERER"]."  -  ".$_SERVER["HTTP_USER_AGENT"]."\n");
-  fclose($f);
-}
-*/
-// referrer - 20070616 jeffry: removed because this was a huge resource hog, with the prods_refs table being
-//                             over 4million rows big, without the data being used anywhere on the site.
-//if (strlen($_SERVER["HTTP_REFERER"]))
-//{
-//	$url = parse_url($_SERVER["HTTP_REFERER"]);
-//	if (!stristr($url['host'], 'pouet.net'))
-//	{
-//		$query = 'INSERT INTO prods_refs SET prod='.$prod['id'].',referrer="'.$_SERVER["HTTP_REFERER"].'"';
-//		mysql_query($query);
-//	}
-//}
 
 $query="SELECT nickname,avatar FROM users WHERE id=".$prod["added"];
 $result=mysql_query($query);
