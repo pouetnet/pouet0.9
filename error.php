@@ -1,7 +1,7 @@
 <?
 require("include/top.php");
 
-if(!isset($back)) $back="index.php";
+if(!isset($back)) $back = '/';
 
 switch($e)
 {

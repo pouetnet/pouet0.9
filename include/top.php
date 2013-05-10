@@ -434,7 +434,7 @@ $logo = mysql_fetch_assoc($result);
 //$logo['size'] = GetImageSize('/gfx/logos/'.$logo['file']);
 
 ?>
-<a href="/index.php">
+<a href="/">
  <img src="/gfx/logos/<? print($logo["file"]); ?>" border="0" alt="<? if($logo["nickname1"]): ?>done by <? print($logo["nickname1"]); ?><? endif; ?><? if($logo["nickname2"]): ?> and <? print($logo["nickname2"]); ?><? endif; ?>"><br />
 </a>
 <? if($logo["nickname1"]): ?>
@@ -444,7 +444,7 @@ logo done by
 and
 <a href="user.php?who=<? print($logo["author2"]); ?>"><? print($logo["nickname2"]); ?></a>
 <? endif; endif;
-} else { print("<a href=\"index.php\">back to pout index.php</a> "); }
+} else { print("<a href=\"/\">back to pout's home</a> "); }
 ?>
 ::
 <?

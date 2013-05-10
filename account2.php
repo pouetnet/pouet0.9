@@ -19,7 +19,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indextopglops=".(int)$topglops." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($topprods)!=0)
 	{
 	if ( (int)$topprods > 50 ) $query = "update usersettings set indextopprods=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -27,7 +27,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indextopprods=".(int)$topprods." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($topkeops)!=0)
 	{
 	if ( (int)$topkeops > 50 ) $query = "update usersettings set indextopkeops=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -42,21 +42,21 @@ if ($action=='alter')
 	 else if ( (int)$indexcdc <= 0 ) $query = "update usersettings set indexcdc=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($indexsearch)!=0)
 	{
 	if ( (int)$indexsearch >= 1 ) $query = "update usersettings set indexsearch=1 where id='".$_SESSION["SCENEID_ID"]."'";
 	 else if ( (int)$indexsearch <= 0 ) $query = "update usersettings set indexsearch=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($logos)!=0)
 	{
 	if ( (int)$logos >= 1 ) $query = "update usersettings set logos=1 where id='".$_SESSION["SCENEID_ID"]."'";
 	 else if ( (int)$logos <= 0 ) $query = "update usersettings set logos=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($topbar)!=0)
 	{
 	if ( (int)$topbar >= 1 ) $query = "update usersettings set topbar=1 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -84,7 +84,7 @@ if ($action=='alter')
 	 else if ( (int)$indexlinks <= 0 ) $query = "update usersettings set indexlinks=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($oneliner)!=0)
 	{
 	if ( (int)$oneliner > 50 ) $query = "update usersettings set indexoneliner=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -100,7 +100,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indexlatestadded=".(int)$latestadded." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($latestreleased)!=0)
 	{
 	if ( (int)$latestreleased > 50 ) $query = "update usersettings set indexlatestreleased=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -108,7 +108,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indexlatestreleased=".(int)$latestreleased." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($ojnews)!=0)
 	{
 	if ( (int)$ojnews > 50 ) $query = "update usersettings set indexojnews=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -124,7 +124,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indexlatestcomments=".(int)$latestcomments." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($latestparties)!=0)
 	{
 	if ( (int)$latestparties > 50 ) $query = "update usersettings set indexlatestparties=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -132,7 +132,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indexlatestparties=".(int)$latestparties." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($bbstopics)!=0)
 	{
 	if ( (int)$bbstopics > 50 ) $query = "update usersettings set indexbbstopics=50 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -140,7 +140,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set indexbbstopics=".(int)$bbstopics." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($topicposts)!=0)
 	{
 	if ( (int)$topicposts > 100 ) $query = "update usersettings set topicposts=100 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -148,7 +148,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set topicposts=".(int)$topicposts." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($bbsbbstopics)!=0)
 	{
 	if ( (int)$bbsbbstopics > 100 ) $query = "update usersettings set bbsbbstopics=100 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -156,7 +156,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set bbsbbstopics=".(int)$bbsbbstopics." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($prodlistprods)!=0)
 	{
 	if ( (int)$prodlistprods > 100 ) $query = "update usersettings set prodlistprods=100 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -164,7 +164,7 @@ if ($action=='alter')
 	  else $query = "update usersettings set prodlistprods=".(int)$prodlistprods." where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($userlistusers)!=0)
 	{
 	if ( (int)$userlistusers > 100 ) $query = "update usersettings set userlistusers=100 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -282,28 +282,28 @@ if ($action=='alter')
 	 else if ( (int)$prodhidefakeuser <= 0 ) $query = "update usersettings set prodhidefakeuser=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($indextype)!=0)
 	{
 	if ( (int)$indextype >= 1 ) $query = "update usersettings set indextype=1 where id='".$_SESSION["SCENEID_ID"]."'";
 	 else if ( (int)$indextype <= 0 ) $query = "update usersettings set indextype=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($indexplatform)!=0)
 	{
 	if ( (int)$indexplatform >= 1 ) $query = "update usersettings set indexplatform=1 where id='".$_SESSION["SCENEID_ID"]."'";
 	 else if ( (int)$indexplatform <= 0 ) $query = "update usersettings set indexplatform=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($indexwhoaddedprods)!=0)
 	{
 	if ( (int)$indexwhoaddedprods >= 1 ) $query = "update usersettings set indexwhoaddedprods=1 where id='".$_SESSION["SCENEID_ID"]."'";
 	 else if ( (int)$indexwhoaddedprods <= 0 ) $query = "update usersettings set indexwhoaddedprods=0 where id='".$_SESSION["SCENEID_ID"]."'";
 	mysql_query($query);
 	}
-	
+
 	if (strlen($indexwhocommentedprods)!=0)
 	{
 	if ( (int)$indexwhocommentedprods >= 1 ) $query = "update usersettings set indexwhocommentedprods=1 where id='".$_SESSION["SCENEID_ID"]."'";
@@ -344,7 +344,7 @@ else
 <table bgcolor="#000000" cellspacing="1" cellpadding="0"><tr><td>
 <table bgcolor="#000000" cellspacing="1" cellpadding="2">
  <tr>
- <th colspan="2" bgcolor="#224488">customöolobstormaziabletic 7004+ super</th>
+ <th colspan="2" bgcolor="#224488">custom?olobstormaziabletic 7004+ super</th>
  <tr>
   <td bgcolor="#557799" >logos</td>
   <td bgcolor="#557799">
@@ -373,19 +373,19 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php top glops</td> <td bgcolor="#557799"><input type="text" name="topglops" value="<? print($user["indextopglops"]); ?>"></td>
+  <td bgcolor="#557799" >/ top glops</td> <td bgcolor="#557799"><input type="text" name="topglops" value="<? print($user["indextopglops"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php top prods (recent)</td> <td bgcolor="#557799"><input type="text" name="topprods" value="<? print($user["indextopprods"]); ?>"></td>
+  <td bgcolor="#557799" >/ top prods (recent)</td> <td bgcolor="#557799"><input type="text" name="topprods" value="<? print($user["indextopprods"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php top prods (all-time)</td> <td bgcolor="#557799"><input type="text" name="topkeops" value="<? print($user["indextopkeops"]); ?>"></td>
+  <td bgcolor="#557799" >/ top prods (all-time)</td> <td bgcolor="#557799"><input type="text" name="topkeops" value="<? print($user["indextopkeops"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php oneliner</td> <td bgcolor="#557799"><input type="text" name="oneliner" value="<? print($user["indexoneliner"]); ?>"></td>
+  <td bgcolor="#557799" >/ oneliner</td> <td bgcolor="#557799"><input type="text" name="oneliner" value="<? print($user["indexoneliner"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php cdc</td>
+  <td bgcolor="#557799" >/ cdc</td>
   <td bgcolor="#557799">
 	<select name="indexcdc">
 		<option value="1"<? if ($user["indexcdc"] == 1) echo " selected"; ?>>Displayed</option>
@@ -394,7 +394,7 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php search</td>
+  <td bgcolor="#557799" >/ search</td>
   <td bgcolor="#557799">
 	<select name="indexsearch">
 		<option value="1"<? if ($user["indexsearch"] == 1) echo " selected"; ?>>Displayed</option>
@@ -403,7 +403,7 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php stats</td>
+  <td bgcolor="#557799" >/ stats</td>
   <td bgcolor="#557799">
 	<select name="indexstats">
 		<option value="1"<? if ($user["indexstats"] == 1) echo " selected"; ?>>Displayed</option>
@@ -412,7 +412,7 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php links</td>
+  <td bgcolor="#557799" >/ links</td>
   <td bgcolor="#557799">
 	<select name="indexlinks">
 		<option value="1"<? if ($user["indexlinks"] == 1) echo " selected"; ?>>Displayed</option>
@@ -421,25 +421,25 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php latest added</td> <td bgcolor="#557799"><input type="text" name="latestadded" value="<? print($user["indexlatestadded"]); ?>"></td>
+  <td bgcolor="#557799" >/ latest added</td> <td bgcolor="#557799"><input type="text" name="latestadded" value="<? print($user["indexlatestadded"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php latest released</td> <td bgcolor="#557799"><input type="text" name="latestreleased" value="<? print($user["indexlatestreleased"]); ?>"></td>
+  <td bgcolor="#557799" >/ latest released</td> <td bgcolor="#557799"><input type="text" name="latestreleased" value="<? print($user["indexlatestreleased"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php bitfellas news</td> <td bgcolor="#557799"><input type="text" name="ojnews" value="<? print($user["indexojnews"]); ?>"></td>
+  <td bgcolor="#557799" >/ bitfellas news</td> <td bgcolor="#557799"><input type="text" name="ojnews" value="<? print($user["indexojnews"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php latest comments</td> <td bgcolor="#557799"><input type="text" name="latestcomments" value="<? print($user["indexlatestcomments"]); ?>"></td>
+  <td bgcolor="#557799" >/ latest comments</td> <td bgcolor="#557799"><input type="text" name="latestcomments" value="<? print($user["indexlatestcomments"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php latest parties</td> <td bgcolor="#557799"><input type="text" name="latestparties" value="<? print($user["indexlatestparties"]); ?>"></td>
+  <td bgcolor="#557799" >/ latest parties</td> <td bgcolor="#557799"><input type="text" name="latestparties" value="<? print($user["indexlatestparties"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php bbs topics</td> <td bgcolor="#557799"><input type="text" name="bbstopics" value="<? print($user["indexbbstopics"]); ?>"></td>
+  <td bgcolor="#557799" >/ bbs topics</td> <td bgcolor="#557799"><input type="text" name="bbstopics" value="<? print($user["indexbbstopics"]); ?>"></td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php platform icons</td>
+  <td bgcolor="#557799" >/ platform icons</td>
   <td bgcolor="#557799">
 	<select name="indexplatform">
 		<option value="1"<? if ($user["indexplatform"] == 1) echo " selected"; ?>>Displayed</option>
@@ -448,7 +448,7 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php type icons</td>
+  <td bgcolor="#557799" >/ type icons</td>
   <td bgcolor="#557799">
 	<select name="indextype">
 		<option value="1"<? if ($user["indextype"] == 1) echo " selected"; ?>>Displayed</option>
@@ -457,7 +457,7 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php who added prods</td>
+  <td bgcolor="#557799" >/ who added prods</td>
   <td bgcolor="#557799">
 	<select name="indexwhoaddedprods">
 		<option value="1"<? if ($user["indexwhoaddedprods"] == 1) echo " selected"; ?>>Displayed</option>
@@ -466,7 +466,7 @@ else
   </td>
  </tr>
  <tr>
-  <td bgcolor="#557799" >index.php who commented prods</td>
+  <td bgcolor="#557799" >/ who commented prods</td>
   <td bgcolor="#557799">
 	<select name="indexwhocommentedprods">
 		<option value="1"<? if ($user["indexwhocommentedprods"] == 1) echo " selected"; ?>>Displayed</option>

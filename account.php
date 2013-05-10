@@ -319,7 +319,7 @@ if($_SESSION["SESSION"] && $_SESSION["SCENEID"]) {
        </div>
       <? } else { ?>
        <?=$message?>
-       <a href="index.php">have a nice stay!</a>
+       <a href="/">have a nice stay!</a>
       <? } ?>
      </td>
     </tr>

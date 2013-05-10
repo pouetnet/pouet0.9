@@ -17,7 +17,7 @@ $returnvalue = $xml->parseSceneIdData("loginUserMD5", array(
                "permanent" => ($_POST["permanent"]=="on"?"1":"0")));
 $z = ob_get_clean();
 
-$refer = $HTTP_REFERER ? $HTTP_REFERER : "index.php";
+$refer = $HTTP_REFERER ? $HTTP_REFERER : "/";
 
 switch($returnvalue["returnvalue"])
 {
@@ -31,7 +31,7 @@ switch($returnvalue["returnvalue"])
       $returnvalue = $xml->parseSceneIdData("getUserInfo", $userparams);
       //if($returnvalue["returnvalue"]==10)
       $u = $returnvalue["user"];
-		
+
       $query= "INSERT users SET ";
       $query.="id=".(int)$returnvalue["userID"].", ";
       $query.="nickname='".mysql_real_escape_string($u["nickname"] ? $u["nickname"] : $_REQUEST["login"])."', ";
@@ -48,8 +48,8 @@ switch($returnvalue["returnvalue"])
 
       authenticate($returnvalue["userID"]);
 		}
-		
-		
+
+
 	  setcookie($returnvalue["cookie"]["name"],
 	            $returnvalue["cookie"]["value"],
 	            $returnvalue["cookie"]["expires"],
@@ -75,7 +75,7 @@ switch($returnvalue["returnvalue"])
 		  $_SESSION["SCENEID_ID"]=$returnvalue["userID"];
 		  $_SESSION["SCENEID_LOGIN"]=$returnvalue["user"]["login"];
       $_SESSION["SCENEID_IP"]=$_SERVER["REMOTE_ADDR"];
-		}	
+		}
 
 		header("Location: ".$refer);
 	} break;

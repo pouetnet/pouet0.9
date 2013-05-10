@@ -16,7 +16,7 @@ switch ($_POST["type"]) {
 	case "oneliner":
 //	if($_SESSION["SCENEID_ID"]==19428): printf("im with stupid");
 //	else:
-		$url="index.php";
+		$url = '/';
 		$_REQUEST["message"] = trim($_REQUEST["message"]);
 		if (!$_REQUEST["message"])
     	$errormessage[]="oh cut that out already";
@@ -26,7 +26,7 @@ switch ($_POST["type"]) {
     	$errormessage[]="&lt;/spam&gt;";
     if($_SESSION["SCENEID_ID"]==78655)
       $errormessage[]="nope.";
-		
+
 		if($_REQUEST["message"]&&!$errormessage)
 		{
 	    $who=$_SESSION["SCENEID_ID"];
@@ -53,13 +53,13 @@ switch ($_POST["type"]) {
 		}
 //	endif;
 	break;
-	
+
 	case "topic":
-		$url="bbs.php";
+		$url = "bbs.php";
 		//if (stristr($topic,"random")!==FALSE)
 		if (date("Y-m-d")=="2008-11-19")
   		$errormessage[] = "bbs is closed today. go use the other 5000 threads for a change.";
-		
+
 		if($topic&&$message&&!$errormessage)
 		{
 		    $query="SELECT topic FROM bbs_topics ORDER BY lastpost DESC LIMIT 1";
@@ -83,14 +83,14 @@ switch ($_POST["type"]) {
 		if ($which==6618) die();
 		if ($which==7465) die();
 		if ($which==2735) die();
-		
+
 		if($which&&$message&&!$errormessage)
 		{
 		  if (strstr($message,"dvdvideotools")!==false)
 		    die("FU!");
 		  if (strstr($message,"netetrader.com")!==false)
 		    die("FU!");
-		
+
 	    $query="SELECT author,topic,post FROM bbs_posts ORDER BY added DESC LIMIT 1";
 	    $result=mysql_query($query);
 	    $lastone=mysql_fetch_assoc($result);
@@ -124,7 +124,7 @@ switch ($_POST["type"]) {
 		$message=$comment;
 		if (strstr($comment,"freecliptv.samsonshome.de")!==false)
 		  $errormessage[] = "please post video links to <a href='http://www.pouet.net/topic.php?which=1024'>this thread</a>";
-		
+
 		if (strstr($comment,"EmwW_6kUdHw")!==false)
 		  $errormessage[] = "please post video links to <a href='http://www.pouet.net/topic.php?which=1024'>this thread</a> - also, your link has been removed from youtube.";
 
@@ -156,12 +156,12 @@ switch ($_POST["type"]) {
 			    $timestart = microtime_float();
 			    mysql_query($query);
 		    	$time["query3"] = microtime_float() - $timestart;
-			
+
 			    //update vote info
 			    	unset($commentss);
 				//unset($checktable);
 				$checktable = array();
-				
+
 				$rulez=0;
 				$piggie=0;
 				$sucks=0;
@@ -185,7 +185,7 @@ switch ($_POST["type"]) {
 					else $piggie++;
 					$total++;
 				}
-				
+
 				if ($total!=0) $avg = sprintf("%.2f",(float)($rulez*1+$sucks*-1)/$total);
 				 else $avg="0.00";
 				$query="UPDATE prods SET voteup=".$rulez.", votepig=".$piggie.", votedown=".$sucks.", voteavg='".$avg."' where id=".$which;
@@ -193,7 +193,7 @@ switch ($_POST["type"]) {
 		    $timestart = microtime_float();
 				mysql_query($query);
 	    	$time["query5"] = microtime_float() - $timestart;
-			
+
 			}
 	    $timestart = microtime_float();
 			//create_cache_module("latest_comments", "SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3,comments.who,users.nickname,users.avatar FROM prods JOIN comments LEFT JOIN users ON users.id=comments.who WHERE comments.which=prods.id ORDER BY comments.quand DESC LIMIT 20",1);
@@ -223,7 +223,7 @@ switch ($_POST["type"]) {
 	break;
 
 	default:
-		$url="index.php";
+		$url = '/';
 }
 
 if($errormessage)

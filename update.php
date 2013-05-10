@@ -27,7 +27,7 @@ function create_cache_module($name, $query, $domore)
 //				$tmp["name"]=substr($tmp["name"],0,32)."...";
 		  $data[] = $tmp;
 		}
-		
+
 		if ($domore>0)
 		{
 			for ($i=0; $i<count($data); $i++):
@@ -55,13 +55,13 @@ function create_cache_module($name, $query, $domore)
 					  $data[$i]["groupacron3"]=$tmp["acronym"];
 					 }
   				endif;
-  				
+
   				if (strlen($data[$i]["groupname1"].$data[$i]["groupname2"].$data[$i]["groupname3"])>27):
   					if (strlen($data[$i]["groupname1"])>10 && $data[$i]["groupacron1"]) $data[$i]["groupname1"]=$data[$i]["groupacron1"];
   					if (strlen($data[$i]["groupname2"])>10 && $data[$i]["groupacron2"]) $data[$i]["groupname2"]=$data[$i]["groupacron2"];
   					if (strlen($data[$i]["groupname3"])>10 && $data[$i]["groupacron3"]) $data[$i]["groupname3"]=$data[$i]["groupacron3"];
   				endif;
-  				
+
 				$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$data[$i]["id"]."' and platforms.id=prods_platforms.platform";
 	  			$result=mysql_query($query);
 	  			$check=0;
@@ -71,14 +71,14 @@ function create_cache_module($name, $query, $domore)
 				  $check++;
 				  $data[$i]["platform"].=$tmp["name"];
 				 }
-			
+
 			endfor;
 
 		}
 
 		$fp = fopen("../include/".$name.".cache.inc", "wb");
 		fwrite($fp, "<?\n");
-		
+
 		while(list($k,$v)=each($data))
 		{
 			if(is_array($v))
@@ -109,45 +109,45 @@ function create_stats_cache()
 		$query="SELECT count(0) FROM prods WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(quand))<=3600*24";
 		$result=mysql_query($query);
 		$inc_demos=mysql_result($result,0);
-		
+
 		$query="SELECT count(0) FROM groups";
 		$result=mysql_query($query);
 		$nb_groups=mysql_result($result,0);
 		$query="SELECT count(0) FROM groups WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(quand))<=3600*24";
 		$result=mysql_query($query);
 		$inc_groups=mysql_result($result,0);
-		
+
 		$query="SELECT count(0) FROM parties";
 		$result=mysql_query($query);
 		$nb_parties=mysql_result($result,0);
 		$query="SELECT count(0) FROM parties WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(quand))<=3600*24";
 		$result=mysql_query($query);
 		$inc_parties=mysql_result($result,0);
-		
+
 		$query="SELECT count(0) FROM bbses";
 		$result=mysql_query($query);
 		$nb_bbses=mysql_result($result,0);
 		$query="SELECT count(0) FROM bbses WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(added))<=3600*24";
 		$result=mysql_query($query);
 		$inc_bbses=mysql_result($result,0);
-		
+
 		$query="SELECT count(0) FROM users";
 		$result=mysql_query($query);
 		$nb_users=mysql_result($result,0);
 		$query="SELECT count(0) FROM users WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(quand))<=3600*24";
 		$result=mysql_query($query);
 		$inc_users=mysql_result($result,0);
-		
+
 		$query="SELECT count(0) FROM comments";
 		$result=mysql_query($query);
 		$nb_comments=mysql_result($result,0);
 		$query="SELECT count(0) FROM comments WHERE (UNIX_TIMESTAMP()-UNIX_TIMESTAMP(quand))<=3600*24";
 		$result=mysql_query($query);
 		$inc_comments=mysql_result($result,0);
-		
+
 		$fp = fopen("../include/stats.cache.inc", "wb");
 		fwrite($fp, "<?\n");
-		
+
           	fwrite($fp, "\$nb_demos=\"".$nb_demos."\";\n");
           	fwrite($fp, "\$inc_demos=\"".$inc_demos."\";\n");
           	fwrite($fp, "\$nb_groups=\"".$nb_groups."\";\n");
@@ -160,11 +160,11 @@ function create_stats_cache()
           	fwrite($fp, "\$inc_users=\"".$inc_users."\";\n");
           	fwrite($fp, "\$nb_comments=\"".$nb_comments."\";\n");
           	fwrite($fp, "\$inc_comments=\"".$inc_comments."\";\n");
-		
+
     		fwrite($fp, "?>\n");
 		fclose($fp);
 	}
-	
+
 //require('../include/misc.php'); cant use that include couz i need relative path of /include/
 
 
@@ -233,7 +233,7 @@ if ($ojuice||$all)
 	print("ojuice stage 3!<br />");
 }
 
-// calculate users's glöps
+// calculate users's glops
 if ($glops||$all)
 {
 	unset($logos);
@@ -281,18 +281,18 @@ if ($glops||$all)
 	while($tmp=mysql_fetch_assoc($result)) {
 	  $totals[$tmp["adder"]]++;
 	}
-	
+
 	$query="SELECT COUNT(DISTINCT which) as comments,who FROM comments GROUP BY who";
 	$result=mysql_query($query);
 	while($tmp=mysql_fetch_assoc($result)) {
 	  $totals[$tmp["who"]]+=$tmp["comments"];
 	}
-	
+
 	$query="SELECT users.id,ud.points FROM users,ud WHERE ud.login=users.udlogin";
 	$result=mysql_query($query);
 	while($tmp=mysql_fetch_assoc($result))
 		$totals[$tmp["id"]]+=round($tmp["points"]/1000);
-	
+
 	reset($totals);
 	for($i=0;$i<count($totals);$i++) {
 		$query="UPDATE users SET glops=".$totals[key($totals)]." WHERE id=".key($totals);
@@ -313,7 +313,7 @@ if ($topdemos||$all)
 	  $total[$tmp["id"]]+=$i;
 	  $i++;
 	}
-	
+
 	$i=0;
 	$query="SELECT prods.id,SUM(comments.rating) AS somme FROM prods,comments WHERE prods.id=comments.which GROUP BY prods.id ORDER BY somme DESC";
 	$result = mysql_query($query);
@@ -321,9 +321,9 @@ if ($topdemos||$all)
 	  $total[$tmp["id"]]+=$i;
 	  $i++;
 	}
-	
+
 	asort($total);
-	
+
 	$i=1;
 	unset($tmp);
 	unset($top_demos);
@@ -332,7 +332,7 @@ if ($topdemos||$all)
 		mysql_query($query);
 		$i++;
 	}
-	
+
 	$cachetop_keops=true;
 	print("keops!<br />");
 }
@@ -363,7 +363,7 @@ if ($voteavg||$all)
 	while($tmp = mysql_fetch_array($result)) {
 	  $prods[]=$tmp;
 	}
-	
+
 	print("updating ".count($prods)." prods<br />");
 	for($j=0;$j<count($prods);$j++) {
 			unset($commentss);
@@ -372,7 +372,7 @@ if ($voteavg||$all)
 			$piggie=0;
 			$sucks=0;
 			$total=0;
-		
+
 				    	$query  = "SELECT comments.rating,comments.who FROM comments WHERE comments.which='".$prods[$j]["id"]."'";
 					$result=mysql_query($query);
 					while($tmp=mysql_fetch_array($result)) {
@@ -390,7 +390,7 @@ if ($voteavg||$all)
 						else $piggie++;
 						$total++;
 					}
-					
+
 					if ($total!=0) $avg = sprintf("%.2f",(float)($rulez*1+$sucks*-1)/$total);
 					 else $avg="0.00";
 					$query="UPDATE prods SET voteup=".$rulez.", votepig=".$piggie.", votedown=".$sucks.", voteavg='".$avg."' where id=".$prods[$j]["id"];
@@ -409,7 +409,7 @@ if ($bbstopics||$all)
 	while($tmp = mysql_fetch_array($result)) {
 	  $topics[]=$tmp;
 	}
-	
+
 	print("updating ".count($topics)." bbs_topics<br />");
 	for($i=0;$i<count($topics);$i++) {
 				  $query="SELECT count(0) FROM bbs_posts WHERE topic=".$topics[$i]["id"];
@@ -418,11 +418,11 @@ if ($bbstopics||$all)
 				  $query="SELECT added FROM bbs_posts WHERE topic=".$topics[$i]["id"]." ORDER BY added DESC LIMIT 1";
 				  $result=mysql_query($query);
 				  $topics[$i]["lastpost"]=mysql_result($result,0);
-				
+
 				  $query="SELECT added FROM bbs_posts WHERE topic=".$topics[$i]["id"]." ORDER BY added ASC LIMIT 1";
 				  $result=mysql_query($query);
 				  $topics[$i]["firstpost"]=mysql_result($result,0);
-				
+
 				  $query="SELECT author FROM bbs_posts WHERE topic=".$topics[$i]["id"]." ORDER BY added DESC LIMIT 1";
 				  $result=mysql_query($query);
 				  $topics[$i]["latest"]=mysql_result($result,0);
@@ -430,7 +430,7 @@ if ($bbstopics||$all)
 				  $result=mysql_query($query);
 				  $topics[$i]["nickname_l"]=mysql_result($result,0,"nickname");
 				  $topics[$i]["avatar_l"]=mysql_result($result,0,"avatar");*/
-				
+
 				  $query="SELECT author FROM bbs_posts WHERE topic=".$topics[$i]["id"]." ORDER BY added ASC LIMIT 1";
 				  $result=mysql_query($query);
 				  $topics[$i]["starter"]=mysql_result($result,0);
@@ -438,7 +438,7 @@ if ($bbstopics||$all)
 				  $result=mysql_query($query);
 				  $topics[$i]["nickname"]=mysql_result($result,0,"nickname");
 				  $topics[$i]["avatar"]=mysql_result($result,0,"avatar");*/
-	
+
 				$query="UPDATE bbs_topics SET lastpost='".$topics[$i]["lastpost"]."', firstpost='".$topics[$i]["firstpost"]."', userlastpost='".$topics[$i]["latest"]."', userfirstpost='".$topics[$i]["starter"]."', count='".$topics[$i]["replies"]."' where id=".$topics[$i]["id"];
 				print($query."<br />");
 				mysql_query($query);
@@ -502,7 +502,7 @@ if ($webtv||$all)
 		  $contents .= fread($fdtv, 8192);
 		}
 		fclose($fdtv);
-		
+
 		$pstring = 'http://www.pouet.net/prod.php?which=';
 		$dstring = 'http://www.demoscene.tv/prod.php?id_prod=';
 		$pos = strpos($contents, $pstring);
@@ -517,7 +517,7 @@ if ($webtv||$all)
 				$posend = strpos($contents, '"', $posid) - ($posid + strlen($dstring));
 				$dtvid = substr($contents, $posid + strlen($dstring), $posend);
 				//echo "p: " . $pouetid . " d: " . $dtvid . "<br />";
-				
+
 				//check db, update if needed
 				$query = "select prod from downloadlinks where type like 'demoscene.tv' and prod = " . $pouetid;
 				$result = mysql_query($query);
@@ -537,7 +537,7 @@ if ($webtv||$all)
 		}
 	}
 	print("<br />demoscene.tv done!<br />");
-	
+
 	//load http://capped.tv/rss.php
 	//parse all pouet ids
 	//compare to cache, if diff check db info and insert if missing capped.tv link
@@ -548,7 +548,7 @@ if ($webtv||$all)
 		  $contents .= fread($fcapped, 8192);
 		}
 		fclose($fcapped);
-		
+
 		$pstring = '<link>http://capped.tv/playeralt.php?vid=';
 		$dstring = 'http://pouet.net/prod.php?which=';
 		$pos = strpos($contents, $pstring);
@@ -556,12 +556,12 @@ if ($webtv||$all)
 		{
 			$posend = strpos($contents, '</link>', $pos) - ($pos + strlen($pstring));
 			$capped = substr($contents, $pos + strlen($pstring), $posend);
-			
+
 			$posid = strpos($contents, $dstring, $pos + $posend + strlen($dstring));
 			$posend = strpos($contents, '\'>Pouet</a>', $posid) - ($posid + strlen($dstring));
 			$pouetid = substr($contents, $posid + strlen($dstring), $posend);
 			//echo "p: " . $pouetid . " d: " . $dtvid . "<br />";
-			
+
 			//check db, update if needed
 			$query = "select prod from downloadlinks where type like 'capped.tv' and prod = " . $pouetid;
 			$result = mysql_query($query);
@@ -576,10 +576,10 @@ if ($webtv||$all)
 				echo "already existed, pouetid: " . $pouetid . " capped: " . $capped . "<br />";
 			}
 			unset($prods);
-			
+
 			$pos = strpos($contents, $pstring, $pos + strlen($pstring));
 		}
-		
+
 	}
 	fclose($fcapped);
 	print("<br />capped.tv done!<br />");
@@ -592,17 +592,17 @@ if ($dlrevamp)
 	//only used once to export stuff from prods to downloadlinks table
 	//kept here in case of reuse need
 	//commented couz it shouldnt be used.. -_-
-	
+
 	$query="SELECT id,download2 from prods where download2!=''";
   	$result=mysql_query($query);
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO downloadlinks SET downloadlinks.prod='".$dl[$j]["id"]."', downloadlinks.link='".$dl[$j]["download2"]."', downloadlinks.type='disk2'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -611,37 +611,37 @@ if ($dlrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO downloadlinks SET downloadlinks.prod='".$dl[$j]["id"]."', downloadlinks.link='".$dl[$j]["download3"]."', downloadlinks.type='disk3'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
-	
+
 	unset($dl);
 	$query="SELECT id,download4 from prods where download4!=''";
   	$result=mysql_query($query);
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO downloadlinks SET downloadlinks.prod='".$dl[$j]["id"]."', downloadlinks.link='".$dl[$j]["download4"]."', downloadlinks.type='disk4'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
-	
+
 	unset($dl);
 	$query="SELECT id,download5 from prods where download5!=''";
   	$result=mysql_query($query);
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO downloadlinks SET downloadlinks.prod='".$dl[$j]["id"]."', downloadlinks.link='".$dl[$j]["download5"]."', downloadlinks.type='disk5'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -650,11 +650,11 @@ if ($dlrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO downloadlinks SET downloadlinks.prod='".$dl[$j]["id"]."', downloadlinks.link='".$dl[$j]["source"]."', downloadlinks.type='source'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -663,11 +663,11 @@ if ($dlrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO downloadlinks SET downloadlinks.prod='".$dl[$j]["id"]."', downloadlinks.link='".$dl[$j]["video"]."', downloadlinks.type='video'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 }
 */
@@ -678,7 +678,7 @@ if ($platformrevamp)
 	//only used once to export stuff from prods to prods_platforms table
 	//kept here in case of reuse need
 	//commented couz it shouldnt be used.. -_-
-	
+
 $os["Acorn"]="k_acorn.gif";
 $os["Alambik"]="k_alambik.gif";
 $os["Amiga ECS"]="k_amiga.gif";
@@ -744,21 +744,21 @@ $os["Wonderswan"]="k_wonderswan.gif";
 $os["XBOX"]="k_xbox.gif";
 $os["XBOX 360"]="k_xbox360.gif";
 $os["ZX Spectrum"]="k_zx.gif";
-	
+
 	$query="SELECT id,platform from prods order by prods.id asc";
   	$result=mysql_query($query);
   	while($tmp = mysql_fetch_array($result)) {
 	  $plt[]=$tmp;
 	}
-	
+
 //	$query="delete from platforms where 1";
 //  	$result=mysql_query($query);
-  	
+
 //	$query="delete from prods_platforms where 1";
 //  	$result=mysql_query($query);
-	
+
 	for($j=0;$j<count($plt);$j++) {
-		
+
 		print("<br />->".$plt[$j]["id"]." ".$plt[$j]["platform"]."<-<br />\n");
 		$platformss = explode(",", $plt[$j]["platform"]);
 		for($kkk=0;$kkk<count($platformss);$kkk++) {
@@ -793,12 +793,12 @@ $os["ZX Spectrum"]="k_zx.gif";
   	while($tmp = mysql_fetch_array($result)) {
 	  $plt[]=$tmp;
 	}
-	
+
 //	$query="delete from bbses_platforms where 1";
 //  	$result=mysql_query($query);
-	
+
 	for($j=0;$j<count($plt);$j++) {
-		
+
 		print("<br />->".$plt[$j]["id"]." ".$plt[$j]["platforms"]."<-<br />\n");
 		$platformss = explode(",", $plt[$j]["platforms"]);
 		for($kkk=0;$kkk<count($platformss);$kkk++) {
@@ -835,20 +835,20 @@ if ($cdcrevamp)
 	//only used once to export stuff from users to users_cdcs table
 	//kept here in case of reuse need
 	//commented couz it shouldnt be used.. -_-
-	
+
 	$query="delete from users_cdcs where 1";
   	$result=mysql_query($query);
-	
+
 	$query="SELECT id,cdc from users where cdc!='0'";
   	$result=mysql_query($query);
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO users_cdcs SET users_cdcs.user='".$dl[$j]["id"]."', users_cdcs.cdc='".$dl[$j]["cdc"]."'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -857,11 +857,11 @@ if ($cdcrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO users_cdcs SET users_cdcs.user='".$dl[$j]["id"]."', users_cdcs.cdc='".$dl[$j]["cdc2"]."'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -870,11 +870,11 @@ if ($cdcrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO users_cdcs SET users_cdcs.user='".$dl[$j]["id"]."', users_cdcs.cdc='".$dl[$j]["cdc3"]."'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -883,11 +883,11 @@ if ($cdcrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO users_cdcs SET users_cdcs.user='".$dl[$j]["id"]."', users_cdcs.cdc='".$dl[$j]["cdc4"]."'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -896,11 +896,11 @@ if ($cdcrevamp)
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="INSERT INTO users_cdcs SET users_cdcs.user='".$dl[$j]["id"]."', users_cdcs.cdc='".$dl[$j]["cdc5"]."'";
 		print($query."<br />");
-		mysql_query($query);	
+		mysql_query($query);
 	}
 
 	unset($dl);
@@ -909,14 +909,14 @@ if ($cdcrevamp)
 /*
 if ($avatarfuckup)
 {
-	
+
 	$query="select id from users where users.avatar='polttomurha.gif'";
   	$result=mysql_query($query);
   	while($tmp = mysql_fetch_array($result)) {
 	  $dl[]=$tmp;
 	}
-	
-		
+
+
 	for($j=0;$j<count($dl);$j++) {
 		$query="select avatar from users2 where users2.id=".$dl[$j]["id"];
 	  	$result=mysql_query($query);
@@ -926,13 +926,13 @@ if ($avatarfuckup)
 		mysql_query($query);
 	}
 
-	
+
 }
 */
 
 mysql_close($db);
 
-print("<hr><br />aiiiiiiiiiiiii cookie<br /><a href=\"../index.php\">bolber a la vida loca</a><br />");
+print("<hr><br />aiiiiiiiiiiiii cookie<br /><a href=\"/\">bolber a la vida loca</a><br />");
 ?>
 
 </body>
