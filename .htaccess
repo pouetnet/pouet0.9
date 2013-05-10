@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} =www.pouet.net [OR]
+RewriteCond %{HTTP_HOST} =pouet.scene.org [OR]
+RewriteCond %{HTTP_HOST} =www.pouet.scene.org
+RewriteRule ^(.*)$ http://pouet.net/$1 [R=301,QSA,L]
+
+</IfModule>
