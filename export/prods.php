@@ -1,11 +1,19 @@
 <?php
+/*
+ *  Simple json export for prods including all relevant data
+ *
+ *  Usage: /export/prods.php?prod_id=<PROD_ID>
+ *  or
+ *  Usage: /export/prods.php?from=<DATETIME>&to=<DATETIME>&limit=<LIMIT>&offset=<OFFSET>
+ */
+
 // TODO: add hash to check if a prod has been updated and just export updated information
 // TODO: export cdc information for the comments
 
 header("Content-type: text/json");
 include('../include/auth.php');
 
-// how many prods should be exported (newest ones first)
+// get GET parameters
 $from = (isset($_GET['from'])? $_GET['from'] : date('Y-m-d H:i:s', time()-(7*86400))); // default: last week
 $to = (isset($_GET['to'])? $_GET['to'] : date('Y-m-d H:i:s')); // default: today
 
