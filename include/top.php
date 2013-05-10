@@ -229,7 +229,7 @@ switch (basename($SCRIPT_FILENAME)) {
 		$settingfields="logos, topbar, bottombar";
 		print("<title>account</title>\n");
 		break;
-	case 'account2.php' :
+	case 'customize.php' :
 		$customquery.="level from users where id='";
 		$settingfields="logos, topbar, bottombar";
 		print("<title>custom?olobstormaziabletic 7004+ super</title>\n");
@@ -382,7 +382,7 @@ function menu(){ ?>
      <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
      <td><a href="account.php"><b>A<font color="#FFFFFF">ccount</font></b></a><br /></td>
      <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="account2.php"><b>C<font color="#FFFFFF">ustom</font></b></a><br /></td>
+     <td><a href="customize.php"><b>C<font color="#FFFFFF">ustom</font></b></a><br /></td>
      <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
      <td><a href="prodlist.php"><b>P<font color="#FFFFFF">rods</font></b></a><br /></td>
      <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>

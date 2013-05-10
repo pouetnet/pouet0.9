@@ -339,7 +339,7 @@ else
 
 ?>
 
-<form action="account2.php" method="post">
+<form action="customize.php" method="post">
 <input type="hidden" name="action" value="alter">
 <table bgcolor="#000000" cellspacing="1" cellpadding="0"><tr><td>
 <table bgcolor="#000000" cellspacing="1" cellpadding="2">

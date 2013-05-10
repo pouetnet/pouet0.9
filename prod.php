@@ -822,7 +822,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
 	<td bgcolor="#446688" id="c<?=$comments[$i]["id"]?>">
       <?
       if ( ( ($comments[$i]["level"]=='fakeuser') && $user["prodhidefakeuser"] ) || ( ($comments[$i]["level"]=='pr0nstahr') && $user["prodhidepornstar"] ) ||  ( ($comments[$i]["level"]=='annoyinguser') && $user["prodhideannoyinguser"] ) )
-       { print("i'm a ".$comments[$i]["level"]." so i got shamelessly censored, if you're registered you can uncensor my level's posts <a href=\"account2.php\">here</a>"); }
+       { print("i'm a ".$comments[$i]["level"]." so i got shamelessly censored, if you're registered you can uncensor my level's posts <a href=\"customize.php\">here</a>"); }
        else { print(parse_message($comments[$i]["comment"])); }
        ?>
      </td>

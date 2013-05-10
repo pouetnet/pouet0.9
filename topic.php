@@ -132,7 +132,7 @@ if (canEditBBSCategories()) {
          ( ($replies[$i]["level"]=='annoyinguser') && $user["topichideannoyinguser"] )
        )
        {
-        print("i'm a ".$replies[$i]["level"]." so i got shamelessly censored, if you're registered you can uncensor my level's posts <a href=\"account2.php\">here</a>");
+        print("i'm a ".$replies[$i]["level"]." so i got shamelessly censored, if you're registered you can uncensor my level's posts <a href=\"customize.php\">here</a>");
        }
        else {
          print(parse_message($replies[$i]["post"]));

@@ -188,7 +188,7 @@ if($_SESSION["SESSION"]&&$_SESSION["SCENEID"]): ?>
   </td>
  </tr>
  <tr><td class="bottom"><a href="account.php">account</a></td>
-     <td class="bottom"><a href="account2.php">custom</a></td>
+     <td class="bottom"><a href="customize.php">customize</a></td>
      <td class="bottom"><a href="logout.php">logout</a></td>
  </tr>
 </table>
