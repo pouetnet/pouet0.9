@@ -168,7 +168,7 @@ if($submitok){
 	if($lastone["name"]!=$name)
 	{
 	  $query = "INSERT INTO prods SET ";
-	  $query.= "name='".$name."', ";
+	  $query.= "name='".mysql_real_escape_string($name)."', ";
 	  if($group1) {
 	    $query.= "group1=".((int)$group1).", ";
 	  }
@@ -253,7 +253,7 @@ if($submitok){
 	  	for($j=0;$j<count($platforms);$j++) {
 	  		if ($platform[$i]==$platforms[$j]["name"]):
 	  			$query="insert into prods_platforms set prods_platforms.prod='".$lastid."', prods_platforms.platform='".$platforms[$j]["id"]."'";
-	  			mysql_query($query);			
+	  			mysql_query($query);
 	  		endif;
 	  	}
   	  }
@@ -262,7 +262,7 @@ if($submitok){
 	create_cache_module("latest_demos", "SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3,prods.added,users.nickname,users.avatar FROM prods LEFT JOIN users ON users.id=prods.added ORDER BY prods.quand DESC LIMIT 50",1);
 	create_cache_module("latest_released_prods", "SELECT prods.id,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM prods ORDER BY prods.date DESC,prods.quand DESC LIMIT 50",1);
 	if ($party) create_cache_module("latest_released_parties", "select distinct parties.name, parties.id, prods.party_year, COUNT(prods.party) as prodcount from parties right join prods on prods.party=parties.id where parties.id!=1024 group by prods.party,prods.party_year order by prods.date desc, prods.id desc limit 50",0);
-	
+
 	//get data for table
 	$query="select platforms.name from prods_platforms, platforms where prods_platforms.prods='".$lastid."' and platforms.id=prods_platforms.platform";
 	$result = mysql_query($query);
@@ -334,7 +334,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 <!--
 	 document.write("(<a href=\"javascript:popupGroupSelector('submitprod','group1');\">select</a>)");
 //-->
-</script>	
+</script>
 	 </td>
 	</tr>
 	<tr>
@@ -344,7 +344,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 <!--
 	 document.write("(<a href=\"javascript:popupGroupSelector('submitprod','group2');\">select</a>)");
 //-->
-</script>	
+</script>
 	 </td>
 	</tr>
 	<tr>
@@ -354,7 +354,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 <!--
 	 document.write("(<a href=\"javascript:popupGroupSelector('submitprod','group3');\">select</a>)");
 //-->
-</script>	
+</script>
 	 </td>
 	</tr>
 
@@ -562,7 +562,7 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 	  leave it for the experts, you won't loose a glop!<br />
 	 </td>
 	</tr>
-	
+
 
 
 	<tr>
@@ -591,8 +591,8 @@ if ((int)($_SESSION["SCENEID_ID"])==3254) {
 	  <b>NOT</b> the year when it was released!
 	 </td>
 	</tr>
-	
-	
+
+
 	<tr>
 	 <td>infofile:</td>
 	 <td><input type="file" name="nfofile" value="<? print($nfofile); ?>"size="50"><br /></td>

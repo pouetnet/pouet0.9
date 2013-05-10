@@ -68,7 +68,7 @@ switch ($_POST["type"]) {
 		    if($lastone["topic"]!=$topic)
 		    	{
 			    $title="You've successfully added the following topic:";
-			    $query="INSERT bbs_topics SET topic='".$topic."',category='".(int)$_POST["category"]."',lastpost=NOW(),firstpost=NOW(),userlastpost=".$_SESSION["SCENEID_ID"].",userfirstpost=".$_SESSION["SCENEID_ID"];
+			    $query="INSERT bbs_topics SET topic='".mysql_real_escape_string($topic)."',category='".(int)$_POST["category"]."',lastpost=NOW(),firstpost=NOW(),userlastpost=".$_SESSION["SCENEID_ID"].",userfirstpost=".$_SESSION["SCENEID_ID"];
 			    mysql_query($query);
 			    $lastid=mysql_insert_id();
 			    $query="INSERT bbs_posts SET topic=".$lastid.",post='".addslashes($message)."',author=".$_SESSION["SCENEID_ID"].",added=NOW()";
@@ -120,6 +120,7 @@ switch ($_POST["type"]) {
 	break;
 
 	case "comment":
+		$which = (int)$which;
 		$url="prod.php?which=".$which;
 		$message=$comment;
 		if (strstr($comment,"freecliptv.samsonshome.de")!==false)
