@@ -83,12 +83,11 @@ switch($returnvalue["returnvalue"])
 	case NULL:
 	case FALSE:
 	case -1: {
-		header("Location: http://www.pouet.net/error.php?e=".rawurlencode("Couldn't connect SceneID. :(")."&back=".$refer);
+		header("Location: error.php?e=".rawurlencode("Couldn't connect SceneID. :(")."&back=".$refer);
 	} break;
 
 	default: {
-		header("Location: http://www.pouet.net/error.php?e=".rawurlencode($returnvalue["message"])."&back=".$refer);
-//		header("Location: http://localhost/pouet/error.php?e=".$returnvalue["message."&back=".$HTTP_REFERER);
+		header("Location: error.php?e=".rawurlencode($returnvalue["message"])."&back=".$refer);
 	} break;
 }
 exit;
