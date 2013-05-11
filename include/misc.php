@@ -352,8 +352,7 @@ function refreshUserInfo() {
   		{
   			if(substr_count($_SERVER["PHP_SELF"], "account.php")==0)
   			{
-  				header("Location: http://www.pouet.net/account.php?regsceneid=1");
-  //				header("Location: http://www.scene.org/~melwyn/www.pouet.net/account.php?regsceneid=1");
+  				header("Location: account.php?regsceneid=1");
   			}
   		}
   	}
