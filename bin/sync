@@ -9,6 +9,7 @@ RSYNC="rsync    --recursive \
                 --progress \
                 --checksum \
                 --links\
+                --keep-dirlinks \
                 --exclude=avatars \
                 --exclude=gfx/logos \
                 --exclude=nfo \

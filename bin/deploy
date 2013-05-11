@@ -10,6 +10,7 @@ RSYNC="/home/hosted/pouet/bin/rsync \
     --progress \
     --checksum \
     --links\
+    --keep-dirlinks \
     --exclude=avatars \
     --exclude=gfx/logos \
     --exclude=nfo \
