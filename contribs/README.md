@@ -38,6 +38,7 @@ the live database:
 /Applications/MAMP/Library/bin/mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/pouet.sql
 ```
 
-Now you should be able to open your local pouet on http://localhost:8888/ !
+Now you should be able to open your local pouet on
+[http://localhost:8888/](http://localhost:8888/) !
 
 To Be Continued...
