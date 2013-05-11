@@ -13,6 +13,12 @@ RSYNC="rsync    --recursive \
                 --progress \
                 --checksum \
                 --links\
+                --exclude=avatars \
+                --exclude=gfx/logos \
+                --exclude=nfo \
+                --exclude=othernfo \
+                --exclude=results \
+                --exclude=screenshots \
                 --exclude=include/*.inc \
                 --exclude=rulez/*.log \
                 --exclude=include/auth.php \
