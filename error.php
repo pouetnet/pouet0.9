@@ -3,7 +3,7 @@ require("include/top.php");
 
 if(!isset($back)) $back = '/';
 
-switch($e)
+switch($_GET['e'])
 {
 	case "password":
 	case "Invalid password":
@@ -13,7 +13,7 @@ switch($e)
 		$message="Bad username.";
 		break;
 	default:
-		$message=htmlentities(stripslashes($e)); //"Undefined error.";
+		$message=htmlentities(stripslashes($_GET['e'])); //"Undefined error.";
 		break;
 }
 ?>
