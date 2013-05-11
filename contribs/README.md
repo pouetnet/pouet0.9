@@ -6,7 +6,7 @@ to have a HTTP webserver, PHP and MySQL.
 ## OS X
 
 1. Clone the pouet.net repo, let's say it's now in `/Users/you/src/pouet.net`
-1. Install (MAMP)[http://www.mamp.info/], it's free
+1. Install [MAMP](http://www.mamp.info/), it's free
 1. Launch it
 1. In the preferences, on the Apache pane, put `/Users/you/src/pouet.net` as the
 document root
@@ -29,7 +29,7 @@ Once done, you test your MySQL user by doing:
 /Applications/MAMP/Library/bin/mysql -upouet -ppouet pouet
 ```
 
-*I suggest you install (Sequel Pro)[http://www.sequelpro.com/] for all the MySQL
+*I suggest you install [Sequel Pro](http://www.sequelpro.com/) for all the MySQL
 stuff, it's free too !*
 
 Next, you want some starting data to play with, let's inject the structure of
