@@ -9,6 +9,7 @@
 
 // TODO: add hash to check if a prod has been updated and just export updated information
 // TODO: export cdc information for the comments
+// TODO: zip/gzip the exported data to speed up transfer
 
 header("Content-type: text/json");
 include('../include/auth.php');
@@ -20,6 +21,12 @@ $to = (isset($_GET['to'])? $_GET['to'] : date('Y-m-d H:i:s')); // default: today
 $limit = (isset($_GET['limit'])? $_GET['limit'] : 10);
 $offset = (isset($_GET['offset'])? $_GET['offset'] : 0);
 $prod_id = (isset($_GET['prod_id'])? $_GET['prod_id'] : FALSE);
+
+// Limit every request to a maximum of 100 exported prods
+if ((int)$limit > 100)
+{
+    $limit = 100;
+}
 
 // opening DB
 $dbl = mysql_connect($db['host'], $db['user'], $db['password']);
