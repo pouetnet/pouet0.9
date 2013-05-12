@@ -20,7 +20,6 @@ RSYNC="rsync    --recursive \
                 --exclude=othernfo \
                 --exclude=results \
                 --exclude=screenshots \
-                --exclude=include/*.inc \
                 --exclude=rulez/*.log \
                 --exclude=include/auth.php \
                 --exclude=LAST_SCENEORG_CHECK \

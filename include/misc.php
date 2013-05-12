@@ -1,5 +1,6 @@
 <?
-include_once('auth.php');
+require_once('constants.php');
+require_once('auth.php');
 
 // a very useful misc. include file added by melwyn - 19/12/2003
 
@@ -82,7 +83,7 @@ function isIPBanned() {
 
 		}
 
-		$fp = fopen("include/".$name.".cache.inc", "wb");
+		$fp = fopen(TMP_FOLDER.'/'.$name.'.cache.inc', 'wb');
 		fwrite($fp, "<?\n");
 
 		while(list($k,$v)=each($data))
@@ -154,7 +155,7 @@ function isIPBanned() {
 		$result=mysql_query($query);
 		$inc_comments=mysql_result($result,0);
 
-		$fp = fopen("include/stats.cache.inc", "wb");
+		$fp = fopen(TMP_FOLDER.'/stats.cache.inc', "wb");
 		fwrite($fp, "<?\n");
 
           	fwrite($fp, "\$nb_demos=\"".$nb_demos."\";\n");

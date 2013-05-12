@@ -16,7 +16,6 @@ RSYNC="rsync    --recursive \
                 --exclude=othernfo \
                 --exclude=results \
                 --exclude=screenshots \
-                --exclude=include/*.inc \
                 --exclude=rulez/*.log \
                 --exclude=tmp/* \
                 --exclude=include/auth.php \
@@ -39,7 +38,7 @@ function usage()
 
 copy_cache_from_live_to_test()
 {
-    ssh pouet cp $LIVE_PATH/include/*.inc $TEST_PATH/include/
+    ssh pouet cp $LIVE_PATH/tmp/* $TEST_PATH/tmp/
     ssh pouet cp $LIVE_PATH/include/auth.php $TEST_PATH/include/auth.php
 }
 

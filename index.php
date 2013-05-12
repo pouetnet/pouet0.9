@@ -6,7 +6,7 @@ require_once('lib/lastrss/lastRSS.php');
 
 if ($user["indexoneliner"]>0)
 {
-	include('include/onelines.cache.inc');
+	include(TMP_FOLDER.'/onelines.cache.inc');
 	$onelines = array_slice($onelines, 0, $user["indexoneliner"]);
 }
 
@@ -25,34 +25,34 @@ $rs = @$rss->GetCached('http://bitfellas.org/e107_plugins/rss_menu/rss.php?1.2')
 // latest added prods
 if ($user["indexlatestadded"]>0)
 {
-	include('include/latest_demos.cache.inc');
+	include(TMP_FOLDER.'/latest_demos.cache.inc');
 	$latest_demos = array_slice($latest_demos, 0, $user["indexlatestadded"]);
 }
 
 // latest released prods
 if ($user["indexlatestreleased"]>0)
 {
-	include('include/latest_released_prods.cache.inc');
+	include(TMP_FOLDER.'/latest_released_prods.cache.inc');
 	$latest_released_prods = array_slice($latest_released_prods, 0, $user["indexlatestreleased"]);
 }
 
 // debut calcul top demos
 if ($user["indextopprods"]>0)
 {
-	include('include/top_demos.cache.inc');
+	include(TMP_FOLDER.'/top_demos.cache.inc');
 	$top_demos = array_slice($top_demos, 0, $user["indextopprods"]);
 }
 
 if ($user["indextopkeops"]>0)
 {
-	include('include/top_keops.cache.inc');
+	include(TMP_FOLDER.'/top_keops.cache.inc');
 	$top_keops = array_slice($top_keops, 0, $user["indextopkeops"]);
 }
 
 // latest commented prods
 if ($user["indexlatestcomments"]>0)
 {
-	include('include/latest_comments.cache.inc');
+	include(TMP_FOLDER.'/latest_comments.cache.inc');
 	$latest_comments = array_slice($latest_comments, 0, $user["indexlatestcomments"]);
 }
 
@@ -69,7 +69,7 @@ if ($user["indextopglops"]>0)
 if ($user["indexstats"]>0)
 {
 	if (rand(0,11)==0) create_stats_cache();
-	include('include/stats.cache.inc');
+	include(TMP_FOLDER.'/stats.cache.inc');
 }
 
 // cdc
@@ -128,7 +128,7 @@ while($tmp = mysql_fetch_array($result)) {
 
 if ($user["indexlatestparties"]>0)
 {
-	include('include/latest_released_parties.cache.inc');
+	include(TMP_FOLDER.'/latest_released_parties.cache.inc');
 	$latest_parties = array_slice($latest_released_parties, 0, $user["indexlatestparties"]);
 }
 

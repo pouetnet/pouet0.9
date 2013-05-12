@@ -17,7 +17,6 @@ RSYNC="/home/hosted/pouet/bin/rsync \
     --exclude=othernfo \
     --exclude=results \
     --exclude=screenshots \
-    --exclude=include/*.inc \
     --exclude=rulez/*.log \
     --exclude=tmp/* \
     --exclude=include/auth.php \

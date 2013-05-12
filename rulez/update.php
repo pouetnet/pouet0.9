@@ -1,4 +1,7 @@
-<?
+<?php
+require_once('../include/constants.php');
+require_once('../include/auth.php');
+
 session_start();
 if (!($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator'))
   die("OMG");
@@ -76,7 +79,7 @@ function create_cache_module($name, $query, $domore)
 
 		}
 
-		$fp = fopen("../include/".$name.".cache.inc", "wb");
+		$fp = fopen('../'.TMP_FOLDER.'/'.$name.'.cache.inc', "wb");
 		fwrite($fp, "<?\n");
 
 		while(list($k,$v)=each($data))
@@ -145,7 +148,7 @@ function create_stats_cache()
 		$result=mysql_query($query);
 		$inc_comments=mysql_result($result,0);
 
-		$fp = fopen("../include/stats.cache.inc", "wb");
+		$fp = fopen('../'.TMP_FOLDER.'/stats.cache.inc', "wb");
 		fwrite($fp, "<?\n");
 
           	fwrite($fp, "\$nb_demos=\"".$nb_demos."\";\n");
@@ -164,10 +167,6 @@ function create_stats_cache()
     		fwrite($fp, "?>\n");
 		fclose($fp);
 	}
-
-//require('../include/misc.php'); cant use that include couz i need relative path of /include/
-
-
 ?>
 options:
 - all
@@ -209,7 +208,6 @@ if ($ojuice||$all)
 	print("ojuice stage 2!<br />");
 }
 
-require_once("../include/auth.php");
 $dbinfo=$db;
 $db=mysql_connect($dbinfo['host'],$dbinfo['user'], $dbinfo['password']);
 mysql_select_db($dbinfo['database'],$db);
