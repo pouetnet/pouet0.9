@@ -1,16 +1,16 @@
-<?
-//return;
+<?php
+require_once('lib/lastrss/lastRSS.php');
+require_once('include/constants.php');
+
 header("Content-type: text/plain");
 
 printf("START %s - ",date("Y-m-d H:i:s"));
-
-require_once('lib/lastrss/lastRSS.php');
 
 // create lastRSS object
 $rss = new lastRSS;
 
 // setup transparent cache
-$rss->cache_dir = 'cache';
+$rss->cache_dir = TMP_FOLDER;
 $rss->cache_time = 5*60; // in seconds
 $rss->CDATA = 'strip';
 $rss->date_format = 'Y-m-d';

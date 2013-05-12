@@ -30,7 +30,7 @@ if (!$_SESSION["nodonate"]) {
     </table>
 
 <?
-$fn = "cache/bpbudget.inc";
+$fn = TMP_FOLDER."/bpbudget.inc";
 if (!file_exists($fn) || time() - filemtime($fn) < 3600) {
 	$f = @fopen("http://breakpoint.untergrund.net/broke_budget.php", 'r');
 	$content = '';

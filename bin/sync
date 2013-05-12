@@ -18,7 +18,6 @@ RSYNC="rsync    --recursive \
                 --exclude=screenshots \
                 --exclude=include/*.inc \
                 --exclude=rulez/*.log \
-                --exclude=cache/* \
                 --exclude=tmp/* \
                 --exclude=include/auth.php \
                 --exclude=.git"

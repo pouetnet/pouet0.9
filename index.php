@@ -14,22 +14,14 @@ if ($user["indexoneliner"]>0)
 $rss = new lastRSS;
 
 // setup transparent cache
-$rss->cache_dir = './cache';
+$rss->cache_dir = TMP_FOLDER;
 $rss->cache_time = 5*60; // in seconds
 $rss->CDATA = 'strip';
 $rss->date_format = 'Y-m-d';
 
 // load some RSS file
-$rs = $rss->GetCached('http://bitfellas.org/e107_plugins/rss_menu/rss.php?1.2');
-//if ($rs = $rss->get('http://bitfellas.org/e107_plugins/rss_menu/rss.php?1.2')) {
-/*
-$rss_url = 'http://bitfellas.org/e107_plugins/rss_menu/rss.php?1.2';
-if ($rs = $rss->get($f)) {
-}
-else {
-	printf('Error: RSS file not found...');
-}
-*/
+$rs = @$rss->GetCached('http://bitfellas.org/e107_plugins/rss_menu/rss.php?1.2');
+
 // latest added prods
 if ($user["indexlatestadded"]>0)
 {
