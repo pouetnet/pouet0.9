@@ -88,3 +88,9 @@ Now you should be able to open your local pouet on
 [http://localhost:8888/](http://localhost:8888/) !
 
 Well done sir !
+
+### What about other platforms ?
+
+Well, it's up to you to write the doc.
+
+Fork, modify this file, and create your pull request !
