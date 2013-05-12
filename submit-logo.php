@@ -73,7 +73,8 @@ if($submitok) {
   $query ="INSERT INTO logos SET ";
   $query.="file='".$custom_name."', ";
   $query.="author1=".$_SESSION["SCENEID_ID"];
-  mysql_query($query);
+  mysql_query($query)
+    or unlink($logos_path.$custom_name);
 }
 
 ?>

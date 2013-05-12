@@ -446,7 +446,7 @@ logo done by
 and
 <a href="user.php?who=<? print($logo["author2"]); ?>"><? print($logo["nickname2"]); ?></a>
 <? endif; endif;
-} else { print("<a href=\"/\">back to pout's home</a> "); }
+} else { print("<a href=\"/\">back to pou&euml;t's home</a> "); }
 ?>
 ::
 <?
