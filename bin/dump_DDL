@@ -4,6 +4,13 @@
 # Needed by sed to not throw out some warnings
 LANG=C
 
+# Make sure we are in the good folder
+if [ ! -f COPYING ]
+then
+    echo "Launch me in the root folder"
+    exit 1
+fi
+
 echo "Dumping the current DDL..."
 ssh pouet mysqldump --skip-lock-tables \
                     --no-data \
