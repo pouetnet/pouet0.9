@@ -81,7 +81,7 @@ stuff, it's free too !*
 Next, you want some starting data to play with, let's inject the copyleft data
 that's been given up to your by poueters:
 ```bash
-/Applications/MAMP/Library/bin/mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/contribs/pouet.sql
+/Applications/MAMP/Library/bin/mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/contribs/pouet_with_sample_data.sql
 ```
 
 Now you should be able to open your local pouet on

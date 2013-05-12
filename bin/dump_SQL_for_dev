@@ -3,6 +3,7 @@
 
 # Config
 MYSQL_DB="pouet"
+DUMP_FILE="pouet_with_sample_data.sql"
 
 # Needed by sed to not throw out some warnings
 LANG=C
@@ -125,7 +126,7 @@ fi
 
 echo "Preparing the ground..."
 ssh pouet "if [ ! -d tmp ] ; then mkdir tmp ; fi"
-ssh pouet "rm -f tmp/pouet.sql"
+ssh pouet "rm -f tmp/*.sql"
 
 echo "Dumping tables with public data..."
 dump_tables_with_public_data
@@ -137,30 +138,14 @@ echo "Dumping tables with filtered data..."
 dump_tables_with_selective_data
 
 echo "Preparing the dump..."
-ssh pouet "cat tmp/*.sql >> tmp/pouet.sql"
-ssh pouet "gzip tmp/pouet.sql"
+ssh pouet "cat tmp/*.sql >> tmp/$DUMP_FILE"
+ssh pouet "gzip tmp/$DUMP_FILE"
 
 echo "Downloading the DDL..."
-scp pouet:tmp/pouet.sql.gz contribs/
-gunzip -f contribs/pouet.sql.gz
+scp pouet:tmp/$DUMP_FILE.gz contribs/
+gunzip -f contribs/$DUMP_FILE.sql.gz
 
 echo "Cleaning up the mess..."
-ssh pouet "rm -f tmp/*.sql tmp/pouet.sql.gz"
+ssh pouet "rm -f tmp/*.sql tmp/$DUMP_FILE.gz"
 
-# echo "Cleaning up the DDL..."
-# # Remove any AUTO_INCREMENT option
-# sed -e 's/ AUTO_INCREMENT=[0-9]*//' -i '' pouet.sql
-#
-# # Delete the last 2 lines (empty line + date of dump)
-# sed -e 'N;$!P;$!D;$d' -i '' pouet.sql
-#
-# # Remove the MySQL client version header
-# sed -e '/-- MySQL dump .*  Distrib .*, for .*/d' -i '' pouet.sql
-#
-# # Remove the MySQL server version header
-# sed -e '/-- Server version.*/d' -i '' pouet.sql
-#
-# # Remove the host/database iformation
-# sed -e '/-- Host:.*Database:.*/d' -i '' pouet.sql
-
-echo "Dump of the DDL completed in pouet.sql"
+echo "Dump of the DDL completed in $DUMP_FILE"
