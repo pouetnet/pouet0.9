@@ -20,7 +20,7 @@ RSYNC="/home/hosted/pouet/bin/rsync \
     --exclude=include/*.inc \
     --exclude=rulez/*.log \
     --exclude=cache/* \
-    --exclide=tmp/* \
+    --exclude=tmp/* \
     --exclude=include/auth.php \
     --exclude=.git"
 
