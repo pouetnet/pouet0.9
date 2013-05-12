@@ -22,6 +22,18 @@ Github and starts deploying a new version.
 
 ## Setup a dev environment
 
+#### Quick HOWTO
+
+1. Install an HTTP server, PHP and MySQL
+1. Clone the pouet.net repository
+1. Point the root directory of your HTTP server to the pouet.net source code,
+   with PHP activated
+1. In MySQL, create a `pouet` database, which can be accessed by a `pouet` user
+   with a `pouet` password from `localhost`
+
+For more details, take a look at the instructions given for each platform below,
+they can help.
+
 ### OS X
 
 1. Clone the pouet.net repo, let's say it's now in `/Users/you/src/pouet.net`
