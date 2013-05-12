@@ -2,6 +2,9 @@
 require("include/top.php");
 $logos_path = 'gfx/logos/';
 
+$logofile = $_FILES['logofile']['tmp_name'];
+$logofile_name = $_FILES['logofile']['name'];
+
 unset($submitok);
 // check the submitted data
 //if($sshotfile&&($sshotfile!="none"))
