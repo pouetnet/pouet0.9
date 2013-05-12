@@ -54,21 +54,21 @@ if(!$submitok && file_exists($logofile)){
 }
 
 if($submitok) {
-	$ext = strrchr($logofile_name, '.');
-	if($ext !== false)
-	{
-		$custom_name = substr($logofile_name, 0, -strlen($ext));
-	}
-	else
-	{
-		$custom_name = $logofile_name;
-	}
-	if(strlen($custom_name) > 250)
-	{
-		$custom_name = substr($custom_name, 0, 250);
-	}
+  $ext = strrchr($logofile_name, '.');
+  if($ext !== false)
+  {
+    $custom_name = substr($logofile_name, 0, -strlen($ext));
+  }
+  else
+  {
+    $custom_name = $logofile_name;
+  }
+  if(strlen($custom_name) > 250)
+  {
+    $custom_name = substr($custom_name, 0, 250);
+  }
 
-	$custom_name .= $mytype;
+  $custom_name .= $mytype;
   copy($logofile, $logos_path.$custom_name);
 
   unlink($logofile);
