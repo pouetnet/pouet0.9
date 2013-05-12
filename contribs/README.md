@@ -20,6 +20,18 @@ in the next 5 minutes.
 Anytime a commit is pushed into the `master` branch, Pouët gets a call from
 Github and starts deploying a new version.
 
+## How can I push to `master` ?
+
+You can't, only the maintainers can. If you want to see your code on the
+`master` branch, fork, commit, push, open a pull request, and wait for a
+maintainer to review, test and merge your pull request into `master`
+
+## Is the code tested before going live ?
+
+Yes, maintainers have access to a staging version of pouet where they can push
+any local branch, the workflow for them is to test any code that is gonna be
+pushed to master before doing it for real.
+
 ## Setup a dev environment
 
 #### Quick HOWTO
