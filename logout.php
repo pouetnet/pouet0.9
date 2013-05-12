@@ -28,5 +28,5 @@ if($_COOKIE["SCENEID_SESSION"])
 
 $sceneid->parseSceneIdData($command, $params);
 
-header("Location: ".$HTTP_REFERER);
+header("Location: ".$_SERVER[HTTP_REFERER]);
 ?>

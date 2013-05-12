@@ -61,7 +61,7 @@ if($_SESSION["SCENEID"])
 {
 	if($_SESSION["SCENEID_IP"]!=$_SERVER["REMOTE_ADDR"])
 	{
-		//header("Location: logout.php");
+		//header("Location: http://$_SERVER[HTTP_HOST]/logout.php");
 	}
 }
 

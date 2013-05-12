@@ -113,11 +113,11 @@ if($what) {
 
   if ($nbresults==1 && !$_GET["page"] && !$_GET["dontredirect"]) {
     switch($type) {
-      case "prod":  header("Location: prod.php?which=".$results[0][0]); exit(); break;
-      case "group": header("Location: groups.php?which=".$results[0][0]); exit(); break;
-      case "party": header("Location: party.php?which=".$results[0][0]); exit(); break;
-      case "board": header("Location: bbses.php?which=".$results[0][0]); exit(); break;
-      case "user":  header("Location: user.php?who=".$results[0][0]); exit(); break;
+      case "prod":  header("Location: http://$_SERVER[HTTP_HOST]/prod.php?which=".$results[0][0]); exit(); break;
+      case "group": header("Location: http://$_SERVER[HTTP_HOST]/groups.php?which=".$results[0][0]); exit(); break;
+      case "party": header("Location: http://$_SERVER[HTTP_HOST]/party.php?which=".$results[0][0]); exit(); break;
+      case "board": header("Location: http://$_SERVER[HTTP_HOST]/bbses.php?which=".$results[0][0]); exit(); break;
+      case "user":  header("Location: http://$_SERVER[HTTP_HOST]/user.php?who=".$results[0][0]); exit(); break;
     }
   }
 }

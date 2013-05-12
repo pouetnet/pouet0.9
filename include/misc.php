@@ -352,7 +352,7 @@ function refreshUserInfo() {
   		{
   			if(substr_count($_SERVER["PHP_SELF"], "account.php")==0)
   			{
-  				header("Location: account.php?regsceneid=1");
+  				header("Location: http://$_SERVER[HTTP_HOST]/account.php?regsceneid=1");
   			}
   		}
   	}

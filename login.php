@@ -72,9 +72,9 @@ switch($returnvalue["returnvalue"])
 		if(!$_SESSION["SCENEID"])
 		{
 			$_SESSION["SCENEID"]=session_id();
-		  $_SESSION["SCENEID_ID"]=$returnvalue["userID"];
-		  $_SESSION["SCENEID_LOGIN"]=$returnvalue["user"]["login"];
-      $_SESSION["SCENEID_IP"]=$_SERVER["REMOTE_ADDR"];
+		  	$_SESSION["SCENEID_ID"]=$returnvalue["userID"];
+		  	$_SESSION["SCENEID_LOGIN"]=$returnvalue["user"]["login"];
+      		$_SESSION["SCENEID_IP"]=$_SERVER["REMOTE_ADDR"];
 		}
 
 		header("Location: ".$refer);
