@@ -29,7 +29,22 @@ Github and starts deploying a new version.
 1. Point the root directory of your HTTP server to the pouet.net source code,
    with PHP activated
 1. In MySQL, create a `pouet` database, which can be accessed by a `pouet` user
-   with a `pouet` password from `localhost`
+   with a `pouet` password from `localhost` (see below)
+1. Inject the sample data `contribs/pouet.sql` in your MySQL server (see below)
+
+##### Create the MySQL database and user
+
+```sql
+CREATE DATABASE `pouet`;
+CREATE USER 'pouet'@'localhost' IDENTIFIED BY 'pouet';
+GRANT ALL PRIVILEGES ON pouet.* TO 'pouet'@'localhost';
+```
+
+##### Inject the sample data
+
+```bash
+mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/contribs/pouet.sql
+```
 
 For more details, take a look at the instructions given for each platform below,
 they can help.
