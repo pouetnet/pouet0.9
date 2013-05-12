@@ -44,13 +44,13 @@ for ($i=0; $i<count($cdc); $i++):
 		  $cdc[$i]["groupacron3"]=$tmp["acronym"];
 		 }
 	endif;
-	
+
 	if (strlen($cdc[$i]["groupname1"].$cdc[$i]["groupname2"].$cdc[$i]["groupname3"])>27):
 		if (strlen($cdc[$i]["groupname1"])>10 && $cdc[$i]["groupacron1"]) $cdc[$i]["groupname1"]=$cdc[$i]["groupacron1"];
 		if (strlen($cdc[$i]["groupname2"])>10 && $cdc[$i]["groupacron2"]) $cdc[$i]["groupname2"]=$cdc[$i]["groupacron2"];
 		if (strlen($cdc[$i]["groupname3"])>10 && $cdc[$i]["groupacron3"]) $cdc[$i]["groupname3"]=$cdc[$i]["groupacron3"];
 	endif;
-	
+
 	$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$cdc[$i]["which"]."' and platforms.id=prods_platforms.platform";
 	$result=mysql_query($query);
 	$check=0;
@@ -63,15 +63,6 @@ for ($i=0; $i<count($cdc); $i++):
 	 //print($query."<->".$cdc[$i]["platform"]."<br/>");
 
 endfor;
-
-//$query="SELECT distinct prods.id as which,count(prods.id) as count,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM users WHERE (users.cdc=prods.id OR users.cdc2=prods.id OR users.cdc3=prods.id OR users.cdc4=prods.id OR users.cdc5=prods.id) group by prods.id order by count desc";
-//$result=mysql_query($query);
-//while($tmp=mysql_fetch_array($result)) {
-//  $pcdc[]=$tmp;
-//}
-
-//	include('include/cdclist.cache.inc');
-//	$pcdc = $cdclist;
 
 $query=" SELECT distinct prods.id as which,count(prods.id) as count,prods.name,prods.type,prods.group1,prods.group2,prods.group3 FROM users_cdcs JOIN prods WHERE users_cdcs.cdc=prods.id group by prods.id order by count desc";
 $result=mysql_query($query);
@@ -103,13 +94,13 @@ for ($i=0; $i<count($pcdc); $i++):
 		  $pcdc[$i]["groupacron3"]=$tmp["acronym"];
 		 }
 	endif;
-	
+
 	if (strlen($pcdc[$i]["groupname1"].$pcdc[$i]["groupname2"].$pcdc[$i]["groupname3"])>27):
 		if (strlen($pcdc[$i]["groupname1"])>10 && $pcdc[$i]["groupacron1"]) $pcdc[$i]["groupname1"]=$pcdc[$i]["groupacron1"];
 		if (strlen($pcdc[$i]["groupname2"])>10 && $pcdc[$i]["groupacron2"]) $pcdc[$i]["groupname2"]=$pcdc[$i]["groupacron2"];
 		if (strlen($pcdc[$i]["groupname3"])>10 && $pcdc[$i]["groupacron3"]) $pcdc[$i]["groupname3"]=$pcdc[$i]["groupacron3"];
 	endif;
-	
+
 	$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$pcdc[$i]["which"]."' and platforms.id=prods_platforms.platform";
 	$result=mysql_query($query);
 	$check=0;
@@ -154,13 +145,13 @@ for ($i=0; $i<count($rec); $i++):
 		  $rec[$i]["groupacron3"]=$tmp["acronym"];
 		 }
 	endif;
-	
+
 	if (strlen($rec[$i]["groupname1"].$rec[$i]["groupname2"].$rec[$i]["groupname3"])>27):
 		if (strlen($rec[$i]["groupname1"])>10 && $rec[$i]["groupacron1"]) $rec[$i]["groupname1"]=$rec[$i]["groupacron1"];
 		if (strlen($rec[$i]["groupname2"])>10 && $rec[$i]["groupacron2"]) $rec[$i]["groupname2"]=$rec[$i]["groupacron2"];
 		if (strlen($rec[$i]["groupname3"])>10 && $rec[$i]["groupacron3"]) $rec[$i]["groupname3"]=$rec[$i]["groupacron3"];
 	endif;
-	
+
 	$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$rec[$i]["prodid"]."' and platforms.id=prods_platforms.platform";
 	$result=mysql_query($query);
 	$check=0;
@@ -204,9 +195,9 @@ endfor;
 		print("<img src=\"gfx/types/".$types[$typess[$k]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$k]."\">");
 		}
 		print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td nowrap><a href=\"prod.php?which=".$cdc[$i]["which"]."\">".strtolower(stripslashes($cdc[$i]["name"]))."</a><br /></td><td>&nbsp;</td>");
-		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $cdc[$i]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
@@ -273,9 +264,9 @@ endfor;
 		print("<img src=\"gfx/types/".$types[$typess[$k]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$k]."\">");
 		}
 		print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td nowrap><a href=\"prod.php?which=".$pcdc[$i]["which"]."\">".strtolower(stripslashes($pcdc[$i]["name"]))."</a><br /></td><td>&nbsp;</td>");
-		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $pcdc[$i]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
