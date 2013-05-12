@@ -2,14 +2,14 @@
 require("include/top.php");
 
 if (isset($_SESSION['SESSION']) && $id && $vote) {
-	$query = "SELECT count(0) FROM logos_votes WHERE logo=$id AND user=".$_SESSION["SCENEID_ID"];
+	$query = 'SELECT count(0) FROM logos_votes WHERE logo='.(int)$id.' AND user='.$_SESSION["SCENEID_ID"];
 	$result = mysql_query($query);
 	if (!mysql_result($result,0)) {
 		if ($vote == rulez)
 			$vote = 1;
 		else
 			$vote = -1;
-		$query = "INSERT INTO logos_votes SET logo=$id, user=".$_SESSION["SCENEID_ID"].", vote=$vote";
+		$query = 'INSERT INTO logos_votes SET logo='.(int)$id.', user='.$_SESSION['SCENEID_ID'].', vote='.$vote;
 		mysql_query($query);
 	}
 }
