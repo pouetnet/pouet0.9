@@ -3,7 +3,26 @@
 In order to run a development version of pouet.net on your platform, you need
 to have a HTTP webserver, PHP and MySQL.
 
-## OS X
+## How to contribute ?
+
+First thing, you need to [fork](https://github.com/lra/pouet.net/fork) it. Then
+you can start making changes on your fork.
+When done, you can create a
+[pull request](https://help.github.com/articles/using-pull-requests) and a
+people will review your change and test it on a staging version of the
+website.
+When your PR is ready to go live, a contributor will merge it into master and
+your proposed changes will automatically go live on [Pouët](http://pouet.net)
+in the next 5 minutes.
+
+## When is a new version deployed ?
+
+Anytime a commit is pushed into the `master` branch, Pouët gets a call from
+Github and starts deploying a new version.
+
+## Setup a dev environment
+
+### OS X
 
 1. Clone the pouet.net repo, let's say it's now in `/Users/you/src/pouet.net`
 1. Install [MAMP](http://www.mamp.info/), it's free
