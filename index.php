@@ -2,14 +2,13 @@
 require("include/top.php");
 require("include/libbb.php");
 require("include/awardscategories.inc.php");
+require_once('lib/lastrss/lastRSS.php');
 
 if ($user["indexoneliner"]>0)
 {
 	include('include/onelines.cache.inc');
 	$onelines = array_slice($onelines, 0, $user["indexoneliner"]);
 }
-
-include './lastRSS.php';
 
 // create lastRSS object
 $rss = new lastRSS;
