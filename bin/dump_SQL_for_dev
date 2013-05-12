@@ -126,7 +126,7 @@ fi
 
 echo "Preparing the ground..."
 ssh pouet "if [ ! -d tmp ] ; then mkdir tmp ; fi"
-ssh pouet "rm -f tmp/*.sql"
+ssh pouet "rm -f tmp/*.sql tmp/$DUMP_FILE.gz"
 
 echo "Dumping tables with public data..."
 dump_tables_with_public_data
@@ -143,7 +143,7 @@ ssh pouet "gzip tmp/$DUMP_FILE"
 
 echo "Downloading the DDL..."
 scp pouet:tmp/$DUMP_FILE.gz contribs/
-gunzip -f contribs/$DUMP_FILE.sql.gz
+gunzip -f contribs/$DUMP_FILE.gz
 
 echo "Cleaning up the mess..."
 ssh pouet "rm -f tmp/*.sql tmp/$DUMP_FILE.gz"
