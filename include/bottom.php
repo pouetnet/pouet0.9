@@ -8,9 +8,9 @@ if ($user["bottombar"] == 1)
 function get_long_git_commit()
 {
 	/** Returns the long hash of the commit of the current version */
-	if (file_exists('LOCAL_COMMIT'))
+	if (file_exists(LOCAL_COMMIT_FILE))
 	{
-		$commit = file_get_contents('LOCAL_COMMIT');
+		$commit = file_get_contents(LOCAL_COMMIT_FILE);
 	}
 	else
 	{
@@ -31,7 +31,7 @@ function get_short_git_commit()
 
 function is_upgrading()
 {
-	return file_exists('REMOTE_COMMIT');
+	return file_exists(REMOTE_COMMIT_FILE);
 }
 
 ?>

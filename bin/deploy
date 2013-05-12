@@ -2,8 +2,8 @@
 
 TMP_FOLDER="/home/hosted/pouet/deploy_folder"
 LIVE_FOLDER="/home/hosted/pouet/sites/www.pouet.net"
-LOCAL_COMMIT_FILE="$LIVE_FOLDER/LOCAL_COMMIT"
-REMOTE_COMMIT_FILE="$LIVE_FOLDER/REMOTE_COMMIT"
+LOCAL_COMMIT_FILE="$LIVE_FOLDER/tmp/LOCAL_COMMIT"
+REMOTE_COMMIT_FILE="$LIVE_FOLDER/tmp/REMOTE_COMMIT"
 RSYNC="/home/hosted/pouet/bin/rsync \
     --recursive \
     --delete \

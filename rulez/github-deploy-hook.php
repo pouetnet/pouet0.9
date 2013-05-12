@@ -2,6 +2,8 @@
 // Script called by github to write the lastest commit on master into the file
 // named REMOTE_COMMIT at the root of pouet.net
 
+require_once '../include/constants.php';
+
 function cidr_match($ip, $cidr)
 {
     list($subnet, $mask) = explode('/', $cidr);
@@ -68,5 +70,5 @@ if ($payload->ref != 'refs/heads/master')
 if ($payload->after)
 {
 	// Put the latest commit a text file to trigger the next deploy
-	file_put_contents('../REMOTE_COMMIT', $payload->after);
+	file_put_contents('../'.REMOTE_COMMIT_FILE, $payload->after);
 }
