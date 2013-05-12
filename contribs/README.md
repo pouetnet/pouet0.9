@@ -34,7 +34,7 @@ pushed to master before doing it for real.
 
 ## Setup a dev environment
 
-#### Quick HOWTO
+### Quick HOWTO
 
 1. Install an HTTP server, PHP and MySQL
 1. Clone the pouet.net repository
@@ -45,7 +45,7 @@ pushed to master before doing it for real.
 1. Inject the sample data `contribs/pouet_with_sample_data.sql` in your MySQL
    server (see below)
 
-##### Create the MySQL database and user
+#### Create the MySQL database and user
 
 ```sql
 CREATE DATABASE 'pouet';
@@ -53,7 +53,7 @@ CREATE USER 'pouet'@'localhost' IDENTIFIED BY 'pouet';
 GRANT ALL PRIVILEGES ON pouet.* TO 'pouet'@'localhost';
 ```
 
-##### Inject the sample data
+#### Inject the sample data
 
 ```bash
 mysql -upouet -ppouet pouet < contribs/pouet_with_sample_data.sql
@@ -61,6 +61,22 @@ mysql -upouet -ppouet pouet < contribs/pouet_with_sample_data.sql
 
 For more details, take a look at the instructions given for each platform below,
 they can help.
+
+#### Generate the cache
+
+You should see a mostly empty page the 1st time you launch Pouët. All normal !
+You need to generate the cache.
+
+First, make sure you are an administrator, find your ID in the `users` table and
+give yourself some power. Let's say your ID is 1337:
+```sql
+UPDATE users
+SET level = 'administrator'
+WHERE id = 1337;
+```
+
+Now login as your new admin, go to `/rulez/update.php?all=1` and wait a bit.
+Despite the errors, when done, you should see some content on the index page.
 
 ### OS X
 
