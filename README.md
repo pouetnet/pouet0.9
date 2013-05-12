@@ -40,6 +40,10 @@ At the same time:
 - [psenough](http://www.pouet.net/user.php?who=177)
 - [analogue](http://www.pouet.net/user.php?who=1)
 
+## Want to contribute ?
+
+Start [here](https://github.com/lra/pouet.net/tree/master/contribs) !
+
 ## License
 
 Copyright (C) 2000-2013 Laurent Raufaste and contributors
