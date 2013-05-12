@@ -1,4 +1,7 @@
-<?
+<?php
+
+require_once 'include/constants.php';
+
 // lets send things zipped if we can..
 function pouet_ob(&$bass)
 {

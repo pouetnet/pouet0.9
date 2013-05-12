@@ -151,12 +151,13 @@ if ($user["indexlatestparties"]>0)
 
 <?
 $sceneOrgDown = true;
-if(time() - filemtime("LAST_SCENEORG_CHECK") > 60 * 15)
+if (time() - filemtime(SCENE_ORG_CHECK_FILE) > 60 * 15)
 {
-  file_put_contents("LAST_SCENEORG_CHECK",file_get_contents("http://www.scene.org"));
+  file_put_contents(SCENE_ORG_CHECK_FILE, file_get_contents('http://www.scene.org/'));
 }
-$sceneOrgDown = !file_get_contents("LAST_SCENEORG_CHECK");
-if($sceneOrgDown){
+$sceneOrgDown = !file_get_contents(SCENE_ORG_CHECK_FILE);
+
+if ($sceneOrgDown) {
 ?>
 <table cellspacing="1" cellpadding="2" class="box">
  <tr><th colspan="3">your account</th></tr>
