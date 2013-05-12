@@ -14,7 +14,7 @@ $returnvalue = $xml->parseSceneIdData("loginUserMD5", array(
                "login" => $_REQUEST["login"],
                "password" => md5($_REQUEST["password"]),
                "ip" => $_SERVER["REMOTE_ADDR"],
-               "permanent" => ($_POST["permanent"]=="on"?"1":"0")));
+               "permanent" => (isset($_POST['permanent']) && $_POST['permanent'] == "on" ? "1" : "0")));
 $z = ob_get_clean();
 
 $refer = $HTTP_REFERER ? $HTTP_REFERER : "/";
