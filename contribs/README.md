@@ -8,7 +8,7 @@ to have a HTTP webserver, PHP and MySQL.
 First thing, you need to [fork](https://github.com/lra/pouet.net/fork) it. Then
 you can start making changes on your fork.
 When done, you can create a
-[pull request](https://help.github.com/articles/using-pull-requests) and a
+[pull request](https://help.github.com/articles/using-pull-requests) and
 people will review your change and test it on a staging version of the
 website.
 When your PR is ready to go live, a contributor will merge it into master and
@@ -30,7 +30,8 @@ Github and starts deploying a new version.
    with PHP activated
 1. In MySQL, create a `pouet` database, which can be accessed by a `pouet` user
    with a `pouet` password from `localhost` (see below)
-1. Inject the sample data `contribs/pouet.sql` in your MySQL server (see below)
+1. Inject the sample data `contribs/pouet_with_sample_data.sql` in your MySQL
+   server (see below)
 
 ##### Create the MySQL database and user
 
@@ -43,7 +44,7 @@ GRANT ALL PRIVILEGES ON pouet.* TO 'pouet'@'localhost';
 ##### Inject the sample data
 
 ```bash
-mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/contribs/pouet.sql
+mysql -upouet -ppouet pouet < contribs/pouet_with_sample_data.sql
 ```
 
 For more details, take a look at the instructions given for each platform below,
