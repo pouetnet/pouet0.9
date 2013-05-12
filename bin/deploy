@@ -53,7 +53,9 @@ then
     # Update the new crontab
     /usr/bin/crontab $LIVE_FOLDER/crontab
 
-    # Everything is good, nothing failed, tag the new local version
+    # Everything is good, nothing failed, remove the wanted version and tag the
+    # new local version
+    rm $REMOTE_COMMIT_FILE
     echo $REMOTE_COMMIT > $LOCAL_COMMIT_FILE
 
     # Clean up the tmp folder to let the next deploy run
