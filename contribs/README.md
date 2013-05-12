@@ -35,7 +35,7 @@ Github and starts deploying a new version.
 ##### Create the MySQL database and user
 
 ```sql
-CREATE DATABASE `pouet`;
+CREATE DATABASE 'pouet';
 CREATE USER 'pouet'@'localhost' IDENTIFIED BY 'pouet';
 GRANT ALL PRIVILEGES ON pouet.* TO 'pouet'@'localhost';
 ```
@@ -65,7 +65,7 @@ Run `/Applications/MAMP/Library/bin/mysql -uroot -proot` and execute the
 following SQL commands:
 
 ```sql
-CREATE DATABASE `pouet`;
+CREATE DATABASE 'pouet';
 CREATE USER 'pouet'@'localhost' IDENTIFIED BY 'pouet';
 GRANT ALL PRIVILEGES ON pouet.* TO 'pouet'@'localhost';
 ```
