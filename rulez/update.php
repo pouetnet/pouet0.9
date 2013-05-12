@@ -3,8 +3,16 @@ require_once('../include/constants.php');
 require_once('../include/auth.php');
 
 session_start();
-if (!($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator'))
+switch ($_SESSION['SESSION_LEVEL']) {
+case 'administrator':
+case 'moderator':
+case 'gloperator':
+  break;
+
+default:
   die("OMG");
+}
+
 ?><html>
 <head>
  <title>test</title>
