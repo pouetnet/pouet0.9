@@ -61,17 +61,18 @@ function dump_tables_without_data()
 
 function dump_tables_with_selective_data()
 {
-    USERS_AGREEING=(1
-                    177
-                    619
-                    3023
-                    3865
-                    4950
-                    5938
-                    7636
-                    20122
-                    29286
-                    42140)
+    USERS_AGREEING=(1       # analogue
+                    10      # rez
+                    177     # psenough
+                    619     # tomaes
+                    3023    # psonice
+                    3865    # visy
+                    4950    # Preacher
+                    5938    # randomi
+                    7636    # xeron
+                    20122   # PulkoMandy
+                    29286   # xTr1m
+                    42140)  # vibrator
     TMP_VAR=$(printf ",%s" "${USERS_AGREEING[@]}")
     TMP_VAR=${TMP_VAR:1}
 
