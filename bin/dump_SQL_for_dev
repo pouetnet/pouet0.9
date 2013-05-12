@@ -1,0 +1,165 @@
+#!/bin/bash -e
+# Dump some copyleft pouet.net data into a SQL text file
+
+# Config
+MYSQL_DB="pouet"
+
+# Needed by sed to not throw out some warnings
+LANG=C
+
+# We have 3 types of tables:
+# 1. Tables without any user FK with only public data: Full dump
+# 2. Tables without any user FK without public data: Data-less dump
+# 3. Tables with a user FK: Selective dump
+
+function dump_tables_with_public_data()
+{
+    TABLES=("affiliatedbbses"
+            "affiliatedprods"
+            "awardscand_2007"
+            "awardscand_2008"
+            "awardscand_2010"
+            "awardscand_2011"
+            "bbses_platforms"
+            "bbsesaka"
+            "buttons"
+            "cdc"
+            "credits"
+            "downloadlinks"
+            "faq"
+            "groupsaka"
+            "links"
+            "listitems"
+            "news"
+            "ojnews"
+            "partiesaka"
+            "partylinks"
+            "platforms"
+            "prodotherparty"
+            "prods_platforms"
+            "sceneorgrecommended")
+
+    ssh pouet mysqldump --skip-lock-tables \
+                        --result-file=tmp/tables_with_public_data.sql \
+                        $MYSQL_DB \
+                        ${TABLES[*]}
+}
+
+function dump_tables_without_data()
+{
+    TABLES=("editrequests"
+            "gloperator_log"
+            "prods_refs"
+            "ud")
+
+    ssh pouet mysqldump --skip-lock-tables \
+                        --result-file=tmp/tables_without_data.sql \
+                        --no-data \
+                        $MYSQL_DB \
+                        ${TABLES[*]}
+}
+
+function dump_tables_with_selective_data()
+{
+    USERS_AGREEING=(1
+                    177
+                    619
+                    3023
+                    3865
+                    4950
+                    5938
+                    7636
+                    20122
+                    29286
+                    42140)
+    TMP_VAR=$(printf ",%s" "${USERS_AGREEING[@]}")
+    TMP_VAR=${TMP_VAR:1}
+
+    # Get the list of users in the format (1,2,3) to be used by INs
+    FILTER="($TMP_VAR)"
+
+    TABLES_WITH_COND=("bbs_ads;adder IN $FILTER OR added in $FILTER"
+                      "bbs_posts;author IN $FILTER"
+                      "bbs_topics;userfirstpost IN $FILTER OR userlastpost IN $FILTER"
+                      "bbses;adder IN $FILTER"
+                      "comments;who IN $FILTER"
+                      "groups;added IN $FILTER"
+                      "lists;adder IN $FILTER OR upkeeper IN $FILTER"
+                      "logos;author1 IN $FILTER OR author2 IN $FILTER"
+                      "logos_votes;user IN $FILTER"
+                      "nfos;user IN $FILTER"
+                      "oldnicks;user IN $FILTER"
+                      "oneliner;who IN $FILTER"
+                      "othernfos;adder IN $FILTER"
+                      "parties;added IN $FILTER"
+                      "prods;added IN $FILTER"
+                      "screenshots;user IN $FILTER"
+                      "users;id IN $FILTER"
+                      "users_cdcs;user IN $FILTER"
+                      "usersettings;id IN $FILTER")
+
+    # for i in a,b c,d ; do IFS=","; set $i; echo $1 $2; done
+    for TMP_VAR in "${TABLES_WITH_COND[@]}"
+    do IFS=";"
+        # Assign the good variables
+        set $TMP_VAR
+        TABLE="$1"
+        CONDITION="$2"
+
+        # Do the dump
+        ssh pouet mysqldump --skip-lock-tables \
+                            --result-file=tmp/table_with_selective_data_$TABLE.sql \
+                            --where=\"$CONDITION\" \
+                            $MYSQL_DB \
+                            $TABLE
+    done
+}
+
+# Make sure we are in the good folder
+if [ ! -f COPYING ]
+then
+    echo "Launch me in the root folder"
+    exit 1
+fi
+
+echo "Preparing the ground..."
+ssh pouet "if [ ! -d tmp ] ; then mkdir tmp ; fi"
+ssh pouet "rm -f tmp/pouet.sql"
+
+echo "Dumping tables with public data..."
+dump_tables_with_public_data
+
+echo "Dumping tables without data..."
+dump_tables_without_data
+
+echo "Dumping tables with filtered data..."
+dump_tables_with_selective_data
+
+echo "Preparing the dump..."
+ssh pouet "cat tmp/*.sql >> tmp/pouet.sql"
+ssh pouet "gzip tmp/pouet.sql"
+
+echo "Downloading the DDL..."
+scp pouet:tmp/pouet.sql.gz contribs/
+gunzip -f contribs/pouet.sql.gz
+
+echo "Cleaning up the mess..."
+ssh pouet "rm -f tmp/*.sql tmp/pouet.sql.gz"
+
+# echo "Cleaning up the DDL..."
+# # Remove any AUTO_INCREMENT option
+# sed -e 's/ AUTO_INCREMENT=[0-9]*//' -i '' pouet.sql
+#
+# # Delete the last 2 lines (empty line + date of dump)
+# sed -e 'N;$!P;$!D;$d' -i '' pouet.sql
+#
+# # Remove the MySQL client version header
+# sed -e '/-- MySQL dump .*  Distrib .*, for .*/d' -i '' pouet.sql
+#
+# # Remove the MySQL server version header
+# sed -e '/-- Server version.*/d' -i '' pouet.sql
+#
+# # Remove the host/database iformation
+# sed -e '/-- Host:.*Database:.*/d' -i '' pouet.sql
+
+echo "Dump of the DDL completed in pouet.sql"

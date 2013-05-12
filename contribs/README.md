@@ -51,13 +51,13 @@ Once done, you test your MySQL user by doing:
 *I suggest you install [Sequel Pro](http://www.sequelpro.com/) for all the MySQL
 stuff, it's free too !*
 
-Next, you want some starting data to play with, let's inject the structure of
-the live database:
+Next, you want some starting data to play with, let's inject the copyleft data
+that's been given up to your by poueters:
 ```bash
-/Applications/MAMP/Library/bin/mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/pouet.sql
+/Applications/MAMP/Library/bin/mysql -upouet -ppouet pouet < /Users/you/src/pouet.net/contribs/pouet.sql
 ```
 
 Now you should be able to open your local pouet on
 [http://localhost:8888/](http://localhost:8888/) !
 
-To Be Continued...
+Well done sir !
