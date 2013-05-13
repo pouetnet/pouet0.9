@@ -6,8 +6,8 @@ $query.="WHERE id=".$which;
 $result = mysql_query($query);
 $prod = mysql_fetch_array($result);
 
-$currentip=getenv("REMOTE_ADDR");
-$referer=getenv("HTTP_REFERER");
+$currentip = $_SERVER['REMOTE_ADDR'];
+$referer = $_SERVER['HTTP_REFERER'];
 if(basename($referer)=="prod.php?which=".$which && $prod["downloads_ip"]!=$currentip)
 {
 	mysql_query("UPDATE prods SET downloads=downloads+1,downloads_ip='".$currentip."' WHERE id=".$prod["id"]);

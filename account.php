@@ -284,7 +284,7 @@ if ($_POST["email"] && $_POST["nickname"]) {
 ?>
 
 <br/>
-<form action="<?=$PHP_SELF?>" method="post" name="accountform">
+<form action="<?=$_SERVER['PHP_SELF']?>" method="post" name="accountform">
 <table bgcolor="#000000" cellspacing="1" cellpadding="0">
  <tr>
   <td>

@@ -70,7 +70,7 @@ if ($id1 && $id2 && $action=='merge')
 <p>THIS IS THE ONE AND ONLY WARNING!!!</p>
 <p>DOUBLE CHECK THE NUMBER!!!</p>
 
-<form action="<?=basename($SCRIPT_FILENAME)?>" method="post">
+<form action="<?=basename($_SERVER['SCRIPT_FILENAME'])?>" method="post">
 user ID1
 <input type="text" name="id1">
 user ID2

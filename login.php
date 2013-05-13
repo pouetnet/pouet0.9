@@ -17,7 +17,7 @@ $returnvalue = $xml->parseSceneIdData("loginUserMD5", array(
                "permanent" => (isset($_POST['permanent']) && $_POST['permanent'] == "on" ? "1" : "0")));
 $z = ob_get_clean();
 
-$refer = $HTTP_REFERER ? $HTTP_REFERER : "/";
+$refer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "/";
 
 switch($returnvalue["returnvalue"])
 {

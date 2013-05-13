@@ -132,7 +132,7 @@ switch ($_POST["type"]) {
 	//if($_SESSION["SCENEID_ID"]==2100)
 //	$comment = "hi! i'm dubmood and i suck!\n\nps. i have a small penis.";
 //if(!strcasecmp(trim($message),"Optimus, you have a small penis"))
-//  $comment = "hi - i come from $REMOTE_ADDR";
+//  $comment = "hi - i come from $_SERVER['REMOTE_ADDR']";
 		if($which&&trim($comment)&&$rating&&!$errormessage) {
 			$query="SELECT who FROM comments where comment='".addslashes($comment)."' and who=".$_SESSION["SCENEID_ID"]." and which=".$which." ORDER BY quand DESC LIMIT 1";
 			    $timestart = microtime_float();
