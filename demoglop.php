@@ -1,7 +1,7 @@
-<?
-
-require("include/top.php");
-require("include/libbb.php");
+<?php
+require_once('include/top.php');
+require_once('include/libbb.php');
+require_once('lib/recaptcha/recaptchalib.php');
 
 $who = (int)$_GET["who"];
 if(!$who) {

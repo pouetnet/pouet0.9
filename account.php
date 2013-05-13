@@ -1,6 +1,6 @@
-<?
-require("include/top.php");
-require_once('recaptchalib.php');
+<?php
+require_once('include/top.php');
+require_once('lib/recaptcha/recaptchalib.php');
 
 // Get IM types
 $result = mysql_query("DESC users im_type");

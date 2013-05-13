@@ -1,8 +1,8 @@
-<?
-	require("include/top.php");
-	require("recaptchalib.php");
+<?php
+require_once('include/top.php');
+require_once('lib/recaptcha/recaptchalib.php');
 
-	$who = (int)$_GET["who"];
+$who = (int)$_GET["who"];
 
 $usercustom=$user;
 
