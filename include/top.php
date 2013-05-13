@@ -1,5 +1,5 @@
 <?php
-require_once 'include/constants.php';
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/constants.php');
 
 // lets send things zipped if we can..
 function pouet_ob(&$bass)
