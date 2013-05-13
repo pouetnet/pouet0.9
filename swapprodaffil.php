@@ -22,7 +22,7 @@ if ($_GET["derivative"] && $_GET["original"])
 
 ?>
 
-<form action="<?=basename($SCRIPT_FILENAME)?>" method="post">
+<form action="<?=basename($_SERVER['SCRIPT_FILENAME'])?>" method="post">
 download link id
 <input type="text" name="id">
 <input type="submit" name="action" value="delete">

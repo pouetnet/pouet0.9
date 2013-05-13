@@ -79,7 +79,7 @@ if($submitok) {
 
 ?>
 <br>
-<form action="<?=basename($PHP_SELF)?>" method="post" enctype="multipart/form-data">
+<form action="<?=basename($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data">
 <table bgcolor="#000000" cellspacing="1" cellpadding="0"><tr><td>
 <table bgcolor="#000000" cellspacing="1" cellpadding="2">
 <? if($submitok): ?>
