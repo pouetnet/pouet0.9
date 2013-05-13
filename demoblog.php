@@ -5,6 +5,13 @@ require("include/libbb.php");
 require("recaptchalib.php");
 
 $who = (int)$_GET["who"];
+if(!$who) {
+  $result = mysql_query("SELECT id FROM users");
+  while($tmp = mysql_fetch_row($result)) {
+    $ids[]=$tmp[0];
+  }
+  $who=$ids[mt_rand(0,count($ids)-1)];
+}
 
 $usercustom=$user;
 
@@ -15,14 +22,6 @@ $result=mysql_query($query);
 $nbmsg=mysql_result($result,0);
 
 if(!$page) $page=1;
-
-if(!is_numeric($who)) {
-  $result = mysql_query("SELECT id FROM users");
-  while($tmp = mysql_fetch_row($result)) {
-    $ids[]=$tmp[0];
-  }
-  $who=$ids[mt_rand(0,count($ids)-1)];
-}
 
 $result = mysql_query_debug("SELECT * FROM users WHERE id=".$who);
 $user = mysql_fetch_array($result);
