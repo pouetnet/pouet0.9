@@ -180,7 +180,7 @@ $avg_rating=mysql_result($result,0);
          <? endif; ?>
         </td>
         <td width="100%" align="right">
-         <b><? print($user["glops"]); ?></b> <font color="#9999AA">gl?ps</font><br>
+         <b><? print($user["glops"]); ?></b> <font color="#9999AA">gl&ouml;ps</font><br>
         </td>
        </tr>
       </table>
