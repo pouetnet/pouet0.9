@@ -14,6 +14,8 @@
 header("Content-type: text/json");
 include('../include/auth.php');
 
+$export_comments = FALSE;
+
 // get GET parameters
 $from = (isset($_GET['from'])? $_GET['from'] : date('Y-m-d H:i:s', time()-(7*86400))); // default: last week
 $to = (isset($_GET['to'])? $_GET['to'] : date('Y-m-d H:i:s')); // default: today
@@ -341,51 +343,53 @@ while (is_resource($result) && $row = mysql_fetch_object($result))
     }
 
     // get the comments and the associated data
-    $prod->comments = array();
+	if ($export_comments) {
+		$prod->comments = array();
 
-    $query  = "SELECT comments.id as comment_id, comments.comment as comment, comments.rating as rating, comments.who, comments.quand as date, users.nickname as nickname, users.id as scene_id, users.avatar, users.level FROM comments, users WHERE comments.which='".$row->id."' AND users.id=comments.who ORDER BY comments.quand ASC";
-    $r = mysql_query($query);
+		$query  = "SELECT comments.id as comment_id, comments.comment as comment, comments.rating as rating, comments.who, comments.quand as date, users.nickname as nickname, users.id as scene_id, users.avatar, users.level FROM comments, users WHERE comments.which='".$row->id."' AND users.id=comments.who ORDER BY comments.quand ASC";
+		$r = mysql_query($query);
 
-    if ($r)
-    {
-        while ($tmp = mysql_fetch_object($r))
-        {
-            $comment = new stdClass();
-            $comment->comment = $tmp->comment;
-            $comment->rating = $tmp->rating;
-            $comment->date = $tmp->date;
+		if ($r)
+		{
+			while ($tmp = mysql_fetch_object($r))
+			{
+				$comment = new stdClass();
+				$comment->comment = $tmp->comment;
+				$comment->rating = $tmp->rating;
+				$comment->date = $tmp->date;
 
-            $comment->author = new stdClass();
-            $comment->author->scene_id = $tmp->scene_id;
-            $comment->author->nickname = $tmp->nickname;
+				$comment->author = new stdClass();
+				$comment->author->scene_id = $tmp->scene_id;
+				$comment->author->nickname = $tmp->nickname;
 
-            $prod->comments[] = $comment;
-        }
-    }
+				$prod->comments[] = $comment;
+			}
+		}
 
-    /*
-    $query  = "SELECT * from users_cdcs where users_cdcs.cdc='".$prod["id"]."'";
-    $result=mysql_query($query);
-    while($tmp=mysql_fetch_array($result)) {
-        $cdcs[]=$tmp;
-    }
+		/*
+		$query  = "SELECT * from users_cdcs where users_cdcs.cdc='".$prod["id"]."'";
+		$result=mysql_query($query);
+		while($tmp=mysql_fetch_array($result)) {
+			$cdcs[]=$tmp;
+		}
 
-    for($j=0; $j<count($cdcs); $j++)
-    {
-        for($i=0; $i<count($comments); $i++)
-        {
-            if ($cdcs[$j]["user"]==$comments[$i]["who"]){
-                $comments[$i]["cdc"]=$cdcs[$j]["cdc"];
-            }
-        }
-    }
+		for($j=0; $j<count($cdcs); $j++)
+		{
+			for($i=0; $i<count($comments); $i++)
+			{
+				if ($cdcs[$j]["user"]==$comments[$i]["who"]){
+					$comments[$i]["cdc"]=$cdcs[$j]["cdc"];
+				}
+			}
+		}
 
-    $query  = "SELECT * from users_cdcs left join comments on users_cdcs.user=comments.who AND users_cdcs.cdc = comments.which where users_cdcs.cdc='".$prod["id"]."' and comments.id IS NULL";
-    $result=mysql_query($query);
-    while($tmp=mysql_fetch_object($result)) {
-        $othercdc[]=$tmp->user;
-    }
-    */
+		$query  = "SELECT * from users_cdcs left join comments on users_cdcs.user=comments.who AND users_cdcs.cdc = comments.which where users_cdcs.cdc='".$prod["id"]."' and comments.id IS NULL";
+		$result=mysql_query($query);
+		while($tmp=mysql_fetch_object($result)) {
+			$othercdc[]=$tmp->user;
+		}
+		*/
+	}
 
     $output->prods[] = $prod;
 }
