@@ -135,7 +135,7 @@ function CheckReferrer($ref) {
   return true;
 }
 
-$currentip=getenv("REMOTE_ADDR");
+$currentip=$_SERVER['REMOTE_ADDR'];
 if($prod["latestip"]!=$currentip && CheckReferrer($HTTP_REFERER) ) {
   //print("im about to add another view because my ref is ".$HTTP_REFERER." have a nice day!!");
   mysql_query("UPDATE prods SET views=views+1,latestip='".$currentip."' WHERE id=".$prod["id"]);
