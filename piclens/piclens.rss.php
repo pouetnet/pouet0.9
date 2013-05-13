@@ -14,13 +14,13 @@ $result = mysql_query($query) or die(mysql_error());
   xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
   		<title>Pouet.net Piclens feed</title>
-  		<link>http://www.pouet.net</link>
+  		<link>http://pouet.net</link>
   		<description>Pouet.net Piclens feed</description>
   		<language>en-us</language>
   		<docs>http://feedvalidator.org/docs/rss2.html</docs>
 
-      <atom:icon>http://www.pouet.net/favicon.ico</atom:icon>
-  		<atom:link href="http://www.pouet.net/piclens/piclens.rss.php" rel="self" type="application/rss+xml" />
+      <atom:icon>http://pouet.net/favicon.ico</atom:icon>
+  		<atom:link href="http://pouet.net/piclens/piclens.rss.php" rel="self" type="application/rss+xml" />
 
 <?
 while($o = mysql_fetch_object($result)) {
@@ -38,9 +38,9 @@ if ($shotpath) {
         <item>
             <title><?=htmlspecialchars(utf8_encode($o->name))?></title>
             <guid isPermaLink="false">pouet_piclens_<?=$o->id?></guid>
-            <link>http://www.pouet.net/prod.php?which=<?=$o->id?></link>
-            <media:thumbnail url="http://www.pouet.net/<?=$shotpath?>"/>
-            <media:content url="http://www.pouet.net/<?=$shotpath?>"/>
+            <link>http://pouet.net/prod.php?which=<?=$o->id?></link>
+            <media:thumbnail url="http://pouet.net/<?=$shotpath?>"/>
+            <media:content url="http://pouet.net/<?=$shotpath?>"/>
         </item>
 <?
 }
