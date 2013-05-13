@@ -317,9 +317,12 @@ if($_SESSION["SESSION"] && $_SESSION["SCENEID"]) {
       <? if(count($errormessage)) { ?>
        there are some errors:<br>
        <br>
-       <? for($i=0;$i<count($errormessage);$i++): ?>
-        - <? print($errormessage[$i]); ?><br>
-       <? endfor; ?>
+       <?php
+
+       foreach ($errormessage as $err)
+         echo "- $err<br>\n";
+
+       ?>
        <br>
        <div align="center">
         please, correct them.<br>

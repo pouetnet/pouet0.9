@@ -37,37 +37,42 @@ function isIPBanned() {
 
 		if ($domore>0)
 		{
-			for ($i=0; $i<count($data); $i++):
-				if ($data[$i]["group1"]):
+			for ($i=0; $i<count($data); $i++)
+			{
+				if ($data[$i]["group1"])
+				{
 					$query="select name,acronym from groups where id='".$data[$i]["group1"]."'";
 		  			$result=mysql_query($query);
 		  			while($tmp = mysql_fetch_array($result)) {
 					  $data[$i]["groupname1"]=$tmp["name"];
 					  $data[$i]["groupacron1"]=$tmp["acronym"];
 					 }
-  				endif;
-  				if ($data[$i]["group2"]):
+  				}
+  				if ($data[$i]["group2"])
+				{
 					$query="select name,acronym from groups where id='".$data[$i]["group2"]."'";
 		  			$result=mysql_query($query);
 		  			while($tmp = mysql_fetch_array($result)) {
 					  $data[$i]["groupname2"]=$tmp["name"];
 					  $data[$i]["groupacron2"]=$tmp["acronym"];
 					 }
-  				endif;
-  				if ($data[$i]["group3"]):
+  				}
+  				if ($data[$i]["group3"])
+				{
 					$query="select name,acronym from groups where id='".$data[$i]["group3"]."'";
 		  			$result=mysql_query($query);
 		  			while($tmp = mysql_fetch_array($result)) {
 					  $data[$i]["groupname3"]=$tmp["name"];
 					  $data[$i]["groupacron3"]=$tmp["acronym"];
 					 }
-  				endif;
+  				}
 
-  				if (strlen($data[$i]["groupname1"].$data[$i]["groupname2"].$data[$i]["groupname3"])>27):
+  				if (strlen($data[$i]["groupname1"].$data[$i]["groupname2"].$data[$i]["groupname3"])>27)
+				{
   					if (strlen($data[$i]["groupname1"])>10 && $data[$i]["groupacron1"]) $data[$i]["groupname1"]=$data[$i]["groupacron1"];
   					if (strlen($data[$i]["groupname2"])>10 && $data[$i]["groupacron2"]) $data[$i]["groupname2"]=$data[$i]["groupacron2"];
   					if (strlen($data[$i]["groupname3"])>10 && $data[$i]["groupacron3"]) $data[$i]["groupname3"]=$data[$i]["groupacron3"];
-  				endif;
+  				}
 
 				$query="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$data[$i]["id"]."' and platforms.id=prods_platforms.platform";
 	  			$result=mysql_query($query);
@@ -79,7 +84,7 @@ function isIPBanned() {
 				  $data[$i]["platform"].=$tmp["name"];
 				 }
 
-			endfor;
+			}
 
 		}
 
@@ -274,13 +279,22 @@ function DoBar($percent,$fond=false,$alttag="") {
     <img src="gfx/bar.gif" width="<? print($percent); ?>" height="16" border="1" title="<?=$alttag?>" alt="<?=$alttag?>"><br />
    </font>
   </td>
-  <? if(($percent<100)&&$fond): ?>
+  <?php
+
+  if(($percent<100)&&$fond)
+  {
+
+  ?>
   <td>
    <font color="#000000">
     <img src="gfx/black.gif" width="<? print(100-$percent); ?>" height="16" border="1" title="<?=$alttag?>" alt="<?=$alttag?>"><br />
    </font>
   </td>
-  <? endif; ?>
+  <?php
+
+  }
+
+  ?>
  </tr>
 </table>
 <?
