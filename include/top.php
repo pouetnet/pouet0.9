@@ -379,37 +379,48 @@ function menu(){ ?>
  </tr>
  <tr>
   <td align="center" bgcolor="#224488">
-   <table>
-    <tr>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="account.php"><b>A<font color="#FFFFFF">ccount</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="customize.php"><b>C<font color="#FFFFFF">ustom</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="prodlist.php"><b>P<font color="#FFFFFF">rods</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="random.php"><b>R<font color="#FFFFFF">andom</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="groups.php"><b>G<font color="#FFFFFF">roups</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="parties.php"><b>P<font color="#FFFFFF">arties</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="bbses.php"><b>B<font color="#FFFFFF">oards</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="userlist.php"><b>U<font color="#FFFFFF">sers</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="search.php"><b>S<font color="#FFFFFF">earch</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="bbs.php"><b>B<font color="#FFFFFF">BS</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="lists.php"><b>L<font color="#FFFFFF">ists</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="faq.php"><b>F<font color="#FFFFFF">aq</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-     <td><a href="submit.php"><b>S<font color="#FFFFFF">ubmit</font></b></a><br /></td>
-     <td><img src="gfx/white.gif" width="4" height="4" alt=""><br /></td>
-    </tr>
-   </table>
+	  <ul class="nav">
+		  <li>
+			  <a href="account.php"><b>A<font color="#FFFFFF">ccount</font></b></a>
+		  </li>
+		  <li>
+			  <a href="customize.php"><b>C<font color="#FFFFFF">ustom</font></b></a>
+		  </li>
+		  <li>
+			  <a href="prodlist.php"><b>P<font color="#FFFFFF">rods</font></b></a>
+		  </li>
+		  <li>
+			  <a href="random.php"><b>R<font color="#FFFFFF">andom</font></b></a>
+		  </li>
+		  <li>
+			  <a href="groups.php"><b>G<font color="#FFFFFF">roups</font></b></a>
+		  </li>
+		  <li>
+			  <a href="parties.php"><b>P<font color="#FFFFFF">arties</font></b></a>
+		  </li>
+		  <li>
+			  <a href="bbses.php"><b>B<font color="#FFFFFF">oards</font></b></a>
+		  </li>
+		  <li>
+			  <a href="userlist.php"><b>U<font color="#FFFFFF">sers</font></b></a>
+		  </li>
+		  <li>
+			  <a href="search.php"><b>S<font color="#FFFFFF">earch</font></b></a>
+		  </li>
+		  <li>
+			  <a href="bbs.php"><b>B<font color="#FFFFFF">BS</font></b></a>
+		  </li>
+		  <li>
+			  <a href="lists.php"><b>L<font color="#FFFFFF">ists</font></b></a>
+		  </li>
+		  <li>
+			  <a href="faq.php"><b>F<font color="#FFFFFF">aq</font></b></a>
+		  </li>
+		  <li>
+			  <a href="submit.php"><b>S<font color="#FFFFFF">ubmit</font></b></a>
+		  </li>
+		  <li></li> <!-- this is just here to ensure the display of the last white dot -->
+	  </ul>
   </td>
  </tr>
  <tr><td><img src="gfx/z.gif" width="1" height="1" alt=""><br /></td></tr>
