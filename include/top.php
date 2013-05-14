@@ -300,7 +300,7 @@ $user=array_merge($user,$usersettings);
 //echo "-".$user["searchprods"];
 
  ?>
- <link rel="stylesheet" href="/include/style.css" type="text/css">
+ <link rel="stylesheet" href="/include/style.css?cb=0" type="text/css">
 <?
 if(strstr($_SERVER['HTTP_USER_AGENT'], 'Firefox')) {
 	echo ' <!-- conditional css for ff hax! -->'."\n";
