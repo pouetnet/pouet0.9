@@ -37,6 +37,8 @@ At the same time:
 
 ### Contributors
 
+- [kusma](http://pouet.net/user.php?who=1383)
+- [D.Fox](http://pouet.net/user.php?who=374)
 - [gasman](http://www.pouet.net/user.php?who=2260)
 - [knos](http://www.pouet.net/user.php?who=36)
 - [p01](http://www.pouet.net/user.php?who=59)
