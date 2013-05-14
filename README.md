@@ -27,9 +27,21 @@ At the same time:
 - When Gargaj or any other contributor wants to quit, nothing will change and
   other people will still work on the site
 
-## Contributors
+## Who's behind pouet ?
 
-- [gargaj](http://www.pouet.net/user.php?who=1007)
+### Maintainers
+
+#### Current maintainer
+
+- [gargaj](http://www.pouet.net/user.php?who=1007) (since 2007)
+
+#### Past maintainers
+
+- [psenough](http://www.pouet.net/user.php?who=177) (2004-2007)
+- [analogue](http://www.pouet.net/user.php?who=1) (2000-2004)
+
+### Contributors
+
 - [gasman](http://www.pouet.net/user.php?who=2260)
 - [knos](http://www.pouet.net/user.php?who=36)
 - [p01](http://www.pouet.net/user.php?who=59)
@@ -37,8 +49,6 @@ At the same time:
 - [stil](http://www.pouet.net/user.php?who=351)
 - [rez](http://www.pouet.net/user.php?who=10)
 - [melwyn](http://www.pouet.net/user.php?who=38)
-- [psenough](http://www.pouet.net/user.php?who=177)
-- [analogue](http://www.pouet.net/user.php?who=1)
 
 ## Want to contribute ?
 
