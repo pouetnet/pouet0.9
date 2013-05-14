@@ -419,7 +419,7 @@ function menu(){ ?>
 		  <li>
 			  <a href="submit.php"><b>S<font color="#FFFFFF">ubmit</font></b></a>
 		  </li>
-		  <li></li> <!-- this is just here to ensure the display of the last white dot -->
+		  <li>&nbsp;</li> <!-- this is just here to ensure the display of the last white dot -->
 	  </ul>
   </td>
  </tr>
