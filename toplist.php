@@ -59,7 +59,7 @@ for($i=1;$i<count($tmp);$i+=2)
   }
 ?>
 <br />
-<form action="<?=basename($SCRIPT_FILENAME)?>" method="get">
+<form action="<?=basename($_SERVER['SCRIPT_FILENAME'])?>" method="get">
 <table bgcolor="#000000" cellspacing="1" cellpadding="0">
  <tr>
   <td>

@@ -44,7 +44,7 @@ if (!empty($logos))
 	foreach ($logos as $logo) { // we display each logo
 ?>
 
-<form action="<?=basename($SCRIPT_FILENAME)?>" method="post">
+<form action="<?=basename($_SERVER['SCRIPT_FILENAME'])?>" method="post">
 <input type="hidden" name="id" value="<?=$logo['id']?>">
 <table bgcolor="#000000" cellspacing="1" cellpadding="0">
  <tr>

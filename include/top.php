@@ -94,7 +94,7 @@ if (isset($which))
 {
 	$which = intval($which);
 }
-switch (basename($SCRIPT_FILENAME)) {
+switch (basename($_SERVER['SCRIPT_FILENAME'])) {
 	case 'index.php' :
 		$customquery.="level from users where id='";
     $settingfields="logos, topbar, bottombar, indextopglops, indextopprods, indextopkeops, indexoneliner, indexlatestadded, indexlatestreleased, indexojnews, indexlatestcomments, indexbbstopics, indexcdc, indexsearch, indexlinks, indexstats, indextype, indexplatform, indexwhoaddedprods, indexwhocommentedprods, indexlatestparties, indexbbsnoresidue";

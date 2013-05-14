@@ -36,7 +36,7 @@ if ($id && $action=='delete')
 <p>THIS IS THE ONE AND ONLY WARNING!!!</p>
 <p>DOUBLE CHECK THE NUMBER!!!</p>
 
-<form action="<?=basename($SCRIPT_FILENAME)?>" method="post">
+<form action="<?=basename($_SERVER['SCRIPT_FILENAME'])?>" method="post">
 bbs ID
 <input type="text" name="id">
 <input type="submit" name="action" value="delete">

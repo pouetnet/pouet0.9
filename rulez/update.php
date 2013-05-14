@@ -167,25 +167,33 @@ function create_stats_cache()
     		fwrite($fp, "?>\n");
 		fclose($fp);
 	}
-?>
-options:
-- all
-- ojuice
-- glops
-- topdemos
-- logos
-- voteavg
-- results
-- cacheonelines
-- cachelatestcomments
-- cachetop_demos
-- cachetop_keops
-- cachelatest_demos
-- cachestats
-- cachecdclist
-- allcaches
-- webtv
-<?
+
+$options = array(
+	'all',
+	'ojuice',
+	'glops',
+	'topdemos',
+	'logos',
+	'bbstopics',
+	'voteavg',
+	'results',
+	'cacheonelines',
+	'cachelatestcomments',
+	'cachetop_demos',
+	'cachetop_keops',
+	'cachelatest_demos',
+	'cachestats',
+	'cachecdclist',
+	'allcaches',
+	'webtv');
+
+echo "options:\n";
+foreach ($options as $v) {
+	echo "- $v\n";
+	// load $_GET['foo'] into $foo
+	$$v = isset($_GET[$v]) ? $_GET[$v] : false;
+}
+
 // update ojuice news
 if ($ojuice||$all)
 {
