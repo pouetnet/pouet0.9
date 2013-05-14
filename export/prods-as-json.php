@@ -11,6 +11,50 @@
 // TODO: export cdc information for the comments
 // TODO: zip/gzip the exported data to speed up transfer
 
+// Function to convert all data we gathered to utf8 so json_encode doesn't null data
+function object_to_utf8($object)
+{
+	$is_object = FALSE;
+
+	if (is_array($object))
+	{
+		$return = array();
+	}
+	elseif (is_object($object))
+	{
+		$return = new stdClass();
+		$is_object = TRUE;
+	}
+
+	foreach($object as $key => $value)
+	{
+		if (is_object($value) || is_array($value))
+		{
+			if ($is_object)
+			{
+				$return->{$key} = object_to_utf8($value);
+			}
+			else
+			{
+				$return[$key] = object_to_utf8($value);
+			}
+		}
+		else
+		{
+			if ($is_object)
+			{
+				$return->{$key} = utf8_encode($value);
+			}
+			else
+			{
+				$return[$key] = utf8_encode($value);
+			}
+		}
+	}
+
+	return $return;
+}
+
 header("Content-type: text/json");
 include($_SERVER["DOCUMENT_ROOT"].'/include/auth.php');
 
@@ -399,6 +443,9 @@ if (isset($dbl))
 {
 	mysql_close($dbl);
 }
+
+// convert every value to utf8
+$output = object_to_utf8($output);
 
 echo json_encode($output);
 ?>
