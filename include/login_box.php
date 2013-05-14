@@ -1,7 +1,4 @@
-<?php
-// Required for SCENE_ORG_CHECK_FILE
-require_once($_SERVER["DOCUMENT_ROOT"].'include/constants.php');
-
+<?
 ob_start();
 
 $sceneOrgDown = true;
