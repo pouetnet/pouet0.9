@@ -4,7 +4,7 @@
  *
  *  Usage: /export/prods.php?prod_id=<PROD_ID>
  *  or
- *  Usage: /export/prods.php?from=<DATETIME>&to=<DATETIME>&limit=<LIMIT>&offset=<OFFSET>
+ *  Usage: /export/prods.php?from=<TIMESTAMP>&to=<TIMESTAMP>&limit=<LIMIT>&offset=<OFFSET>
  */
 
 // TODO: add hash to check if a prod has been updated and just export updated information
@@ -17,8 +17,8 @@ include('../include/auth.php');
 $export_comments = FALSE;
 
 // get GET parameters
-$from = (isset($_GET['from'])? $_GET['from'] : date('Y-m-d H:i:s', time()-(7*86400))); // default: last week
-$to = (isset($_GET['to'])? $_GET['to'] : date('Y-m-d H:i:s')); // default: today
+$from = (int)(isset($_GET['from'])? $_GET['from'] : time() - (7 * 86400)); // default: last week
+$to = (int)(isset($_GET['to'])? $_GET['to'] : time()); // default: today
 
 $limit = (isset($_GET['limit'])? $_GET['limit'] : 10);
 $offset = (isset($_GET['offset'])? $_GET['offset'] : 0);
@@ -44,7 +44,7 @@ mysql_select_db($db['database'], $dbl);
 $output = new stdClass();
 $output->info = new stdClass();
 $output->info->title = 'pouet.net prod export';
-$output->info->date = date('Y-m-d H:i:s');
+$output->info->date = date('c');
 $output->info->search_params = new stdClass();
 
 if (!$prod_id)
@@ -66,7 +66,7 @@ if ($prod_id)
 }
 else
 {
-    $query = "SELECT * FROM prods WHERE quand >= '".mysql_real_escape_string($from)."' AND quand <= '".mysql_real_escape_string($to)."' ORDER BY prods.quand ASC LIMIT ".(int)$limit.' OFFSET '.(int)$offset;
+    $query = "SELECT * FROM prods WHERE quand >= FROM_UNIXTIME(".$from.") AND quand <= FROM_UNIXTIME(".mysql_real_escape_string($to).") ORDER BY prods.quand DESC LIMIT ".(int)$limit.' OFFSET '.(int)$offset;
 }
 
 $result = mysql_query($query);
@@ -77,7 +77,7 @@ while (is_resource($result) && $row = mysql_fetch_object($result))
     $prod->title = utf8_encode($row->name);
     $prod->type = $row->type;
     $prod->id = $row->id;
-    $prod->date = $row->quand;
+    $prod->date = date('c', strtotime($row->quand));
 
     $prod->source_url = $row->source;
 
