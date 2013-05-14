@@ -106,8 +106,8 @@ while (is_resource($result) && $row = mysql_fetch_object($result))
 
     if ($screenshot)
     {
-        $screenshot_size = filesize('../screenshots/'.$screenshot);
-        $size = getimagesize('../screenshots/'.$screenshot);
+        $screenshot_size = filesize($_SERVER["DOCUMENT_ROOT"].'/screenshots/'.$screenshot);
+        $size = getimagesize($_SERVER["DOCUMENT_ROOT"].'/screenshots/'.$screenshot);
         $screenshot_type = $size['mime'];
 
         $prod->screenshot->url = 'http://www.pouet.net/screenshots/'.$screenshot;
