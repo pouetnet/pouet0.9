@@ -1,6 +1,8 @@
 <?
 require("include/top.php");
 
+$id = $_POST['id'];
+$vote = $_POST['vote'];
 if (isset($_SESSION['SESSION']) && $id && $vote) {
 	$query = 'SELECT count(0) FROM logos_votes WHERE logo='.(int)$id.' AND user='.$_SESSION["SCENEID_ID"];
 	$result = mysql_query($query);
