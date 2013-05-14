@@ -31,12 +31,7 @@ At the same time:
 
 ### Maintainers
 
-#### Current maintainer
-
 - [gargaj](http://www.pouet.net/user.php?who=1007) (since 2007)
-
-#### Past maintainers
-
 - [psenough](http://www.pouet.net/user.php?who=177) (2004-2007)
 - [analogue](http://www.pouet.net/user.php?who=1) (2000-2004)
 
