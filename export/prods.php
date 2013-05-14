@@ -20,9 +20,9 @@ $export_comments = FALSE;
 $from = (int)(isset($_GET['from'])? $_GET['from'] : time() - (7 * 86400)); // default: last week
 $to = (int)(isset($_GET['to'])? $_GET['to'] : time()); // default: today
 
-$limit = (isset($_GET['limit'])? $_GET['limit'] : 10);
-$offset = (isset($_GET['offset'])? $_GET['offset'] : 0);
-$prod_id = (isset($_GET['prod_id'])? $_GET['prod_id'] : FALSE);
+$limit = (int)(isset($_GET['limit'])? $_GET['limit'] : 10);
+$offset = (int)(isset($_GET['offset'])? $_GET['offset'] : 0);
+$prod_id = (int)(isset($_GET['prod_id'])? $_GET['prod_id'] : FALSE);
 
 // Limit every request to a maximum of 100 exported prods
 if ((int)$limit > 100)
