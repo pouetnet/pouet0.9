@@ -202,3 +202,40 @@ a.bbsanchor {
   border: #8ac 3px solid;
   padding: 5px;
 }
+
+/* LIST STYLE FOR THE NAVIGATION */
+ul.nav {
+    padding: 4px;
+    margin: 0;
+}
+ul.nav li {
+    margin: 0;
+    padding-left: 7px;
+    background: url(/gfx/white4.gif) 0px 6px;
+    background-repeat: no-repeat;
+    display: inline;
+    list-style-type: none;
+}
+
+/* MEDIA QUERIES FOR BROWSING THE BBS ON A MOBILE PHONE */
+div#login {
+    width: 99%;
+    display: none;
+}
+@media (max-width: 480px) {
+    div#login {
+        display: block;
+    }
+    body div table td[width="20%"], body div table td[width="2%"], body div table td[width="3%"] {
+        display: none;
+    }
+    body div table:nth-of-type(1) td {
+        float: left;
+    }
+
+    /* bbs table */
+    body div table[width="75%"] {
+        width: 90% !important;
+        max-width: 90% !important;
+    }
+}
