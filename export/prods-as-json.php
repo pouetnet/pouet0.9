@@ -12,7 +12,7 @@
 // TODO: zip/gzip the exported data to speed up transfer
 
 header("Content-type: text/json");
-include('../include/auth.php');
+include($_SERVER["DOCUMENT_ROOT"].'/include/auth.php');
 
 $export_comments = FALSE;
 
@@ -92,14 +92,14 @@ while (is_resource($result) && $row = mysql_fetch_object($result))
     $prod->screenshot = new stdClass();
 
     $screenshot = FALSE;
-    if (file_exists('../screenshots/'.$row->id.'.jpg')) {
+    if (file_exists($_SERVER["DOCUMENT_ROOT"].'/screenshots/'.$row->id.'.jpg')) {
         $screenshot = $row->id.'.jpg';
     }
-    elseif(file_exists('../screenshots/'.$row->id.'.gif'))
+    elseif(file_exists($_SERVER["DOCUMENT_ROOT"].'/screenshots/'.$row->id.'.gif'))
     {
         $screenshot = $row->id.'.gif';
     }
-    elseif(file_exists('../screenshots/'.$row->id.'.png'))
+    elseif(file_exists($_SERVER["DOCUMENT_ROOT"].'/screenshots/'.$row->id.'.png'))
     {
         $screenshot = $row->id.'.png';
     }
