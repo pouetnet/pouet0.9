@@ -110,7 +110,7 @@ while (is_resource($result) && $row = mysql_fetch_object($result))
         $size = getimagesize($_SERVER["DOCUMENT_ROOT"].'/screenshots/'.$screenshot);
         $screenshot_type = $size['mime'];
 
-        $prod->screenshot->url = 'http://www.pouet.net/screenshots/'.$screenshot;
+        $prod->screenshot->url = 'http://pouet.net/screenshots/'.$screenshot;
         $prod->screenshot->filesize = $screenshot_size;
         $prod->screenshot->type = $size['mime'];
     }
@@ -234,7 +234,7 @@ while (is_resource($result) && $row = mysql_fetch_object($result))
 
     $link = new stdClass();
     $link->name = 'pouet.net';
-    $link->url = 'http://www.pouet.net/prod.php?which='.$row->id;
+    $link->url = 'http://pouet.net/prod.php?which='.$row->id;
 
     $prod->affiliate_links[] = $link;
 
