@@ -146,19 +146,19 @@
   </td>
  </tr>
  <? endif; ?>
- <?php if(isset($_SESSION['SESSION'])): ?>
-<form action="login.php" method="post">
+ <?php if(!isset($_SESSION['SESSION'])): ?>
+<form action="/login.php" method="post">
  <tr><th>login to add more stuff</th></tr>
  <tr bgcolor="#446688">
   <td nowrap align="center">
    <input type="text" name="login" value="SceneID" size="15" maxlength="16" onfocus="this.value=''"><br />
    <input type="password" name="password" value="password" size="15" onfocus="javascript:if(this.value=='password') this.value='';"><br />
-   <a href="account.php">register here</a><br />
+   <a href="/account.php">register here</a><br />
   </td>
  </tr>
  <tr>
   <td bgcolor="#6688AA" align="right">
-   <input type="image" src="gfx/submit.gif">
+   <input type="image" src="/gfx/submit.gif">
   </td>
  </tr>
 </form>
