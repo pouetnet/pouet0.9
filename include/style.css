@@ -1,7 +1,6 @@
 body { 
-	font : 9pt Tahoma;
-	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-	margin : 0px;
+	font : 9pt Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	margin : 0;
 	color : #FFFFFF;
 	background : #3A6EA5 url("../gfx/trumpet.gif");
 
@@ -15,13 +14,10 @@ body {
 	scrollbar-track-color : #3A6EA5;
 }
 td {
-	font : 9pt Tahoma;
-	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font : 9pt Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
 th {
-	font : 9pt Tahoma;
-	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-	font-weight : bold;
+	font : bold 9pt Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	text-align : left;
 	background-color : #248;
 	/*white-space : nowrap;*/
@@ -43,20 +39,17 @@ a:hover {
 	text-decoration : underline;
 }
 input, select, option, textarea {
-	font : 9pt Tahoma;
-	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font : 9pt Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
 .box {
-	border-style : solid;
-	border-color : #000000;
 	background-color : #000000;
-	border-width : 1px;
+	border: 1px solid #000;
 	width : 100%;
 }
 .icon {
 	width : 16px;
 	height : 16px;
-	border : 0px;
+	border : 0;
 	float : left;
 }
 .bottom {
@@ -88,27 +81,17 @@ pre.nfo {
 	background-color: #68a;
 }
 
+div.bbs_code,
 div.bbs_quote {
-	margin-left: 2em;
-	margin-right: 2em;
-	margin-top: .5em;
-	margin-bottom: .5em;
+	margin: .5em 2em;
 	width: 85%;
 }
 
 div.bbs_quote div {
-	border: 1px solid #8ac;
 	background-color: #579;
+	border: 1px solid #8ac;
 	padding: .5em;
 	margin-top: .5em;
-}
-
-div.bbs_code {
-	margin-left: 2em;
-	margin-right: 2em;
-	margin-top: .5em;
-	margin-bottom: .5em;
-	width: 85%;
 }
 
 div.bbs_code pre {
@@ -153,7 +136,7 @@ padding:0;
 }
 
 #bpbudget .topcellwithmarker {
-  border: 0px;
+  border: 0;
   border-right: 1px solid #000000;
   padding-right: 2px;
   text-align: right;
@@ -194,7 +177,7 @@ padding:0;
 a.bbsanchor {
   float: left;
   color: #587898;
-  width: 0px;
+  width: 0;
 }
 
 #prodcommenttable td:target, .bbstable td:target
@@ -209,12 +192,17 @@ ul.nav {
     margin: 0;
 }
 ul.nav li {
-    margin: 0;
-    padding-left: 7px;
-    background: url(/gfx/white4.gif) 0px 6px;
-    background-repeat: no-repeat;
+    background: url('/gfx/white4.gif') no-repeat 0px 6px;
     display: inline;
     list-style-type: none;
+    margin: 0;
+    padding-left: 7px;
+}
+ul.nav a {
+    font-weight: bold;
+}
+ul.nav span {
+    color: #fff;
 }
 
 /* MEDIA QUERIES FOR BROWSING THE BBS ON A MOBILE PHONE */
