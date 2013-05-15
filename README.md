@@ -37,6 +37,7 @@ At the same time:
 
 ### Contributors
 
+- [mog](http://pouet.net/user.php?who=26747)
 - [Ziphoid](http://pouet.net/user.php?who=26956)
 - [kusma](http://pouet.net/user.php?who=1383)
 - [D.Fox](http://pouet.net/user.php?who=374)
