@@ -300,7 +300,7 @@ $user=array_merge($user,$usersettings);
 //echo "-".$user["searchprods"];
 
  ?>
- <link rel="stylesheet" href="/include/style.css?cb=0" type="text/css">
+ <link rel="stylesheet" href="/include/style.css?cb=1" type="text/css">
 <?
 if(strstr($_SERVER['HTTP_USER_AGENT'], 'Firefox')) {
 	echo ' <!-- conditional css for ff hax! -->'."\n";
@@ -381,43 +381,43 @@ function menu(){ ?>
   <td align="center" bgcolor="#224488">
 	  <ul class="nav">
 		  <li>
-			  <a href="account.php"><b>A<font color="#FFFFFF">ccount</font></b></a>
+			  <a href="account.php">A<span>ccount</span></a>
 		  </li>
 		  <li>
-			  <a href="customize.php"><b>C<font color="#FFFFFF">ustom</font></b></a>
+			  <a href="customize.php">C<span>ustom</span></a>
 		  </li>
 		  <li>
-			  <a href="prodlist.php"><b>P<font color="#FFFFFF">rods</font></b></a>
+			  <a href="prodlist.php">P<span>rods</span></a>
 		  </li>
 		  <li>
-			  <a href="random.php"><b>R<font color="#FFFFFF">andom</font></b></a>
+			  <a href="random.php">R<span>andom</span></a>
 		  </li>
 		  <li>
-			  <a href="groups.php"><b>G<font color="#FFFFFF">roups</font></b></a>
+			  <a href="groups.php">G<span>roups</span></a>
 		  </li>
 		  <li>
-			  <a href="parties.php"><b>P<font color="#FFFFFF">arties</font></b></a>
+			  <a href="parties.php">P<span>arties</span></a>
 		  </li>
 		  <li>
-			  <a href="bbses.php"><b>B<font color="#FFFFFF">oards</font></b></a>
+			  <a href="bbses.php">B<span>oards</span></a>
 		  </li>
 		  <li>
-			  <a href="userlist.php"><b>U<font color="#FFFFFF">sers</font></b></a>
+			  <a href="userlist.php">U<span>sers</span></a>
 		  </li>
 		  <li>
-			  <a href="search.php"><b>S<font color="#FFFFFF">earch</font></b></a>
+			  <a href="search.php">S<span>earch</span></a>
 		  </li>
 		  <li>
-			  <a href="bbs.php"><b>B<font color="#FFFFFF">BS</font></b></a>
+			  <a href="bbs.php">B<span>BS</span></a>
 		  </li>
 		  <li>
-			  <a href="lists.php"><b>L<font color="#FFFFFF">ists</font></b></a>
+			  <a href="lists.php">L<span>ists</span></a>
 		  </li>
 		  <li>
-			  <a href="faq.php"><b>F<font color="#FFFFFF">aq</font></b></a>
+			  <a href="faq.php">F<span>aq</span></a>
 		  </li>
 		  <li>
-			  <a href="submit.php"><b>S<font color="#FFFFFF">ubmit</font></b></a>
+			  <a href="submit.php">S<span>ubmit</span></a>
 		  </li>
 		  <li>&nbsp;</li> <!-- this is just here to ensure the display of the last white dot -->
 	  </ul>
