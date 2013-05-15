@@ -1,4 +1,4 @@
-body { 
+body {
 	font : 9pt Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	margin : 0;
 	color : #FFFFFF;
@@ -152,7 +152,7 @@ padding:0;
   width: 4px;
   height: 16px;
   border: 1px solid black;
-  background: url(http://www.pouet.net/gfx/bar.gif);
+  background: url(/gfx/bar.gif);
 }
 
 #bpbudget .bottomcellwithmarker {

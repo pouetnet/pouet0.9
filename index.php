@@ -453,7 +453,7 @@ if ($sceneorgyear && $_SESSION["SCENEID_ID"])
   {
   ?>
   <table cellspacing="1" cellpadding="2" class="box">
-   <tr><th colspan="<?=$row?>"><img class="icon" src='http://www.pouet.net/gfx/sceneorg/awardwinner.gif'/>&nbsp;scene.org awards <?=$sceneorgyear?></th></tr>
+   <tr><th colspan="<?=$row?>"><img class="icon" src="/gfx/sceneorg/awardwinner.gif"/>&nbsp;scene.org awards <?=$sceneorgyear?></th></tr>
    <tr>
     <td class="bg2" style='padding: 5px;'>
     you still haven't suggested anything for <a href='http://awards.scene.org/'>the <?=$sceneorgyear?> edition of the scene.org awards</a>!

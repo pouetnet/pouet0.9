@@ -29,7 +29,7 @@ $output = '<?xml version="1.0" encoding="UTF-8"?>'.$nl;
 $output.= '<rss version="2.0">'.$nl;
 $output.= $t.'<channel>'.$nl;
 $output.= $t.$t.'<title>pouet.net</title>'.$nl;
-$output.= $t.$t.'<link>http://www.pouet.net/</link>'.$nl;
+$output.= $t.$t.'<link>http://pouet.net/</link>'.$nl;
 $output.= $t.$t.'<description>your online demoscene resource</description>'.$nl;
 $output.= $t.$t.'<language>en-us</language>'.$nl;
 $output.= $t.$t.'<copyright>Copyright 2000-'.date('Y').' Mandarine</copyright>'.$nl;
@@ -46,9 +46,9 @@ $output.= $t.$t.'<docs>http://backend.userland.com/rss</docs>'.$nl;
 $output.= $t.$t.'<ttl>60</ttl>'.$nl;
 // logo
 $output.= $t.$t.'<image>'.$nl;
-$output.= $t.$t.$t.'<url>http://www.pouet.net/gfx/buttons/pouet.gif</url>'.$nl;
+$output.= $t.$t.$t.'<url>http://pouet.net/gfx/buttons/pouet.gif</url>'.$nl;
 $output.= $t.$t.$t.'<title>pouet.net</title>'.$nl;
-$output.= $t.$t.$t.'<link>http://www.pouet.net/</link>'.$nl;
+$output.= $t.$t.$t.'<link>http://pouet.net/</link>'.$nl;
 $output.= $t.$t.$t.'<width>88</width>'.$nl;
 $output.= $t.$t.$t.'<height>31</height>'.$nl;
 $output.= $t.$t.$t.'<description>your online demoscene resource</description>'.$nl;
@@ -88,11 +88,11 @@ if(count($comments) > 0)
 			$output.= $t.$t.$t.'<description />'.$nl;
 		}
 		$output.= $t.$t.$t.'<author>'.$c['nickname'].'</author>'.$nl;
-		$output.= $t.$t.$t.'<link>http://www.pouet.net/user.php?who='.$c['who'].'</link>'.$nl;
+		$output.= $t.$t.$t.'<link>http://pouet.net/user.php?who='.$c['who'].'</link>'.$nl;
 		$avatar_size = filesize('../avatars/'.$c['avatar']);
 		$size = getimagesize('../avatars/'.$c['avatar']);
 		$avatar_type = $size['mime'];
-		$output.= $t.$t.$t.'<enclosure url="http://www.pouet.net/avatars/'.$c['avatar'].'" length="'.$avatar_size.'" type="'.$avatar_type.'" />'.$nl;
+		$output.= $t.$t.$t.'<enclosure url="http://pouet.net/avatars/'.$c['avatar'].'" length="'.$avatar_size.'" type="'.$avatar_type.'" />'.$nl;
 		$output.= $t.$t.$t.'<pubDate>'.date('D, d M Y H:i:s',strtotime($c['quand'])).' CST</pubDate>'.$nl;
 		$output.= $t.$t.'</item>'.$nl;
 	}

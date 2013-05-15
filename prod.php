@@ -798,7 +798,7 @@ if(file_exists("screenshots/".$prod["id"].".jpg")) {
     <tr>
 	<td bgcolor="#446688" align="center">
       	 increase the popularity of this prod by spreading this URL:<br />
-	<input type="text" value="http://www.pouet.net/prod.php?which=<? print($prod["id"]); ?>" size="50" readonly>
+	<input type="text" value="http://pouet.net/prod.php?which=<? print($prod["id"]); ?>" size="50" readonly>
      </td>
     </tr>
    </table>
@@ -1026,11 +1026,11 @@ function checkWarning(cmt)
   document.getElementById("commentwarning").innerHTML = "";
   if (cmt.search(/youtube/i)!=-1 || cmt.search(/youtu\.be/i)!=-1)
   {
-    document.getElementById("commentwarning").innerHTML="if you want to add a youtube link, go <a href='http://www.pouet.net/topic.php?which=1024'>here</a> instead!";
+    document.getElementById("commentwarning").innerHTML="if you want to add a youtube link, go <a href='/topic.php?which=1024'>here</a> instead!";
   }
   if (cmt.search(/soundcloud/i)!=-1 || cmt.search(/\.mp3/i)!=-1 || cmt.search(/\.ogg/i)!=-1)
   {
-    document.getElementById("commentwarning").innerHTML="if you want to add a soundtrack link, go <a href='http://www.pouet.net/topic.php?which=1024'>here</a> instead!";
+    document.getElementById("commentwarning").innerHTML="if you want to add a soundtrack link, go <a href='/topic.php?which=1024'>here</a> instead!";
   }
 }
 //-->

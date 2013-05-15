@@ -13,7 +13,7 @@ if (!$_SESSION["nodonate"]) {
     if you can't afford to buy a supporter ticket, you can add any small amount to the donation pool via scene.org:
     <table>
     <tr>
-    <td><img src="http://www.pouet.net/gfx/titles/coupdecoeur.gif"/></td>
+    <td><img src="/gfx/titles/coupdecoeur.gif"/></td>
     <td>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style='margin:10px'>
         <input type="hidden" name="cmd" value="_xclick">
@@ -25,7 +25,7 @@ if (!$_SESSION["nodonate"]) {
         <input type="image" src="https://www.paypal.com/images/x-click-but04.gif" border="0" name="submit" alt="Donate">
       </form>
     </td>
-    <td><img src="http://www.pouet.net/gfx/titles/coupdecoeur.gif"/></td>
+    <td><img src="/gfx/titles/coupdecoeur.gif"/></td>
     </tr>
     </table>
 

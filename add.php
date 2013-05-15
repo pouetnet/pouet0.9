@@ -124,10 +124,10 @@ switch ($_POST["type"]) {
 		$url="prod.php?which=".$which;
 		$message=$comment;
 		if (strstr($comment,"freecliptv.samsonshome.de")!==false)
-		  $errormessage[] = "please post video links to <a href='http://www.pouet.net/topic.php?which=1024'>this thread</a>";
+		  $errormessage[] = "please post video links to <a href='/topic.php?which=1024'>this thread</a>";
 
 		if (strstr($comment,"EmwW_6kUdHw")!==false)
-		  $errormessage[] = "please post video links to <a href='http://www.pouet.net/topic.php?which=1024'>this thread</a> - also, your link has been removed from youtube.";
+		  $errormessage[] = "please post video links to <a href='/topic.php?which=1024'>this thread</a> - also, your link has been removed from youtube.";
 
 	//if($_SESSION["SCENEID_ID"]==2100)
 //	$comment = "hi! i'm dubmood and i suck!\n\nps. i have a small penis.";

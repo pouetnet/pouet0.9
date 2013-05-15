@@ -7,7 +7,7 @@ switch($_GET['e'])
 {
 	case "password":
 	case "Invalid password":
-		$message="Invalid password.<br />Read the <a href=\"http://www.pouet.net/faq.php#15\">FAQ</a> if you want to get a new password.";
+		$message="Invalid password.<br />Read the <a href=\"/faq.php#15\">FAQ</a> if you want to get a new password.";
 		break;
 	case "login":
 		$message="Bad username.";

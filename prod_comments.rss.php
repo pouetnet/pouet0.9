@@ -13,12 +13,12 @@ $prod = mysql_fetch_array($result);
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Pouet - <?=$prod["name"]?></title>
-		<link>http://www.pouet.net/prod.php?which=<?=$_GET["which"]?></link>
+		<link>http://pouet.net/prod.php?which=<?=$_GET["which"]?></link>
 		<description>Pouet - <?=$prod["name"]?></description>
 		<language>en-us</language>
 		<docs>http://feedvalidator.org/docs/rss2.html</docs>
-		
-		<atom:link href="http://www.pouet.net/prod_comments.rss.php?which=<?=$_GET["which"]?>" rel="self" type="application/rss+xml" />
+
+		<atom:link href="http://pouet.net/prod_comments.rss.php?which=<?=$_GET["which"]?>" rel="self" type="application/rss+xml" />
 
 		<lastBuildDate><?=date("r")?></lastBuildDate>
 		<copyright>Copyright 2008 Pouet.net</copyright>
@@ -31,7 +31,7 @@ while($o = mysql_fetch_object($result)) {
 		<item>
 			<guid isPermaLink="false">pouetcomments_<?=$o->id?></guid>
 			<title><?=htmlentities($o->nickname)?> (<?=$o->rating?>)</title>
-      <link>http://www.pouet.net/prod.php?which=<?=$prod["id"]?></link>
+      <link>http://pouet.net/prod.php?which=<?=$prod["id"]?></link>
 			<description><![CDATA[<?=htmlentities($o->comment)?>]]></description>
 			<pubDate><?=date("r",strtotime($o->quand))?></pubDate>
 		</item>

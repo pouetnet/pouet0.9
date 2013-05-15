@@ -1,5 +1,5 @@
 body {
-  background: #3A6EA5 url("http://www.pouet.net/gfx/trumpet.gif");
+  background: #3A6EA5 url("/gfx/trumpet.gif");
   font-size : 9pt;
   font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
   margin: 0px;
@@ -91,7 +91,7 @@ a:hover {
 }
 
 .pouettbl .sort a {
-  background: url("http://www.pouet.net/gfx/arrow.gif") top left no-repeat;
+  background: url("/gfx/arrow.gif") top left no-repeat;
   padding-left: 15px;
   margin-right: 15px;
 }
@@ -164,7 +164,7 @@ input {
 #tbl_oneliner th span {
   padding-left: 18px;
   padding-bottom: 2px;
-  background: #224488 url("http://www.pouet.net/gfx/titles/talk.gif") top left no-repeat;
+  background: #224488 url("/gfx/titles/talk.gif") top left no-repeat;
 }
 
 #tbl_oneliner td,#tbl_bbs td {
@@ -174,25 +174,25 @@ input {
 #tbl_search th span {
   padding-left: 18px;
   padding-bottom: 2px;
-  background: #224488 url("http://www.pouet.net/gfx/titles/search.gif") top left no-repeat;
+  background: #224488 url("/gfx/titles/search.gif") top left no-repeat;
 }
 
 #tbl_stats th span {
   padding-left: 18px;
   padding-bottom: 2px;
-  background: #224488 url("http://www.pouet.net/gfx/titles/stats.gif") top left no-repeat;
+  background: #224488 url("/gfx/titles/stats.gif") top left no-repeat;
 }
 
 #tbl_coup th span {
   padding-left: 18px;
   padding-bottom: 2px;
-  background: #224488 url("http://www.pouet.net/gfx/titles/coupdecoeur.gif") top left no-repeat;
+  background: #224488 url("/gfx/titles/coupdecoeur.gif") top left no-repeat;
 }
 
 .news th span {
   padding-left: 18px;
   padding-bottom: 2px;
-  background: #224488 url("http://www.pouet.net/gfx/titles/orange.gif") top left no-repeat;
+  background: #224488 url("/gfx/titles/orange.gif") top left no-repeat;
 }
 
 .platform {
@@ -266,7 +266,7 @@ input {
   text-align:left;
 }
 .innerbar {
-  background: url('http://www.pouet.net/gfx/bar.gif') repeat-x;
+  background: url('/gfx/bar.gif') repeat-x;
   padding: 0px;
   margin: 0px 0px;
   height: 16px;
@@ -292,8 +292,8 @@ input {
 }
 #tbl_comments .numcomments {
   background: #224488;
-  text-align: center;  
-  
+  text-align: center;
+
 }
 
 .vote {
@@ -306,5 +306,5 @@ input {
 .vote span {
   display:none;
 }
-.rulez { background: url("http://www.pouet.net/gfx/rulez.gif") top left no-repeat; }
-.sucks { background: url("http://www.pouet.net/gfx/sucks.gif") top left no-repeat; }
+.rulez { background: url("/gfx/rulez.gif") top left no-repeat; }
+.sucks { background: url("/gfx/sucks.gif") top left no-repeat; }

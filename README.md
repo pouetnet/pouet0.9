@@ -31,22 +31,22 @@ At the same time:
 
 ### Maintainers
 
-- [gargaj](http://www.pouet.net/user.php?who=1007) (since 2007)
-- [psenough](http://www.pouet.net/user.php?who=177) (2004-2007)
-- [analogue](http://www.pouet.net/user.php?who=1) (2000-2004)
+- [gargaj](http://pouet.net/user.php?who=1007) (since 2007)
+- [psenough](http://pouet.net/user.php?who=177) (2004-2007)
+- [analogue](http://pouet.net/user.php?who=1) (2000-2004)
 
 ### Contributors
 
 - [Ziphoid](http://pouet.net/user.php?who=26956)
 - [kusma](http://pouet.net/user.php?who=1383)
 - [D.Fox](http://pouet.net/user.php?who=374)
-- [gasman](http://www.pouet.net/user.php?who=2260)
-- [knos](http://www.pouet.net/user.php?who=36)
-- [p01](http://www.pouet.net/user.php?who=59)
-- [redhound](http://www.pouet.net/user.php?who=784)
-- [stil](http://www.pouet.net/user.php?who=351)
-- [rez](http://www.pouet.net/user.php?who=10)
-- [melwyn](http://www.pouet.net/user.php?who=38)
+- [gasman](http://pouet.net/user.php?who=2260)
+- [knos](http://pouet.net/user.php?who=36)
+- [p01](http://pouet.net/user.php?who=59)
+- [redhound](http://pouet.net/user.php?who=784)
+- [stil](http://pouet.net/user.php?who=351)
+- [rez](http://pouet.net/user.php?who=10)
+- [melwyn](http://pouet.net/user.php?who=38)
 
 ## Want to contribute ?
 

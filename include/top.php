@@ -78,7 +78,7 @@ if ($_GET["charset"]) $charset = htmlentities($_GET["charset"]);
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="http://www.pouet.net<?=$_SERVER["REQUEST_URI"]?>"/>
+  <link rel="canonical" href="http://pouet.net<?=$_SERVER["REQUEST_URI"]?>"/>
   <link rel="alternate" href="/piclens/piclens.rss.php" type="application/rss+xml" title="piclens thing" id="gallery" />
   <link rel="alternate" href="/export/lastprodsadded.rss.php" type="application/rss+xml" title="pouet - last prods added" />
   <link rel="alternate" href="/export/lastprodsreleased.rss.php" type="application/rss+xml" title="pouet - last prods released" />
@@ -464,7 +464,7 @@ and
 $random_quotes = Array (
   'send your logos to <a href="/submit-logo.php">us</a> and be a popstar !',
   '<a href="logos.php">vote</a> for the logos you like and be a lamah !',
-  'pou&euml;t.net is brought to you by <a href="http://www.pouet.net/groups.php?which=5">mandarine</a>',
+  'pou&euml;t.net is brought to you by <a href="http://pouet.net/groups.php?which=5">mandarine</a>',
   'pou&euml;t.net is hosted on the huge <a href="http://www.scene.org/">scene.org</a> servers',
 /*
   'pout != scene && scene != pout',

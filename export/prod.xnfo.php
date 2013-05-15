@@ -179,11 +179,11 @@ while($tmp = mysql_fetch_array($result)) {
 $output.= $t.$t.'</download>'.$nl;
 
 if(file_exists("../screenshots/".$prod["id"].".jpg")) {
-  $shotpath = "http://www.pouet.net/screenshots/".$prod["id"].".jpg";
+  $shotpath = "http://pouet.net/screenshots/".$prod["id"].".jpg";
 } elseif(file_exists("../screenshots/".$prod["id"].".gif")) {
-  $shotpath = "http://www.pouet.net/screenshots/".$prod["id"].".gif";
+  $shotpath = "http://pouet.net/screenshots/".$prod["id"].".gif";
 } elseif(file_exists("../screenshots/".$prod["id"].".png")) {
-  $shotpath = "http://www.pouet.net/screenshots/".$prod["id"].".png";
+  $shotpath = "http://pouet.net/screenshots/".$prod["id"].".png";
 }
 
 $output.= $t.$t.'<screenshot>'.$nl;

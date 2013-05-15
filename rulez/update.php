@@ -507,7 +507,7 @@ if ($webtv||$all)
 		  $contents .= fread($fdtv, 8192);
 		}
 		fclose($fdtv);
-		$pstring = 'http://www.pouet.net/prod.php?which=';
+		$pstring = 'http://pouet.net/prod.php?which=';
 		$dstring = 'http://www.demoscene.tv/prod.php?id_prod=';
 		$pos = strpos($contents, $pstring);
 		while ($pos != false)

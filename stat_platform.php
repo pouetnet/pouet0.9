@@ -23,7 +23,7 @@ while ($o = mysql_fetch_object($r)) {
 ?>
  <tr bgcolor="#557799">
   <td><?=$n++?>.</td>
-  <td><img src="gfx/os/<?=$o->icon?>" border="0" > <a href='http://www.pouet.net/prodlist.php?platform[]=<?=rawurlencode($o->name)?>'><?=$o->name?></a><br /></td>
+  <td><img src="gfx/os/<?=$o->icon?>" border="0" > <a href='/prodlist.php?platform[]=<?=rawurlencode($o->name)?>'><?=$o->name?></a><br /></td>
   <td><?=$o->c?></td>
    </tr>
 <? } ?>

@@ -26,7 +26,7 @@ $output = '<?xml version="1.0" encoding="UTF-8"?>'.$nl;
 $output.= '<rss version="2.0">'.$nl;
 $output.= $t.'<channel>'.$nl;
 $output.= $t.$t.'<title>pouet.net</title>'.$nl;
-$output.= $t.$t.'<link>http://www.pouet.net/</link>'.$nl;
+$output.= $t.$t.'<link>http://pouet.net/</link>'.$nl;
 $output.= $t.$t.'<description>your online demoscene resource</description>'.$nl;
 $output.= $t.$t.'<language>en-us</language>'.$nl;
 $output.= $t.$t.'<copyright>Copyright 2000-'.date('Y').' Mandarine</copyright>'.$nl;
@@ -42,9 +42,9 @@ $output.= $t.$t.'<docs>http://backend.userland.com/rss</docs>'.$nl;
 $output.= $t.$t.'<ttl>60</ttl>'.$nl;
 // logo
 $output.= $t.$t.'<image>'.$nl;
-$output.= $t.$t.$t.'<url>http://www.pouet.net/gfx/buttons/pouet.gif</url>'.$nl;
+$output.= $t.$t.$t.'<url>http://pouet.net/gfx/buttons/pouet.gif</url>'.$nl;
 $output.= $t.$t.$t.'<title>pouet.net</title>'.$nl;
-$output.= $t.$t.$t.'<link>http://www.pouet.net/</link>'.$nl;
+$output.= $t.$t.$t.'<link>http://pouet.net/</link>'.$nl;
 $output.= $t.$t.$t.'<width>88</width>'.$nl;
 $output.= $t.$t.$t.'<height>31</height>'.$nl;
 $output.= $t.$t.$t.'<description>your online demoscene resource</description>'.$nl;
@@ -62,7 +62,7 @@ foreach($topics as $topic)
 {
 	$output.= $t.$t.'<item>'.$nl;
 	$output.= $t.$t.$t.'<title>'.xmlentities(utf8_encode($topic['topic'])).'</title>'.$nl;
-	$output.= $t.$t.$t.'<link>http://www.pouet.net/topic.php?which='.$topic['id'].'</link>'.$nl;
+	$output.= $t.$t.$t.'<link>http://pouet.net/topic.php?which='.$topic['id'].'</link>'.$nl;
 	$output.= $t.$t.$t.'<guid isPermaLink="false">'.$topic['id'].'</guid>'.$nl;
 	$output.= $t.$t.$t.'<pubDate>'.date('D, d M Y H:i:s',strtotime($topic['lastpost'])).' CST</pubDate>'.$nl;
 	$output.= $t.$t.'</item>'.$nl;
