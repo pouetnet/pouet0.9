@@ -89,13 +89,13 @@ for ($i=0; $i<count($comments); $i++):
 		  $comments[$i]["groupacron3"]=$tmp["acronym"];
 		 }
 	endif;
-*/	
+*/
 	if (strlen($comments[$i]["groupn1"].$comments[$i]["groupn2"].$comments[$i]["groupn3"])>27):
 		if (strlen($comments[$i]["groupn1"])>10 && $comments[$i]["groupacron1"]) $comments[$i]["groupn1"]=$comments[$i]["groupacron1"];
 		if (strlen($comments[$i]["groupn2"])>10 && $comments[$i]["groupacron2"]) $comments[$i]["groupn2"]=$comments[$i]["groupacron2"];
 		if (strlen($comments[$i]["groupn3"])>10 && $comments[$i]["groupacron3"]) $comments[$i]["groupn3"]=$comments[$i]["groupacron3"];
 	endif;
-	
+
 /*
 	if ($platforms[$comments[$i]["id"]]) {
 	  $comments[$i]["platform"] = $platforms[$comments[$i]["id"]];
@@ -111,7 +111,7 @@ for ($i=0; $i<count($comments); $i++):
   	 }
   	if(strlen($comments[$i]["platform"])>20)
     	$comments[$i]["platform"]=substr($comments[$i]["platform"],0,18)."...";
-    $platforms[$comments[$i]["id"]] = $comments[$i]["platform"];  	
+    $platforms[$comments[$i]["id"]] = $comments[$i]["platform"];
   }
 */
 endfor;
@@ -187,7 +187,7 @@ for($i=0;$i<count($comments);$i++) {
   $platforms = explode(",", $comments[$i]["platform"]);
 	for($kkk=0;$kkk<count($platforms);$kkk++) {
 	  ?><a href="prodlist.php?platform[]=<?=$platforms[$kkk]?>"><img src="gfx/os/<?=$os[$platforms[$kkk]]?>" width="16" height="16" border="0" title="<?=$platforms[$kkk]?>"></a><?
-	}	
+	}
 	?></td>
       <td bgcolor="<?=$tdcolor?>"  align="right">
 	<? print($comments[$i]["t_hours"]."h ".$comments[$i]["t_minutes"]."m ".$comments[$i]["t_seconds"]); ?>s ago</td>

@@ -146,7 +146,7 @@ function pickGroup(s) {
 
 		if(($prods[$j]["group1"]==$groups[$i]["id"])||($prods[$j]["group2"]==$groups[$i]["id"])||($prods[$j]["group3"]==$groups[$i]["id"]))
 		{
-       			
+
 	       		$typess = explode(",", $prods[$j]["type"]);
 			print("<tr><td><a href=\"prod.php?which=".$prods[$j]["id"]."\">");
 			for($kk=0;$kk<count($typess);$kk++) {

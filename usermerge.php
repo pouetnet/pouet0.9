@@ -7,46 +7,46 @@ if ($id1 && $id2 && $action=='merge')
 {
 	$query="UPDATE logos set author1=".$id1." where author1=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE logos set author2=".$id1." where author2=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE prods set added=".$id1." where added=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE groups set added=".$id1." where added=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE parties set added=".$id1." where added=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE screenshots set user=".$id1." where user=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE nfos set user=".$id1." where user=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE comments set who=".$id1." where who=".$id2;
 	$result=mysql_query($query);
 
 	$query="UPDATE logos_votes set user=".$id1." where user=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE oneliner set who=".$id1." where who=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE bbs_posts set author=".$id1." where author=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE bbs_topics set userlastpost=".$id1." where userlastpost=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE bbs_topics set userfirstpost=".$id1." where userfirstpost=".$id2;
 	$result=mysql_query($query);
 
 	$query="UPDATE lists set adder=".$id1." where adder=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query="UPDATE lists set upkeeper=".$id1." where upkeeper=".$id2;
 	$result=mysql_query($query);
 
@@ -55,10 +55,10 @@ if ($id1 && $id2 && $action=='merge')
 
 	$query="UPDATE bbs_ads set adder=".$id1." where adder=".$id2;
 	$result=mysql_query($query);
-	
+
 	$query = "DELETE FROM users WHERE id=".$id2." LIMIT 1";
 	mysql_query($query);
-	
+
 	print("<br />user $id1 got all $id2 glops<br />$id2 got wasted<br />\n");
   logGloperatorAction("user_merge",$id1);
 }

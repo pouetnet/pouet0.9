@@ -81,7 +81,7 @@ class lastRSS {
   					fwrite ($f, $serialized, strlen($serialized));
   					fclose($f);
   				}
-  				
+
   				// set 'cached' to 1 only if cached file is correct
   				if ($result) $result['cached'] = 1;
 				} else {
@@ -102,7 +102,7 @@ class lastRSS {
 		// return result
 		return $result;
 	}
-	
+
 	// -------------------------------------------------------------------
 	// Modification of preg_match(); return trimed field with index 1
 	// from 'classic' preg_match() array output

@@ -72,13 +72,13 @@ if($which) {
   	$query="SELECT id,nickname,avatar FROM users WHERE id=".$bbses[0]["adder"];
   	$result=mysql_query($query);
   	$myuser=mysql_fetch_array($result);
-  	
+
   	$query="SELECT prods.id, prods.name, prods.group1, groups.name as group1name from prods LEFT JOIN groups on prods.group1=groups.id WHERE prods.boardID=$which";
 	$result = mysql_query($query);
 	while($tmp = mysql_fetch_array($result)) {
   	 $bbstros[]=$tmp;
 	}
-	
+
   	$query="SELECT affiliatedbbses.group,affiliatedbbses.type,groups.name from affiliatedbbses LEFT JOIN groups on affiliatedbbses.group=groups.id WHERE affiliatedbbses.bbs=$which ORDER BY affiliatedbbses.type, groups.name";
 	$result = mysql_query($query);
 	while($tmp = mysql_fetch_array($result)) {
@@ -90,7 +90,7 @@ if($which) {
 	while($tmp = mysql_fetch_array($result)) {
   	 $bbsnfos[]=$tmp;
 	}
-	
+
 	$query="select platforms.name,platforms.icon from bbses_platforms, platforms where bbses_platforms.bbs='".$which."' and platforms.id=bbses_platforms.platform";
 	$result = mysql_query($query);
 	while($tmp = mysql_fetch_array($result)) {
@@ -172,7 +172,7 @@ if($which) {
    <? endif; ?>
 
    <? if (!$which){
-   	
+
    	for($i=0;$i<count($bbses);$i++)
    	{
      		if($i%2) {
@@ -186,7 +186,7 @@ if($which) {
      		print("</td>\n");
      		print("<td>".$bbses[$i]["phonenumber"]."</td>\n</tr>\n");
      	}
-     	
+
      } else { ?>
      <? if(count($bbses)!=0): ?>
      	<tr bgcolor="#446688">
@@ -230,8 +230,8 @@ if($which) {
 		<? } ?>
 		</table>
 		</td>
-		</tr>  	
-		
+		</tr>
+
 		<? if($bbsnfos): ?>
 		<tr>
 		<td nowrap valign="top">infofiles :</td>
@@ -246,7 +246,7 @@ if($which) {
 		<? } ?>
 		</table>
 		</td>
-		</tr>  	
+		</tr>
 		<? endif; ?>
      	  </table>
      	 </td>

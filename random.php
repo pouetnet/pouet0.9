@@ -51,7 +51,7 @@ while($o = mysql_fetch_object($r)) {
 $typ = explode(",", $o->type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>" alt="<?=$p?>"></a><?
-}	
+}
 ?>
   <a href="prod.php?which=<?=$o->id?>"><?=$o->name?></a>
 </td>
@@ -69,7 +69,7 @@ echo implode(" :: ",$a);
 $platforms = explode(",", $o->platform);
 foreach($platforms as $p) {
   ?><a href="prodlist.php?platform[]=<?=$p?>"><img src="gfx/os/<?=$os[$p]?>" border="0" title="<?=$p?>"></a><?
-}	
+}
 ?>
 </td>
 </tr>
@@ -120,7 +120,7 @@ while($o = mysql_fetch_object($r)) {
 $typ = explode(",", $o->type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>" alt="<?=$p?>"></a><?
-}	
+}
 ?>
   <a href="prod.php?which=<?=$o->id?>"><?=$o->name?></a>
 </td>
@@ -138,7 +138,7 @@ echo implode(" :: ",$a);
 $platforms = explode(",", $o->platform);
 foreach($platforms as $p) {
   ?><a href="prodlist.php?platform[]=<?=$p?>"><img src="gfx/os/<?=$os[$p]?>" border="0" title="<?=$p?>"></a><?
-}	
+}
 ?>
 </td>
 </tr>
@@ -148,7 +148,7 @@ foreach($platforms as $p) {
 
 $notypes = array("32b", "64b", "128b", "512b", "1k", "8k", "16k", "32k", "80k", "96k", "100k", "128k", "256k", "artpack", "fastdemo", "report", "votedisk");
 foreach ($types as $key => $value) {
-	
+
 	if (!in_array($key, $notypes)) {
 ?>
 	<tr>
@@ -192,7 +192,7 @@ while($o = mysql_fetch_object($r)) {
 $typ = explode(",", $o->type);
 foreach($typ as $p) {
   ?><a href="prodlist.php?type[]=<?=$p?>"><img src="gfx/types/<?=$types[$p]?>" border="0" title="<?=$p?>" alt="<?=$p?>"></a><?
-}	
+}
 ?>
   <a href="prod.php?which=<?=$o->id?>"><?=$o->name?></a>
 </td>
@@ -210,7 +210,7 @@ echo implode(" :: ",$a);
 $platforms = explode(",", $o->platform);
 foreach($platforms as $p) {
   ?><a href="prodlist.php?platform[]=<?=$p?>"><img src="gfx/os/<?=$os[$p]?>" border="0" title="<?=$p?>"></a><?
-}	
+}
 ?>
 </td>
 </tr>

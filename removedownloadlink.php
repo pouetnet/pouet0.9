@@ -7,7 +7,7 @@ if ($id && $action=='delete')
 {
 	$query = "DELETE FROM downloadlinks WHERE id=$id";
 	mysql_query($query);
-	
+
 	print("<br />downloadlink $id deleted<br />hope you didn't fuck up!<br />");
 }
 

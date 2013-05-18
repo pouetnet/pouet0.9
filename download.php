@@ -43,7 +43,7 @@ $prod["download"] = str_replace("%2F","/",$prod["download"]);
 	- <a href="http://www.filesearching.com/cgi-bin/s?q=<? print($extensionless); ?>"><?=$prod["name"]?> on filesearching.com</a><br />
 	- <a href="http://www.filemirrors.com/search.src?file=<? print($extensionless); ?>"><?=$prod["name"]?> on filemirrors</a><br />
 	- <a href="http://hornet.scene.org/cgi-bin/scene-search.cgi?search=<? print($extensionless); ?>"><?=$prod["name"]?> on the hornet archive</a><br />
-	
+
 	<?
 	//- <a href="http://www.ojuice.net/ftpsearch.htm?sftp=
 	//- <a href="http://www.chscene.ch/ftpsearch2/search.php?type=file&query=

@@ -7,10 +7,10 @@ if ($id && $action=='delete')
 {
 	$query = "DELETE FROM groups WHERE id=$id LIMIT 1";
 	mysql_query($query);
-	
+
 	$query = "DELETE FROM groupsaka WHERE group1=$id or group2=$id or group3=$id";
 	mysql_query($query);
-		
+
 	print("group $id deleted<br />\n");
   logGloperatorAction("group_del",$id);
 }

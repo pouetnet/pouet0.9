@@ -17,79 +17,79 @@ function bbencode($message, $is_html_disabled) {
 	// pad it with a space so we can distinguish between FALSE and matching the 1st char (index 0).
 	// This is important; bbencode_quote(), bbencode_list(), and bbencode_code() all depend on it.
 	$message = " " . $message;
-	
+
 	// First: If there isn't a "[" and a "]" in the message, don't bother.
 	if (! (strpos($message, "[") && strpos($message, "]")) )
 	{
 		// Remove padding, return.
 		$message = substr($message, 1);
-		return $message;	
+		return $message;
 	}
 
 	// [CODE] and [/CODE] for posting code (HTML, PHP, C etc etc) in your posts.
 	$message = str_replace(array("\r\n", "\r", "\n"), "<br />", bbencode_code($message, $is_html_disabled));
 
-	// [QUOTE] and [/QUOTE] for posting replies with quote, or just for quoting stuff.	
+	// [QUOTE] and [/QUOTE] for posting replies with quote, or just for quoting stuff.
 	$message = bbencode_quote($message);
 
 	// [list] and [list=x] for (un)ordered lists.
 	$message = bbencode_list($message);
-	
+
 	// [b] and [/b] for bolding text.
 	$message = preg_replace("/\[b\](.*?)\[\/b\]/si", "<!-- BBCode Start --><B>\\1</B><!-- BBCode End -->", $message);
-	
+
 	// [i] and [/i] for italicizing text.
 	$message = preg_replace("/\[i\](.*?)\[\/i\]/si", "<!-- BBCode Start --><I>\\1</I><!-- BBCode End -->", $message);
-	
+
 	// [u] and [/u] for underlining text.
 	$message = preg_replace("/\[u\](.*?)\[\/u\]/si", "<!-- BBCode Start --><U>\\1</U><!-- BBCode End -->", $message);
-	
+
 	// [img]image_url_here[/img] code..
 //	echo "<!--";
 //	var_dump($user);
 //	echo "-->";
-	
+
 	$ie7 = "<!-- BBCode Start --><IMG style='max-width:75%;' SRC=\"\\1\" BORDER=\"0\"><!-- BBCode End -->";
 	$ff3 = "<!-- BBCode Start --><div class='bbimage'><IMG SRC=\"\\1\" BORDER=\"0\"></div><!-- BBCode End -->";
 	//$test = "<!-- BBCode Start --><IMG style='max-width:95%; height=auto;'SRC=\"\\1\" BORDER=\"0\"><!-- BBCode End -->";
 	//$rplac = $ie7;
 	$rplac = "<!-- BBCode Start --><IMG class='bbimage' SRC=\"\\1\" BORDER=\"0\"><!-- BBCode End -->";
-	
+
 	if($user["displayimages"] || $_GET["forceimages"])
 	 $message = preg_replace("/\[img\](.*?)\[\/img\]/si", $rplac, $message);
   	else
   	 $message = preg_replace("/\[img\](.*?)\[\/img\]/si", "<!-- BBCode Start --><a href=\"\\1\" style='font-size:90%'>[image disabled]</a> <!-- BBCode End -->", $message);
-	
+
 	// Patterns and replacements for URL and email tags..
 	$patterns = array();
 	$replacements = array();
-	
+
 	// [url]xxxx://www.phpbb.com[/url] code..
 	$patterns[0] = "#\[url\]([a-z]+?://){1}(.*?)\[/url\]#si";
 	$replacements[0] = '<!-- BBCode u1 Start --><A HREF="\1\2">\1\2</A><!-- BBCode u1 End -->';
-	
+
 	// [url]www.phpbb.com[/url] code.. (no xxxx:// prefix).
 	$patterns[1] = "#\[url\](.*?)\[/url\]#si";
 	$replacements[1] = '<!-- BBCode u1 Start --><A HREF="http://\1">\1</A><!-- BBCode u1 End -->';
-	
+
 	// [url=xxxx://www.phpbb.com]phpBB[/url] code..
 	$patterns[2] = "#\[url=([a-z]+?://){1}(.*?)\](.*?)\[/url\]#si";
 	$replacements[2] = '<!-- BBCode u2 Start --><A HREF="\1\2">\3</A><!-- BBCode u2 End -->';
-	
+
 	// [url=www.phpbb.com]phpBB[/url] code.. (no xxxx:// prefix).
 	$patterns[3] = "#\[url=(.*?)\](.*?)\[/url\]#si";
 	$replacements[3] = '<!-- BBCode u2 Start --><A HREF="http://\1">\2</A><!-- BBCode u2 End -->';
-	
+
 	// [email]user@domain.tld[/email] code..
 	$patterns[4] = "#\[email\](.*?)\[/email\]#si";
 	$replacements[4] = '<!-- BBCode Start --><A HREF="mailto:\1">\1</A><!-- BBCode End -->';
-						
+
 	$message = preg_replace($patterns, $replacements, $message);
-	
+
 	// Remove our padding from the string..
 	$message = substr($message, 1);
 	return $message;
-	
+
 } // bbencode()
 
 
@@ -111,34 +111,34 @@ function bbdecode($message) {
 		$quote_end_html = "</div></div><!-- BBCode Quote End -->";
 		$message = str_replace($quote_start_html, "[quote]", $message);
 		$message = str_replace($quote_end_html, "[/quote]", $message);
-		
+
 		// Undo [b] and [i]
 		$message = preg_replace("#<!-- BBCode Start --><B>(.*?)</B><!-- BBCode End -->#s", "[b]\\1[/b]", $message);
 		$message = preg_replace("#<!-- BBCode Start --><I>(.*?)</I><!-- BBCode End -->#s", "[i]\\1[/i]", $message);
-		
+
 		// Undo [url] (long form)
 		$message = preg_replace("#<!-- BBCode u2 Start --><A HREF=\"([a-z]+?://)(.*?)\">(.*?)</A><!-- BBCode u2 End -->#s", "[url=\\1\\2]\\3[/url]", $message);
-		
+
 		// Undo [url] (short form)
 		$message = preg_replace("#<!-- BBCode u1 Start --><A HREF=\"([a-z]+?://)(.*?)\">(.*?)</A><!-- BBCode u1 End -->#s", "[url]\\3[/url]", $message);
-		
+
 		// Undo [email]
 		$message = preg_replace("#<!-- BBCode Start --><A HREF=\"mailto:(.*?)\">(.*?)</A><!-- BBCode End -->#s", "[email]\\1[/email]", $message);
-		
+
 		// Undo [img]
 		$message = preg_replace("#<!-- BBCode Start --><IMG SRC=\"(.*?)\" BORDER=\"0\"><!-- BBCode End -->#s", "[img]\\1[/img]", $message);
-		
+
 		// Undo lists (unordered/ordered)
-	
+
 		// <li> tags:
 		$message = str_replace("<!-- BBCode --><LI>", "[*]", $message);
-		
+
 		// [list] tags:
 		$message = str_replace("<!-- BBCode ulist Start --><UL>", "[list]", $message);
-		
+
 		// [list=x] tags:
 		$message = preg_replace("#<!-- BBCode olist Start --><OL TYPE=([A1])>#si", "[list=\\1]", $message);
-		
+
 		// [/list] tags:
 		$message = str_replace("</UL><!-- BBCode ulist End -->", "[/list]", $message);
 		$message = str_replace("</OL><!-- BBCode olist End -->", "[/list]", $message);
@@ -192,18 +192,18 @@ function bbencode_quote($message)
 {
 	// First things first: If there aren't any "[quote]" strings in the message, we don't
 	// need to process it at all.
-	
+
 	if (!strpos(strtolower($message), "[quote]"))
 	{
-		return $message;	
+		return $message;
 	}
-	
+
 	$stack = Array();
 	$curr_pos = 1;
 	while ($curr_pos && ($curr_pos < strlen($message)))
-	{	
+	{
 		$curr_pos = strpos($message, "[", $curr_pos);
-	
+
 		// If not found, $curr_pos will be 0, and the loop will end.
 		if ($curr_pos)
 		{
@@ -240,7 +240,7 @@ function bbencode_quote($message)
 					$message = $before_start_tag . "<!-- BBCode Quote Start --><div class=\"bbs_quote\"><b>Quote:</b><div>";
 					$message .= $between_tags . "</div></div><!-- BBCode Quote End -->";
 					$message .= $after_end_tag;
-					
+
 					// Now.. we've screwed up the indices by changing the length of the string.
 					// So, if there's anything in the stack, we want to resume searching just after it.
 					// otherwise, we go back to the start.
@@ -258,19 +258,19 @@ function bbencode_quote($message)
 				else
 				{
 					// No matching start tag found. Increment pos, keep going.
-					++$curr_pos;	
+					++$curr_pos;
 				}
 			}
 			else
 			{
 				// No starting tag or ending tag.. Increment pos, keep looping.,
-				++$curr_pos;	
+				++$curr_pos;
 			}
 		}
 	} // while
-	
+
 	return $message;
-	
+
 } // bbencode_quote()
 
 
@@ -290,25 +290,25 @@ function bbencode_code($message, $is_html_disabled)
 	// need to process it at all.
 	if (!strpos(strtolower($message), "[code]"))
 	{
-		return $message;	
+		return $message;
 	}
 
 	//return preg_replace("/\[code\](.*?)\[\/code\]/si", "<!-- BBCode Start --><div class=\"bbs_code\"><b>Code:</b><pre>\1</pre></div><!-- BBCode End -->", $message);
 
 //	$message = preg_replace("/$str_to_match/si", "<!-- BBCode Start --><div class=\"bbs_code\"><b>Code:</b><pre>$after_replace</pre></div><!-- BBCode End -->", $message);
-	
+
 	// Second things second: we have to watch out for stuff like [1code] or [/code1] in the
 	// input.. So escape them to [#1code] or [/code#1] for now:
 	$message = preg_replace("/\[([0-9]+?)code\]/si", "[#\\1code]", $message);
 	$message = preg_replace("/\[\/code([0-9]+?)\]/si", "[/code#\\1]", $message);
-	
+
 	$stack = Array();
 	$curr_pos = 1;
 	$max_nesting_depth = 0;
 	while ($curr_pos && ($curr_pos < strlen($message)))
-	{	
+	{
 		$curr_pos = strpos($message, "[", $curr_pos);
-	
+
 		// If not found, $curr_pos will be 0, and the loop will end.
 		if ($curr_pos)
 		{
@@ -332,7 +332,7 @@ function bbencode_code($message, $is_html_disabled)
 					// There exists a starting tag.
 					$curr_nesting_depth = sizeof($stack);
 					$max_nesting_depth = ($curr_nesting_depth > $max_nesting_depth) ? $curr_nesting_depth : $max_nesting_depth;
-					
+
 					// We need to do 2 replacements now.
 					$start_index = bbcode_array_pop($stack);
 
@@ -348,7 +348,7 @@ function bbencode_code($message, $is_html_disabled)
 					$message = $before_start_tag . "[" . $curr_nesting_depth . "code]";
 					$message .= $between_tags . "[/code" . $curr_nesting_depth . "]";
 					$message .= $after_end_tag;
-					
+
 					// Now.. we've screwed up the indices by changing the length of the string.
 					// So, if there's anything in the stack, we want to resume searching just after it.
 					// otherwise, we go back to the start.
@@ -366,17 +366,17 @@ function bbencode_code($message, $is_html_disabled)
 				else
 				{
 					// No matching start tag found. Increment pos, keep going.
-					++$curr_pos;	
+					++$curr_pos;
 				}
 			}
 			else
 			{
 				// No starting tag or ending tag.. Increment pos, keep looping.,
-				++$curr_pos;	
+				++$curr_pos;
 			}
 		}
 	} // while
-	
+
 	//echo "<!--".$message."-->";
 	if ($max_nesting_depth > 0)
 	{
@@ -384,38 +384,38 @@ function bbencode_code($message, $is_html_disabled)
 		{
 			$start_tag = escape_slashes(preg_quote("[" . $i . "code]"));
 			$end_tag = escape_slashes(preg_quote("[/code" . $i . "]"));
-			
+
 			$match_count = preg_match_all("/$start_tag(.*?)$end_tag/si", $message, $matches);
-	
+
 			for ($j = 0; $j < $match_count; $j++)
 			{
 				$before_replace = escape_slashes(preg_quote($matches[1][$j]));
 				//debuglog($before_replace);
 				$after_replace = preg_quote($matches[1][$j]);
 				//debuglog($after_replace);
-				
+
 				if (($i < 2) && !$is_html_disabled)
 				{
 					// don't escape special chars when we're nested, 'cause it was already done
 					// at the lower level..
 					// also, don't escape them if HTML is disabled in this post. it'll already be done
 					// by the posting routines.
-					$after_replace = htmlspecialchars($after_replace);	
+					$after_replace = htmlspecialchars($after_replace);
 				}
-				
+
 				$str_to_match = $start_tag . $before_replace . $end_tag;
-			
+
 				$message = preg_replace("/".$str_to_match."/si", "<!-- BBCode Start --><div class=\"bbs_code\"><b>Code:</b><pre>".$after_replace."</pre></div><!-- BBCode End -->", $message);
 			}
 		}
 	}
-	
+
 	// Undo our escaping from "second things second" above..
 	$message = preg_replace("/\[#([0-9]+?)code\]/si", "[\\1code]", $message);
 	$message = preg_replace("/\[\/code#([0-9]+?)\]/si", "[/code\\1]", $message);
-	
+
 	return $message;
-	
+
 } // bbencode_code()
 
 
@@ -430,25 +430,25 @@ function bbencode_code($message, $is_html_disabled)
  * bbencode().
  */
 function bbencode_list($message)
-{		
+{
 	$start_length = Array();
 	$start_length[ordered] = 8;
 	$start_length[unordered] = 6;
-	
+
 	// First things first: If there aren't any "[list" strings in the message, we don't
 	// need to process it at all.
-	
+
 	if (!strpos(strtolower($message), "[list"))
 	{
-		return $message;	
+		return $message;
 	}
-	
+
 	$stack = Array();
 	$curr_pos = 1;
 	while ($curr_pos && ($curr_pos < strlen($message)))
-	{	
+	{
 		$curr_pos = strpos($message, "[", $curr_pos);
-	
+
 		// If not found, $curr_pos will be 0, and the loop will end.
 		if ($curr_pos)
 		{
@@ -485,7 +485,7 @@ function bbencode_list($message)
 					$start_char = $start[1];
 					$is_ordered = ($start_char != "");
 					$start_tag_length = ($is_ordered) ? $start_length[ordered] : $start_length[unordered];
-					
+
 					// everything before the [list] tag.
 					$before_start_tag = substr($message, 0, $start_index);
 
@@ -493,7 +493,7 @@ function bbencode_list($message)
 					$between_tags = substr($message, $start_index + $start_tag_length, $curr_pos - $start_index - $start_tag_length);
 					// Need to replace [*] with <LI> inside the list.
 					$between_tags = str_replace("[*]", "<!-- BBCode --><LI>", $between_tags);
-					
+
 					// everything after the [/list] tag.
 					$after_end_tag = substr($message, $curr_pos + 7);
 
@@ -507,9 +507,9 @@ function bbencode_list($message)
 						$message = $before_start_tag . "<!-- BBCode ulist Start --><UL>";
 						$message .= $between_tags . "</UL><!-- BBCode ulist End -->";
 					}
-					
+
 					$message .= $after_end_tag;
-					
+
 					// Now.. we've screwed up the indices by changing the length of the string.
 					// So, if there's anything in the stack, we want to resume searching just after it.
 					// otherwise, we go back to the start.
@@ -528,19 +528,19 @@ function bbencode_list($message)
 				else
 				{
 					// No matching start tag found. Increment pos, keep going.
-					++$curr_pos;	
+					++$curr_pos;
 				}
 			}
 			else
 			{
 				// No starting tag or ending tag.. Increment pos, keep looping.,
-				++$curr_pos;	
+				++$curr_pos;
 			}
 		}
 	} // while
-	
+
 	return $message;
-	
+
 } // bbencode_list()
 
 
@@ -574,15 +574,15 @@ function escape_slashes($input)
  */
 
 function make_clickable($text) {
-	
+
 	// pad it with a space so we can match things at the start of the 1st line.
 	$ret = " " . $text;
-	
+
 	// matches an "xxxx://yyyy" URL at the start of a line, or after a space.
 	// xxxx can only be alpha characters.
 	// yyyy is anything up to the first space, newline, or comma.
 	$ret = preg_replace("#([\n ])([a-z]+?)://([^, \n\r]+)#i", "\\1<!-- BBCode auto-link start --><a href=\"\\2://\\3\">\\2://\\3</a><!-- BBCode auto-link end -->", $ret);
-	
+
 	// matches a "www.xxxx.yyyy[/zzzz]" kinda lazy URL thing
 	// Must contain at least 2 dots. xxxx contains either alphanum, or "-"
 	// yyyy contains either alphanum, "-", or "."
@@ -590,15 +590,15 @@ function make_clickable($text) {
 	// This is slightly restrictive - it's not going to match stuff like "forums.foo.com"
 	// This is to keep it from getting annoying and matching stuff that's not meant to be a link.
 	$ret = preg_replace("#([\n ])www\.([a-z0-9\-]+)\.([a-z0-9\-.\~]+)((?:/[^, \n\r]*)?)#i", "\\1<!-- BBCode auto-link start --><a href=\"http://www.\\2.\\3\\4\">www.\\2.\\3\\4</a><!-- BBCode auto-link end -->", $ret);
-	
+
 	// matches an email@domain type address at the start of a line, or after a space.
 	// Note: before the @ sign, the only valid characters are the alphanums and "-", "_", or ".".
 	// After the @ sign, we accept anything up to the first space, linebreak, or comma.
 	$ret = preg_replace("#([\n ])([a-z0-9\-_.]+?)@([^, \n\r]+)#i", "\\1<!-- BBcode auto-mailto start --><a href=\"mailto:\\2@\\3\">\\2@\\3</a><!-- BBCode auto-mailto end -->", $ret);
-	
+
 	// Remove our padding..
 	$ret = substr($ret, 1);
-	
+
 	return($ret);
 }
 
@@ -611,12 +611,12 @@ function make_clickable($text) {
  */
 
 function undo_make_clickable($text) {
-	
+
 	$text = preg_replace("#<!-- BBCode auto-link start --><a href=\"(.*?)\">.*?</a><!-- BBCode auto-link end -->#i", "\\1", $text);
 	$text = preg_replace("#<!-- BBcode auto-mailto start --><a href=\"mailto:(.*?)\">.*?</a><!-- BBCode auto-mailto end -->#i", "\\1", $text);
-	
+
 	return $text;
-	
+
 }
 
 
@@ -631,7 +631,7 @@ function undo_htmlspecialchars($input) {
 	$input = preg_replace("/&lt;/i", "<", $input);
 	$input = preg_replace("/&quot;/i", "\"", $input);
 	$input = preg_replace("/&amp;/i", "&", $input);
-	
+
 	return $input;
 }
 
@@ -644,14 +644,14 @@ function undo_htmlspecialchars($input) {
 function normalize_whitespace($str)
 {
 	$output = "";
-	
+
 	$tok = preg_split("/[ \t\r\n]+/", $str);
 	$tok_count = sizeof($tok);
 	for ($i = 0; $i < ($tok_count - 1); $i++)
 	{
 		$output .= $tok[$i] . " ";
 	}
-	
+
 	$output .= $tok[$tok_count - 1];
 
 	return $output;

@@ -47,7 +47,7 @@ if($submitok){
   {
 	$query ="INSERT INTO partylinks SET party=".$which.", year=".$when.", download='".$dir."'";
 	mysql_query($query);
-  }	
+  }
 }
 
 ?>

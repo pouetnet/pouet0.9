@@ -127,10 +127,10 @@ function lettermenu($pattern) {
        if($parties[$i]['id']!=1024):
 
      	if($parties[$i]['id']!=$parties[$i-1]['id']):
-     		
+
      		if (($order=="year") && ($parties[$i]['year']!=$parties[$i-1]['year']))
      		 print("<tr bgcolor=\"#224488\"><td></td><td><b>".$parties[$i]["year"]."</b><br /></td><td></td><td></td></tr>");
-     	 	
+
      	 	$j++;
      	 	if($j%2) {
 		       print("<tr bgcolor=\"#446688\"><td>");
@@ -150,9 +150,9 @@ function lettermenu($pattern) {
 		     } else {
 		       print("<tr bgcolor=\"#557799\"><td><br /></td>");
 		     }
-		
+
 	endif; ?>
-	
+
 	      <td>
 	      <? print("<a href=\"party.php?which=".$parties[$i]['id']."&when=".$parties[$i]['year']."\">".$parties[$i]['year']."</a>\n"); ?>
 	      <? if($parties[$i]["slengpung"]): ?>
@@ -166,11 +166,11 @@ function lettermenu($pattern) {
 	      <? endif; ?>
       		<br />
 	      </td>
-	
+
 	      <td>
 	      <? print($parties[$i]['cprods']); ?><br />
 	      </td>
-	
+
 	      <td>
               <? if($parties[$i]["download"]): ?>
       		[<a href="<?=$parties[$i]["download"]?>">prods</a>]
@@ -179,8 +179,8 @@ function lettermenu($pattern) {
            	[<a href="results.php?which=<?=$parties[$i]["id"]?>&when=<?=substr($parties[$i]["year"],-2)?>">results</a>]
               <? endif; ?>
 	      </td>
-	
-	      	
+
+
 	     </tr>
 	<? endif; ?>
     <? endfor; ?>

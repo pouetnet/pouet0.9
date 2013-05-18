@@ -202,13 +202,13 @@ for($i=0;$i<count($prods);$i++) {
 			  $prods[$i]["groupacron3"]=$tmp["acronym"];
 			 }
 		endif;
-		
+
 		if (strlen($prods[$i]["groupn1"].$prods[$i]["groupn2"].$prods[$i]["groupn3"])>27):
 		if (strlen($prods[$i]["groupn1"])>10 && $prods[$i]["groupacron1"]) $prods[$i]["groupn1"]=$prods[$i]["groupacron1"];
 		if (strlen($prods[$i]["groupn2"])>10 && $prods[$i]["groupacron2"]) $prods[$i]["groupn2"]=$prods[$i]["groupacron2"];
 		if (strlen($prods[$i]["groupn3"])>10 && $prods[$i]["groupacron3"]) $prods[$i]["groupn3"]=$prods[$i]["groupacron3"];
 	endif;
-	
+
 
   $result=mysql_query("SELECT * from sceneorgrecommended where prodid=".$prods[$i]["id"]." ORDER BY type");
   while($tmp=mysql_fetch_array($result)) {
@@ -253,7 +253,7 @@ if($platfcheck) {
      	  $pagelink.="type[]=".rawurlencode($p)."&amp;";
      	if($_GET["year"])
      	  $pagelink.="year=".(int)$_GET["year"]."&amp;";
-     	
+
      	$sortlink=$pagelink;
      	//unset($GLOBALS[_SESSION]['ourorder']);
         //unset($_SESSION['ourorder']);
@@ -386,7 +386,7 @@ if($platfcheck) {
       <?
 
       		print("<td>&nbsp;</td>");
-      		
+
       		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -404,12 +404,12 @@ if($platfcheck) {
 		endif;
 
 		print("<td width=\"100%\">&nbsp;</td>");
-		
+
       		$platforms = explode(",", $prods[$i]["allplatforms"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
-       		
+
        		print("</tr></table></td>\n");
       ?>
       <td nowrap>
@@ -526,7 +526,7 @@ if($platfcheck) {
 	else
 	{print("<td>\n0</td>\n");
 	}
-	
+
       /*if($prods[$i]["voteavg"]>0)
 		$thumbgfx="gfx/rulez.gif";
 	elseif($prods[$i]["voteavg"]==0)
@@ -534,7 +534,7 @@ if($platfcheck) {
 	else
 		$thumbgfx="gfx/sucks.gif";*/
 	printf("<td align=\"right\">%.2f</td>",$prods[$i]["voteavg"]);
-	
+
 ?>
       <td>
        <? DoBar(floor($prods[$i]["views"]*100/$max_views)); ?>

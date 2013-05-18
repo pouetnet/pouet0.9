@@ -7,7 +7,7 @@ if ($_GET["derivative"] && $_GET["original"])
 {
 	$query = "select * FROM affiliatedprods WHERE derivative=".$_GET["derivative"]." and original=".$_GET["original"];
 	$o = mysql_fetch_object(mysql_query($query));
-  if ($o->type) {	
+  if ($o->type) {
   	$query = "DELETE FROM affiliatedprods WHERE derivative=".$_GET["derivative"]." and original=".$_GET["original"];
   	mysql_query($query);
 

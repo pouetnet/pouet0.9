@@ -266,7 +266,7 @@ while($tmp = mysql_fetch_array($result)) {
   $lists[]=$tmp;
 }
 if($which) {
-  	
+
   	$query="SELECT * from listitems WHERE list=$which ORDER BY listitems.type";
 	$result = mysql_query($query);
 	//print("->".$query);
@@ -314,13 +314,13 @@ if($which) {
 					  $tmp["groupacron3"]=$gtmp["acronym"];
 					 }
 				endif;
-				
+
 				if (strlen($tmp["groupname1"].$tmp["groupname2"].$tmp["groupname3"])>27):
 					if (strlen($tmp["groupname1"])>10 && $tmp["groupacron1"]) $tmp["groupname1"]=$tmp["groupacron1"];
 					if (strlen($tmp["groupname2"])>10 && $tmp["groupacron2"]) $tmp["groupname2"]=$tmp["groupacron2"];
 					if (strlen($tmp["groupname3"])>10 && $tmp["groupacron3"]) $tmp["groupname3"]=$tmp["groupacron3"];
 				endif;
-				
+
 				//get platforms
 				$pltquery="select platforms.name from prods_platforms, platforms where prods_platforms.prod='".$tmp["id"]."' and platforms.id=prods_platforms.platform";
 				$pltresult=mysql_query($pltquery);
@@ -331,7 +331,7 @@ if($which) {
 				  $check++;
 				  $tmp["platform"].=$pltmp["name"];
 				}
-				
+
 				//get array of sceneorgrecommendations for this group
 				$result2=mysql_query("SELECT * from sceneorgrecommended where prodid=".$tmp["itemid"]." ORDER BY type");
 				while($tmp2=mysql_fetch_array($result2)) {
@@ -379,7 +379,7 @@ if($which) {
 	*/	}
   	 $listitems[]=$tmp;
 	}
-	
+
 	switch($prodorder) {
 	  case "type": usort($listitems, "reorder_id_and_date");
 	  	       usort($listitems, "reorder_prodtype"); break;
@@ -417,7 +417,7 @@ if($which) {
 	print("<b><a href=\"lists.php?which=".$lists[$i]["id"]."\">".$lists[$i]["name"]."</a></b>");
 	if($SESSION_LEVEL=='administrator' || $SESSION_LEVEL=='moderator' || $SESSION_LEVEL=='gloperator')
 	  print(" <b>[<a href=\"editlist.php?which=".$which."\">editlist</a>]</b>\n");
-	
+
 	$query = "SELECT upkeeper FROM lists where id='".$lists[$i]["id"]."'";
   	$result=mysql_query($query);
   	$listupkeeper=mysql_result($result,0);
@@ -494,7 +494,7 @@ if($which) {
    <? endif; ?>
 
    <? if (!$which){
-   	
+
    	for($i=0;$i<count($lists);$i++)
    	{
      		if($i%2) {
@@ -509,7 +509,7 @@ if($which) {
      		print("<td>".$lists[$i]["desc"]."</td>\n");
      		print("<td><a href=\"user.php?who=".$lists[$i]["upkeeper"]."\">".$lists[$i]["nickname"]."</a></td>\n</tr>\n");
      	}
-     	
+
      } else {
      	//print("->kok9".count($listitems));
 		for($i=0;$i<count($listitems);$i++):
@@ -517,7 +517,7 @@ if($which) {
 	  	 if ($listitems[$i]["type"]!=$listitems[$i-1]["type"]):
 	  	    if ($listitems[$i]["type"]=="prod")
 	  	    { //print("kakak000");
-	  	    	
+
 	  	    	?>
 	  	      <tr bgcolor="#224488">
      		      <th><table><tr>
@@ -592,7 +592,7 @@ if($which) {
      		 } else {
        			print("<tr bgcolor=\"#557799\">\n");
      		 }
-			//print("pokaman");		
+			//print("pokaman");
 		 if ($listitems[$i]["type"]=="prod"):
 
 			$typess = explode(",", $listitems[$i]["prodtype"]);
@@ -605,7 +605,7 @@ if($which) {
 			if ($listitems[$i]["group2"]) { print(" &amp; <a href=\"groups.php?which=".$listitems[$i]["group2"]."\">".$listitems[$i]["groupname2"]."</a>"); }
 			if ($listitems[$i]["group3"]) { print(" &amp; <a href=\"groups.php?which=".$listitems[$i]["group3"]."\">".$listitems[$i]["groupname3"]."</a>"); }
 			print("<br /></td><td>&nbsp;</td>");
-			
+
 			if(count($sceneorgrecommends)):
 	        	print("<td nowrap>");
 			for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -613,30 +613,30 @@ if($which) {
 			}
 			print("<br /></td>");
 			endif;
-	
+
 			if($listitems[$i]["cdc"]):
 			 print("<td nowrap>");
 			 for($ii=0;$ii<$prods[$j]["cdc"];$ii++): print("<img src=\"gfx/titles/coupdecoeur.gif\" width=\"16\" height=\"16\" border=\"0\" title=\"cdc\" alt=\"cdc\">");
 			 endfor;
 			 print("<br /></td>");
 			endif;
-			
+
 			print("<td width=\"100%\">&nbsp;</td>");
-	       	
+
 	       		$platforms = explode(",", $listitems[$i]["platform"]);
 	       		for($kkk=0; $kkk<count($platforms); $kkk++){
 	       		 print("<td align=\"right\"><a href=\"prodlist.php?platform=".$platforms[$kkk]."\"><img src=\"gfx/os/".$os[$platforms[$kkk]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$platforms[$kkk]."\"></a><br /></td>");
 	       		}
-	       		
+
 	       		print("</tr></table></td>\n");
-	       		
+
 			if(($listitems[$i]["partyname"])&&!($listitems[$i]["party"]==1024))
 			{
 				$placeadj="";
 				if ($listitems[$i]["partycompo"]=="") $compophrase="";
 				 else $compophrase=" ".$listitems[$i]["partycompo"];
 				if (($listitems[$i]["partycompo"]=="none")||($listitems[$i]["partycompo"]=="invit")) $listitems[$i]["party_place"]=98;
-				
+
 				if($listitems[$i]["party_place"])
 				{
 		           		switch($listitems[$i]["party_place"]) {
@@ -692,7 +692,7 @@ if($which) {
 		       	  if ($listitems[$i]["party"]==1024) print("<td>no party<br /></td>\n");
 		       	   else print("<td>??<br /></td>\n");
 		        }
-		
+
 			if(($listitems[$i]["date"]!="0000-00-00")&&(strlen($listitems[$i]["date"])>0))
 		       	{
 		          $rdate=explode("-",$listitems[$i]["date"]);
@@ -715,7 +715,7 @@ if($which) {
 			} else {
 				print("<td>&nbsp;<br /></td>\n");
 			}
-			
+
 	/*		if ($listitems[$i]["voteup"])
 			{ print("<td>\n".$listitems[$i]["voteup"]."</td>\n");
 			}
@@ -734,7 +734,7 @@ if($which) {
 			else
 			{print("<td>\n0</td>\n");
 			}
-			
+
 			if($listitems[$i]["voteavg"]>0)
 				$thumbgfx="gfx/rulez.gif";
 			elseif($listitems[$i]["voteavg"]==0)
@@ -742,14 +742,14 @@ if($which) {
 			else
 				$thumbgfx="gfx/sucks.gif";
 			printf("<td>\n<table cellspacing=\"0\" cellpadding=\"0\"><tr><td>&nbsp;</td><td>%.2f</td><td>&nbsp;</td><td><img src=\"".$thumbgfx."\" width=\"16\" height=\"16\" border=\"0\" alt=\"average rating\" align=\"left\"></td></tr></table></td>\n",$listitems[$i]["voteavg"]);
-			
+
 			//popularity bar
 			print("<td>\n");
 			$pourcent = floor($listitems[$i]["views"]*100/$max_views);
 			DoBar($pourcent);
 			print("</td>\n");	*/
-			
-		
+
+
 		 /* ?>
 			<td><a href="prod.php?which=<? print($listitems[$i]["id"]); ?>"><? print($listitems[$i]["name"]); ?></a>
 			<? if($listitems[$i]["group1"]) { print(" by"); } ?>
@@ -779,8 +779,8 @@ if($which) {
 		 <br /></td>
 		<? else: print("<td>".$listitems[$i]["itemid"]."<br /></td>"); ?>
 		<? endif; ?>
-		
-		
+
+
      	 </td>
      	</tr>
      	<?

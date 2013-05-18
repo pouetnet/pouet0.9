@@ -7,7 +7,7 @@ if ($_GET["derivative"] && $_GET["original"])
 {
 	$query = "DELETE FROM affiliatedprods WHERE derivative=".$_GET["derivative"]." and original=".$_GET["original"];
 	mysql_query($query);
-	
+
 	print("<br />prodaffil deleted<br />hope you didn't fuck up!<br />");
 }
 

@@ -66,14 +66,14 @@ while($tmp = mysql_fetch_array($result)) {
 }
 
 	for($i=0;$i<count($prods);$i++) {
-			
+
 		//cdc count
 		$result=mysql_query("SELECT count(0) from users_cdcs where cdc=".$prods[$i]["id"]);
 		$prods[$i]["cdc"]=mysql_result($result,0);
-		
+
 		$result=mysql_query("SELECT count(0) from cdc where which=".$prods[$i]["id"]);
 		$prods[$i]["cdc"]=$prods[$i]["cdc"]+mysql_result($result,0);
-		
+
 		//get latestcomment
 		$result=mysql_query("SELECT users.nickname,users.avatar,comments.quand, comments.who from comments LEFT JOIN users ON users.id=comments.who where comments.which=".$prods[$i]["id"]." order by quand desc limit 1");
 		$lcom=mysql_fetch_array($result);
@@ -92,7 +92,7 @@ while($tmp = mysql_fetch_array($result)) {
 		  $check++;
 		  $prods[$i]["platform"].=$tmp["name"];
 		 }
-		
+
 		if ($prods[$i]["platform"]=="Commodore 64") $csdbflag=1;
 		if ($prods[$i]["platform"]=="ZX Spectrum") $zxdemoflag=1;
 
@@ -101,11 +101,11 @@ while($tmp = mysql_fetch_array($result)) {
 		while($tmp=mysql_fetch_array($result)) {
   			$sceneorgrecommends[]=$tmp;
 		}
-		
-		
+
+
  	}
 
-	
+
 	//get max_views for popularity
 	$result=mysql_query("SELECT MAX(views) FROM prods");
 	$max_views=mysql_result($result,0);
@@ -208,7 +208,7 @@ while($tmp = mysql_fetch_array($result)) {
       </tr></table>
      </th>
     </tr>
-<?			
+<?
      	$i=0;
    	for($j=0;$j<count($prods);$j++) {
      		if($j%2) {
@@ -223,7 +223,7 @@ while($tmp = mysql_fetch_array($result)) {
 		print("<img src=\"gfx/types/".$types[$typess[$k]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$k]."\">");
 		}
 		print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td nowrap><a href=\"prod.php?which=".$prods[$j]["id"]."\">".strtolower(htmlentities(stripslashes($prods[$j]["name"])))."</a> (<a href=\"".$prods[$j]["link"]."\">source</a>)<br /></td><td>&nbsp;</td>");
-		
+
 		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -239,23 +239,23 @@ while($tmp = mysql_fetch_array($result)) {
 		 cdcstack($prods[$j]["cdc"]);
 		 print("<br /></td>");
 		endif;
-		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $prods[$j]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform[]=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
-       		
+
        		print("</tr></table></td>\n");
-       		
+
 	if(($prods[$j]["partyname"])&&!($prods[$j]["party"]==1024))
 	{
 		$placeadj="";
 		if ($prods[$j]["partycompo"]=="") $compophrase="";
 		 else $compophrase=" ".$prods[$j]["partycompo"];
 		if (($prods[$j]["partycompo"]=="none")||($prods[$j]["partycompo"]=="invit")) $prods[$j]["party_place"]=98;
-		
+
 		if($prods[$j]["party_place"])
 		{
            		switch($prods[$j]["party_place"]) {
@@ -334,7 +334,7 @@ while($tmp = mysql_fetch_array($result)) {
 	} else {
 		print("<td>&nbsp;<br /></td>\n");
 	}
-	
+
 	if ($prods[$j]["voteup"])
 	{ print("<td>\n".$prods[$j]["voteup"]."</td>\n");
 	}
@@ -353,7 +353,7 @@ while($tmp = mysql_fetch_array($result)) {
 	else
 	{print("<td>\n0</td>\n");
 	}
-	
+
 	if($prods[$j]["voteavg"]>0)
 		$thumbgfx="gfx/rulez.gif";
 	elseif($prods[$j]["voteavg"]==0)
@@ -361,14 +361,14 @@ while($tmp = mysql_fetch_array($result)) {
 	else
 		$thumbgfx="gfx/sucks.gif";
 	printf("<td>\n<table cellspacing=\"0\" cellpadding=\"0\"><tr><td>&nbsp;</td><td>%.2f</td><td>&nbsp;</td><td><img src=\"".$thumbgfx."\" width=\"16\" height=\"16\" border=\"0\" alt=\"average rating\" align=\"left\"></td></tr></table></td>\n",$prods[$j]["voteavg"]);
-	
+
 	//popularity bar
 	print("<td>\n");
 	$pourcent = floor($prods[$j]["views"]*100/$max_views);
 	DoBar($pourcent);
 	print("</td>\n");
-       	
-       	
+
+
 	if ($prods[$j]["lcom_quand"]){ ?>
        <td>
        <table cellspacing="0" cellpadding="0">

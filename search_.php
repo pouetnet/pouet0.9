@@ -193,11 +193,11 @@ if($type=="prod") {
 
 			$results[$i]["avg_rating"] = (float)(($rulez*1+$sucks*-1)/$total);
 			$results[$i]["total"] = $total;
-			
+
 		//cdc count
 		$result=mysql_query("SELECT count(0) from users_cdcs where cdc=".$results[$i]["id"]);
 		$results[$i]["cdc"]=mysql_result($result,0);
-		
+
 		$result=mysql_query("SELECT count(0) from cdc where which=".$results[$i]["id"]);
 		$results[$i]["cdc"]=$results[$i]["cdc"]+mysql_result($result,0);
 
@@ -226,7 +226,7 @@ if($type=="prod") {
 			  $results[$i]["groupacron3"]=$tmp["acronym"];
 			 }
 		endif;
-		
+
 		if (strlen($results[$i]["groupn1"].$results[$i]["groupn2"].$results[$i]["groupn3"])>27):
 		if (strlen($results[$i]["groupn1"])>10 && $results[$i]["groupacron1"]) $results[$i]["groupn1"]=$results[$i]["groupacron1"];
 		if (strlen($results[$i]["groupn2"])>10 && $results[$i]["groupacron2"]) $results[$i]["groupn2"]=$results[$i]["groupacron2"];
@@ -243,7 +243,7 @@ if($type=="prod") {
 		  $check++;
 		  $results[$i]["platform"].=$tmp["name"];
 		 }
-			
+
 		//get array of sceneorgrecommendations for these results
 		$result=mysql_query("SELECT * from sceneorgrecommended where prodid=".$results[$i]["id"]." ORDER BY type");
 		while($tmp=mysql_fetch_array($result)) {
@@ -310,7 +310,7 @@ if($type=="prod") {
 		print("<img src=\"gfx/types/".$types[$typess[$k]]."\" width=\"16\" height=\"16\" border=\"0\" title=\"".$typess[$k]."\">");
 		}
 		print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td nowrap><a href=\"prod.php?which=".$results[$i]["id"]."\">".strtolower(stripslashes($results[$i]["name"]))."</a><br /></td><td>&nbsp;</td>");
-		
+
 		if(count($sceneorgrecommends)):
         	print("<td nowrap>");
 		for($k=0;$k<count($sceneorgrecommends);$k++) {
@@ -325,14 +325,14 @@ if($type=="prod") {
 		 endfor;
 		 print("<br /></td>");
 		endif;
-		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $results[$i]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="prodlist.php?platform=<? print($platforms[$kkk]); ?>"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
-       		
+
        		print("</tr></table></td>\n");
 
 
@@ -353,7 +353,7 @@ if($type=="prod") {
 			if ($results[$i]["partycompo"]=="") $compophrase="";
 		 	 else $compophrase=" ".$results[$i]["partycompo"];
 			if (($results[$i]["partycompo"]=="none")||($results[$i]["partycompo"]=="invit")) $results[$i]["party_place"]=98;
-			
+
            		switch($results[$i]["party_place"]) {
            		case 1:
              		case 21:
@@ -443,7 +443,7 @@ if($type=="prod") {
 	else
 	{print("<td>\n0</td>\n");
 	}
-	
+
 	//popularity bar
 	print("<td>\n");
 	$pourcent = floor($results[$i]["views"]*100/$max_views);

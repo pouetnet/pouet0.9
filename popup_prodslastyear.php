@@ -123,8 +123,8 @@ function pickProd(s) {
 		  $check++;
 		  $prods[$i]["platform"].=$tmp["name"];
 		}
-   		
-   		
+
+
      		if($i%2) {
        			print("<tr bgcolor=\"#446688\">\n");
      		} else {
@@ -138,14 +138,14 @@ function pickProd(s) {
 		}
 		print("<br /></a></td><td><img src=\"gfx/z.gif\" width=\"2\" height=\"1\" border=\"0\"><br /></td><td nowrap><a href=\"javascript:pickProd(".$prods[$i]["id"].")\">".strtolower(stripslashes($prods[$i]["name"]))."</a><br /></td><td>&nbsp;</td>");
      		//print($prods[$i]["name"]."</a></b></td>\n");
-     		
+
 		print("<td width=\"100%\">&nbsp;</td>");
-       	
+
        		$platforms = explode(",", $prods[$i]["platform"]);
        		for($kkk=0;$kkk<count($platforms);$kkk++) {
        		?><td align="right"><a href="javascript:pickProd(<? print($prods[$i]["id"]); ?>)"><img src="gfx/os/<? print($os[$platforms[$kkk]]); ?>" width="16" height="16" border="0" title="<? print($platforms[$kkk]); ?>"></a><br /></td><?
        		}
-       		
+
        		print("</tr></table></td>\n");
        	}
 

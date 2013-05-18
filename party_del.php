@@ -11,7 +11,7 @@ if ($id && $action=='delete')
 	mysql_query($query);
 	$query = "DELETE FROM parties WHERE id=$id LIMIT 1";
 	mysql_query($query);
-	
+
 	print("party $id deleted<br />\n");
 
   logGloperatorAction("party_del",$id);

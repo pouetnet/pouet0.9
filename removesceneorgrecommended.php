@@ -7,7 +7,7 @@ if ($_GET["which"])
 {
 	$query = "DELETE FROM sceneorgrecommended WHERE id=".$_GET["which"];
 	mysql_query($query);
-	
+
 	print("<br />sceneorgrecommended deleted<br />hope you didn't fuck up!<br />");
 
   logGloperatorAction("remove_sceneorg",$_GET["which"]);

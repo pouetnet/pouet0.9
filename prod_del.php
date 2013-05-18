@@ -38,7 +38,7 @@ if ($id && $action=='delete')
 		unlink("../screenshots/$id.jpg");
 	if(file_exists("../screenshots/$id.png"))
 		unlink("../screenshots/$id.png");
-	
+
 	print("prod $id deleted<br />\n");
   logGloperatorAction("prod_del",$id);
 }

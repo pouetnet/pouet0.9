@@ -65,12 +65,12 @@ if($submitok){
 	  $query.= "added=NOW()";
 	  mysql_query($query);
 	  $lastid=mysql_insert_id();
-	
+
 	  for($i=0;$i<count($platform);$i++) {
 	  	for($j=0;$j<count($platforms);$j++) {
 	  		if ($platform[$i]==$platforms[$j]["name"]):
 	  			$query="insert into bbses_platforms set bbses_platforms.bbs='".$lastid."', bbses_platforms.platform='".$platforms[$j]["id"]."'";
-	  			mysql_query($query);			
+	  			mysql_query($query);
 	  		endif;
 	  	}
   	  }

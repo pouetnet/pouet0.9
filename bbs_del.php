@@ -9,23 +9,23 @@ if ($id && $action=='delete')
 	mysql_query($query);
 	$query = "DELETE FROM affiliatedbbses WHERE bbs=$id";
 	mysql_query($query);
-	
+
 	$query="SELECT * from othernfos WHERE type='bbs' and refid='$which'";
 	$result = mysql_query($query);
 	while($tmp = mysql_fetch_array($result)) {
   	 $bbsnfos[]=$tmp;
 	}
-	
+
 	if ($bbsnfos):
 	  for($i=0;$i<count($bbsnfos);$i++) {
 	 	if(file_exists("../othernfo/".$bbsnfos[$i]['id'].".nfo"))
 		 unlink("../othernfo/".$bbsnfos[$i]['id'].".nfo");
 	  }
-	
+
 	  $query = "DELETE FROM othernfos WHERE type='bbs' and refid=$id";
 	  mysql_query($query);
 	endif;
-	
+
 	print("bbs $id deleted<br />\n");
 }
 

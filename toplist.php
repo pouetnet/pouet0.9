@@ -5,7 +5,7 @@ if ($platform == 'any platform')
 	unset($platform);
 if ($type == 'prods')
 	unset($type);
-	
+
 if (!$dayspans) $dayspans=30;
 if (!$dayspane) $dayspane=0;
 if (!$prodlimit) $prodlimit=10;

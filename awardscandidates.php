@@ -20,13 +20,13 @@ if ($_SESSION["SCENEID_ID"])
   	$query = "SELECT * FROM awardscand_".$year." WHERE user='".$_SESSION["SCENEID_ID"]."'";
   	$result = mysql_query($query);
   	$uservote=mysql_fetch_assoc($result);
-  	
+
   	if (!$uservote)
   	{
   		$query = "insert into awardscand_".$year." set user='".$_SESSION["SCENEID_ID"]."'";
   		mysql_query($query);
   	}
-  	
+
   	$sqlc = array();
     $prod = (int)$prod;
 
@@ -34,11 +34,11 @@ if ($_SESSION["SCENEID_ID"])
   	  foreach ($_POST["cat"] as $v)
   		  $sqlc[(int)$v] = (int)$prod;
     }
-  		
+
   	foreach($awardscat[$year] as $x=>$name) {
   		if (isset($_POST["cat".$x]))
   		  $sqlc[$x] = (int)$_POST["cat".$x];
-    }	
+    }
 
     foreach ($sqlc as $k=>$v) {
       $v = (int)$v;
@@ -46,17 +46,17 @@ if ($_SESSION["SCENEID_ID"])
     	{
     	  $r = mysql_fetch_object(mysql_query(sprintf("select date from prods where id=%d",$v)));
     	  if (substr($r->date,0,4)!=$year) continue;
-    	
+
         $query = "update awardscand_".$year." set cat".$k."='".(int)$v."' where user='".$_SESSION["SCENEID_ID"]."'";
       	mysql_query($query);
     	}
-    }	
+    }
   }
 
 	$query = "SELECT * FROM awardscand_".$year." WHERE user='".$_SESSION["SCENEID_ID"]."'";
 	$result = mysql_query($query);
 	$uservote=mysql_fetch_assoc($result);
-	
+
 	foreach($awardscat[$year] as $x=>$name) {
   	if ($uservote["cat".$x]) {
     	$query = "SELECT name FROM prods WHERE id='".$uservote["cat".$x]."'";
