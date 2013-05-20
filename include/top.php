@@ -78,12 +78,12 @@ if ($_GET["charset"]) $charset = htmlentities($_GET["charset"]);
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="http://pouet.net<?=$_SERVER["REQUEST_URI"]?>"/>
-  <link rel="alternate" href="/piclens/piclens.rss.php" type="application/rss+xml" title="piclens thing" id="gallery" />
-  <link rel="alternate" href="/export/lastprodsadded.rss.php" type="application/rss+xml" title="pouet - last prods added" />
-  <link rel="alternate" href="/export/lastprodsreleased.rss.php" type="application/rss+xml" title="pouet - last prods released" />
-  <link rel="alternate" href="/export/lastbbsposts.rss.php" type="application/rss+xml" title="pouet - last bbs posts" />
-  <link rel="alternate" href="/export/last-prod-comments.rss.php" type="application/rss+xml" title="pouet - last comments" />
+  <link rel="canonical" href="http://pouet.net<?=$_SERVER["REQUEST_URI"]?>">
+  <link rel="alternate" href="/piclens/piclens.rss.php" type="application/rss+xml" title="piclens thing" id="gallery">
+  <link rel="alternate" href="/export/lastprodsadded.rss.php" type="application/rss+xml" title="pouet - last prods added">
+  <link rel="alternate" href="/export/lastprodsreleased.rss.php" type="application/rss+xml" title="pouet - last prods released">
+  <link rel="alternate" href="/export/lastbbsposts.rss.php" type="application/rss+xml" title="pouet - last bbs posts">
+  <link rel="alternate" href="/export/last-prod-comments.rss.php" type="application/rss+xml" title="pouet - last comments">
   <?
 
  $customquery="SELECT ";
