@@ -24,7 +24,7 @@ if(!$f) $f=1;
      <td align="center">
       <table><tr><td>
 	   <? if($f=='none'): ?>
-	   <pre><? readfile('results/'.$which.'_'.$when.'.txt'); ?></pre>
+	   <pre class="results"><? readfile('results/'.$which.'_'.$when.'.txt'); ?></pre>
 	   <? else: ?>
 	   <img src="ascii.php?results=<?=$which?>&amp;when=<?=$when?>&amp;f=<?=$f?>"><br>
 	   <? endif; ?>
