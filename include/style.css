@@ -66,6 +66,11 @@ pre.nfo {
 	font-family: terminal;
 }
 
+pre.results {
+	font-family: "Small Fonts","Lucida Console","Courier 10 Pitch",FreeMono,terminal;
+	text-shadow: 4px 4px 0px #244668;
+}
+
 .bg1 {
 	color: #fff;
 	background-color: #579;

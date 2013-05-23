@@ -1,3 +1,7 @@
+pre.results {
+  filter: dropshadow(color=#244668, offx=4, offy=4);
+}
+
 .bbimage {
   width:expression(this.width > 800 ? "800px" : this.width);
 }
