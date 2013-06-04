@@ -34,7 +34,7 @@ function lettermenu($pattern) {
   if($pattern=="#") {
     print("<b>#</b>");
   } else {
-    printf("<a href=\"popup_parties.php?pattern=%%23&form=%s&field=%s\">#</a>",$_GET["form"],$_GET["field"]);
+    printf("<a href=\"popup_parties.php?pattern=%%23&form=%s&field=%s\">#</a>",htmlspecialchars($_GET['form'], ENT_QUOTES, 'UTF-8'),htmlspecialchars($_GET['field'], ENT_QUOTES, 'UTF-8'));
   }
   for($i=1;$i<=26;$i++) {
     if ($i==13) {
@@ -45,7 +45,7 @@ function lettermenu($pattern) {
     if($pattern==chr(96+$i)) {
       print("<b>".chr(96+$i)."</b>");
     } else {
-      printf("<a href=\"popup_parties.php?pattern=%s&form=%s&field=%s\">%s</a>",chr(96+$i),$_GET["form"],$_GET["field"],chr(96+$i));
+      printf("<a href=\"popup_parties.php?pattern=%s&form=%s&field=%s\">%s</a>",chr(96+$i),htmlspecialchars($_GET['form'], ENT_QUOTES, 'UTF-8'),htmlspecialchars($_GET['field'], ENT_QUOTES, 'UTF-8'),chr(96+$i));
     }
   }
   print(" ]<br />\n");
@@ -89,7 +89,7 @@ while($row = mysql_fetch_assoc($result)) {
 <script language="JavaScript" type="text/javascript">
 <!--
 function pickParty(s) {
-  window.opener.document.forms["<?=$_GET["form"]?>"].<?=$_GET["field"]?>.value=s;
+  window.opener.document.forms["<?=htmlspecialchars($_GET['form'], ENT_QUOTES, 'UTF-8')?>"].<?=htmlspecialchars($_GET['field'], ENT_QUOTES, 'UTF-8')?>.value=s;
   window.close();
 }
 //-->

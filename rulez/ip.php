@@ -7,8 +7,12 @@ if (!($_SESSION["SESSION_LEVEL"]=='administrator' || $_SESSION["SESSION_LEVEL"]=
 include_once("../include/top.php");
 //echo str_replace("include","../include",ob_get_clean());
 
-if ($_SESSION["SESSION_LEVEL"]=='administrator' && $_POST["ban_id"]) {
-  $sql = sprintf("update users set level='banned' where id=%d",$_POST["ban_id"]);
+$ban_id = (int) $_POST["ban_id"];
+$ip = mysql_real_escape_string($_GET["ip"]);
+$user = (int) $_GET["user"];
+
+if ($_SESSION["SESSION_LEVEL"]=='administrator' && $ban_id) {
+  $sql = sprintf("update users set level='banned' where id=%d", $ban_id);
   echo $sql;
   mysql_query($sql);
 
@@ -16,8 +20,8 @@ if ($_SESSION["SESSION_LEVEL"]=='administrator' && $_POST["ban_id"]) {
 ?>
 <table bgcolor="#000000" cellspacing="1" cellpadding="3" border="0">
 <?
-if ($_GET["ip"]) {
-$sql = "SELECT id, level, nickname, avatar, lastip, lasthost, glops FROM users where lastip='".$_GET["ip"]."'";
+if ($ip) {
+$sql = "SELECT id, level, nickname, avatar, lastip, lasthost, glops FROM users where lastip='".$ip."'";
 $r = mysql_query($sql);
 while ($o = mysql_fetch_object($r)) {
 ?>
@@ -30,8 +34,8 @@ while ($o = mysql_fetch_object($r)) {
  </tr>
 <?
 }
-} else if ($_GET["user"]) {
-$sql = "SELECT id, level, nickname, avatar, lastip, lasthost, glops, lastlogin FROM users where id='".$_GET["user"]."'";
+} else if ($user) {
+$sql = "SELECT id, level, nickname, avatar, lastip, lasthost, glops, lastlogin FROM users where id='".$user."'";
 $r = mysql_query($sql);
 while ($o = mysql_fetch_object($r)) {
 ?>
@@ -46,7 +50,7 @@ while ($o = mysql_fetch_object($r)) {
 if ($SESSION_LEVEL=='administrator') {
 ?>
   <td>
-    <form action='ip.php?user=<?=$_GET["user"]?>' method='post' onsubmit='return confirm("are you sure you want to ban <?=$o->nickname?>?")'>
+    <form action='ip.php?user=<?=$user?>' method='post' onsubmit='return confirm("are you sure you want to ban <?=$o->nickname?>?")'>
      <input type='hidden' name='ban_id' value='<?=$o->id?>'/>
      <input type='submit' value='ban'/>
     </form>

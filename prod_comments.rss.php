@@ -13,12 +13,12 @@ $prod = mysql_fetch_array($result);
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Pouet - <?=$prod["name"]?></title>
-		<link>http://pouet.net/prod.php?which=<?=$_GET["which"]?></link>
+		<link>http://pouet.net/prod.php?which=<?=$prod['id']?></link>
 		<description>Pouet - <?=$prod["name"]?></description>
 		<language>en-us</language>
 		<docs>http://feedvalidator.org/docs/rss2.html</docs>
 
-		<atom:link href="http://pouet.net/prod_comments.rss.php?which=<?=$_GET["which"]?>" rel="self" type="application/rss+xml" />
+		<atom:link href="http://pouet.net/prod_comments.rss.php?which=<?=$prod['id']?>" rel="self" type="application/rss+xml" />
 
 		<lastBuildDate><?=date("r")?></lastBuildDate>
 		<copyright>Copyright 2008 Pouet.net</copyright>
