@@ -62,7 +62,7 @@ $types = explode("'",$row[1]);
   <td bgcolor="#446688">
    <table>
 	<tr>
-	 <td><input type="text" name="prod1" value="<?=$_GET["derivative"]?>"> (prod1)</td>
+	 <td><input type="text" name="prod1" value="<?=htmlspecialchars($_GET['derivative'], ENT_QUOTES, 'UTF-8')?>"> (prod1)</td>
 	 <td>is a </td>
 	 <td>
 	  <select name="type">
@@ -75,7 +75,7 @@ $types = explode("'",$row[1]);
 	  </select>
 	 </td>
 	 <td>of</td>
-	 <td><input type="text" name="prod2" value="<?=$_GET["original"]?>"> (prod2)</td>
+	 <td><input type="text" name="prod2" value="<?=htmlspecialchars($_GET['original'], ENT_QUOTES, 'UTF-8')?>"> (prod2)</td>
 	</tr>
 	<tr>
 	<td colspan="5" width="200">

@@ -81,7 +81,7 @@ while($tmp = mysql_fetch_array($result)) {
 		}
 	  ?>
 	  </select>
-	  <input name="order" value="<?=$_GET["order"]?>" type="hidden"/>
+	  <input name="order" value="<?=htmlspecialchars($_GET['order'], ENT_QUOTES, 'UTF-8')?>" type="hidden"/>
 	 </td>
  </tr>
  <tr><td bgcolor="#224488" colspan="2" align="center"><input type="image" src="gfx/submit.gif" border="0"></td></tr>
@@ -574,7 +574,7 @@ if($platfcheck) {
         </td>
         <td>&nbsp;</td>
         <td width="50%">
-    	  <input name="order" value="<?=$_GET["order"]?>" type="hidden"/>
+    	  <input name="order" value="<?=htmlspecialchars($_GET['order'], ENT_QUOTES, 'UTF-8')?>" type="hidden"/>
         <input type="image" src="gfx/submit.gif" border="0"><br />
         </td>
        <? if(($page*$prods_per_page)<=$nbprods): ?>

@@ -15,7 +15,7 @@ require("include/misc.php");
 <script language="JavaScript" type="text/javascript">
 <!--
 function pickAvatar(s) {
-  window.opener.document.forms["<?=$_GET["form"]?>"].<?=$_GET["field"]?>.value=s;
+  window.opener.document.forms["<?=htmlspecialchars($_GET['form'], ENT_QUOTES, 'UTF-8')?>"].<?=htmlspecialchars($_GET['field'], ENT_QUOTES, 'UTF-8')?>.value=s;
   window.opener.document.avatr.src='avatars/'+s;
   window.close();
 }
