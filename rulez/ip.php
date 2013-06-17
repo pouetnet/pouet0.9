@@ -27,7 +27,7 @@ while ($o = mysql_fetch_object($r)) {
 ?>
  <tr class="bg<?=(($n++)&1)+1?>">
   <td><a href="../user.php?who=<?=$o->id?>"><img border='0' src="../avatars/<?=$o->avatar?>"></a></td>
-  <td><a href="../user.php?who=<?=$o->id?>"><?=$o->nickname?></a></td>
+  <td><a href="../user.php?who=<?=$o->id?>"><?=htmlspecialchars($o->nickname, ENT_QUOTES, 'UTF-8')?></a></td>
   <td><a href="ip.php?user=<?=$o->id?>"><?=$o->level?></a></td>
   <td><?=$o->glops?> glops</td>
   <td><?=$o->lasthost?> (<?=$o->lastip?>)</td>
@@ -41,7 +41,7 @@ while ($o = mysql_fetch_object($r)) {
 ?>
  <tr class="bg<?=(($n++)&1)+1?>">
   <td><a href="../user.php?who=<?=$o->id?>"><img border='0' src="../avatars/<?=$o->avatar?>"></a></td>
-  <td><a href="../user.php?who=<?=$o->id?>"><?=$o->nickname?></a></td>
+  <td><a href="../user.php?who=<?=$o->id?>"><?=htmlspecialchars($o->nickname, ENT_QUOTES, 'UTF-8')?></a></td>
   <td><?=$o->level?></td>
   <td><?=$o->glops?> glops</td>
   <td><?=$o->lastlogin?></td>
@@ -68,7 +68,7 @@ while ($o = mysql_fetch_object($r)) {
   if (!$o->lastip) continue;
 ?>
  <tr class="bg<?=(($n++)&1)+1?>">
-  <td><a href="ip.php?ip=<?=$o->lastip?>"><?=$o->lasthost?> (<?=$o->lastip?>)</a></td>
+  <td><a href="ip.php?ip=<?=$o->lastip?>"><?=htmlspecialchars($o->lasthost, ENT_QUOTES, 'UTF-8')?> (<?=htmlspecialchars($o->lastip, ENT_QUOTES, 'UTF-8')?>)</a></td>
   <td><?=$o->c?></td>
   <td><?=$o->nix?></td>
  </tr>
