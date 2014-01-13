@@ -1,5 +1,8 @@
 # Pouët.net
 
+This is the old source code.
+The one in use nowadays is available at https://github.com/pouetnet/pouet2.0
+
 Let's try to have a working dev env back
 
 Would be awesome to be able to accept collaborative pull requests too !
