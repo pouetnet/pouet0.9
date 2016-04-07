@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>pouët.net - prod search</ShortName>
-  <Description>pouët.net - prod search</Description>
-  <Image height="16" width="16" type="image/x-icon">http://pouet.net/favicon.ico</Image>
-  <InputEncoding>ISO-8859-1</InputEncoding>
-  <Url type="application/x-suggestions+json" method="GET" template="http://pouet.net/search_suggest.php?what={searchTerms}"/>
-  <Url type="text/html" method="GET" template="http://pouet.net/search.php?what={searchTerms}"/>
-</OpenSearchDescription>
